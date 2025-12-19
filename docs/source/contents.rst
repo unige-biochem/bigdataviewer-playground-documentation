@@ -28,3 +28,19 @@
    :caption: Processing Images
 
    processing_images/processing_images
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Commands Reference
+
+   commands/index
+   commands/viewers
+   commands/sources_display
+   commands/sources_appearance
+   commands/transformations
+   commands/bigwarp
+   commands/navigation_overlays
+   commands/synchronization
+   commands/import_export
+   commands/organizing_sources
+   commands/state_management
