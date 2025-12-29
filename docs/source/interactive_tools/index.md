@@ -2,76 +2,100 @@
 
 This section covers interactive selection and manipulation tools in BigDataViewer Playground.
 
-:::{note}
-This section is under development. Documentation for interactive tool commands is being added.
-:::
-
 ## Overview
 
-BigDataViewer Playground provides interactive tools for selecting regions of interest and defining spatial parameters directly in the viewer.
+BigDataViewer Playground provides interactive tools for:
+- Selecting points and regions directly in the viewer
+- Defining spatial parameters for processing commands
+- Exporting views to standard image formats
+- Creating visualizations and overlays
 
-## Selection Tools
+| Tool | Purpose | Key Feature |
+|------|---------|-------------|
+| [Point Selection](point_selection.md) | Mark locations in 3D | Landmark placement |
+| [Region Selection](region_selection.md) | Define 2D/3D bounds | Rectangles and boxes |
+| [View Export](view_export.md) | Capture BDV views | Screenshot to ImagePlus |
 
-### Point Selection
+## Documentation
 
-Interactively select points in 3D space within BDV windows.
+```{toctree}
+:maxdepth: 2
 
-**Commands:**
-- `GetUserPointsCommand` - Interactive point selection
+point_selection
+region_selection
+view_export
+```
 
-**Use Cases:**
-- Defining landmarks for registration
-- Marking positions of interest
-- Specifying coordinates for processing
+## Quick Reference
 
-### Rectangle Selection (2D)
+### Selection Commands
 
-Select rectangular regions in the current view plane.
+| Command | Class | Output |
+|---------|-------|--------|
+| Get User Points | `GetUserPointsCommand` | List of RealPoint |
+| Get User Rectangle | `GetUserRectangleCommand` | Position + size (2D) |
+| Get User 3D Box | `GetUserBox3DCommand` | Position + size (3D) |
 
-**Commands:**
-- `GetUserRectangleCommand` - Interactive rectangle selection
+### Export Commands
 
-**Use Cases:**
-- Defining regions for 2D registration
-- Selecting areas for cropping
-- Specifying ROIs for analysis
+| Command | Class | Description |
+|---------|-------|-------------|
+| Take Screenshot | `BdvViewToImagePlusExportCommand` | Full-featured view capture |
+| Basic Export | `BasicBdvViewToImagePlusExportCommand` | Simple view export |
 
-### 3D Box Selection
+### Visualization Commands
 
-Select 3D bounding boxes interactively.
+| Command | Description |
+|---------|-------------|
+| `OverviewerCommand` | Create overview visualization |
+| `ShowGridBdvCommand` | Display sources in grid layout |
 
-**Commands:**
-- `BoxSelectorCommand` - Interactive 3D box selection
+## Common Workflows
 
-**Use Cases:**
-- Defining volumes for cropping
-- Specifying regions for export
-- Setting boundaries for processing
+### Interactive Selection → Processing
 
-## View Export Tools
+```
+1. Start command that requires spatial input
+2. Use selection tool (points, rectangle, or box)
+3. Command receives coordinates
+4. Processing proceeds with defined region
+```
 
-Export the current BDV view to ImagePlus format.
+### Landmark-Based Registration
 
-**Commands:**
-- `BdvViewToImagePlusExportCommand` - Export current view with options
-- `BasicBdvViewToImagePlusExportCommand` - Simple view export
+```
+1. Open fixed and moving images in BDV
+2. Select corresponding points on both
+3. Registration computes transform from point pairs
+4. Transform aligns moving to fixed
+```
 
-## Visualization Tools
+### Region-Based Export
 
-**Commands:**
-- `OverviewerCommand` - Create overview visualization
-- `ShowGridBdvCommand` - Display sources in grid layout
+```
+1. Navigate to region of interest
+2. Select region (rectangle for 2D, box for 3D)
+3. Export with defined boundaries
+4. Result cropped to selection
+```
 
-## Planned Documentation
+## Tips
 
-The following pages will be added:
+### Effective Selection
 
-- Point selection tutorial
-- Region selection guide
-- 3D box selection workflow
-- View export options
+1. **Zoom appropriately**: Higher zoom = more precision
+2. **Use standard views**: XY, XZ, YZ for axis-aligned selections
+3. **Check all dimensions**: Verify X, Y, and Z are correct
+4. **Take your time**: Accurate selection saves reprocessing
+
+### Working with Large Data
+
+- Selection works at any zoom level
+- Coordinates are in world units (physical space)
+- Actual processing uses appropriate resolution level
 
 ## See Also
 
-- [Navigation & Overlays](../commands/navigation_overlays.md)
-- [Viewers](../commands/viewers.md)
+- [Navigation & Overlays](../commands/navigation_overlays.md) - BDV navigation controls
+- [Visualizing Images](../visualizing_images/visualizing_images.md) - Display settings
+- [Registration](../registration/index.md) - Uses point selection for landmarks

@@ -2,65 +2,121 @@
 
 This section covers advanced spatial transformation tools beyond basic affine transforms.
 
-:::{note}
-This section is under development. Documentation for advanced transform commands is being added.
-:::
-
 ## Overview
 
-BigDataViewer Playground provides specialized transformation tools for complex spatial manipulations, particularly useful for samples with non-standard geometries.
+BigDataViewer Playground provides specialized transformations for complex spatial manipulations:
 
-## Transform Types
+| Transform | Use Case | Key Feature |
+|-----------|----------|-------------|
+| [Elliptical](elliptical.md) | Curved samples (embryos, tubes) | Coordinate system mapping |
+| [3D Rotation](rotation_3d.md) | Reorienting datasets | Rotate around any center |
+| [Oblique Slicing](oblique_slicing.md) | Arbitrary plane extraction | Cut at any angle |
+
+## Documentation
+
+```{toctree}
+:maxdepth: 2
+
+elliptical
+rotation_3d
+oblique_slicing
+```
+
+## Quick Reference
 
 ### Elliptical 3D Transforms
 
-Elliptical transforms are designed for samples with cylindrical or ellipsoidal geometry (e.g., embryos, organoids, tubular structures). They allow mapping data to/from an elliptical coordinate system.
+**When to use:** Samples with spherical, ellipsoidal, or cylindrical geometry.
 
-**Use Cases:**
-- Unwrapping tubular structures
-- Projecting spherical/ellipsoidal samples
-- Creating standardized views of curved specimens
+```
+Create: Plugins > BigDataViewer-Playground > Sources > Transform > New Elliptic 3D Transform
+Apply:  Plugins > BigDataViewer-Playground > Sources > Transform > Elliptic 3D Transform Sources
+```
 
-**Commands:**
-- `Elliptic3DTransformCreatorCommand` - Create new elliptical transform
-- `Elliptic3DTransformerCommand` - Apply elliptical transform to sources
-- `Elliptic3DTransformExporterCommand` - Export transform to JSON
-- `Elliptic3DTransformImporterCommand` - Import transform from JSON
-- `Optimize3DEllipticalTransformCommand` - Optimize transform parameters
-- `DisplayEllipseFromTransformCommand` - Visualize ellipsoid
+Features:
+- Map curved surfaces to flat views
+- Unwrap tubular structures
+- Standardize spherical samples
 
 ### 3D Rotation
 
-Interactive 3D rotation tools for reorienting datasets.
+**When to use:** Reorienting samples to standard views or correcting acquisition angles.
 
-**Commands:**
-- `Rotation3DTransformCommand` - Interactive 3D rotation
+```
+Menu: Plugins > BigDataViewer-Playground > Sources > Transform > Rotation 3D Transform
+```
+
+Features:
+- Rotate around X, Y, Z axes
+- Specify rotation center
+- Preserve or modify transforms
 
 ### Oblique Slicing
 
-Extract arbitrarily oriented slices from 3D volumes.
+**When to use:** Extracting slices at arbitrary angles through 3D volumes.
 
-**Commands:**
-- `SliceSourceCommand` - Resample sources to oblique slice
-- `Rot3DReSampleCommand` - 3D resampling using ROI points
+Features:
+- Define plane by points or angles
+- Extract 2D slices from 3D data
+- Reslice along structures
 
 ### Utility Transforms
 
-**Commands:**
-- `RemoveZOffsetCommand` - Remove Z offset from sources
-- `SourcesRecenterCommand` - Recenter sources to specified coordinates
-- `EditSourcesWarpingCommand` - Edit warping transform with BigWarp
+```
+Remove Z Offset: Plugins > BigDataViewer-Playground > Sources > Transform > Remove Z Offset
+Recenter:        Plugins > BigDataViewer-Playground > Sources > Transform > Recenter sources
+```
 
-## Planned Documentation
+## Transform Selection Guide
 
-The following pages will be added:
+| Your Goal | Recommended Transform |
+|-----------|----------------------|
+| Flatten a spherical sample | Elliptical |
+| Unwrap a tube | Elliptical (cylindrical) |
+| Correct sample tilt | 3D Rotation |
+| View along a structure | Oblique Slicing |
+| Center sample at origin | Recenter / Remove Z Offset |
+| Standardize orientation | 3D Rotation |
 
-- Elliptical transform tutorial with use cases
-- 3D rotation guide
-- Oblique slicing workflow
-- Transform export/import for reproducibility
+## Combining Transforms
+
+Transforms can be combined for complex manipulations:
+
+```
+Example: Analyze tilted tubular structure
+
+1. Remove Z Offset → Center in Z
+2. 3D Rotation → Align tube with Z axis
+3. Elliptical Transform → Unwrap tube surface
+4. Export → Analyze flat representation
+```
+
+## Tips
+
+### Transform Order Matters
+
+Apply transforms in logical order:
+1. **Position first**: Center, remove offsets
+2. **Orient second**: Rotation
+3. **Map last**: Elliptical or specialized transforms
+
+### Save and Reload
+
+Export transforms to JSON for:
+- Reproducibility
+- Applying to similar datasets
+- Documentation
+
+### Verify Visually
+
+Always check transforms in BDV before exporting:
+- Use ellipsoid visualization
+- Compare before/after
+- Check edge cases
 
 ## See Also
 
-- [Basic Transformations](../commands/transformations.md)
-- [BigWarp](../commands/bigwarp.md)
+- [Basic Transformations](../commands/transformations.md) - Affine transforms
+- [BigWarp](../commands/bigwarp.md) - Landmark-based warping
+- [Resampling](../processing_images/resampling.md) - Grid resampling
+- [Registration](../registration/index.md) - Image alignment

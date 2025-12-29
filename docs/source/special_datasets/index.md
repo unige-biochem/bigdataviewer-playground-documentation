@@ -2,68 +2,96 @@
 
 This section covers specialized dataset formats and instruments supported by BigDataViewer Playground beyond standard Bio-Formats files.
 
-:::{note}
-This section is under development. Documentation for special dataset commands is being added.
-:::
-
 ## Overview
 
-BigDataViewer Playground includes dedicated support for several specialized imaging systems and formats that require custom handling beyond standard Bio-Formats import.
+Some imaging systems produce data that requires custom handling. BigDataViewer Playground provides dedicated loaders for these formats:
 
-## Supported Special Formats
+| Format | Instrument | Key Feature |
+|--------|------------|-------------|
+| [LLS7](lls7.md) | Zeiss Lattice Light Sheet 7 | Live deskewing |
+| [Operetta](operetta.md) | PerkinElmer Operetta | High-content plates |
+| [Imaris](imaris.md) | Bitplane Imaris | Native .ims files |
+| [BigStitcher](bigstitcher.md) | Zeiss CZI / Stitching | CZI conversion, fusion |
+
+## Documentation
+
+```{toctree}
+:maxdepth: 2
+
+lls7
+operetta
+imaris
+bigstitcher
+```
+
+## Quick Reference
 
 ### Zeiss LLS7 (Lattice Light Sheet)
 
-The Zeiss LLS7 lattice light sheet microscope produces data that requires deskewing for proper visualization.
+**When to use:** Opening Zeiss LLS7 CZI files that need deskewing.
 
-**Features:**
-- Live deskewing during visualization
+```
+Menu: Plugins > BigDataViewer-Playground > BDVDataset > Create BDV Dataset [Zeiss LLS7]
+```
+
+Features:
+- Automatic live deskewing
 - 3D cropping of deskewed data
-- Proper handling of LLS7 metadata
-
-**Commands:**
-- `LLS7OpenDatasetCommand` - Open LLS7 dataset with live deskewing
-- `LLS7CropCommand` - Crop 3D region from LLS7 sources
+- Non-destructive (original data unchanged)
 
 ### PerkinElmer Operetta
 
-High-content screening data from Operetta systems.
+**When to use:** Opening high-content screening data from Operetta systems.
 
-**Commands:**
-- `OpenOperettaDatasetCommand` - Open Operetta datasets
+```
+Menu: Plugins > BigDataViewer-Playground > BDVDataset > Create BDV Dataset [Operetta]
+```
+
+Features:
+- Multi-well plate support
+- Multi-field positioning
+- Display settings control
 
 ### Imaris Files
 
-Direct import of Bitplane Imaris `.ims` files.
+**When to use:** Opening Bitplane Imaris `.ims` files without conversion.
 
-**Commands:**
-- `OpenImarisCommand` - Open Imaris files
+```
+Menu: Plugins > BigDataViewer-Playground > BDVDataset > Create BDV Dataset [Imaris]
+```
 
-### Zeiss CZI to BigStitcher
-
-Convert Zeiss CZI files to BigStitcher-compatible format for stitching workflows.
-
-**Commands:**
-- `CreateCZIDatasetCommand` - Create BigStitcher XML from CZI
+Features:
+- Native multi-resolution support
+- Multi-channel handling
+- Time-series support
 
 ### BigStitcher Integration
 
-Tools for working with BigStitcher datasets.
+**When to use:** Preparing CZI files for stitching or exporting fused datasets.
 
-**Commands:**
-- `DatasetToBigStitcherDatasetCommand` - Convert BDV to BigStitcher format
-- `FuseBigStitcherDatasetIntoOMETiffCommand` - Fuse and export to OME-TIFF
+```
+CZI to BigStitcher: Plugins > BigDataViewer-Playground > BDVDataset > Edit > Make CZI Dataset for BigStitcher
+Fuse to OME-TIFF:   Plugins > BigDataViewer-Playground > BDVDataset > Fuse a BigStitcher dataset to OME-Tiff
+```
 
-## Planned Documentation
+Features:
+- CZI format conversion
+- BigStitcher compatibility
+- Pyramidal OME-TIFF export
 
-The following pages will be added:
+## Choosing the Right Loader
 
-- LLS7 workflow guide (opening, deskewing, cropping)
-- Operetta dataset handling
-- Imaris file import
-- BigStitcher integration workflow
+| Your Data | Recommended Loader |
+|-----------|-------------------|
+| Zeiss LLS7 CZI with skewed data | LLS7 loader |
+| Zeiss CZI for stitching | CZI to BigStitcher |
+| Zeiss CZI (standard) | Bio-Formats bridge |
+| PerkinElmer Operetta | Operetta loader |
+| Bitplane .ims files | Imaris loader |
+| Already stitched in BigStitcher | BigStitcher fusion |
 
 ## See Also
 
-- [Opening Images](../opening_images/opening_images.md)
-- [Import & Export Commands](../commands/import_export.md)
+- [Opening Images](../opening_images/opening_images.md) - Standard import methods
+- [Fusion](../processing_images/fusion.md) - Fusing stitched datasets
+- [Export Formats](../processing_images/export_formats.md) - Output options

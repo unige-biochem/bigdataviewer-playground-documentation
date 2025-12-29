@@ -21,7 +21,7 @@ extensions = [
     'myst_parser'
 ]
 
-master_doc = "contents"
+master_doc = "index"
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
