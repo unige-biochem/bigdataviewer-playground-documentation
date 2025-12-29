@@ -2,63 +2,104 @@
 
 This section covers image registration workflows in BigDataViewer Playground, from manual landmark-based registration to fully automated methods.
 
-:::{note}
-This section is under development. Documentation for registration commands is being added.
-:::
-
 ## Overview
 
-BigDataViewer Playground provides multiple registration approaches:
+Image registration aligns two or more images so that corresponding features overlap. BigDataViewer Playground provides multiple approaches:
 
-- **Manual Registration**: Interactive landmark-based registration using BigWarp
-- **Warpy Workflow**: Pair-based registration with GUI for combining manual and automated steps
-- **Automated Registration**: SIFT feature matching and Elastix-based registration
+| Method | Best For | Speed |
+|--------|----------|-------|
+| **BigWarp** | Maximum control, complex deformations | Manual |
+| **SIFT** | Different modalities, large misalignment | Fast |
+| **Elastix** | Similar modalities, local deformations | Medium |
+| **Warpy Workflow** | Combining methods, QuPath integration | Flexible |
 
-## Registration Methods
+## Documentation
 
-### Manual Registration (BigWarp)
+```{toctree}
+:maxdepth: 2
 
-BigWarp provides interactive landmark-based registration for precise alignment of images. See [BigWarp commands](../commands/bigwarp.md) for the launcher command.
+concepts
+warpy_workflow
+automated_registration
+```
 
-### Warpy Workflow
+## Quick Start
 
-The Warpy workflow provides a structured approach to registration:
+### For Simple Alignment
 
-1. Create a registration pair (fixed + moving sources)
-2. Apply centering to roughly align images
-3. Use automated methods (SIFT, Elastix) for initial alignment
-4. Refine with manual landmarks if needed
-5. Export results to QuPath or OME-TIFF
+Use [BigWarp](../commands/bigwarp.md) directly:
+1. Select fixed and moving sources
+2. Run `BigWarp - Launch BigWarp`
+3. Add landmarks and apply transform
 
-**Available Commands:**
-- `PairRegistrationCreateCommand` - Create registration pairs
-- `PairRegistrationAddGUICommand` - Open interactive GUI
-- `PairRegistrationCenterCommand` - Center moving over fixed
-- `PairRegistrationSift2DAffineCommand` - SIFT-based 2D affine
-- `PairRegistrationElastix2DAffineCommand` - Elastix 2D affine
-- `PairRegistrationElastix2DSplineCommand` - Elastix B-spline deformable
-- `PairRegistrationBigWarp2DSplineCommand` - Manual landmark spline
-- `PairRegistrationExportToOMETIFFCommand` - Export registered images
-- `PairRegistrationExportToQuPathCommand` - Export to QuPath
+### For Complex Registration
 
-### Automated Registration
+Use the [Warpy Workflow](warpy_workflow.md):
+1. Create a registration pair
+2. Center the images
+3. Apply automated registration (SIFT/Elastix)
+4. Refine with BigWarp if needed
+5. Export to QuPath or OME-TIFF
 
-For batch processing and automated workflows:
+## Choosing a Method
 
-- **SIFT Registration**: Feature-based 2D affine registration
-- **Elastix Registration**: Intensity-based affine and deformable registration
+### By Use Case
 
-## Planned Documentation
+| Use Case | Recommended Approach |
+|----------|---------------------|
+| Quick manual alignment | BigWarp with few landmarks |
+| H&E to immunofluorescence | SIFT affine (with intensity inversion) |
+| Serial sections (same stain) | Elastix affine + spline |
+| Whole-slide to QuPath | Warpy workflow with QuPath export |
+| Atlas registration | BigWarp with many landmarks |
 
-The following pages will be added:
+### By Image Characteristics
 
-- Warpy workflow tutorial
-- Elastix registration guide
-- SIFT registration guide
-- Exporting registration results
-- Registration best practices
+| Characteristic | Method |
+|---------------|--------|
+| Clear features, texture | SIFT |
+| Smooth, similar intensities | Elastix |
+| Different modalities | SIFT or manual BigWarp |
+| Local tissue distortion | Elastix spline or BigWarp |
+
+## Section Contents
+
+### [Registration Concepts](concepts.md)
+Learn about transform types, registration methods, and when to use each approach.
+
+### [Warpy Workflow](warpy_workflow.md)
+Step-by-step tutorial for the pair registration workflow, from creating pairs to exporting results.
+
+### [Automated Registration](automated_registration.md)
+Detailed guide to SIFT and Elastix registration methods, parameters, and troubleshooting.
+
+### [BigWarp Commands](../commands/bigwarp.md)
+Reference for manual landmark-based registration using BigWarp.
+
+## Command Quick Reference
+
+### Pair Registration (Warpy)
+
+| Command | Purpose |
+|---------|---------|
+| `Create registration pair` | Create fixed/moving pair |
+| `Registration pair - Add GUI` | Open interactive viewer |
+| `Register Pair - Center` | Rough alignment |
+| `Register Pair 2D - Sift Affine` | Automated SIFT |
+| `Register Pair 2D - Elastix Affine` | Automated Elastix affine |
+| `Register Pair 2D - Elastix Spline` | Automated Elastix deformable |
+| `Register Pair 2D - BigWarp Spline` | Manual BigWarp |
+| `Register Pair - Export to QuPath` | Export to QuPath project |
+| `Register Pair - Export to OME-TIFF` | Export as OME-TIFF |
+
+### Direct Registration
+
+| Command | Purpose |
+|---------|---------|
+| `BigWarp - Launch BigWarp` | Direct BigWarp launch |
+| `Wizard Align Slides (2D)` | Interactive registration wizard |
 
 ## See Also
 
-- [BigWarp Commands](../commands/bigwarp.md)
-- [Transformations](../commands/transformations.md)
+- [Transformations](../commands/transformations.md) - Basic affine transforms
+- [Import & Export](../commands/import_export.md) - Saving registered results
