@@ -31,6 +31,30 @@
 
 .. toctree::
    :maxdepth: 3
+   :caption: Registration
+
+   registration/index
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Special Datasets
+
+   special_datasets/index
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Advanced Transforms
+
+   advanced_transforms/index
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Interactive Tools
+
+   interactive_tools/index
+
+.. toctree::
+   :maxdepth: 3
    :caption: Commands Reference
 
    commands/index
