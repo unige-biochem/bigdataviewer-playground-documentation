@@ -55,7 +55,6 @@ All images should be properly calibrated with physical units (microns, millimete
 - **OMERO databases**: Stream images directly from OMERO servers
 - **QuPath projects**: Import entire QuPath projects as BDV datasets
 - **BigDataServer**: Remote image streaming
-- **Imaris files**: Direct import of Imaris datasets
 - **XML BDV datasets**: BigDataViewer's native XML format
 - **N5 format**: Cloud-optimized data storage
 - **OME-ZARR**: Next-generation OME-NGFF format (requires MoBiE update site)
@@ -86,25 +85,17 @@ XML BDV datasets are the general format for BigDataViewer, containing metadata a
 Example of opening an XML BDV dataset in BigDataViewer Playground.
 :::
 
-#### Command Reference: Import Multiple Files
+#### Command Reference: Open XML BDV Datasets
 
-**Command**: `Import - Open multiple files`
+**Command**: `Open XML BDV Datasets`
 **Class**: `sc.fiji.bdvpg.scijava.command.spimdata.MultipleSpimDataImporterCommand`
 
-Opens multiple image files at once. Supports various BDV-compatible formats including XML/HDF5, XML/N5, and OME-ZARR.
+Opens multiple bdv dataset at once.
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `files` | File[] | File(s) to import |
+| Parameter | Type   | Description       |
+|-----------|--------|-------------------|
+| `files`   | File[] | File(s) to import |
 
-**Supported File Types:**
-- **`.xml`** files: Looks for associated HDF5 or N5 data
-- **`.zarr`** directories: OME-ZARR format
-- **`.json`** files: BDV metadata files
-
-:::{tip}
-You can select multiple files at once by holding `Ctrl` (Windows/Linux) or `Cmd` (Mac) while clicking.
-:::
 
 ---
 
@@ -113,7 +104,7 @@ You can select multiple files at once by holding `Ctrl` (Windows/Linux) or `Cmd`
 Directly open Bio-Formats supported files as BDV datasets.
 
 **How to open:**
-- Menu: `Plugins › BigDataViewer-Playground › BDVDataset › Open [BioFormats Bdv Bridge]` (alternatively type *bridge* in Fiji's search bar)
+- Menu: `Plugins › BigDataViewer-Playground › BDVDataset › Create BDV Dataset [Bio-Formats]` (alternatively type *bdv bio* in Fiji's search bar)
 - Drag & drop: Bio-Formats supported files can be dragged directly into the BDV Playground window
 
 **Features:**
@@ -129,9 +120,9 @@ Directly open Bio-Formats supported files as BDV datasets.
 BioFormats Bdv Bridge interface showing file selection.
 :::
 
-#### Command Reference: Create BDV Dataset (Bio-Formats)
+#### Command Reference: Create BDV Dataset [Bio-Formats]
 
-**Command**: `BDVDataset › Open [BioFormats Bdv Bridge]`
+**Command**: `BDVDataset › Create BDV Dataset [Bio-Formats]`
 **Class**: `ch.epfl.biop.bdv.img.bioformats.command.CreateBdvDatasetBioFormatsCommand`
 
 Bridge between Bio-Formats and BigDataViewer. Creates a BDV dataset from a set of Bio-Formats supported files.
@@ -148,9 +139,9 @@ Bridge between Bio-Formats and BigDataViewer. Creates a BDV dataset from a set o
 
 **Output**: `AbstractSpimData spimdata`
 
-#### Command Reference: Create BDV Dataset (Bio-Formats - Simple)
+#### Command Reference: Create BDV Dataset from file
 
-**Command**: `BDVDataset › Open [BioFormats Bdv Bridge] (simple)`
+**Command**: `BDVDataset › Create BDV Dataset from file`
 **Class**: `ch.epfl.biop.bdv.img.bioformats.command.CreateBdvDatasetBioFormatsSimpleCommand`
 
 Simplified version of the Bio-Formats bridge with fewer options.
@@ -162,19 +153,19 @@ Simplified version of the Bio-Formats bridge with fewer options.
 
 **Output**: `AbstractSpimData spimdata`
 
-#### Command Reference: Show File in BDV (Bio-Formats)
+#### Command Reference: Open File with Bio-Formats
 
-**Command**: `BDVDataset › Show [BioFormats]`
+**Command**: `BigDataViewer › Bio-Formats > Open File with Bio-Formats`
 **Class**: `ch.epfl.biop.bdv.img.bioformats.command.BdvShowFileBioFormatsCommand`
 
 Support Bio-Formats multiresolution API. Set colors based on bioformats metadata. Do not attempt auto contrast. Directly show the images.
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `file` | File | File to open |
-| `position_convention` | String | Image metadata location |
-| `splitrgbchannels` | boolean | Split RGB channels if you have 16 bits RGB images |
-| `unit` | String | World coordinate units |
+| Parameter             | Type    | Description                                       |
+|-----------------------|---------|---------------------------------------------------|
+| `file`                | File    | File to open                                      |
+| `position_convention` | String  | Image metadata location                           |
+| `splitrgbchannels`    | boolean | Split RGB channels if you have 16 bits RGB images |
+| `unit`                | String  | World coordinate units                            |
 
 ---
 
@@ -201,20 +192,20 @@ Avoid adding or deleting images in QuPath after importing to BDV Playground, as 
 Importing a QuPath project as a BDV dataset.
 :::
 
-#### Command Reference: Create BDV Dataset (QuPath)
+#### Command Reference: Create BDV Dataset [QuPath]
 
 **Command**: `BDVDataset › Create BDV Dataset [QuPath]`
 **Class**: `ch.epfl.biop.bdv.img.qupath.command.CreateBdvDatasetQuPathCommand`
 
 Create a BDV dataset from a QuPath json project file. The image servers supported are Bio-Formats and OMERO image servers with the ICE API.
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `qupath_project` | File | QuPath project file (.json) |
-| `datasetname` | String | Dataset name (leave empty to name it like the QuPath project) |
-| `unit` | String | World coordinate units |
-| `plane_origin_convention` | String | Plane Origin Convention |
-| `split_rgb_channels` | boolean | Split RGB channels |
+| Parameter                 | Type    | Description                                                   |
+|---------------------------|---------|---------------------------------------------------------------|
+| `qupath_project`          | File    | QuPath project file (.json)                                   |
+| `datasetname`             | String  | Dataset name (leave empty to name it like the QuPath project) |
+| `unit`                    | String  | World coordinate units                                        |
+| `plane_origin_convention` | String  | Plane Origin Convention                                       |
+| `split_rgb_channels`      | boolean | Split RGB channels                                            |
 
 **Output**: `AbstractSpimData spimData`
 
@@ -245,10 +236,10 @@ OMERO dataset creation interface with credential prompt.
 
 Connect to an OMERO server.
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `host` | String | OMERO host |
-| `port` | int | OMERO Ice port |
+| Parameter  | Type   | Description         |
+|------------|--------|---------------------|
+| `host`     | String | OMERO host          |
+| `port`     | int    | OMERO Ice port      |
 | `username` | String | Enter your username |
 | `password` | String | Enter your password |
 
@@ -257,25 +248,21 @@ Connect to an OMERO server.
 - `Boolean success`
 - `Exception error` (if connection fails)
 
-#### Command Reference: Create BDV Dataset (OMERO)
+#### Command Reference: Create BDV Dataset [OMERO]
 
 **Command**: `BDVDataset › Create BDV Dataset [OMERO]`
 **Class**: `ch.epfl.biop.bdv.img.omero.command.CreateBdvDatasetOMEROCommand`
 
 Bridge between OMERO and BigDataViewer. Creates a BDV dataset from a set of OMERO URLs.
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `omero_urls` | String | OMERO URLs, comma separated |
-| `datasetname` | String | Name of this dataset |
-| `unit` | String | World coordinate units |
-| `plane_origin_convention` | String | Plane Origin Convention |
+| Parameter                 | Type   | Description                 |
+|---------------------------|--------|-----------------------------|
+| `omero_urls`              | String | OMERO URLs, comma separated |
+| `datasetname`             | String | Name of this dataset        |
+| `unit`                    | String | World coordinate units      |
+| `plane_origin_convention` | String | Plane Origin Convention     |
 
 **Output**: `AbstractSpimData spimdata`
-
-:::{tip}
-OMERO URLs typically follow the format: `omero://server:port/image/123` where `123` is the image ID.
-:::
 
 #### Command Reference: Disconnect from OMERO
 
@@ -284,9 +271,9 @@ OMERO URLs typically follow the format: `omero://server:port/image/123` where `1
 
 Disconnect from an OMERO server.
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `host` | String | OMERO host |
+| Parameter | Type   | Description |
+|-----------|--------|-------------|
+| `host`    | String | OMERO host  |
 
 **Output**:
 - `Boolean success`
@@ -306,57 +293,23 @@ Convert the currently open ImageJ image to a BDV dataset.
 - Can potentially be saved as XML BDV dataset, as long as the original image was loaded from a file.
 - Preserves image metadata
 
-#### Command Reference: ImagePlus to BDV Dataset
+#### Command Reference: Make BDVDataset from current IJ1 image
 
 **Command**: `Sources › Import › Make BDVDataset from current IJ1 image`
 **Class**: `ch.epfl.biop.bdv.img.imageplus.command.ImagePlusToBdvDatasetCommand`
 
 Opens the current ImagePlus as a BDV Dataset.
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `image` | ImagePlus | The ImagePlus to convert (current image if run from menu) |
-| `datasetname` | String | Dataset name (leave empty to name it like the ImagePlus title) |
+| Parameter     | Type      | Description                                                    |
+|---------------|-----------|----------------------------------------------------------------|
+| `image`       | ImagePlus | The ImagePlus to convert (current image if run from menu)      |
+| `datasetname` | String    | Dataset name (leave empty to name it like the ImagePlus title) |
 
 **Output**: `AbstractSpimData spimdata`
 
 ---
 
-### 6. Import from BigDataServer
-
-Stream large datasets remotely without downloading them locally.
-
-**How to open:**
-- Menu: `Plugins › BigDataViewer-Playground › BDVDataset › Open from BigDataServer`
-
-#### Command Reference: Open from BigDataServer
-
-**Command**: `Import - Open from BigDataServer`
-**Class**: `sc.fiji.bdvpg.scijava.command.spimdata.SpimdataBigDataServerImportCommand`
-
-Opens a dataset from a remote BigDataServer. This allows streaming large datasets without downloading them locally.
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `urlserver` | String | URL of the BigDataServer |
-| `datasetname` | String | Name of the dataset to open |
-
-**BigDataServer URL Format:**
-```
-http://server-address:port
-```
-
-:::{note}
-BigDataServer streams data on-demand. Only the visible portions are downloaded, making it efficient for large datasets.
-:::
-
----
-
 ## Advanced Opening Options
-
-### Batch Import
-
-Multiple files can be included in a single BDV dataset, creating a hierarchical organization.
 
 ### Drag and Drop
 
@@ -396,20 +349,19 @@ Hierarchical tree structure showing organized image sources.
 
 ### Import Formats Overview
 
-| Format | Description |
-|--------|-------------|
-| **XML/HDF5** | Native BDV format, pyramidal, chunked |
-| **XML/N5** | N5 backend for BDV |
-| **OME-ZARR** | Cloud-ready, S3-compatible format |
-| **BigDataServer** | Remote streaming from BDV server |
-| **Bio-Formats** | All Bio-Formats supported formats |
-| **OMERO** | OMERO server images via ICE API |
+| Format          | Description                           |
+|-----------------|---------------------------------------|
+| **XML/HDF5**    | Native BDV format, pyramidal, chunked |
+| **XML/N5**      | N5 backend for BDV                    |
+| **OME-ZARR**    | Cloud-ready, S3-compatible format     |
+| **Bio-Formats** | All Bio-Formats supported formats     |
+| **OMERO**       | OMERO server images via ICE API       |
 
 ---
 
 ## Saving BDV Datasets
 
-Any BDV dataset created using the opening methods above can be saved as an XML file for later reuse. This allows you to preserve your dataset configuration and quickly reload it without re-importing all sources.
+Any BDV dataset created using the opening methods above can be saved as an XML file for later reuse. In particular, the XMl container can be reused as dataset in all of the other `Big` tools: `Labkit`, `BigStitcher`, `BigWarp`...
 
 ### How to Save BDV Datasets
 
@@ -419,29 +371,28 @@ Any BDV dataset created using the opening methods above can be saved as an XML f
 - Specify an XML file path for saving
 
 **Features:**
-- **Metadata-only storage**: Only dataset configuration and spatial calibration is saved, not image pixel data
+- **Metadata-only storage**: Only dataset configuration and spatial calibration is saved (+ color and B&C), not image pixel data
 - **Source preservation**: Maintains all source information and hierarchy
-- **Quick reload**: Can be reopened using the "Open XML BDV Datasets" method
+- **Quick reload**: Can be reopened using the "Open XML BDV Datasets" method or via drag and drop in the BDV Playground window.
 - **Backend agnostic**: Works with any backend type (Bio-Formats, OMERO, QuPath, etc.)
 
 :::{important}
 Saved XML files contain only metadata and source references, not the actual image data. The original image files must remain accessible at their original locations for the saved dataset to work properly.
 :::
 
-#### Command Reference: Export SpimData Metadata
+#### Command Reference: Save BDVDataset
 
-**Command**: `Export - Save SpimData`
+**Command**: `Save BDVDataset`
 **Class**: `sc.fiji.bdvpg.scijava.command.spimdata.SpimDataExporterCommand`
 
 Exports the metadata (transformations, calibrations) for sources as a SpimData XML file. This is useful for:
 - Saving registration results
 - Creating references to existing data
-- Archiving processing parameters
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `sacs` | SourceAndConverter[] | Source(s) to export |
-| `xmlfilepath` | File | Output file path (.xml) |
+| Parameter     | Type                 | Description             |
+|---------------|----------------------|-------------------------|
+| `sacs`        | SourceAndConverter[] | Source(s) to export     |
+| `xmlfilepath` | File                 | Output file path (.xml) |
 
 :::{note}
 This exports metadata only. The actual image data must already exist and be referenced correctly.
@@ -453,22 +404,22 @@ This exports metadata only. The actual image data must already exist and be refe
 
 ### Export to XML/HDF5
 
-**Command**: `Export - Save as XML/HDF5`
+**Command**: `Export Sources to XML/HDF5 Spimdataset`
 **Class**: `sc.fiji.bdvpg.scijava.command.source.XmlHDF5ExporterCommand`
 
 Exports sources to the native BigDataViewer XML/HDF5 format with multi-resolution pyramids for efficient viewing.
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `sacs` | SourceAndConverter[] | Source(s) to export |
-| `xmlfile` | File | Output file path (.xml) |
-| `timepointbegin` | int | Starting timepoint (0-based) |
-| `numberoftimepointtoexport` | int | Number of timepoints to export |
-| `blocksizex`, `blocksizey`, `blocksizez` | int | HDF5 chunk dimensions |
-| `scalefactor` | int | Scale factor between pyramid levels |
-| `thresholdformipmap` | int | Size threshold for creating new resolution levels |
-| `nthreads` | int | Number of threads for export |
-| `entitytype` | String | How to organize sources (each as independent) |
+| Parameter                                | Type                 | Description                                       |
+|------------------------------------------|----------------------|---------------------------------------------------|
+| `sacs`                                   | SourceAndConverter[] | Source(s) to export                               |
+| `xmlfile`                                | File                 | Output file path (.xml)                           |
+| `timepointbegin`                         | int                  | Starting timepoint (0-based)                      |
+| `numberoftimepointtoexport`              | int                  | Number of timepoints to export                    |
+| `blocksizex`, `blocksizey`, `blocksizez` | int                  | HDF5 chunk dimensions                             |
+| `scalefactor`                            | int                  | Scale factor between pyramid levels               |
+| `thresholdformipmap`                     | int                  | Size threshold for creating new resolution levels |
+| `nthreads`                               | int                  | Number of threads for export                      |
+| `entitytype`                             | String               | How to organize sources (each as independent)     |
 
 #### Understanding Export Parameters
 
@@ -477,13 +428,9 @@ The block size determines how data is chunked in the HDF5 file:
 - **Smaller blocks** (e.g., 32x32x32): Better for random access
 - **Larger blocks** (e.g., 128x128x32): Better for sequential reading
 
-:::{tip}
-For typical 3D microscopy data, block sizes of 64x64x32 or 32x32x16 work well.
-:::
-
 **Scale Factor and MipMap Threshold:**
 The exporter creates a multi-resolution pyramid:
-- **`scalefactor`**: How much each level is downsampled (e.g., 2 = half size)
+- **`scalefactor`**: How much each level is downsampled (e.g., 2 = half size in each dimension)
 - **`thresholdformipmap`**: Minimum dimension size before creating a new level
 
 Example with `scalefactor=2` and `thresholdformipmap=64`:
@@ -502,34 +449,9 @@ Level 3:  128 x  128 x  32  (stops here, below threshold)
 
 | Problem | Solution |
 |---------|----------|
-| "File not found" | Check that both XML and data files exist |
-| Slow loading | Data may be on network storage - consider copying locally |
-| Memory errors | Dataset may be too large - check available RAM |
 | Performance issues with large images | Use pyramidal/multi-resolution files |
 | Calibration problems | Verify pixel size is set correctly; check units are physical (not pixels) |
 | Zeiss CZI issues | Use the Zeiss Quick Start Loader or tick "Split RGB channels" |
-
-### Common Export Issues
-
-| Problem | Solution |
-|---------|----------|
-| "Disk full" | HDF5 files can be large - ensure sufficient space |
-| Export hangs | Reduce `nthreads` if system becomes unresponsive |
-| Corrupted output | Ensure export completes - don't interrupt |
-
-### Import Performance Tips
-
-- **Local SSD**: Fastest for XML/HDF5
-- **Network storage**: Consider BigDataServer for remote access
-- **Large datasets**: Use lazy loading (data loaded on-demand)
-
-### Export Performance Tips
-
-| Parameter | Impact |
-|-----------|--------|
-| `nthreads` | More threads = faster export (up to CPU cores) |
-| `blocksizez` | Larger Z blocks improve sequential write speed |
-| Compression | HDF5 uses GZIP by default - good balance |
 
 ---
 
@@ -537,33 +459,5 @@ Level 3:  128 x  128 x  32  (stops here, below threshold)
 
 1. **Use pyramidal files** for large images to improve performance
 2. **Calibrate all images** with physical units before importing
-3. **Combine similar images** in batch imports
-4. **Use appropriate backends** for your data source type
-5. **Save your datasets** as XML files for quick reloading
-6. **For remote data**, only export the final result to avoid unnecessary data transfer
+3. **Save your datasets** as XML files for quick reloading
 
----
-
-## Command Reference Summary
-
-### Import Commands
-
-| Command | Class | Purpose |
-|---------|-------|---------|
-| Open multiple files | `MultipleSpimDataImporterCommand` | Import multiple XML/HDF5/N5/ZARR files |
-| Open from BigDataServer | `SpimdataBigDataServerImportCommand` | Stream from BigDataServer |
-| Open [BioFormats Bdv Bridge] | `CreateBdvDatasetBioFormatsCommand` | Import Bio-Formats files |
-| Open [BioFormats Bdv Bridge] (simple) | `CreateBdvDatasetBioFormatsSimpleCommand` | Simplified Bio-Formats import |
-| Show [BioFormats] | `BdvShowFileBioFormatsCommand` | Show Bio-Formats file directly |
-| Create BDV Dataset [QuPath] | `CreateBdvDatasetQuPathCommand` | Import QuPath project |
-| Connect to OMERO | `OmeroConnectCommand` | Connect to OMERO server |
-| Create BDV Dataset [OMERO] | `CreateBdvDatasetOMEROCommand` | Import OMERO images |
-| Disconnect from OMERO | `OmeroDisconnectCommand` | Disconnect from OMERO |
-| Make BDVDataset from IJ1 image | `ImagePlusToBdvDatasetCommand` | Convert current ImagePlus |
-
-### Export Commands
-
-| Command | Class | Purpose |
-|---------|-------|---------|
-| Save SpimData | `SpimDataExporterCommand` | Export metadata as XML |
-| Save as XML/HDF5 | `XmlHDF5ExporterCommand` | Export to XML/HDF5 format |

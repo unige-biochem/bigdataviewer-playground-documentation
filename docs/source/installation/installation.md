@@ -39,7 +39,7 @@ For GPU-accelerated deconvolution, add the CLIJ update sites:
 2. Check the following sites:
    - **clij**
    - **clij2**
-   - **clijx-assistant-extensions**
+   - **clijx-deconvolution**
 3. Click `Close`, then `Apply changes`
 4. Restart Fiji
 
@@ -88,47 +88,25 @@ Elastix is required for automated 2D registration workflows. It must be installe
 2. Set the paths to the `elastix` and `transformix` executables
 3. Click OK to verify the installation
 
-Successful setup will show version information in the Fiji console.
+Successful setup will show 3 windows with a successful registration.
 
 ---
 
-## Verifying Installation
-
-After installation, verify everything works:
-
-1. **Check menu**: `Plugins > BigDataViewer-Playground` should be available
-2. **Open a test image**: Try opening any image with `Plugins > BigDataViewer-Playground > BDVDataset > Open [Image Formats]`
-3. **Check console**: No red error messages should appear
-
 ## Summary of Update Sites
 
-| Update Site | Purpose | Required? |
-|-------------|---------|-----------|
-| **PTBIOP** | Core BigDataViewer Playground | Yes |
-| clij, clij2, clijx-assistant-extensions | GPU deconvolution | Optional |
-| Quick Start CZI Reader | Fast CZI file handling | Optional |
+| Update Site                      | Purpose                       | Required? |
+|----------------------------------|-------------------------------|-----------|
+| **PTBIOP**                       | Core BigDataViewer Playground | Yes       |
+| clij, clij2, clijx-deconvolution | GPU deconvolution             | Optional  |
+| Quick Start CZI Reader           | Fast CZI file handling        | Optional  |
 
-| External Tool | Purpose | Required? |
-|---------------|---------|-----------|
-| Elastix/Transformix | Automated 2D registration | Optional |
+| External Tool       | Purpose                   | Required? |
+|---------------------|---------------------------|-----------|
+| Elastix/Transformix | Automated 2D registration | Optional  |
 
 ---
 
 ## Troubleshooting
-
-### Update Site Not Found
-
-If PTBIOP doesn't appear in the update site list:
-1. Click `Add update site`
-2. Name: `PTBIOP`
-3. URL: `https://biop.epfl.ch/Fiji-Update/`
-
-### Out of Memory Errors
-
-Increase Fiji's memory allocation:
-1. Go to `Edit > Options > Memory & Threads...`
-2. Increase maximum memory (recommend 75% of system RAM)
-3. Restart Fiji
 
 ### Elastix Not Working
 
@@ -136,12 +114,6 @@ Increase Fiji's memory allocation:
 - On Windows, ensure Visual C++ Redistributable is installed
 - On macOS, check Security & Privacy settings
 - Check the Fiji console for specific error messages
-
-### GPU Deconvolution Fails
-
-- Verify OpenCL drivers are installed for your GPU
-- Try `Plugins > CLIJ2 > CLIJ2 Macro Extensions > CLIJ2_diagnostics()` to check GPU availability
-- Update graphics drivers if needed
 
 ---
 
