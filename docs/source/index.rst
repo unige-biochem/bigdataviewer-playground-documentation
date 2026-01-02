@@ -27,6 +27,12 @@ BigDataViewer Playground extends `BigDataViewer <https://imagej.net/plugins/bdv/
 
 .. toctree::
    :maxdepth: 2
+   :caption: Workflows
+
+   workflows/index
+
+.. toctree::
+   :maxdepth: 2
    :caption: Processing & Analysis
 
    processing_images/index
