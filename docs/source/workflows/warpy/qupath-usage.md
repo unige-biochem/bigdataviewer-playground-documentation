@@ -1,12 +1,12 @@
 # Using the Registration Result in QuPath
 
-The export from Fiji to QuPath merely consists of writing a JSON file that contains all information necessary to map coordinates of the fixed image into coordinates of the moving image.
+The export from Fiji to QuPath merely consists of writing a JSON file that contains all information necessary to map coordinates of the fixed image into coordinates of the moving image (and vice versa, since warpy's transformations are invertible).
 
 If the deformation is not too pathological, the transform will be invertible, meaning that you can choose both directions when transforming images or QuPath objects.
 
 Inside QuPath, you can use the resulting transformation files in two ways:
 
-1. **Transfer annotations or detections** from one image to another (the deformation is applied to the vector shape)
+1. **Transfer annotations or detections** from one image to another (the deformation is applied to the vector shape, and measurements are carried over the new image)
 2. **Generate a new image** that combines the fixed image and the moving images (with on-the-fly computation)
 
 > ⚠️ **Warning:** Images in QuPath project entries created with this tool may not show the original pixel values! The pixel difference between the original and the transformed image depends on the transformation, the interpolation used, and the downsampling in the current viewer. This must be taken into account in all analysis steps performed on such transformed images.
@@ -18,14 +18,17 @@ Inside QuPath, you can use the resulting transformation files in two ways:
 1. Open QuPath and the `warpy-demo-project` project
 2. Open the fluorescent image **Fluo** in the viewer
 3. Draw a region of your choice somewhere in the image that contains cells
+
+![Fluo image](images/page_28_img_1.png)
+
 4. Run **Cell detection**, keep the default parameters except:
    - Lower **threshold** to **5**
 
+![Cell Detection Interface](images/page_28_img_2.png)
+
 You should see many cells being detected:
 
-![Cell Detection Interface](images/page_28_img_1.png)
-
-![Detected Cells](images/page_28_img_2.png)
+![Detected Cells](images/page_29_img_1.png)
 
 ### Transfer to DAB Image
 
@@ -34,13 +37,13 @@ You should see many cells being detected:
 
 6. Go to **Extensions > Warpy > Warpy transfer annotations and detections to current entry**
 
-   ![Warpy Menu](images/page_29_img_1.png)
+![Transferred Annotations](images/page_29_img_2.png)
 
 7. Run the script
 
 After a few seconds you should see the annotations and detections transferred to the image:
 
-![Transferred Annotations](images/page_29_img_2.png)
+![DAB Image With Transfered Cells](images/page_30_img_1.png)
 
 > **Note:** The measurements from the fluorescent images are transferred as well. Each detection thus contains measures from both the H-DAB and the fluorescent image.
 
@@ -53,7 +56,7 @@ After a few seconds you should see the annotations and detections transferred to
 3. Click **Images from project**, choose **Fluo**, click **OK**
 4. Select the **Fluo** image, you should see a JSON file being detected:
 
-   ![Image Combiner Interface](images/page_30_img_1.png)
+
 
 5. Click the **Warpy** button, then confirm
 

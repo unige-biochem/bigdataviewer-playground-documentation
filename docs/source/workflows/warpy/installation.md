@@ -61,13 +61,13 @@ Elastix is a standard and stable registration library that is called from within
 
 1. In Fiji, type `Test Elastix` in the search bar and run the command
 
-   ![Test Elastix Command](images/page_4_img_1.png)
+   ![Test Elastix Command](images/test_elastix_search.png)
 
 2. Set the Elastix and Transformix executable paths when asked
 
 3. Verify you obtain the following images at the end of the script:
 
-   ![Expected Test Results](images/page_4_img_2.png)
+   ![Expected Test Results](images/test_elastix_success.png)
 
 ### Troubleshooting
 

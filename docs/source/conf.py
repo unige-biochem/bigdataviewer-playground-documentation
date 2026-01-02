@@ -69,6 +69,7 @@ source_suffix = ['.rst', '.md']
 from pygments.lexer import RegexLexer, include
 from pygments.token import Text, Comment, Operator, Keyword, Name, String, \
     Number, Punctuation
+import re
 
 class ImageJMacroLexer(RegexLexer):
     """
@@ -191,7 +192,48 @@ class ImageJMacroLexer(RegexLexer):
         ]
     }
 
+from pygments.lexers.jvm import GroovyLexer
+from pygments.token import Comment
+import re
+
+class ImageJGroovyLexer(GroovyLexer):
+    """
+    Groovy lexer with support for SciJava/ImageJ script parameters (#@).
+    """
+
+    name = 'ImageJ Groovy'
+    aliases = ['imagej-groovy']
+    filenames = []
+
+    def get_tokens_unprocessed(self, text):
+        """
+        Preprocess #@ lines as comments, then use normal Groovy lexing.
+        """
+        # Process the text line by line
+        lines = text.split('\n')
+        processed_lines = []
+
+        for line in lines:
+            # If line starts with #@ (with optional whitespace), treat as comment
+            if re.match(r'^\s*#@', line):
+                # Replace #@ with // to make it a valid Groovy comment
+                processed_lines.append(re.sub(r'^(\s*)#@', r'\1//@', line))
+            else:
+                processed_lines.append(line)
+
+        processed_text = '\n'.join(processed_lines)
+
+        # Now tokenize with the parent Groovy lexer
+        for index, token, value in GroovyLexer.get_tokens_unprocessed(self, processed_text):
+            # Change //@  comments back to #@ in the output and mark as preprocessor
+            if token == Comment.Single and value.lstrip().startswith('//@'):
+                # Restore original #@ and mark as preprocessor directive
+                yield index, Comment.Preproc, value.replace('//@', '#@', 1)
+            else:
+                yield index, token, value
+
 def setup(app):
     app.add_lexer('imagej', ImageJMacroLexer)
     app.add_lexer('ijm', ImageJMacroLexer)
     app.add_lexer('ijmacro', ImageJMacroLexer)
+    app.add_lexer('imagej-groovy', ImageJGroovyLexer)

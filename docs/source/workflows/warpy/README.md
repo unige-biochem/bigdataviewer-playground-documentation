@@ -37,7 +37,7 @@ For more details, refer to the [Warpy publication](https://doi.org/10.3389/fcomp
 
 ## Workflow Overview
 
-![Workflow Overview](images/page_2_img_1.jpeg)
+![Workflow Overview](images/warpy_workflow_overview.jpeg)
 
 The set of images to be registered are all put into a single QuPath project. Registrations are performed in Fiji, images are opened from a QuPath project and each registration result is stored as a file within the project entry folder. 
 

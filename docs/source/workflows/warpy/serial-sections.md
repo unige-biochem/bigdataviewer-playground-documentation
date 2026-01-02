@@ -23,14 +23,14 @@ Download and extract this dataset.
 
 Create a new QuPath project and insert all VSI images in it:
 
-![QuPath Project with Serial Sections](images/page_33_img_1.png)
+![QuPath Project with Serial Sections](images/page_33_img_2.png)
 
 #### Open the QuPath Project in Fiji
 
 1. In Fiji's search bar, type `QuPath`
 2. Find and run the command **`Create BDV Dataset [QuPath]`**
 
-   ![Create BDV Dataset](images/page_33_img_2.png)
+   ![Create BDV Dataset](images/page_33_img_1.png)
 
 3. Select the file `project.qpproj` within the warpy project folder (you can also drag and drop)
 4. Make sure that **MILLIMETER** is set in the `Physical units of the dataset` field
@@ -49,9 +49,10 @@ Using the GUI for registering all successive pairs is doable but tedious. Instea
 
 ## Automated Registration Script
 
-Here's the complete script for batch registration of serial sections:
+Here's the complete script for batch registration of serial sections: delete
 
-```groovy
+```{code-block} imagej-groovy
+:caption: ImageJ Groovy
 #@boolean create_pair
 #@boolean center_registration
 #@boolean sift_registration
@@ -194,7 +195,8 @@ This defines, as a list, the names of the images in the proper order. Note that 
 
 #### 2. Boolean Checkboxes for Each Step
 
-```groovy
+```{code-block} imagej-groovy
+:caption: ImageJ Groovy
 #@boolean create_pair
 #@boolean center_registration
 #@boolean sift_registration

@@ -11,7 +11,7 @@ Register large 2D whole slide images (WSI) using QuPath and Fiji, then use the r
 - Create combined multi-modal images
 - Reconstruct 3D volumes from serial sections
 
-![Workflow Overview](images/page_2_img_1.jpeg)
+![Workflow Overview](images/warpy_workflow_overview.jpeg)
 
 ## What You'll Learn
 
@@ -55,7 +55,7 @@ serial-sections
 
 ```
 ┌─────────────┐     ┌──────────────┐     ┌─────────────┐     ┌──────────────┐
-│ Images in   │ ──▶ │ Register in  │ ──▶ │ Export      │ ──▶ │ Use in       │
+│ Images in   │ --> │ Register in  │ --> │ Export      │ --> │ Use in       │
 │ QuPath      │     │ Fiji         │     │ Transform   │     │ QuPath       │
 └─────────────┘     └──────────────┘     └─────────────┘     └──────────────┘
 ```
@@ -64,13 +64,6 @@ serial-sections
 2. **Fiji**: Open project, perform registration (GUI or scripted)
 3. **Export**: Save transformation to QuPath project
 4. **QuPath**: Transfer annotations or create combined images
-
-## Color Code (for workshop)
-
-Throughout the workshop pages:
-- 🟡 **Yellow highlight** - Action you need to do
-- ⚪ **Gray highlight** - Optional actions
-- 🟣 **Purple highlight** - Fiji command names (searchable)
 
 ## Prerequisites
 

@@ -5,10 +5,10 @@ BigDataViewer Playground provides multiple ways to open, import, and save images
 :::{important}
 There's a key distinction between **opening** and **visualizing** images in BigDataViewer Playground:
 
-- **Opening**: Images are loaded into the hierarchical tree structure but not immediately displayed
+- **Opening**: Images are loaded into a hierarchical tree structure but not immediately displayed
 - **Visualizing**: Images are displayed in BDV windows from the hierarchical tree using right-click contextual menus
 
-All opened images appear in the BigDataViewer Playground window (accessible via `Plugins › BigDataViewer-Playground › Show Bdv Playground Window`).
+All opened/accessible images appear in the BigDataViewer Playground window (accessible via `Plugins › BigDataViewer-Playground › Show Bdv Playground Window`).
 :::
 
 ## Supported File Formats and Data Sources
@@ -30,6 +30,7 @@ Any file format supported by [Bio-Formats](https://bio-formats.readthedocs.io/en
 - Keller Lab Block `.klb`
 - Vectra QPTIFF `.qptiff`
 - Ventana BIF `.bif`
+- etc.
 
 :::{note}
 Leica `.lif` files have limited support as their multi-resolution data is not fully handled by Bio-Formats.
@@ -54,18 +55,19 @@ All images should be properly calibrated with physical units (microns, millimete
 
 - **OMERO databases**: Stream images directly from OMERO servers
 - **QuPath projects**: Import entire QuPath projects as BDV datasets
-- **BigDataServer**: Remote image streaming
-- **XML BDV datasets**: BigDataViewer's native XML format
 - **N5 format**: Cloud-optimized data storage
 - **OME-ZARR**: Next-generation OME-NGFF format (requires MoBiE update site)
+
+
+Generally, all these dataset can be stored as **XML BDV datasets**. These xml files are BigDataViewer's native format, which specifies the backend used to load data, as well as metadata (affine transforms, color, etc.).
 
 ---
 
 ## Methods for Opening Images
 
-### 1. Open XML BDV Datasets
+### 1. (Re-)Open XML BDV Datasets
 
-XML BDV datasets are the general format for BigDataViewer, containing metadata and references to image data stored in various backends.
+XML BDV datasets is the standard storage format for BigDataViewer, containing metadata and **references** to image data stored in various backends (not the data itself).
 
 **How to open:**
 - Menu: `Plugins › BigDataViewer-Playground › BDVDataset › Open XML BDV Datasets` (or type *open xml bdv* in Fiji's search bar)
@@ -74,16 +76,8 @@ XML BDV datasets are the general format for BigDataViewer, containing metadata a
 **Features:**
 - Contains positions, voxel size, channel descriptions, and backend specifications
 - Supports multiple backends (HDF5, N5, Tiff, Remote, Imaris, Bio-Formats, OMERO, etc.)
-- Generated for BigStitcher, BDV Playground, and other BDV plugins
+- Generated for BigStitcher, BDV Playground, and other BDV plugins (Mastodon, LabKit, BigWarp...)
 - Backend type is defined within the XML file itself
-
-:::{figure-md} xml-bdv-dataset
-:class: placeholder
-
-![Placeholder for XML BDV Dataset interface](https://via.placeholder.com/600x400?text=XML+BDV+Dataset+Interface)
-
-Example of opening an XML BDV dataset in BigDataViewer Playground.
-:::
 
 #### Command Reference: Open XML BDV Datasets
 
@@ -110,15 +104,7 @@ Directly open Bio-Formats supported files as BDV datasets.
 **Features:**
 - Supports multi-series, multi-resolution bio-formats API
 - Can include multiple files in a single dataset
-- Handles large whole-slide imaging (WSI) datasets
-
-:::{figure-md} bioformats-bridge
-:class: placeholder
-
-![Placeholder for BioFormats Bridge interface](https://via.placeholder.com/600x400?text=BioFormats+Bridge+Interface)
-
-BioFormats Bdv Bridge interface showing file selection.
-:::
+- Handles large whole-slide imaging (WSI) and high-content screening (HCS) datasets
 
 #### Command Reference: Create BDV Dataset [Bio-Formats]
 
@@ -127,17 +113,21 @@ BioFormats Bdv Bridge interface showing file selection.
 
 Bridge between Bio-Formats and BigDataViewer. Creates a BDV dataset from a set of Bio-Formats supported files.
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `files` | File[] | Dataset files |
-| `datasetname` | String | Name of this dataset |
+| Parameter | Type | Description                                                                                                                                               |
+|-----------|------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `files` | File[] | Bio-Formats compatible files                                                                                                                              |
+| `datasetname` | String | Name of this dataset                                                                                                                                      |
 | `unit` | String | World coordinate units. Unit for the common coordinate system where all datasets will be positioned. Image calibrations will be converted to these units. |
-| `plane_origin_convention` | String | Plane Origin Convention |
-| `split_rgb_channels` | boolean | Split RGB channels (recommended for 16-bit RGB images) |
-| `auto_pyramidize` | boolean | Compute image pyramid for large images without multiresolution (recommended) |
-| `disable_memo` | boolean | Check to disable memoization (not recommended) |
+| `plane_origin_convention` | String | Plane Origin Convention. Depending on file format, the position metadata of an image corresponds to its CENTER or its TOP LEFT corner                     |
+| `split_rgb_channels` | boolean | Split RGB channels (compulsory for 16-bit RGB images)                                                                                                     |
+| `auto_pyramidize` | boolean | Compute image pyramid for large images without multiresolution (recommended)                                                                              |
+| `disable_memo` | boolean | Check to disable memoization (not recommended)                                                                                                            |
 
 **Output**: `AbstractSpimData spimdata`
+
+:::{note}
+Opening a large file the first time can take time. Memoization is the process by which future openings of the same file will happen almost instantly. Note that it requires write access on the image file location in order to create a `.bfmemo` file.
+:::
 
 #### Command Reference: Create BDV Dataset from file
 
@@ -184,14 +174,6 @@ Import entire QuPath projects as BDV datasets.
 Avoid adding or deleting images in QuPath after importing to BDV Playground, as this may cause inconsistencies.
 :::
 
-:::{figure-md} qupath-project
-:class: placeholder
-
-![Placeholder for QuPath project import](https://via.placeholder.com/600x400?text=QuPath+Project+Import)
-
-Importing a QuPath project as a BDV dataset.
-:::
-
 #### Command Reference: Create BDV Dataset [QuPath]
 
 **Command**: `BDVDataset › Create BDV Dataset [QuPath]`
@@ -220,14 +202,6 @@ Stream images directly from OMERO databases.
 
 **Requirements:**
 - The OMERO 5.5-5.6 Fiji's update site should be enabled
-
-:::{figure-md} omero-import
-:class: placeholder
-
-![Placeholder for OMERO import interface](https://via.placeholder.com/600x400?text=OMERO+Import+Interface)
-
-OMERO dataset creation interface with credential prompt.
-:::
 
 #### Command Reference: Connect to OMERO
 
@@ -309,15 +283,35 @@ Opens the current ImagePlus as a BDV Dataset.
 
 ---
 
-## Advanced Opening Options
+### 6. Opening Operetta Datasets
 
-### Drag and Drop
+The Operetta file format is a format for HCS data that is has a special command for itself. The reason is that this machine is heavily used at the BIOP (the image facility where this library was developed). While an Operetta dataset can be opened directly with the Bio-Formats bridge, it suffers from some issues. For instance, all wells are overlayed one onto another at the same physical location. This is why it is more convenient to use the custom command instead.
 
-XML BDV datasets and Bio-Formats supported files can be dragged and dropped directly into the BDV Playground window for quick loading.
+#### Command: Create BDV Dataset [Operetta]
 
-### Mixed Source Types
+**Menu**: `Plugins > BigDataViewer-Playground > BDVDataset > Create BDV Dataset [Operetta]`
+**Class**: `ch.epfl.biop.scijava.command.spimdata.OpenOperettaDatasetCommand`
 
-Different source types (Bio-Formats, OMERO, QuPath) can be combined in the same BDV Playground session.
+| Parameter | Description |
+|-----------|-------------|
+| `folder` | The 'Images' or 'flex' folder containing your Operetta data |
+| `unit` | World coordinate units (e.g., "micrometer") |
+| `min_display_value` | Minimum intensity for display |
+| `max_display_value` | Maximum intensity for display |
+| `show` | Open in a new BDV window immediately |
+
+| Output | Description |
+|--------|-------------|
+| `dataset_name` | Name assigned to the opened dataset |
+
+#### Operetta Data Organization
+
+Operetta datasets typically contain:
+- **Wells**: Multiple wells from a plate (e.g., A1, A2, B1...)
+- **Fields**: Multiple imaging positions per well
+- **Channels**: Different fluorescence channels
+- **Z-stacks**: Optional 3D acquisition
+- **Timepoints**: Time-lapse data
 
 ---
 
@@ -335,17 +329,10 @@ BDV datasets use different backends implementing the Java `ImageLoader` interfac
 
 All opened images appear in a hierarchical tree within the BDV Playground window:
 
-- Right-click on sources to visualize them
+- Right-click on sources to open a contextual menu and potentially visualize them
+- Double-click on sources to center the current viewer (if it exists) on the selected sources 
 - Organize sources into groups
 - Manage source visibility and properties
-
-:::{figure-md} bdv-tree-structure
-:class: placeholder
-
-![Placeholder for BDV tree structure](https://via.placeholder.com/400x600?text=BDV+Tree+Structure)
-
-Hierarchical tree structure showing organized image sources.
-:::
 
 ### Import Formats Overview
 
@@ -361,13 +348,15 @@ Hierarchical tree structure showing organized image sources.
 
 ## Saving BDV Datasets
 
-Any BDV dataset created using the opening methods above can be saved as an XML file for later reuse. In particular, the XMl container can be reused as dataset in all of the other `Big` tools: `Labkit`, `BigStitcher`, `BigWarp`...
+Any BDV dataset created using the opening methods above can be saved as an XML file for later reuse. In fact, this how the output parameters `SpimData` objects, are serialized into XML files. 
+
+This is particularly useful since this XMl format can be used as a dataset definitiaion in all of the other `Big` tools: `Labkit`, `BigStitcher`, `BigWarp`, `Mastodon`...
 
 ### How to Save BDV Datasets
 
 **Method:**
 - Menu: `Plugins › BigDataViewer-Playground › BDVDataset › Save BDVDataset`
-- Select the sources you want to save (they should be stemming from a single import step - for instance if you want 2 bio-formats file inside a single dataset, you need to open them in a single step).
+- Select the sources you want to save (they should be stemming from a single command step - for instance if you want 2 bio-formats file inside a single dataset, you need to open them in a single step).
 - Specify an XML file path for saving
 
 **Features:**
@@ -403,6 +392,8 @@ This exports metadata only. The actual image data must already exist and be refe
 ## Exporting to Other Formats
 
 ### Export to XML/HDF5
+
+This command will take one or several sources and fully rewrite its pixel data as a hdf5 file.
 
 **Command**: `Export Sources to XML/HDF5 Spimdataset`
 **Class**: `sc.fiji.bdvpg.scijava.command.source.XmlHDF5ExporterCommand`
@@ -440,18 +431,6 @@ Level 1:  512 x  512 x 128
 Level 2:  256 x  256 x  64
 Level 3:  128 x  128 x  32  (stops here, below threshold)
 ```
-
----
-
-## Troubleshooting
-
-### Common Import Issues
-
-| Problem | Solution |
-|---------|----------|
-| Performance issues with large images | Use pyramidal/multi-resolution files |
-| Calibration problems | Verify pixel size is set correctly; check units are physical (not pixels) |
-| Zeiss CZI issues | Use the Zeiss Quick Start Loader or tick "Split RGB channels" |
 
 ---
 

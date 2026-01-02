@@ -4,10 +4,10 @@
 
 Register a fluorescent image onto a RGB H-DAB image using an interactive GUI.
 
-![Fluorescent Image](images/page_6_img_1.png)
+![Fluorescent Image](images/fluo.png)
 *Fluorescent image showing EdU labeling*
 
-![DAB Image](images/page_6_img_2.png)
+![DAB Image](images/dab.png)
 *H-DAB stained image*
 
 Dividing cells are labeled with DAB in the RGB image, and as fluorescent EdU within the second channel of the fluorescent image. More information about the dataset is provided in the Zenodo repository.
@@ -35,7 +35,7 @@ We will be working on the project named `warpy-demo-project`.
 1. In Fiji's search bar, type `QuPath`
 2. Find and run the command **`Create BDV Dataset [QuPath]`**
 
-   ![Create BDV Dataset Command](images/page_7_img_1.png)
+   ![Create BDV Dataset Command](images/create_bdv_dataset_qupath_search.png)
 
 3. Select the file `project.qpproj` within the warpy project folder (you can also drag and drop the file in the field)
 4. Make sure that **MILLIMETER** is set in the `Physical units of the dataset` field
@@ -43,11 +43,14 @@ We will be working on the project named `warpy-demo-project`.
 6. **Split RGB channels** should be **unchecked**
 7. Click **OK**
 
+![Create BDV Dataset Command](images/create_bdv_dataset_qupath.png)
+
 > **Note:** You can ignore the error `"[ERROR] Unsupported channels server builder"`. The resulting combined image that already exists in the QuPath project for the purposes of this exercise cannot be opened in Fiji.
 
 A **BDV Sources** window will pop up. You can double click on nodes to reveal the data contained in it:
 
-![BDV Sources Window](images/page_8_img_1.png)
+![BDV Sources Window](images/bdvpg_tree_collapsed.png)
+![BDV Sources Window](images/bdvpg_tree_expanded.png)
 
 QuPath images are uniquely identified as `QuPathEntryIdEntity` (1 and 2). The first image consists of 2 fluorescent channels: `Fluo-DAPI` and `Fluo-EdU`.
 
@@ -60,11 +63,11 @@ To restrict the viewer to 2D movements:
 1. Right-click on the **BDV Sources** window
 2. Select **`Set BDV Window - BIOP`** as per the screenshot
 
-   ![Set BDV Window Option](images/page_8_img_2.png)
+   ![BDV Window Settings](images/bdvpg_options_setbdvbiop.png)
 
 3. Keep the default options, but check the checkbox **`is2D`**
 
-   ![BDV Window Settings](images/page_9_img_1.png)
+   ![Set BDV Window Option](images/bdvbiop_options.png)
 
 4. Click **OK**
 
@@ -77,11 +80,11 @@ To visualize the images within the QuPath project:
 1. Select the sources **`Fluo-DAPI`** and **`Fluo-EdU`** inside the BDV Sources window
 2. Right-click and select **`Sources > Display > BDV - Show Sources (new Bdv window)`**
 
-   ![Display Sources Menu](images/page_9_img_2.png)
+   ![BDV Show Sources Menu](images/sources_display_newbdv.png)
 
 3. Then select **`Auto Contrast`** and **`Adjust View on Source`**
 
-   ![Auto Contrast Options](images/page_10_img_1.png)
+   ![Auto Contrast Options](images/show_sources_options.png)
 
 #### Common Commands within the Viewer
 
@@ -105,14 +108,14 @@ Drag and drop the **RGB-DAB** source from the BDV window to the viewer:
 
 1. Run the **`Create registration pair`** command
 
-   ![Create Registration Pair](images/page_12_img_1.png)
+   ![Create Registration Pair](images/create_registration_pair_search.png)
 
 2. Select the **DAB-RGB** image as the **fixed source**
 3. Select the fluorescent channels **Fluo-DAPI** and **Fluo-EdU** as the **moving sources**
 4. Drag and drop the sources from left to right
 5. Set any name for the registration (e.g., `dab_fluo`) - this serves as an identifier
 
-   ![Registration Pair Setup](images/page_13_img_1.png)
+   ![Registration Pair Setup](images/create_registration_pair_gui.png)
 
 After clicking OK, there will be a registration pair object in memory that holds a reference to both images and all registration steps that will be performed later on.
 
@@ -124,7 +127,7 @@ To have a graphical user interface that allows you to easily find registration t
 2. Select the registration pair you created in the list
 3. Run **OK**
 
-   ![Select Registration Pair](images/page_13_img_2.png)
+   ![Select Registration Pair](images/registration_pair_add_gui.png)
 
 You will then have a view of the data:
 

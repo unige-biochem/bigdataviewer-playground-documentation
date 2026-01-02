@@ -6,7 +6,8 @@ BigDataViewer Playground extends `BigDataViewer <https://imagej.net/plugins/bdv/
 **Key Features:**
 
 * Multi-dimensional visualization (2D, 3D, time-series, multi-channel)
-* Lazy loading for terabyte-scale datasets
+* Multi-resolution support
+* Lazy loading and processing for terabyte-scale datasets
 * Registration workflows (BigWarp, Warpy, SIFT, Elastix)
 * GPU-accelerated deconvolution
 * Export to OME-TIFF, XML/HDF5, QuPath

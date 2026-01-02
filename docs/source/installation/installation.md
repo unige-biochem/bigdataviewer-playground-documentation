@@ -2,6 +2,9 @@
 
 This guide covers how to install and set up BigDataViewer Playground in Fiji.
 
+:::{note} If your OS is windows, you may get a fully installed Fiji with BigDataViewer-Playground included by using the [ABBA Installer](https://github.com/BIOP/ijp-imagetoatlas/releases).
+:::
+
 ## System Requirements
 
 - **Fiji**: Latest version recommended
