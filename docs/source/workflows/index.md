@@ -20,6 +20,7 @@ Unlike feature documentation that explains what each tool does, workflows show *
 
 warpy/index
 lls7_timelapse
+lls7_psf_acquisition
 fuse_tiles
 ```
 
