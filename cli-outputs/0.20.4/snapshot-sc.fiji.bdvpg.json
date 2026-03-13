@@ -1,0 +1,1497 @@
+16:50:26.468 [main] INFO org.reflections.Reflections -- Reflections took 133 ms to scan 3 urls, producing 71 keys and 335 values
+{
+  "sc.fiji.bdvpg.command.display.source.SourceVisibilityONCommand": {
+    "name": "sc.fiji.bdvpg.command.display.source.SourceVisibilityONCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eSource\u003eSource - Make Visible",
+    "description": "Makes sources visible in all BDV windows where they are displayed",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) to make visible"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bdv.overlay.BdvOverlayCrossAddCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.overlay.BdvOverlayCrossAddCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eOverlay\u003eBDV - Add Center Cross Overlay",
+    "description": "Adds a centering cross onto BDV windows",
+    "input": [
+      {
+        "type": "BdvHandle[]",
+        "name": "bdvhs",
+        "label": "Select BDV Windows",
+        "description": "The BigDataViewer windows where center crosses will be added"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bdv.BdvSourcesShowCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.BdvSourcesShowCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eBDV - Show Sources In Multiple Windows",
+    "description": "Adds one or several sources into several existing BDV windows",
+    "input": [
+      {
+        "type": "BdvHandle[]",
+        "name": "bdvhs",
+        "label": "Select BDV Windows",
+        "description": "The BigDataViewer windows where sources will be displayed"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) to add to all selected BDV windows"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.dataset.DatasetXMLSaveCommand": {
+    "name": "sc.fiji.bdvpg.command.dataset.DatasetXMLSaveCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDataset\u003eDataset - Save XML Dataset",
+    "description": "Saves the Dataset associated with sources to an XML file",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select source(s)",
+        "description": "Select a source to find its associated SpimData (only the first source is used)"
+      },
+      {
+        "type": "File",
+        "name": "xmlfilepath",
+        "label": "Output File (XML)",
+        "description": "Path to save the XML file"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.source.SourceColorChangeCommand": {
+    "name": "sc.fiji.bdvpg.command.display.source.SourceColorChangeCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eSource\u003eSource - Set Color",
+    "description": "Changes the display color of one or more sources",
+    "input": [
+      {
+        "type": "ColorRGB",
+        "name": "color",
+        "label": "Color",
+        "description": "The new display color for the selected sources"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) whose color will be changed"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.workspace.state.StateSaveCommand": {
+    "name": "sc.fiji.bdvpg.command.workspace.state.StateSaveCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eWorkspace\u003eState\u003eState - Save",
+    "description": "Saves the current Bdv Playground state to a JSON file",
+    "input": [
+      {
+        "type": "File",
+        "name": "file",
+        "label": "State file (JSON)",
+        "description": "Path to save the state JSON file"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.dataset.transform.DatasetTransformSetCommand": {
+    "name": "sc.fiji.bdvpg.command.dataset.transform.DatasetTransformSetCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDataset\u003eTransform Stack\u003eDataset - Set Transforms",
+    "description": "Sets (overrides) transforms at specified timepoints and chain indices",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select source(s)",
+        "description": "Select sources whose SpimData transforms will be modified"
+      },
+      {
+        "type": "String",
+        "name": "timepoint_range",
+        "label": "Timepoint range",
+        "description": "Timepoints to modify. Examples: \u00270\u0027, \u00270:10\u0027, \u00270,5,10\u0027, \u00270:5,10:15\u0027"
+      },
+      {
+        "type": "String",
+        "name": "transform_index_range",
+        "label": "Transform chain index range",
+        "description": "Transform chain indices to modify (0 \u003d most recent). Examples: \u00270\u0027, \u00270:2\u0027, \u00270,2\u0027"
+      },
+      {
+        "type": "String",
+        "name": "transform_matrix",
+        "label": "Transform matrix (3 rows, 4 values each)",
+        "description": "Affine transform matrix: 3 rows of 4 comma-separated values"
+      },
+      {
+        "type": "String",
+        "name": "transform_name",
+        "label": "Transform name (optional)",
+        "description": "Name for the transform. Leave empty to keep existing name."
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bvv.BvvOrthoCreateCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bvv.BvvOrthoCreateCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBVV\u003eBVV - Create Orthogonal Views",
+    "description": "Creates 3 BVV windows with synchronized orthogonal views",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "Enables interpolation for smoother rendering"
+      },
+      {
+        "type": "int",
+        "name": "locationx",
+        "label": "X Front Window location",
+        "description": "Horizontal position in pixels for the front (XY) window"
+      },
+      {
+        "type": "int",
+        "name": "locationy",
+        "label": "Y Front Window location",
+        "description": "Vertical position in pixels for the front (XY) window"
+      },
+      {
+        "type": "int",
+        "name": "ntimepoints",
+        "label": "Number of timepoints",
+        "description": "Total number of timepoints (use 1 for a single timepoint)"
+      },
+      {
+        "type": "int",
+        "name": "screen",
+        "label": "Display",
+        "description": "Screen index for window placement (use 0 if you have one screen)"
+      },
+      {
+        "type": "int",
+        "name": "sizex",
+        "label": "Window Width",
+        "description": "Width in pixels for each BVV window"
+      },
+      {
+        "type": "int",
+        "name": "sizey",
+        "label": "Window Height",
+        "description": "Height in pixels for each BVV window"
+      },
+      {
+        "type": "boolean",
+        "name": "synchronize_sources",
+        "label": "Synchronize sources",
+        "description": "When enabled, sources added to one window will appear in all three windows"
+      }
+    ],
+    "output": [
+      {
+        "type": "BvvHandle",
+        "name": "bvvhx",
+        "label": "Front (XY) Window",
+        "description": "The BigVolumeViewer window showing the XY (front) view"
+      },
+      {
+        "type": "BvvHandle",
+        "name": "bvvhy",
+        "label": "Right (ZY) Window",
+        "description": "The BigVolumeViewer window showing the ZY (right) view"
+      },
+      {
+        "type": "BvvHandle",
+        "name": "bvvhz",
+        "label": "Bottom (XZ) Window",
+        "description": "The BigVolumeViewer window showing the XZ (bottom) view"
+      }
+    ]
+  },
+  "sc.fiji.bdvpg.command.display.bvv.BvvSourcesRemoveCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bvv.BvvSourcesRemoveCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBVV\u003eBVV - Remove Sources",
+    "description": "Removes one or several sources from an existing BVV window",
+    "input": [
+      {
+        "type": "BvvHandle[]",
+        "name": "bvvhs",
+        "label": "Select BVV Windows",
+        "description": "The BigVolumeViewer windows from which sources will be removed"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) to remove from the BVV window"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.process.resample.SourceFromModelCreateCommand": {
+    "name": "sc.fiji.bdvpg.command.process.resample.SourceFromModelCreateCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eFuse \u0026 Resample\u003eSource - Create Resampling Grid From Source",
+    "description": "Defines an empty source which occupied the same volume as a model source but with a potentially different voxel size. Works with a single timepoint.",
+    "input": [
+      {
+        "type": "SourceAndConverter",
+        "name": "model",
+        "label": "Model Source",
+        "description": "Defines the portion of space covered by the new source"
+      },
+      {
+        "type": "String",
+        "name": "name",
+        "label": "Source name",
+        "description": "Name for the new source"
+      },
+      {
+        "type": "int",
+        "name": "timepoint",
+        "label": "Timepoint",
+        "description": "Timepoint to use from the model source (0-based)"
+      },
+      {
+        "type": "double",
+        "name": "vox_size_x",
+        "label": "Voxel Size X",
+        "description": "Voxel size in X dimension (in world coordinates units)"
+      },
+      {
+        "type": "double",
+        "name": "vox_size_y",
+        "label": "Voxel Size Y",
+        "description": "Voxel size in Y dimension (in world coordinates units)"
+      },
+      {
+        "type": "double",
+        "name": "vox_size_z",
+        "label": "Voxel Size Z",
+        "description": "Voxel size in Z dimension (in world coordinates units)"
+      }
+    ],
+    "output": [
+      {
+        "type": "SourceAndConverter",
+        "name": "source",
+        "label": "Created Source",
+        "description": "The newly created empty source"
+      }
+    ]
+  },
+  "sc.fiji.bdvpg.command.workspace.SourceServiceShowCommand": {
+    "name": "sc.fiji.bdvpg.command.workspace.SourceServiceShowCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eWorkspace\u003eShow BDV Playground Window",
+    "description": "Opens the Bdv Playground source management window",
+    "input": [],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bdv.settings.BdvEditorInstallCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.settings.BdvEditorInstallCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eSettings\u003eBDV - Add Editor",
+    "description": "Installs the source selection editor on BDV windows. Press the toggle key to switch between navigation and editor mode.",
+    "input": [
+      {
+        "type": "BdvHandle[]",
+        "name": "bdvhs",
+        "label": "Select BDV Windows",
+        "description": "The BigDataViewer windows where the editor will be installed"
+      },
+      {
+        "type": "String",
+        "name": "toggle_key",
+        "label": "Toggle key",
+        "description": "Keyboard shortcut to toggle between navigation and editor mode"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.register.SourceBigWarpLaunchCommand": {
+    "name": "sc.fiji.bdvpg.command.register.SourceBigWarpLaunchCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eSource - Launch BigWarp",
+    "description": "Starts BigWarp from existing sources",
+    "input": [
+      {
+        "type": "String",
+        "name": "bigwarp_name",
+        "label": "Window title for BigWarp",
+        "description": "Title for the BigWarp windows"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "fixed_sources",
+        "label": "Fixed Source(s)",
+        "description": "The reference source(s) that stay fixed during registration"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "moving_sources",
+        "label": "Moving Source(s)",
+        "description": "The source(s) that will be warped to match the fixed sources"
+      }
+    ],
+    "output": [
+      {
+        "type": "BdvHandle",
+        "name": "bdvh_p",
+        "label": "BigWarp P Window",
+        "description": "The BigWarp P (fixed) window handle"
+      },
+      {
+        "type": "BdvHandle",
+        "name": "bdvh_q",
+        "label": "BigWarp Q Window",
+        "description": "The BigWarp Q (moving) window handle"
+      },
+      {
+        "type": "SourceAndConverter",
+        "name": "grid_source",
+        "label": "Grid Source",
+        "description": "A grid source showing the deformation field"
+      },
+      {
+        "type": "SourceAndConverter",
+        "name": "warp_magnitude_source",
+        "label": "Warp Magnitude Source",
+        "description": "A source showing the magnitude of the deformation"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "warped_sources",
+        "label": "Warped Sources",
+        "description": "The warped versions of the moving sources"
+      }
+    ]
+  },
+  "sc.fiji.bdvpg.command.exporter.SourceXMLHDF5ExportCommand": {
+    "name": "sc.fiji.bdvpg.command.exporter.SourceXMLHDF5ExportCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eExport\u003eSource - Export To XML/HDF5 Dataset",
+    "description": "Exports sources to an XML/HDF5 BigDataViewer dataset",
+    "input": [
+      {
+        "type": "int",
+        "name": "block_size_x",
+        "label": "Block size X",
+        "description": "HDF5 block size in X dimension"
+      },
+      {
+        "type": "int",
+        "name": "block_size_y",
+        "label": "Block size Y",
+        "description": "HDF5 block size in Y dimension"
+      },
+      {
+        "type": "int",
+        "name": "block_size_z",
+        "label": "Block size Z",
+        "description": "HDF5 block size in Z dimension"
+      },
+      {
+        "type": "String",
+        "name": "entity_type",
+        "label": "Each source is an independent",
+        "description": "How to treat each source in the exported dataset"
+      },
+      {
+        "type": "int",
+        "name": "n_threads",
+        "label": "Number of Threads",
+        "description": "Number of parallel threads for export"
+      },
+      {
+        "type": "int",
+        "name": "number_of_timepoints_to_export",
+        "label": "Number of timepoints",
+        "description": "Number of timepoints to export"
+      },
+      {
+        "type": "int",
+        "name": "scale_factor",
+        "label": "Scale factor",
+        "description": "Downsampling factor between pyramid levels"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) to export"
+      },
+      {
+        "type": "int",
+        "name": "threshold_mipmap",
+        "label": "MipMap threshold",
+        "description": "Minimum dimension size (in pixels) above which a new resolution level is created"
+      },
+      {
+        "type": "int",
+        "name": "timepoint_begin",
+        "label": "Timepoint start",
+        "description": "First timepoint to export (0-based)"
+      },
+      {
+        "type": "File",
+        "name": "xml_file",
+        "label": "Output file (XML)",
+        "description": "Path to the output XML file"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.workspace.state.StateClearCommand": {
+    "name": "sc.fiji.bdvpg.command.workspace.state.StateClearCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eWorkspace\u003eState\u003eState - Clear",
+    "description": "Removes all sources from the SourceAndConverter service",
+    "input": [],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bdv.settings.BdvZSliderAddCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.settings.BdvZSliderAddCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eSettings\u003eBDV - Add Z Slider",
+    "description": "Adds a z slider onto BDV windows",
+    "input": [
+      {
+        "type": "BdvHandle[]",
+        "name": "bdvhs",
+        "label": "Select BDV Windows",
+        "description": "The BigDataViewer windows where Z sliders will be added"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bdv.settings.BdvTimepointsAdaptCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.settings.BdvTimepointsAdaptCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eSettings\u003eBDV - Adapt Number Of Timepoints To Sources",
+    "description": "Adapts the bdv windows timepoints to the number of timepoints present in their sources.",
+    "input": [
+      {
+        "type": "BdvHandle[]",
+        "name": "bdvhs",
+        "label": "Select BDV Windows",
+        "description": "The BigDataViewer windows whose timepoint range will be adapted to their sources"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.workspace.state.StateLoadCommand": {
+    "name": "sc.fiji.bdvpg.command.workspace.state.StateLoadCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eWorkspace\u003eState\u003eState - Load",
+    "description": "Loads a previously saved Bdv Playground state from a JSON file",
+    "input": [
+      {
+        "type": "Boolean",
+        "name": "erase_previous_state",
+        "label": "Erase current state",
+        "description": "If checked, removes all current sources before loading the saved state"
+      },
+      {
+        "type": "File",
+        "name": "file",
+        "label": "State file (JSON)",
+        "description": "The JSON file containing the saved state"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.workspace.tree.FilterNodeMetadataAddCommand": {
+    "name": "sc.fiji.bdvpg.command.workspace.tree.FilterNodeMetadataAddCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eWorkspace\u003eTree\u003eTree - Filter By Metadata",
+    "description": "Adds a node in the tree view which selects the sources which contain a certain key metadata and which matches a certain regular expression",
+    "input": [
+      {
+        "type": "String",
+        "name": "group_name",
+        "label": "Name of the node",
+        "description": "Display name for the filter node in the tree view"
+      },
+      {
+        "type": "String",
+        "name": "key",
+        "label": "Metadata Key",
+        "description": "The metadata key to filter sources by"
+      },
+      {
+        "type": "String",
+        "name": "value_regex",
+        "label": "Value regex",
+        "description": "Regular expression to match metadata values (\".*\" matches everything)"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bdv.BdvOrthoCreateCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.BdvOrthoCreateCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eBDV - Create Orthogonal Views",
+    "description": "Creates 3 BDV windows with synchronized orthogonal views",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "drawcrosses",
+        "label": "Add cross overlay",
+        "description": "Draws a cross at the center of each BDV window"
+      },
+      {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "Enables interpolation for smoother rendering"
+      },
+      {
+        "type": "int",
+        "name": "locationx",
+        "label": "X Front Window location",
+        "description": "Horizontal position in pixels for the front (XY) window"
+      },
+      {
+        "type": "int",
+        "name": "locationy",
+        "label": "Y Front Window location",
+        "description": "Vertical position in pixels for the front (XY) window"
+      },
+      {
+        "type": "int",
+        "name": "ntimepoints",
+        "label": "Number of timepoints",
+        "description": "Total number of timepoints (use 1 for a single timepoint)"
+      },
+      {
+        "type": "int",
+        "name": "screen",
+        "label": "Display",
+        "description": "Screen index for window placement (use 0 if you have one screen)"
+      },
+      {
+        "type": "int",
+        "name": "sizex",
+        "label": "Window Width",
+        "description": "Width in pixels for each BDV window"
+      },
+      {
+        "type": "int",
+        "name": "sizey",
+        "label": "Window Height",
+        "description": "Height in pixels for each BDV window"
+      },
+      {
+        "type": "boolean",
+        "name": "synchronize_sources",
+        "label": "Synchronize sources",
+        "description": "When enabled, sources added to one window will appear in all three windows"
+      }
+    ],
+    "output": [
+      {
+        "type": "BdvHandle",
+        "name": "bdvhx",
+        "label": "Front (XY) Window",
+        "description": "The BigDataViewer window showing the XY (front) view"
+      },
+      {
+        "type": "BdvHandle",
+        "name": "bdvhy",
+        "label": "Right (ZY) Window",
+        "description": "The BigDataViewer window showing the ZY (right) view"
+      },
+      {
+        "type": "BdvHandle",
+        "name": "bdvhz",
+        "label": "Bottom (XZ) Window",
+        "description": "The BigDataViewer window showing the XZ (bottom) view"
+      }
+    ]
+  },
+  "sc.fiji.bdvpg.command.dataset.DatasetXMLLoadCommand": {
+    "name": "sc.fiji.bdvpg.command.dataset.DatasetXMLLoadCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDataset\u003eDataset - Open XML Dataset",
+    "description": "Opens one or more BDV XML datasets",
+    "input": [
+      {
+        "type": "File[]",
+        "name": "files",
+        "label": "XML Files",
+        "description": "Select one or more BDV XML files to open"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.workspace.tree.SourceGroupMakeCommand": {
+    "name": "sc.fiji.bdvpg.command.workspace.tree.SourceGroupMakeCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eWorkspace\u003eTree\u003eTree - Make Global Source Group",
+    "description": "Adds a node in the tree view which selects the sources specified in the command",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "display_sources",
+        "label": "Display Sources",
+        "description": "If checked, shows the individual sources under the group node"
+      },
+      {
+        "type": "String",
+        "name": "group_name",
+        "label": "Name of the group",
+        "description": "Display name for the group node in the tree view"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) to include in this group"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.ViewSynchronizeCommand": {
+    "name": "sc.fiji.bdvpg.command.display.ViewSynchronizeCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eViewers - Synchronize Views",
+    "description": "Synchronizes the view of a set of BDV or BVV windows. A window popup should be closed to stop the synchronization",
+    "input": [
+      {
+        "type": "BdvHandle[]",
+        "name": "bdvhs",
+        "label": "Select BDV Windows to synchronize",
+        "description": "The BigDataViewer windows to synchronize"
+      },
+      {
+        "type": "BvvHandle[]",
+        "name": "bvvhs",
+        "label": "Select BVV Windows to synchronize",
+        "description": "The BigVolumeViewer windows to synchronize"
+      },
+      {
+        "type": "boolean",
+        "name": "synchronizetime",
+        "label": "Synchronize timepoints",
+        "description": "If checked, also synchronizes the current timepoint across windows"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bdv.SingleBdvSourcesShowCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.SingleBdvSourcesShowCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eBDV - Show Sources",
+    "description": "Displays one or several sources into a new BDV window",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "adjust_view",
+        "label": "Adjust View on Sources",
+        "description": "Centers and zooms the view to fit the displayed sources"
+      },
+      {
+        "type": "boolean",
+        "name": "auto_contrast",
+        "label": "Auto Contrast",
+        "description": "Automatically adjusts brightness and contrast based on the current timepoint"
+      },
+      {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "Enables interpolation for smoother rendering"
+      },
+      {
+        "type": "boolean",
+        "name": "make_new_window",
+        "label": "Open In New Window",
+        "description": "Force creation of a new window"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) to display in the new BDV window"
+      }
+    ],
+    "output": [
+      {
+        "type": "BdvHandle",
+        "name": "bdvh",
+        "label": "Created BDV Window",
+        "description": "The newly created BigDataViewer window containing the sources"
+      }
+    ]
+  },
+  "sc.fiji.bdvpg.command.process.SourceMetadataAddCommand": {
+    "name": "sc.fiji.bdvpg.command.process.SourceMetadataAddCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eSource - Add Metadata",
+    "description": "Adds a metadata string to selected sources",
+    "input": [
+      {
+        "type": "String",
+        "name": "key",
+        "label": "Key",
+        "description": "The metadata key (identifier)"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) to add metadata to"
+      },
+      {
+        "type": "String",
+        "name": "value",
+        "label": "Value",
+        "description": "The metadata value to associate with the key"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bdv.settings.BdvSourceNavigatorAddCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.settings.BdvSourceNavigatorAddCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eSettings\u003eBDV - Add Sources Slider",
+    "description": "Adds a source slider onto BDV windows",
+    "input": [
+      {
+        "type": "BdvHandle[]",
+        "name": "bdvhs",
+        "label": "Select BDV Windows",
+        "description": "The BigDataViewer windows where source sliders will be added"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.process.transform.SourceManualTransformCommand": {
+    "name": "sc.fiji.bdvpg.command.process.transform.SourceManualTransformCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eTransform\u003eSource - Interactive Transformation",
+    "description": "Manual transformation of selected sources. Works only with a single bdv window (the active one).The sources that are not displayed but selected are transformed. During the registration, the user isplaced in the reference of the moving sources. That\u0027s why they are not moving during the registration.",
+    "input": [
+      {
+        "type": "BdvHandle",
+        "name": "bdvh",
+        "label": "Select BDV Window",
+        "description": "The BigDataViewer window used for manual registration"
+      },
+      {
+        "type": "String",
+        "name": "mode",
+        "label": "Mode",
+        "description": "How to apply the transformation: Mutate modifies existing transform, Append adds a new transform layer, Wrap creates a new TransformedSource, Log outputs the transformation matrix"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) to manually transform"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bdv.overlay.BdvOverlaySourceNameAddCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.overlay.BdvOverlaySourceNameAddCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eOverlay\u003eBDV - Add Sources Name Overlay",
+    "description": "Adds a source name overlay onto BDV windows",
+    "input": [
+      {
+        "type": "BdvHandle[]",
+        "name": "bdvhs",
+        "label": "Select BDV Windows",
+        "description": "The BigDataViewer windows where source name overlays will be added"
+      },
+      {
+        "type": "int",
+        "name": "fontSize",
+        "label": "Font Size",
+        "description": "Size of the font used to display source names"
+      },
+      {
+        "type": "String",
+        "name": "fontString",
+        "label": "Font",
+        "description": "Font family used to display source names"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.dataset.transform.DatasetTransformRemoveCommand": {
+    "name": "sc.fiji.bdvpg.command.dataset.transform.DatasetTransformRemoveCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDataset\u003eTransform Stack\u003eDataset - Remove Transforms",
+    "description": "Removes transforms at specified timepoints and chain indices",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select source(s)",
+        "description": "Select sources whose SpimData transforms will be modified"
+      },
+      {
+        "type": "String",
+        "name": "timepoint_range",
+        "label": "Timepoint range",
+        "description": "Timepoints to modify. Examples: \u00270\u0027, \u00270:10\u0027, \u00270,5,10\u0027, \u00270:5,10:15\u0027"
+      },
+      {
+        "type": "String",
+        "name": "transform_index_range",
+        "label": "Transform chain index range",
+        "description": "Transform chain indices to remove (0 \u003d most recent). Examples: \u00270\u0027, \u00270:2\u0027, \u00270,2\u0027"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.process.SourceDeleteCommand": {
+    "name": "sc.fiji.bdvpg.command.process.SourceDeleteCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eSource - Delete",
+    "description": "Removes sources from the source service",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) to remove from the service"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bdv.BdvViewSourcesAdjustCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.BdvViewSourcesAdjustCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eBDV - Adjust View On Sources",
+    "description": "Adjust current Bdv view on the selected sources",
+    "input": [
+      {
+        "type": "BdvHandle",
+        "name": "bdvh",
+        "label": "Select BDV Window",
+        "description": "The BigDataViewer window whose view will be adjusted to fit all selected sources"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) that the view will be adjusted to span"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.process.SourceDuplicateCommand": {
+    "name": "sc.fiji.bdvpg.command.process.SourceDuplicateCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eSource - Duplicate",
+    "description": "Creates a copy of the selected sources",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) to duplicate"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.workspace.tree.SourceInspectCommand": {
+    "name": "sc.fiji.bdvpg.command.workspace.tree.SourceInspectCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eWorkspace\u003eTree\u003eTree - Inspect Sources",
+    "description": "Adds an inspection node in the tree view for each selected source, showing details about its properties and type hierarchy",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Source(s) to inspect"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bdv.BdvSourcesRemoveCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.BdvSourcesRemoveCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eBDV - Remove Sources",
+    "description": "Removes one or several sources from several existing BDV windows",
+    "input": [
+      {
+        "type": "BdvHandle[]",
+        "name": "bdvhs",
+        "label": "Select BDV Windows",
+        "description": "The BigDataViewer windows from which sources will be removed"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) to remove from all selected BDV windows"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.importer.SourceSampleOpenCommand": {
+    "name": "sc.fiji.bdvpg.command.importer.SourceSampleOpenCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eImport\u003eSource - Open Sample Source",
+    "description": "Creates a sample source for testing and demonstration purposes",
+    "input": [
+      {
+        "type": "String",
+        "name": "sample_name",
+        "label": "Sample name",
+        "description": "Type of sample source to create: Mandelbrot (2D fractal), Wave3D (3D procedural), Voronoi (cell-like pattern), Big Voronoi (large 3D volume)"
+      }
+    ],
+    "output": [
+      {
+        "type": "SourceAndConverter",
+        "name": "source",
+        "label": "Sample Source",
+        "description": "The created sample source"
+      }
+    ]
+  },
+  "sc.fiji.bdvpg.command.process.resample.SourceResampleCommand": {
+    "name": "sc.fiji.bdvpg.command.process.resample.SourceResampleCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eFuse \u0026 Resample\u003eSource - Resample Source",
+    "description": "Resamples sources to match the voxel grid of a model source",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "cache",
+        "label": "Cache",
+        "description": "If checked, caches the resampled data in memory"
+      },
+      {
+        "type": "int",
+        "name": "default_mipmap_level",
+        "label": "MipMap level if not re-used",
+        "description": "Resolution level to use when not reusing MipMaps (0 \u003d highest resolution)"
+      },
+      {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "If checked, uses interpolation when resampling"
+      },
+      {
+        "type": "SourceAndConverter",
+        "name": "model",
+        "label": "Model Source",
+        "description": "The source whose voxel grid will be used as reference"
+      },
+      {
+        "type": "String",
+        "name": "name",
+        "label": "Name(s) of the resampled source(s)",
+        "description": "Name(s) for the resampled source(s), comma-separated for multiple sources"
+      },
+      {
+        "type": "boolean",
+        "name": "reuse_mipmaps",
+        "label": "Re-use MipMaps",
+        "description": "If checked, reuses the MipMap levels of the original source"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) to resample"
+      }
+    ],
+    "output": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_out",
+        "label": "Resampled Sources",
+        "description": "The newly created resampled sources"
+      }
+    ]
+  },
+  "sc.fiji.bdvpg.command.display.bvv.settings.BvvTimepointsSetCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bvv.settings.BvvTimepointsSetCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBVV\u003eSettings\u003eBVV - Set Number Of Timepoints",
+    "description": "Sets the number of timepoints in one or several BVV Windows",
+    "input": [
+      {
+        "type": "BvvHandle[]",
+        "name": "bvvhs",
+        "label": "Select BVV Windows",
+        "description": "The BigVolumeViewer windows whose timepoint range will be set"
+      },
+      {
+        "type": "int",
+        "name": "numberoftimepoints",
+        "label": "Number of timepoints",
+        "description": "Total number of timepoints available in the BVV windows"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.process.SourceWrapTransformCommand": {
+    "name": "sc.fiji.bdvpg.command.process.SourceWrapTransformCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eSource - Make Transformable",
+    "description": " Wraps sources in a TransformedSource, enabling interactive positioning and transforms.",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) to wrap as TransformedSource"
+      }
+    ],
+    "output": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_out",
+        "label": "Wrapped Sources",
+        "description": "The newly created TransformedSource wrappers"
+      }
+    ]
+  },
+  "sc.fiji.bdvpg.command.workspace.CacheOptionsSetCommand": {
+    "name": "sc.fiji.bdvpg.command.workspace.CacheOptionsSetCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eWorkspace\u003eSet Cache Options (Needs Restart)",
+    "description": "Set BDV-Playground cache options (needs a restart)",
+    "input": [
+      {
+        "type": "String",
+        "name": "cache_type",
+        "label": "Cache type",
+        "description": "Type of cache implementation to use"
+      },
+      {
+        "type": "int",
+        "name": "log_ms",
+        "label": "Log interval (ms)",
+        "description": "Milliseconds between cache log messages (negative to disable logging)"
+      },
+      {
+        "type": "int",
+        "name": "mem_for_cache_mb",
+        "label": "Cache size (MB)",
+        "description": "Fixed size in megabytes for the cache"
+      },
+      {
+        "type": "int",
+        "name": "mem_for_everything_else_mb",
+        "label": "Reserved memory (MB)",
+        "description": "Memory in megabytes to reserve for the rest of the application"
+      },
+      {
+        "type": "int",
+        "name": "mem_ratio_pc",
+        "label": "Memory ratio (%)",
+        "description": "Percentage of available memory to use for cache"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bvv.BvvCreateCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bvv.BvvCreateCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBVV\u003eBVV - Create",
+    "description": "Creates an empty Bvv window",
+    "input": [
+      {
+        "type": "String",
+        "name": "windowtitle",
+        "label": "Title of the new BVV window",
+        "description": "Title for the new BigVolumeViewer window"
+      }
+    ],
+    "output": [
+      {
+        "type": "BvvHandle",
+        "name": "bvvh",
+        "label": "Created BVV Window",
+        "description": "The newly created BigVolumeViewer window"
+      }
+    ]
+  },
+  "sc.fiji.bdvpg.command.display.bdv.overlay.BdvOverlayDebugAddCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.overlay.BdvOverlayDebugAddCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eOverlay\u003eBDV - Add Debug Overlay",
+    "description": "Adds the overlay of the bdv tiled renderer",
+    "input": [
+      {
+        "type": "BdvHandle",
+        "name": "bdvh",
+        "label": "Select BDV Window",
+        "description": "The BigDataViewer window where the debug tile overlay will be shown"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.source.SourceVisibilityOFFCommand": {
+    "name": "sc.fiji.bdvpg.command.display.source.SourceVisibilityOFFCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eSource\u003eSource - Make Invisible",
+    "description": "Makes sources invisible in all BDV windows where they are displayed",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) to make invisible"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.StateSynchronizeCommand": {
+    "name": "sc.fiji.bdvpg.command.display.StateSynchronizeCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eViewers - Synchronize States",
+    "description": "Synchronizes the state of a set of BDV or BVV windows. A window popup should be closed to stop the synchronization",
+    "input": [
+      {
+        "type": "BdvHandle[]",
+        "name": "bdvhs",
+        "label": "Select Bdv Windows to synchronize"
+      },
+      {
+        "type": "BvvHandle[]",
+        "name": "bvvhs",
+        "label": "Select Bvv Windows to synchronize"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bdv.settings.BdvSettingsSetCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.settings.BdvSettingsSetCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eSettings\u003eBDV - Preferences - Set (Key) Bindings",
+    "description": "Sets actions linked to key / mouse event in BDV",
+    "input": [],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bdv.settings.BdvTitleSetCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.settings.BdvTitleSetCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eSettings\u003eBDV - Set Title",
+    "description": "Sets the title of a BDV window",
+    "input": [
+      {
+        "type": "BdvHandle",
+        "name": "bdvh",
+        "label": "Select BDV Window",
+        "description": "The BigDataViewer window whose title will be changed"
+      },
+      {
+        "type": "String",
+        "name": "title",
+        "label": "New title",
+        "description": "The new title for the BDV window"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.dataset.transform.DatasetTransformAddCommand": {
+    "name": "sc.fiji.bdvpg.command.dataset.transform.DatasetTransformAddCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDataset\u003eTransform Stack\u003eDataset - Add Transforms",
+    "description": "Adds a transform to the chain at specified timepoints (prepend or append)",
+    "input": [
+      {
+        "type": "String",
+        "name": "position",
+        "label": "Position",
+        "description": "Where to add the transform in the chain"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select source(s)",
+        "description": "Select sources whose SpimData transforms will be modified"
+      },
+      {
+        "type": "String",
+        "name": "timepoint_range",
+        "label": "Timepoint range",
+        "description": "Timepoints to modify. Examples: \u00270\u0027, \u00270:10\u0027, \u00270,5,10\u0027, \u00270:5,10:15\u0027"
+      },
+      {
+        "type": "String",
+        "name": "transform_matrix",
+        "label": "Transform matrix (3 rows, 4 values each)",
+        "description": "Affine transform matrix: 3 rows of 4 comma-separated values"
+      },
+      {
+        "type": "String",
+        "name": "transform_name",
+        "label": "Transform name",
+        "description": "Name for the new transform"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.process.transform.SourceSimpleTransformCommand": {
+    "name": "sc.fiji.bdvpg.command.process.transform.SourceSimpleTransformCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eTransform\u003eSource - Basic Transformation",
+    "description": "Performs basic transformation (rotate / flip) along X Y Z axis for several sources. If global is selected, the transformation is performed relative to the global origin (0,0,0). If global is not selected, the center of each source is unchanged.",
+    "input": [
+      {
+        "type": "String",
+        "name": "axis",
+        "label": "Axis",
+        "description": "Axis along which to perform the transformation"
+      },
+      {
+        "type": "boolean",
+        "name": "global_change",
+        "label": "Global transform",
+        "description": "If checked, transforms relative to world origin (0,0,0). Otherwise, keeps each source center unchanged"
+      },
+      {
+        "type": "int",
+        "name": "ini_timepoint",
+        "label": "Initial timepoint",
+        "description": "First timepoint to apply the transformation (0-based)"
+      },
+      {
+        "type": "int",
+        "name": "n_timepoints",
+        "label": "Number of timepoints",
+        "description": "Number of timepoints to apply the transformation to"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select source(s)",
+        "description": "The source(s) to transform"
+      },
+      {
+        "type": "String",
+        "name": "type",
+        "label": "Transformation type",
+        "description": "Type of transformation: Flip mirrors the source, Rot rotates by 90/180/270 degrees"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bdv.BdvCreateCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.BdvCreateCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eBDV - Create",
+    "description": "Creates an empty BDV window",
+    "input": [],
+    "output": [
+      {
+        "type": "BdvHandle",
+        "name": "bdvh",
+        "label": "Created BDV Window",
+        "description": "The newly created BigDataViewer window"
+      }
+    ]
+  },
+  "sc.fiji.bdvpg.command.dataset.transform.DatasetTransformViewCommand": {
+    "name": "sc.fiji.bdvpg.command.dataset.transform.DatasetTransformViewCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDataset\u003eTransform Stack\u003eDataset - View Transforms",
+    "description": "Opens a viewer to explore SpimData transforms with configurable dimensions (sources, timepoints, transform chain)",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select source(s)",
+        "description": "Select sources to view their SpimData transforms. Sources without SpimData will be excluded."
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.source.SourceBrightnessAdjustCommand": {
+    "name": "sc.fiji.bdvpg.command.display.source.SourceBrightnessAdjustCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eSource\u003eSource - Set Brightness",
+    "description": "Sets the display range (min and max) of one or more sources",
+    "input": [
+      {
+        "type": "double",
+        "name": "max",
+        "label": "Max",
+        "description": "Maximum value of the display range"
+      },
+      {
+        "type": "double",
+        "name": "min",
+        "label": "Min",
+        "description": "Minimum value of the display range"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) whose display range will be set"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bdv.BdvCloseCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.BdvCloseCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eBDV - Close",
+    "description": "Closes one or several bdv windows.",
+    "input": [
+      {
+        "type": "BdvHandle[]",
+        "name": "bdvhs",
+        "label": "Select BDV Windows",
+        "description": "The BigDataViewer windows to close"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bdv.settings.BdvStyleDefaultSetCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.settings.BdvStyleDefaultSetCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eSettings\u003eBDV - Set Style (Default)",
+    "description": "Sets the default preferences for newly created BDV windows",
+    "input": [
+      {
+        "type": "String",
+        "name": "frame_title",
+        "label": "Window title",
+        "description": "Default title for new BDV windows"
+      },
+      {
+        "type": "int",
+        "name": "height",
+        "label": "Window height",
+        "description": "Default height in pixels for new BDV windows"
+      },
+      {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "Enables interpolation for smoother rendering"
+      },
+      {
+        "type": "boolean",
+        "name": "is2d",
+        "label": "2D mode",
+        "description": "If enabled, restricts navigation to 2D (only Z-rotations)"
+      },
+      {
+        "type": "int",
+        "name": "n_timepoints",
+        "label": "Number of timepoints",
+        "description": "Default number of timepoints for new BDV windows"
+      },
+      {
+        "type": "int",
+        "name": "num_rendering_threads",
+        "label": "Number of rendering threads",
+        "description": "Number of threads used for rendering"
+      },
+      {
+        "type": "int",
+        "name": "num_source_groups",
+        "label": "Number of source groups",
+        "description": "Number of source groups available in the BDV window"
+      },
+      {
+        "type": "boolean",
+        "name": "reset_to_default",
+        "label": "Reset to default",
+        "description": "If checked, ignores all other parameters and resets to default settings"
+      },
+      {
+        "type": "String",
+        "name": "screen_scales",
+        "label": "Screen scales",
+        "description": "Comma-separated list of scale factors for multi-resolution rendering (e.g., 1, 0.5, 0.25)"
+      },
+      {
+        "type": "long",
+        "name": "target_render_ms",
+        "label": "Target render time (ms)",
+        "description": "Target time in milliseconds for rendering a single frame"
+      },
+      {
+        "type": "int",
+        "name": "width",
+        "label": "Window width",
+        "description": "Default width in pixels for new BDV windows"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bdv.settings.BdvTimepointsSetCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.settings.BdvTimepointsSetCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eSettings\u003eBDV - Set Number Of Timepoints",
+    "description": "Sets the number of timepoints in one or several BDV Windows",
+    "input": [
+      {
+        "type": "BdvHandle[]",
+        "name": "bdvhs",
+        "label": "Select BDV Windows",
+        "description": "The BigDataViewer windows whose timepoint range will be set"
+      },
+      {
+        "type": "int",
+        "name": "numberoftimepoints",
+        "label": "Number of timepoints",
+        "description": "Total number of timepoints available in the BDV windows"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.bdv.supplier.biop.BdvStyleBIOPSetCommand": {
+    "name": "sc.fiji.bdvpg.bdv.supplier.biop.BdvStyleBIOPSetCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eSettings\u003eBDV - Set Style (BIOP)",
+    "description": "Set preferences of Bdv Window (Biop)",
+    "input": [
+      {
+        "type": "String",
+        "name": "font"
+      },
+      {
+        "type": "int",
+        "name": "fontSize"
+      },
+      {
+        "type": "String",
+        "name": "frametitle"
+      },
+      {
+        "type": "int",
+        "name": "height"
+      },
+      {
+        "type": "boolean",
+        "name": "interpolate"
+      },
+      {
+        "type": "boolean",
+        "name": "is2d"
+      },
+      {
+        "type": "int",
+        "name": "numrenderingthreads"
+      },
+      {
+        "type": "int",
+        "name": "numsourcegroups"
+      },
+      {
+        "type": "int",
+        "name": "numtimepoints"
+      },
+      {
+        "type": "boolean",
+        "name": "resetToDefault",
+        "label": "Click this checkbox to ignore all parameters and reset the default biop viewer"
+      },
+      {
+        "type": "String",
+        "name": "screenscales"
+      },
+      {
+        "type": "int",
+        "name": "width"
+      }
+    ],
+    "output": []
+  },
+  "sc.fiji.bdvpg.command.display.bvv.BvvSourcesShowCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bvv.BvvSourcesShowCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBVV\u003eBVV - Show Sources",
+    "description": "Show sources in a BigVolumeViewer window",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "adjust_view",
+        "label": "Adjust View on Source",
+        "description": "Centers and zooms the view to fit the added sources"
+      },
+      {
+        "type": "BvvHandle",
+        "name": "bvvh",
+        "label": "Select BVV Window",
+        "description": "The BigVolumeViewer window where sources will be displayed"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select source(s)",
+        "description": "The source(s) to add"
+      }
+    ],
+    "output": []
+  }
+}

@@ -15,3 +15,12 @@ BigDataViewer Playground extends `BigDataViewer <https://imagej.net/plugins/bdv/
 **Getting Started:** Install via the :doc:`installation guide <installation/installation>`
 
 **Support:** `GitHub <https://github.com/bigdataviewer/bigdataviewer-playground>`_ · `Image.sc Forum <https://forum.image.sc/>`_
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents
+
+   installation/installation
+   opening_images/opening_images
+   visualizing_images/visualizing_images
+   workflows/index
