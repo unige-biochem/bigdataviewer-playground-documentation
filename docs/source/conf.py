@@ -3,8 +3,8 @@
 # -- Project information
 
 project = 'BigDataViewer Playground Documentation'
-copyright = '2024, BigDataViewer Team'
-author = 'BigDataViewer Team'
+copyright = '2026, Nicolas Chiaruttini'
+author = 'Nicolas Chiaruttini'
 
 release = '1.0.0'
 version = '1.0.0'

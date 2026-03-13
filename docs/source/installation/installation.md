@@ -2,13 +2,10 @@
 
 This guide covers how to install and set up BigDataViewer Playground in Fiji.
 
-:::{note} If your OS is windows, you may get a fully installed Fiji with BigDataViewer-Playground included by using the [ABBA Installer](https://github.com/BIOP/ijp-imagetoatlas/releases).
-:::
-
 ## System Requirements
 
 - **Fiji**: Latest version recommended
-- **Java**: Java 8 or higher (bundled with Fiji)
+- **Java**: Java 11 or higher (bundled with Fiji)
 - **Memory**: 8 GB RAM minimum, 16+ GB recommended for large datasets
 - **GPU** (optional): OpenCL-compatible GPU for deconvolution features
 
@@ -117,11 +114,3 @@ Successful setup will show 3 windows with a successful registration.
 - On Windows, ensure Visual C++ Redistributable is installed
 - On macOS, check Security & Privacy settings
 - Check the Fiji console for specific error messages
-
----
-
-## Next Steps
-
-After installation:
-- [Opening Images](../opening_images/opening_images.md) - Learn to open various file formats
-- [Visualizing Images](../visualizing_images/visualizing_images.md) - Navigate and display your data
