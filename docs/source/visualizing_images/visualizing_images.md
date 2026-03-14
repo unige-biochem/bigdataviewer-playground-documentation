@@ -39,6 +39,8 @@ Menu: Plugins > BigDataViewer-Playground > Display > BDV > BDV - Show Sources
 If you have already opened a BDV window and want to add more sources to it, uncheck **Open In New Window**. The sources will be added to the last active BDV window.
 :::
 
+![BDV window displaying two channels of the LLS7 HeLa dataset](images/bdv_show_sources_BigDataViewer.png)
+
 ### BDV - Create
 
 Creates an empty BDV window without any sources. You can then add sources to it later using **BDV - Show Sources** or **BDV - Show Sources In Multiple Windows**.
@@ -116,6 +118,8 @@ Menu: Plugins > BigDataViewer-Playground > Display > BDV > BDV - Create Orthogon
 | Interpolate | Enables interpolation for smoother rendering |
 | Synchronize sources | Sources added to one window will automatically appear in all three |
 
+![XY (front) view](images/bdv_orthogonal_views_BigDataViewer-XY.png) ![ZY (right) view](images/bdv_orthogonal_views_BigDataViewer-ZY.png) ![XZ (bottom) view](images/bdv_orthogonal_views_BigDataViewer-XZ.png)
+
 ---
 
 ## Grid Overview
@@ -136,6 +140,8 @@ Menu: Plugins > BigDataViewer-Playground > Display > BDV > BDV - Show Sources On
 | Number of Columns | Number of columns in the grid layout |
 | Split by Entities | Comma-separated entity types to split by (e.g. `channel, fileseries`) |
 | Start Timepoint | The timepoint to use for determining source dimensions |
+
+![Both channels of the LLS7 HeLa dataset arranged in a 2-column grid](images/bdv_grid_overview_BigDataViewer.png)
 
 ### BDV - Create Grid BDV
 
@@ -163,6 +169,8 @@ Menu: Plugins > BigDataViewer-Playground > Display > Source > Source - Set Color
 |-----------|-------------|
 | Select Source(s) | The source(s) to recolor |
 | Color | The new display color |
+
+![LLS7 HeLa channels displayed in cyan and magenta](images/source_set_color_BigDataViewer.png)
 
 ### Source - Set Brightness
 
@@ -444,6 +452,8 @@ Menu: Plugins > BigDataViewer-Playground > Display > BVV > BVV - Show Sources
 | Select source(s) | The source(s) to display |
 | Adjust View on Source | Centers and zooms the view to fit the added sources |
 
+![BVV volume rendering of the LLS7 HeLa dataset](images/bvv_show_sources_BigVolumeViewer.png)
+
 ### BVV - Create Orthogonal Views
 
 Creates three synchronized BVV windows with orthogonal orientations, analogous to the BDV orthogonal views but with volume rendering.
@@ -451,6 +461,8 @@ Creates three synchronized BVV windows with orthogonal orientations, analogous t
 ```
 Menu: Plugins > BigDataViewer-Playground > Display > BVV > BVV - Create Orthogonal Views
 ```
+
+![XY (front) view](images/bvv_orthogonal_views_BigVolumeViewer-XY.png) ![ZY (right) view](images/bvv_orthogonal_views_BigVolumeViewer-ZY.png) ![XZ (bottom) view](images/bvv_orthogonal_views_BigVolumeViewer-XZ.png)
 
 ### BVV - Remove Sources
 

@@ -2,7 +2,9 @@
   "permissions": {
     "additionalDirectories": [
       "D:\\code\\fiji_mcp\\fiji-tools",
-      "D:\\code\\ijp-imglib2bdvdemo-ij2"
+      "D:\\code\\ijp-imglib2bdvdemo-ij2",
+      "C:\\Users\\Nicolas\\Dropbox\\BIOP\\ijp-imglib2bdvdemo-ij2",
+      "C:\\Users\\Nicolas\\Dropbox\\BIOP\\fiji_mcp\\fiji-tools"
     ]
   }
 }
