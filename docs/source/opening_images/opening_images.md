@@ -23,10 +23,9 @@ Datasets can be **saved to an XML file** and reloaded later. The XML file stores
 
 This means you can set up a complex multi-image, multi-channel dataset, save it, and pick up exactly where you left off — or share it with a collaborator who has access to the same raw files.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Dataset > Dataset - Save XML Dataset
-Menu: Plugins > BigDataViewer-Playground > Dataset > Dataset - Open XML Dataset
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Dataset - Save XML Dataset`
+
+{menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Dataset --> Open XML Dataset`
 
 ---
 
@@ -34,9 +33,7 @@ Menu: Plugins > BigDataViewer-Playground > Dataset > Dataset - Open XML Dataset
 
 All dataset creation commands are found under:
 
-```
-Menu: Plugins > BigDataViewer-Playground > Import
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Import`
 
 Each command creates a dataset from a different source. The most common starting point is **Bio-Formats**, which handles the widest range of file formats.
 
@@ -44,9 +41,7 @@ Each command creates a dataset from a different source. The most common starting
 
 The general-purpose importer. Supports any file format that Bio-Formats can read (CZI, LIF, ND2, OME-TIFF, and [many more](https://bio-formats.readthedocs.io/en/latest/supported-formats.html)).
 
-```
-Menu: Plugins > BigDataViewer-Playground > Import > Dataset - Create [Bio-Formats]
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [Bio-Formats]`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -66,9 +61,7 @@ Menu: Plugins > BigDataViewer-Playground > Import > Dataset - Create [Bio-Format
 
 Wraps an image that is already open in Fiji as a dataset, so you can use it with BigDataViewer Playground tools.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Import > Dataset - Create [Current ImagePlus]
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [Current ImagePlus]`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -79,9 +72,7 @@ Menu: Plugins > BigDataViewer-Playground > Import > Dataset - Create [Current Im
 
 Creates a dataset from images stored on an OMERO server. You must connect to the server first using `Plugins > BIOP > OMERO > Omero - Connect`.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Import > Dataset - Create [OMERO]
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [OMERO]`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -94,9 +85,8 @@ Menu: Plugins > BigDataViewer-Playground > Import > Dataset - Create [OMERO]
 
 Imports all images from a QuPath project as a single dataset.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Import > Dataset - Create [QuPath]
-```
+
+{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [QuPath]`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -110,9 +100,7 @@ Menu: Plugins > BigDataViewer-Playground > Import > Dataset - Create [QuPath]
 
 Opens PerkinElmer Operetta high-content imaging datasets.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Import > Dataset - Create [Operetta]
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [Operetta]`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -125,9 +113,7 @@ Menu: Plugins > BigDataViewer-Playground > Import > Dataset - Create [Operetta]
 
 Specialized importer for Zeiss Lattice Light Sheet 7 data. Automatically applies the correct skew transformation so the data displays with proper 3D geometry.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Import > Dataset - Create [CZI LLS7]
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [CZI LLS7]`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -140,9 +126,7 @@ See the [LLS7 Timelapse workflow](../workflows/lls7_timelapse.md) for a complete
 
 Opens a sample dataset for testing and exploration. Downloads and caches on first use.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Import > Dataset - Samples
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Samples`
 
 ---
 
@@ -154,9 +138,7 @@ Once you have datasets, several commands help you manipulate them at the dataset
 
 Merges multiple saved XML datasets into one, either as additional timepoints or additional channels.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Dataset > Dataset - Combine XML Datasets
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Dataset - Combine XML Datasets`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -169,12 +151,13 @@ Menu: Plugins > BigDataViewer-Playground > Dataset > Dataset - Combine XML Datas
 
 The transform chain attached to each source can be inspected and modified:
 
-```
-Menu: Plugins > BigDataViewer-Playground > Dataset > Transform Stack > Dataset - View Transforms
-Menu: Plugins > BigDataViewer-Playground > Dataset > Transform Stack > Dataset - Add Transforms
-Menu: Plugins > BigDataViewer-Playground > Dataset > Transform Stack > Dataset - Remove Transforms
-Menu: Plugins > BigDataViewer-Playground > Dataset > Transform Stack > Dataset - Set Transforms
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Transform Stack --> Dataset - View Transforms`
+
+{menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Transform Stack --> Dataset - Add Transforms`
+
+{menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Transform Stack --> Dataset - Remove Transforms`
+
+{menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Transform Stack --> Dataset - Set Transforms`
 
 These commands let you view, append, remove, or overwrite affine transforms at specific timepoints and positions in the chain. This is useful for manual corrections or advanced registration workflows.
 

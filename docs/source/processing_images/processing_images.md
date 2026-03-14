@@ -6,9 +6,7 @@ A key principle: most processing in BigDataViewer Playground is **lazy**. When y
 
 All processing commands are found under:
 
-```
-Menu: Plugins > BigDataViewer-Playground > Process
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Process`
 
 ---
 
@@ -26,9 +24,7 @@ The general workflow is: **define a target grid** (the output voxel size and ext
 
 Creates an empty model source that spans the bounding box of multiple sources with a custom voxel size. Use this to define the output grid before fusing.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Process > Fuse & Resample > Source - Define Resampling Grid
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Fuse & Resample > Source - Define Resampling Grid`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -48,9 +44,7 @@ Choose the voxel size based on your desired output resolution. For example, if y
 
 A simpler alternative: creates a model source that occupies the same volume as a single existing source but with a different voxel size. Useful when you want to resample one source to a different resolution without changing its spatial extent.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Process > Fuse & Resample > Source - Create Resampling Grid From Source
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Fuse & Resample > Source - Create Resampling Grid From Source`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -63,9 +57,7 @@ Menu: Plugins > BigDataViewer-Playground > Process > Fuse & Resample > Source - 
 
 Resamples one or more sources to match the voxel grid of a model source. The model source defines the output resolution and dimensions — the resampled source will have exactly the same grid.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Process > Fuse & Resample > Source - Resample Source
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Fuse & Resample > Source - Resample Source`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -81,9 +73,7 @@ Menu: Plugins > BigDataViewer-Playground > Process > Fuse & Resample > Source - 
 
 Fuses multiple sources into a single source, resampled to match a model source's grid. This is the main command for merging overlapping tiles or combining channels with blending.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Process > Fuse & Resample > Source - Fuse And Resample Sources
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Fuse & Resample > Source - Fuse And Resample Sources`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -107,9 +97,7 @@ For smooth transitions where tiles overlap, apply **L1 alpha blending masks** to
 
 Sets a distance-based alpha blending mask on selected sources. The mask fades pixel intensity based on the distance from the source edge (L1 distance), so that overlapping regions blend smoothly when fused.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Process > Fuse & Resample > Source - Set Linear Blending Mask (L1 Alpha)
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Fuse & Resample > Source - Set Linear Blending Mask (L1 Alpha)`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -127,9 +115,7 @@ Labkit integration lets you train a pixel classifier interactively and then appl
 
 Opens the Labkit pixel classification GUI for the selected sources. Each source is treated as a separate channel input to the classifier.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Process > Classify (Labkit) > Source - Open Labkit
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Classify (Labkit) > Source - Open Labkit`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -144,9 +130,7 @@ For large datasets, start with a higher resolution level (e.g. 2 or 3) to train 
 
 Creates a lazy segmentation source by applying a previously saved Labkit classifier. The classification is computed on-the-fly — only the pixels you view or export are actually classified.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Process > Classify (Labkit) > Source - Apply Labkit Classifier
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Classify (Labkit) > Source - Apply Labkit Classifier`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -168,9 +152,7 @@ GPU deconvolution requires CLIJ2 and an OpenCL-compatible graphics card. See the
 
 ### Source - Deconvolve (Richardson Lucy GPU - Tiled)
 
-```
-Menu: Plugins > BigDataViewer-Playground > Process > Deconvolve > Source - Deconvolve (Richardson Lucy GPU - Tiled)
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Deconvolve > Source - Deconvolve (Richardson Lucy GPU - Tiled)`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -199,9 +181,7 @@ These commands manage the pyramid (multi-resolution) levels of your sources. Pyr
 
 Generates multi-resolution pyramid levels for sources that don't already have them (e.g. sources derived from processing operations).
 
-```
-Menu: Plugins > BigDataViewer-Playground > Process > Source - Pyramidize
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Source - Pyramidize`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -211,9 +191,7 @@ Menu: Plugins > BigDataViewer-Playground > Process > Source - Pyramidize
 
 Creates a new source with only a subset of the original resolution levels. Useful when you want to restrict which pyramid levels are available — for example, to skip the lowest-resolution levels or to start from a specific level.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Process > Source - Crop Resolution Levels
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Source - Crop Resolution Levels`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -232,9 +210,7 @@ Commands for manipulating the time dimension of your sources.
 
 Creates a new source that shows a single fixed timepoint across a range of timepoints. Useful for creating a static reference from a time-series — for example, freezing a pre-treatment timepoint so it can be compared side-by-side with later timepoints.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Process > Source - Freeze Timepoint
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Source - Freeze Timepoint`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -248,9 +224,7 @@ Menu: Plugins > BigDataViewer-Playground > Process > Source - Freeze Timepoint
 
 Creates a new source with timepoints offset by a fixed amount. Useful for aligning time-series data that was acquired with different starting times.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Process > Source - Shift Timepoints
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Source - Shift Timepoints`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -270,9 +244,7 @@ Remember: each source in a dataset carries a **chain of affine transforms** that
 
 Performs 90/180/270-degree rotations or mirror flips along X, Y, or Z axes.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Process > Transform > Source - Basic Transformation
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Transform > Source - Basic Transformation`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -287,9 +259,7 @@ Menu: Plugins > BigDataViewer-Playground > Process > Transform > Source - Basic 
 
 Lets you manually drag sources in a BDV window to position them. The sources you select are the ones that move — all other sources in the window stay fixed as reference.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Process > Transform > Source - Interactive Transformation
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Transform > Source - Interactive Transformation`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -305,9 +275,7 @@ During interactive transformation, you are placed in the coordinate frame of the
 
 Creates an affine transform from a 4x3 matrix (12 comma-separated values in row-major order). Use this when you need to apply a known numeric transform to sources via the Dataset transform stack commands.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Process > Transform > New Affine Transform
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Transform > New Affine Transform`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -317,9 +285,7 @@ Menu: Plugins > BigDataViewer-Playground > Process > Transform > New Affine Tran
 
 Moves sources so their center is at the specified world coordinates. Useful for aligning sources to a common reference point.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Process > Transform > Source - Recenter Sources
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Transform > Source - Recenter Sources`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -332,9 +298,7 @@ Menu: Plugins > BigDataViewer-Playground > Process > Transform > Source - Recent
 
 Removes the Z position offset from sources, shifting them to Z=0. Useful when imported data has a large Z offset that makes navigation awkward.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Process > Transform > Source - Remove Z Offset
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Transform > Source - Remove Z Offset`
 
 | Parameter | Description |
 |-----------|-------------|

@@ -4,21 +4,15 @@ Once you have imported, visualized, and processed your data, you need to export 
 
 All main export commands are found under:
 
-```
-Menu: Plugins > BigDataViewer-Playground > Export
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Export`
 
 View-based exports (capturing what you see in a BDV window) are under:
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > Export
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Display > BDV > Export`
 
 Standalone file-to-file conversion tools (Kheops) are under:
 
-```
-Menu: Plugins > BIOP > Kheops
-```
+{menuselection}`Plugins > BIOP > Kheops`
 
 ---
 
@@ -26,9 +20,7 @@ Menu: Plugins > BIOP > Kheops
 
 The primary command for saving sources to disk. Produces a pyramidal OME-TIFF — a widely supported format that preserves multi-resolution levels, multi-channel structure, and physical calibration. This is usually the best choice for archiving or sharing processed data.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Export > Source - Export To OME-TIFF
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Export > Source - Export To OME-TIFF`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -58,9 +50,7 @@ The output is always recomputed from the highest resolution level of each source
 
 Converts sources back to standard Fiji ImagePlus stacks. Use this when you need to hand your data off to classic ImageJ/Fiji plugins that don't work with BDV sources.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Export > Source - Export To ImagePlus
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Export > Source - Export To ImagePlus`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -85,9 +75,7 @@ Menu: Plugins > BigDataViewer-Playground > Export > Source - Export To ImagePlus
 
 Exports sources to the native BigDataViewer XML/HDF5 format. This is useful when you want to save processed sources in a format that can be re-opened directly in BigDataViewer or BigStitcher.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Export > Source - Export To XML/HDF5 Dataset
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Export > Source - Export To XML/HDF5 Dataset`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -111,9 +99,7 @@ The **entity type** parameter controls how sources are organized in the XML/HDF5
 
 A specialized command for BigStitcher users: reads a BigStitcher XML dataset (with computed tile registrations), fuses the tiles, and writes the result as a pyramidal OME-TIFF. This is a one-step export that combines fusion and file writing.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Export > Dataset - Fuse BigStitcher Dataset To OME-TIFF
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Export > Dataset - Fuse BigStitcher Dataset To OME-TIFF`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -145,9 +131,7 @@ These commands capture what you see in a BigDataViewer window — including the 
 
 Full-control export: you specify the output pixel size, region extent, and Z thickness. The exported ImagePlus is sampled at the current BDV view orientation.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > Export > BDV - Export Current View As ImagePlus
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Display > BDV > Export > BDV - Export Current View As ImagePlus`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -169,9 +153,7 @@ Menu: Plugins > BigDataViewer-Playground > Display > BDV > Export > BDV - Export
 
 A simplified version that automatically matches the BDV window dimensions for X and Y. You only need to specify the Z thickness and pixel size.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > Export > BDV - Export Current View As ImagePlus (Match Window)
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Display > BDV > Export > BDV - Export Current View As ImagePlus (Match Window)`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -190,9 +172,7 @@ Menu: Plugins > BigDataViewer-Playground > Display > BDV > Export > BDV - Export
 
 Instead of producing an ImagePlus, this command creates new BDV sources resampled at the current view orientation. The result stays in the BDV workspace as a lazy source — useful for extracting an oblique reslice that you want to process further or export later.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > Export > BDV - Export Current View As Sources
-```
+{menuselection}`Plugins > BigDataViewer-Playground > Display > BDV > Export > BDV - Export Current View As Sources`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -221,9 +201,7 @@ Kheops is a standalone file conversion tool that converts Bio-Formats–readable
 
 Converts a single file. Each series in the input becomes a separate OME-TIFF.
 
-```
-Menu: Plugins > BIOP > Kheops > Kheops - Convert File to Pyramidal OME TIFF
-```
+{menuselection}`Plugins > BIOP > Kheops > Kheops - Convert File to Pyramidal OME TIFF`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -244,9 +222,7 @@ Menu: Plugins > BIOP > Kheops > Kheops - Convert File to Pyramidal OME TIFF
 
 Converts multiple files in parallel. Same parameters as the single-file version, but accepts multiple input files.
 
-```
-Menu: Plugins > BIOP > Kheops > Kheops - Batch Convert Files to Pyramidal OME TIFF
-```
+{menuselection}`Plugins > BIOP > Kheops > Kheops - Batch Convert Files to Pyramidal OME TIFF`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -262,9 +238,7 @@ Menu: Plugins > BIOP > Kheops > Kheops - Batch Convert Files to Pyramidal OME TI
 
 Converts an already-open Fiji ImagePlus to pyramidal OME-TIFF. Useful when you have processed an image with classic Fiji tools and want to save it in a multi-resolution format.
 
-```
-Menu: Plugins > BIOP > Kheops > Kheops - Export ImagePlus To OME-TIFF
-```
+{menuselection}`Plugins > BIOP > Kheops > Kheops - Export ImagePlus To OME-TIFF`
 
 | Parameter | Description |
 |-----------|-------------|

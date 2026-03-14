@@ -11,9 +11,7 @@ Both viewers share the same lazy-loading architecture: only the pixels currently
 
 All display commands are found under:
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display`
 
 ---
 
@@ -23,9 +21,7 @@ Menu: Plugins > BigDataViewer-Playground > Display
 
 The most common way to visualize your data. Creates a new BDV window and displays the selected sources in it.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > BDV - Show Sources
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Show Sources`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -45,17 +41,13 @@ If you have already opened a BDV window and want to add more sources to it, unch
 
 Creates an empty BDV window without any sources. You can then add sources to it later using **BDV - Show Sources** or **BDV - Show Sources In Multiple Windows**.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > BDV - Create
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Create`
 
 ### BDV - Show Sources In Multiple Windows
 
 Adds sources to several existing BDV windows at once.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > BDV - Show Sources In Multiple Windows
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Show Sources In Multiple Windows`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -104,9 +96,7 @@ These are the default BigDataViewer key bindings. They can be customized via **B
 
 Opens three synchronized BDV windows showing XY (front), ZY (right), and XZ (bottom) views. Navigating in one window automatically updates the other two.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > BDV - Create Orthogonal Views
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Create Orthogonal Views`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -130,9 +120,7 @@ When working with many sources (e.g. multiple tiles or channels), it can be help
 
 Arranges selected sources in a grid layout within a new BDV window. Each cell shows one source, giving you a quick overview of all your data.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > BDV - Show Sources On Grid
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Show Sources On Grid`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -147,9 +135,7 @@ Menu: Plugins > BigDataViewer-Playground > Display > BDV > BDV - Show Sources On
 
 Creates an empty BDV window pre-configured for grid display. You can then add sources to it.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > BDV - Create Grid BDV
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Create Grid BDV`
 
 ---
 
@@ -161,9 +147,7 @@ These commands control how individual sources look in any viewer window — colo
 
 Changes the display color of one or more sources.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > Source > Source - Set Color
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> Source --> Source - Set Color`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -176,9 +160,7 @@ Menu: Plugins > BigDataViewer-Playground > Display > Source > Source - Set Color
 
 Sets the display range (min and max intensity values) for one or more sources. This is the equivalent of adjusting the "Brightness & Contrast" in Fiji.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > Source > Source - Set Brightness
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> Source --> Source - Set Brightness`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -190,10 +172,9 @@ Menu: Plugins > BigDataViewer-Playground > Display > Source > Source - Set Brigh
 
 Toggles whether sources are drawn in all BDV windows where they are present.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > Source > Source - Make Visible
-Menu: Plugins > BigDataViewer-Playground > Display > Source > Source - Make Invisible
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> Source --> Source - Make Visible`
+
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> Source --> Source - Make Invisible`
 
 ---
 
@@ -203,9 +184,7 @@ Menu: Plugins > BigDataViewer-Playground > Display > Source > Source - Make Invi
 
 Reframes the current view to fit the selected sources. Useful when you have lost your bearings or want to quickly navigate to a specific source.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > BDV - Adjust View On Sources
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Adjust View On Sources`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -216,9 +195,7 @@ Menu: Plugins > BigDataViewer-Playground > Display > BDV > BDV - Adjust View On 
 
 Removes sources from one or more BDV windows. This only removes them from the viewer — it does not delete the sources from the dataset.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > BDV - Remove Sources
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Remove Sources`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -229,17 +206,13 @@ Menu: Plugins > BigDataViewer-Playground > Display > BDV > BDV - Remove Sources
 
 Closes one or more BDV windows.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > BDV - Close
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Close`
 
 ### BDV - Set Title
 
 Changes the title of a BDV window.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > Settings > BDV - Set Title
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Set Title`
 
 ---
 
@@ -251,17 +224,13 @@ Overlays add visual annotations on top of the viewer without modifying the data.
 
 Draws a crosshair at the center of the BDV window. Helpful for orthogonal view setups to see where the three planes intersect.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > Overlay > BDV - Add Center Cross Overlay
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Overlay --> BDV - Add Center Cross Overlay`
 
 ### BDV - Add Sources Name Overlay
 
 Displays the name of each visible source as a text label on the viewer.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > Overlay > BDV - Add Sources Name Overlay
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Overlay --> BDV - Add Sources Name Overlay`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -273,9 +242,7 @@ Menu: Plugins > BigDataViewer-Playground > Display > BDV > Overlay > BDV - Add S
 
 Shows the internal tiled rendering grid. Primarily useful for debugging rendering performance.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > Overlay > BDV - Add Debug Overlay
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Overlay --> BDV - Add Debug Overlay`
 
 ---
 
@@ -287,25 +254,19 @@ These commands add UI elements or configure defaults for BDV windows.
 
 Adds a Z-position slider to the bottom of BDV windows, giving you a familiar way to scroll through Z slices.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > Settings > BDV - Add Z Slider
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Add Z Slider`
 
 ### BDV - Add Sources Slider
 
 Adds a slider to step through sources one by one. Useful when you have many sources and want to flip through them.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > Settings > BDV - Add Sources Slider
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Add Sources Slider`
 
 ### BDV - Add Editor
 
 Installs a source selection editor on BDV windows. Press the toggle key to switch between navigation and editor mode.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > Settings > BDV - Add Editor
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Add Editor`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -316,10 +277,9 @@ Menu: Plugins > BigDataViewer-Playground > Display > BDV > Settings > BDV - Add 
 
 BDV windows have a fixed number of timepoints. If your data has more timepoints than the window allows, you won't be able to navigate to them.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > Settings > BDV - Set Number Of Timepoints
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > Settings > BDV - Adapt Number Of Timepoints To Sources
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Set Number Of Timepoints`
+
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Adapt Number Of Timepoints To Sources`
 
 **Set Number Of Timepoints** lets you specify the number manually. **Adapt Number Of Timepoints To Sources** automatically sets it to match the sources currently in the window.
 
@@ -327,9 +287,7 @@ Menu: Plugins > BigDataViewer-Playground > Display > BDV > Settings > BDV - Adap
 
 Opens a dialog to customize the keyboard and mouse bindings for BDV windows.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > Settings > BDV - Preferences - Set (Key) Bindings
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Preferences - Set (Key) Bindings`
 
 ---
 
@@ -339,9 +297,7 @@ These commands configure the default appearance and behavior of **newly created*
 
 ### BDV - Set Style (Default)
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > Settings > BDV - Set Style (Default)
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Set Style (Default)`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -360,17 +316,13 @@ Menu: Plugins > BigDataViewer-Playground > Display > BDV > Settings > BDV - Set 
 
 An alternative default style provided by the BIOP team. Includes additional options like font and font size for the source name overlay.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > Settings > BDV - Set Style (BIOP)
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Set Style (BIOP)`
 
 ### BDV - Set Style (Alpha)
 
 A style that supports alpha (transparency) blending and white background. Useful when preparing figures or overlaying partially transparent sources.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > Settings > BDV - Set Style (Alpha)
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Set Style (Alpha)`
 
 ---
 
@@ -382,9 +334,7 @@ When working with multiple viewer windows, you can synchronize them so they move
 
 Locks the navigation of multiple BDV and/or BVV windows together. When you pan, zoom, or rotate in one window, all synchronized windows follow. A small popup window appears — close it to stop the synchronization.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > Viewers - Synchronize Views
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> Viewers - Synchronize Views`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -396,9 +346,7 @@ Menu: Plugins > BigDataViewer-Playground > Display > Viewers - Synchronize Views
 
 Synchronizes which sources are visible across multiple viewer windows. When you toggle a source on or off in one window, all synchronized windows update. Close the popup window to stop.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > Viewers - Synchronize States
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> Viewers - Synchronize States`
 
 ---
 
@@ -412,9 +360,7 @@ The current BDV view can be exported as a standard Fiji ImagePlus or as new sour
 | BDV - Export Current View As ImagePlus (Match Window) | Quick capture using the current window dimensions |
 | BDV - Export Current View As Sources | Creates new sources resampled at the current view orientation (oblique slicing) |
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BDV > Export
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Export`
 
 ---
 
@@ -430,9 +376,7 @@ BVV requires a GPU with OpenGL 3.3+ support. It may not be available on all syst
 
 Creates an empty BVV window.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BVV > BVV - Create
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BVV --> BVV - Create`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -442,9 +386,7 @@ Menu: Plugins > BigDataViewer-Playground > Display > BVV > BVV - Create
 
 Adds sources to an existing BVV window.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BVV > BVV - Show Sources
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BVV --> BVV - Show Sources`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -458,9 +400,7 @@ Menu: Plugins > BigDataViewer-Playground > Display > BVV > BVV - Show Sources
 
 Creates three synchronized BVV windows with orthogonal orientations, analogous to the BDV orthogonal views but with volume rendering.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BVV > BVV - Create Orthogonal Views
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BVV --> BVV - Create Orthogonal Views`
 
 ![XY (front) view](images/bvv_orthogonal_views_BigVolumeViewer-XY.png) ![ZY (right) view](images/bvv_orthogonal_views_BigVolumeViewer-ZY.png) ![XZ (bottom) view](images/bvv_orthogonal_views_BigVolumeViewer-XZ.png)
 
@@ -468,14 +408,10 @@ Menu: Plugins > BigDataViewer-Playground > Display > BVV > BVV - Create Orthogon
 
 Removes sources from BVV windows.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BVV > BVV - Remove Sources
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BVV --> BVV - Remove Sources`
 
 ### BVV - Set Number Of Timepoints
 
 Sets the number of timepoints available in BVV windows.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Display > BVV > Settings > BVV - Set Number Of Timepoints
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BVV --> Settings --> BVV - Set Number Of Timepoints`
