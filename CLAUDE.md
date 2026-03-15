@@ -50,6 +50,40 @@ jgo -r scijava=https://maven.scijava.org/content/groups/public \
 Save CLI outputs under `cli-outputs/<version>/` (e.g. `cli-outputs/0.20.4/`).
 This enables diffing outputs across versions to guide incremental documentation updates.
 
+## Looking Up Command Signatures for Scripting Tabs
+
+When adding multi-language tabs to a documentation page, you need the **full Java class name**
+and **parameter names** for every command. Both are stored in the pre-computed JSON snapshots:
+
+- `cli-outputs/0.20.4/snapshot-sc.fiji.bdvpg.json` — core BDV Playground commands (`sc.fiji.bdvpg.*`)
+- `cli-outputs/0.20.4/snapshot-ch.epfl.biop.json` — BIOP-specific commands (`ch.epfl.biop.*`)
+
+### JSON structure
+
+Each entry in those files is a command descriptor with at minimum:
+- `"className"` — the full Java class name to use in `import` / `cs.run(...)`
+- `"inputs"` — list of parameter objects, each with a `"name"` field (the string key for `cs.run`)
+
+### Efficient lookup procedure
+
+**Do this in a single batch, not command by command:**
+
+1. Read the `.md` file and compile the complete list of all command labels on the page.
+2. Launch **one** Explore agent with the full list, instructing it to search both JSON files and
+   return the class name + list of input `name` fields for every command. Example prompt shape:
+
+   > Search `cli-outputs/0.20.4/snapshot-sc.fiji.bdvpg.json` and
+   > `cli-outputs/0.20.4/snapshot-ch.epfl.biop.json`. For each of the following commands,
+   > return the full `className` and all input `name` fields:
+   > 1. BDV - Show Sources
+   > 2. Source - Set Color
+   > …
+
+3. Use the agent's single response to write all four-tab blocks in one pass over the file.
+
+This one-agent-one-pass approach avoids repeated individual searches and keeps the main
+context clean.
+
 ## Existing Documentation Pages
 
 Some pages have been carried over from a previous documentation effort. These are generally
@@ -147,6 +181,9 @@ Every command section should expose four tabs: **GUI**, **IJ Macro**, **Groovy**
   they describe the command regardless of how it is called.
 - The tab-set contains only the invocation itself (menu path + screenshot for GUI; script for others).
 - Use `:::::`/`::::` nesting so `:::` remains free for admonitions inside tabs.
+- **Multi-image grids** (e.g. orthogonal views) go **below** the tab-set, not inside the GUI tab.
+  Placing `::::{grid}` inside `::::{tab-item}` causes a colon-fence conflict. Keep grids outside
+  so they are always visible regardless of which tab is selected — same as the parameter table.
 
 **Template:**
 

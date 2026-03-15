@@ -20,8 +20,6 @@ Standalone file-to-file conversion tools (Kheops) are under:
 
 The primary command for saving sources to disk. Produces a pyramidal OME-TIFF — a widely supported format that preserves multi-resolution levels, multi-channel structure, and physical calibration. This is usually the best choice for archiving or sharing processed data.
 
-{menuselection}`Plugins > BigDataViewer-Playground > Export > Source - Export To OME-TIFF`
-
 | Parameter | Description |
 |-----------|-------------|
 | Sources to export | The sources to save (each source becomes a channel) |
@@ -44,13 +42,82 @@ The primary command for saving sources to disk. Produces a pyramidal OME-TIFF �
 The output is always recomputed from the highest resolution level of each source, so the pyramid levels in the OME-TIFF are internally consistent regardless of how many levels the input sources had.
 :::
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins > BigDataViewer-Playground > Export > Source - Export To OME-TIFF`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Source - Export To OME-TIFF");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sacs
+#@CommandService cs
+
+import ch.epfl.biop.kheops.command.KheopsExportSourcesCommand
+
+cs.run(KheopsExportSourcesCommand, true,
+    "sacs", sacs,
+    "file", new java.io.File("/path/to/output.ome.tiff"),
+    "n_resolution_levels", 5,
+    "downscaling", 2,
+    "tile_size_x", 512,
+    "tile_size_y", 512,
+    "n_threads", 4,
+    "compression", "LZW",
+    "compress_temp_files", false,
+    "range_channels", "",
+    "range_frames", "",
+    "range_slices", "",
+    "override_voxel_size", false,
+    "vox_size_xy_um", 1.0,
+    "vox_size_z_um", 1.0,
+    "unit", "MICROMETER"
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sacs
+#@CommandService cs
+
+from ch.epfl.biop.kheops.command import KheopsExportSourcesCommand
+from java.io import File
+
+cs.run(KheopsExportSourcesCommand, True,
+    ["sacs", sacs,
+     "file", File("/path/to/output.ome.tiff"),
+     "n_resolution_levels", 5,
+     "downscaling", 2,
+     "tile_size_x", 512,
+     "tile_size_y", 512,
+     "n_threads", 4,
+     "compression", "LZW",
+     "compress_temp_files", False,
+     "range_channels", "",
+     "range_frames", "",
+     "range_slices", "",
+     "override_voxel_size", False,
+     "vox_size_xy_um", 1.0,
+     "vox_size_z_um", 1.0,
+     "unit", "MICROMETER"]
+).get()
+```
+::::
+
+:::::
+
 ---
 
 ## Export To ImagePlus
 
 Converts sources back to standard Fiji ImagePlus stacks. Use this when you need to hand your data off to classic ImageJ/Fiji plugins that don't work with BDV sources.
-
-{menuselection}`Plugins > BigDataViewer-Playground > Export > Source - Export To ImagePlus`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -69,13 +136,67 @@ Converts sources back to standard Fiji ImagePlus stacks. Use this when you need 
 **Normal** mode loads the entire exported region into RAM. For large sources, use a higher resolution level or subset the slices/timepoints to avoid running out of memory. **Virtual** mode is memory-efficient but slower for random access.
 :::
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins > BigDataViewer-Playground > Export > Source - Export To ImagePlus`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Source - Export To ImagePlus");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import ch.epfl.biop.command.exporter.SourcesToMultipleImagePlusExportCommand
+
+cs.run(SourcesToMultipleImagePlusExportCommand, true,
+    "sources", sources,
+    "level", 0,
+    "export_mode", "Normal",
+    "entities_split", "channel",
+    "range_channels", "",
+    "range_frames", "",
+    "range_slices", "",
+    "monitor", true,
+    "parallel", false
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from ch.epfl.biop.command.exporter import SourcesToMultipleImagePlusExportCommand
+
+cs.run(SourcesToMultipleImagePlusExportCommand, True,
+    ["sources", sources,
+     "level", 0,
+     "export_mode", "Normal",
+     "entities_split", "channel",
+     "range_channels", "",
+     "range_frames", "",
+     "range_slices", "",
+     "monitor", True,
+     "parallel", False]
+).get()
+```
+::::
+
+:::::
+
 ---
 
 ## Export To XML/HDF5 Dataset
 
 Exports sources to the native BigDataViewer XML/HDF5 format. This is useful when you want to save processed sources in a format that can be re-opened directly in BigDataViewer or BigStitcher.
-
-{menuselection}`Plugins > BigDataViewer-Playground > Export > Source - Export To XML/HDF5 Dataset`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -93,13 +214,72 @@ Exports sources to the native BigDataViewer XML/HDF5 format. This is useful when
 The **entity type** parameter controls how sources are organized in the XML/HDF5 structure. Choose **Channel** if each source is a different fluorescence channel, **Tile** if they are spatial tiles, etc. This affects how the dataset appears when re-opened.
 :::
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins > BigDataViewer-Playground > Export > Source - Export To XML/HDF5 Dataset`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Source - Export To XML/HDF5 Dataset");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import sc.fiji.bdvpg.command.exporter.SourceXMLHDF5ExportCommand
+
+cs.run(SourceXMLHDF5ExportCommand, true,
+    "sources", sources,
+    "xml_file", new java.io.File("/path/to/output.xml"),
+    "entity_type", "Channel",
+    "timepoint_begin", 0,
+    "number_of_timepoints_to_export", 1,
+    "block_size_x", 32,
+    "block_size_y", 32,
+    "block_size_z", 4,
+    "scale_factor", 2,
+    "threshold_mipmap", 16,
+    "n_threads", 4
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from sc.fiji.bdvpg.command.exporter import SourceXMLHDF5ExportCommand
+from java.io import File
+
+cs.run(SourceXMLHDF5ExportCommand, True,
+    ["sources", sources,
+     "xml_file", File("/path/to/output.xml"),
+     "entity_type", "Channel",
+     "timepoint_begin", 0,
+     "number_of_timepoints_to_export", 1,
+     "block_size_x", 32,
+     "block_size_y", 32,
+     "block_size_z", 4,
+     "scale_factor", 2,
+     "threshold_mipmap", 16,
+     "n_threads", 4]
+).get()
+```
+::::
+
+:::::
+
 ---
 
 ## Fuse BigStitcher Dataset To OME-TIFF
 
 A specialized command for BigStitcher users: reads a BigStitcher XML dataset (with computed tile registrations), fuses the tiles, and writes the result as a pyramidal OME-TIFF. This is a one-step export that combines fusion and file writing.
-
-{menuselection}`Plugins > BigDataViewer-Playground > Export > Dataset - Fuse BigStitcher Dataset To OME-TIFF`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -121,6 +301,75 @@ A specialized command for BigStitcher users: reads a BigStitcher XML dataset (wi
 To prepare a dataset for this command, first convert it with **Dataset - Make BigStitcher Compatible** (see [Opening Images](../opening_images/opening_images.md#dataset-operations)), then run tile registration in BigStitcher.
 :::
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins > BigDataViewer-Playground > Export > Dataset - Fuse BigStitcher Dataset To OME-TIFF`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - Fuse BigStitcher Dataset To OME-TIFF");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@CommandService cs
+
+import ch.epfl.biop.command.exporter.BigStitcherDatasetToOMETIFFFuseCommand
+
+cs.run(BigStitcherDatasetToOMETIFFFuseCommand, true,
+    "xml_bigstitcher_file", new java.io.File("/path/to/dataset.xml"),
+    "output_path_directory", new java.io.File("/path/to/output/"),
+    "fusion_method", "Linear Blending",
+    "use_interpolation", true,
+    "n_resolution_levels", 5,
+    "x_downsample", 1.0,
+    "y_downsample", 1.0,
+    "z_downsample", 1.0,
+    "range_channels", "",
+    "range_frames", "",
+    "range_slices", "",
+    "split_channels", false,
+    "split_frames", false,
+    "split_slices", false,
+    "use_lzw_compression", true,
+    "override_z_ratio", false
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@CommandService cs
+
+from ch.epfl.biop.command.exporter import BigStitcherDatasetToOMETIFFFuseCommand
+from java.io import File
+
+cs.run(BigStitcherDatasetToOMETIFFFuseCommand, True,
+    ["xml_bigstitcher_file", File("/path/to/dataset.xml"),
+     "output_path_directory", File("/path/to/output/"),
+     "fusion_method", "Linear Blending",
+     "use_interpolation", True,
+     "n_resolution_levels", 5,
+     "x_downsample", 1.0,
+     "y_downsample", 1.0,
+     "z_downsample", 1.0,
+     "range_channels", "",
+     "range_frames", "",
+     "range_slices", "",
+     "split_channels", False,
+     "split_frames", False,
+     "split_slices", False,
+     "use_lzw_compression", True,
+     "override_z_ratio", False]
+).get()
+```
+::::
+
+:::::
+
 ---
 
 ## BDV View Exports
@@ -130,8 +379,6 @@ These commands capture what you see in a BigDataViewer window — including the 
 ### BDV - Export Current View As ImagePlus
 
 Full-control export: you specify the output pixel size, region extent, and Z thickness. The exported ImagePlus is sampled at the current BDV view orientation.
-
-{menuselection}`Plugins > BigDataViewer-Playground > Display > BDV > Export > BDV - Export Current View As ImagePlus`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -149,11 +396,73 @@ Full-control export: you specify the output pixel size, region extent, and Z thi
 | Parallel Channels / Timepoints / Slices | Acquire each dimension in parallel (Normal mode only) |
 | Unit | Physical unit for the exported image calibration |
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins > BigDataViewer-Playground > Display > BDV > Export > BDV - Export Current View As ImagePlus`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("BDV - Export Current View As ImagePlus");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@bdv.util.BdvHandle bdv_h
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import ch.epfl.biop.command.display.bdv.export.BdvViewToImagePlusExportCommand
+
+cs.run(BdvViewToImagePlusExportCommand, true,
+    "bdv_h", bdv_h,
+    "sources", sources,
+    "capture_name", "capture",
+    "export_mode", "Normal",
+    "sampling_xy", 1.0,
+    "sampling_z", 1.0,
+    "size_x", 500.0,
+    "size_y", 500.0,
+    "size_z", 0.0,
+    "interpolate", true,
+    "selected_timepoints_str", "",
+    "unit", "MICROMETER"
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@bdv.util.BdvHandle bdv_h
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from ch.epfl.biop.command.display.bdv.export import BdvViewToImagePlusExportCommand
+
+cs.run(BdvViewToImagePlusExportCommand, True,
+    ["bdv_h", bdv_h,
+     "sources", sources,
+     "capture_name", "capture",
+     "export_mode", "Normal",
+     "sampling_xy", 1.0,
+     "sampling_z", 1.0,
+     "size_x", 500.0,
+     "size_y", 500.0,
+     "size_z", 0.0,
+     "interpolate", True,
+     "selected_timepoints_str", "",
+     "unit", "MICROMETER"]
+).get()
+```
+::::
+
+:::::
+
 ### BDV - Export Current View As ImagePlus (Match Window)
 
 A simplified version that automatically matches the BDV window dimensions for X and Y. You only need to specify the Z thickness and pixel size.
-
-{menuselection}`Plugins > BigDataViewer-Playground > Display > BDV > Export > BDV - Export Current View As ImagePlus (Match Window)`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -168,11 +477,65 @@ A simplified version that automatically matches the BDV window dimensions for X 
 | Parallel Channels / Timepoints / Slices | Parallel acquisition (Normal mode only) |
 | Unit | Physical unit |
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins > BigDataViewer-Playground > Display > BDV > Export > BDV - Export Current View As ImagePlus (Match Window)`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("BDV - Export Current View As ImagePlus (Match Window)");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@bdv.util.BdvHandle bdv_h
+#@CommandService cs
+
+import ch.epfl.biop.command.display.bdv.export.BdvViewToImagePlusBasicExportCommand
+
+cs.run(BdvViewToImagePlusBasicExportCommand, true,
+    "bdv_h", bdv_h,
+    "capture_name", "capture",
+    "export_mode", "Normal",
+    "sampling_xy", 1.0,
+    "sampling_z", 1.0,
+    "z_size", 0.0,
+    "interpolate", true,
+    "selected_timepoints_str", "",
+    "unit", "MICROMETER"
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@bdv.util.BdvHandle bdv_h
+#@CommandService cs
+
+from ch.epfl.biop.command.display.bdv.export import BdvViewToImagePlusBasicExportCommand
+
+cs.run(BdvViewToImagePlusBasicExportCommand, True,
+    ["bdv_h", bdv_h,
+     "capture_name", "capture",
+     "export_mode", "Normal",
+     "sampling_xy", 1.0,
+     "sampling_z", 1.0,
+     "z_size", 0.0,
+     "interpolate", True,
+     "selected_timepoints_str", "",
+     "unit", "MICROMETER"]
+).get()
+```
+::::
+
+:::::
+
 ### BDV - Export Current View As Sources
 
 Instead of producing an ImagePlus, this command creates new BDV sources resampled at the current view orientation. The result stays in the BDV workspace as a lazy source — useful for extracting an oblique reslice that you want to process further or export later.
-
-{menuselection}`Plugins > BigDataViewer-Playground > Display > BDV > Export > BDV - Export Current View As Sources`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -191,6 +554,68 @@ Instead of producing an ImagePlus, this command creates new BDV sources resample
 **Oblique reslicing workflow:** Navigate the BDV viewer to the exact orientation you want, then run **Export Current View As Sources**. The resulting sources are aligned to that oblique plane and can be visualized, processed, or exported to OME-TIFF like any other source.
 :::
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins > BigDataViewer-Playground > Display > BDV > Export > BDV - Export Current View As Sources`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("BDV - Export Current View As Sources");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@bdv.util.BdvHandle bdv_h
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import ch.epfl.biop.command.display.bdv.export.BdvViewToSourcesExportCommand
+
+cs.run(BdvViewToSourcesExportCommand, true,
+    "bdv_h", bdv_h,
+    "sources", sources,
+    "sampling_xy_in_physical_unit", 1.0,
+    "sampling_z_in_physical_unit", 1.0,
+    "x_size", 500.0,
+    "y_size", 500.0,
+    "z_size", 0.0,
+    "match_window_size", true,
+    "interpolate", true,
+    "reuse_mipmaps", true,
+    "cache", true
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@bdv.util.BdvHandle bdv_h
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from ch.epfl.biop.command.display.bdv.export import BdvViewToSourcesExportCommand
+
+cs.run(BdvViewToSourcesExportCommand, True,
+    ["bdv_h", bdv_h,
+     "sources", sources,
+     "sampling_xy_in_physical_unit", 1.0,
+     "sampling_z_in_physical_unit", 1.0,
+     "x_size", 500.0,
+     "y_size", 500.0,
+     "z_size", 0.0,
+     "match_window_size", True,
+     "interpolate", True,
+     "reuse_mipmaps", True,
+     "cache", True]
+).get()
+```
+::::
+
+:::::
+
 ---
 
 ## Kheops: Standalone File Conversion
@@ -200,8 +625,6 @@ Kheops is a standalone file conversion tool that converts Bio-Formats–readable
 ### Kheops - Convert File to Pyramidal OME TIFF
 
 Converts a single file. Each series in the input becomes a separate OME-TIFF.
-
-{menuselection}`Plugins > BIOP > Kheops > Kheops - Convert File to Pyramidal OME TIFF`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -218,11 +641,74 @@ Converts a single file. Each series in the input becomes a separate OME-TIFF.
 | XY Voxel size in micrometer | Custom XY pixel size |
 | Z Voxel size in micrometer | Custom Z pixel size |
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins > BIOP > Kheops > Kheops - Convert File to Pyramidal OME TIFF`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Kheops - Convert File to Pyramidal OME TIFF");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@CommandService cs
+
+import ch.epfl.biop.kheops.command.KheopsCommand
+
+cs.run(KheopsCommand, true,
+    "input_path", new java.io.File("/path/to/input.czi"),
+    "output_dir", new java.io.File("/path/to/output/"),
+    "compression", "LZW",
+    "compress_temp_files", false,
+    "subset_series", "",
+    "subset_channels", "",
+    "subset_frames", "",
+    "subset_slices", "",
+    "split_channels", false,
+    "split_frames", false,
+    "split_slices", false,
+    "override_voxel_size", false,
+    "vox_size_xy", 1.0,
+    "vox_size_z", 1.0
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@CommandService cs
+
+from ch.epfl.biop.kheops.command import KheopsCommand
+from java.io import File
+
+cs.run(KheopsCommand, True,
+    ["input_path", File("/path/to/input.czi"),
+     "output_dir", File("/path/to/output/"),
+     "compression", "LZW",
+     "compress_temp_files", False,
+     "subset_series", "",
+     "subset_channels", "",
+     "subset_frames", "",
+     "subset_slices", "",
+     "split_channels", False,
+     "split_frames", False,
+     "split_slices", False,
+     "override_voxel_size", False,
+     "vox_size_xy", 1.0,
+     "vox_size_z", 1.0]
+).get()
+```
+::::
+
+:::::
+
 ### Kheops - Batch Convert Files to Pyramidal OME TIFF
 
 Converts multiple files in parallel. Same parameters as the single-file version, but accepts multiple input files.
-
-{menuselection}`Plugins > BIOP > Kheops > Kheops - Batch Convert Files to Pyramidal OME TIFF`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -234,11 +720,68 @@ Converts multiple files in parallel. Same parameters as the single-file version,
 | Override voxel sizes | Use custom voxel sizes |
 | XY / Z Voxel size in micrometer | Custom pixel sizes |
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins > BIOP > Kheops > Kheops - Batch Convert Files to Pyramidal OME TIFF`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Kheops - Batch Convert Files to Pyramidal OME TIFF");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@CommandService cs
+
+import ch.epfl.biop.kheops.command.KheopsBatchCommand
+
+cs.run(KheopsBatchCommand, true,
+    "input_paths", [new java.io.File("/path/to/file1.czi"), new java.io.File("/path/to/file2.czi")] as java.io.File[],
+    "output_dir", new java.io.File("/path/to/output/"),
+    "compression", "LZW",
+    "compress_temp_files", false,
+    "subset_series", "",
+    "subset_channels", "",
+    "subset_frames", "",
+    "subset_slices", "",
+    "override_voxel_size", false,
+    "vox_size_xy", 1.0,
+    "vox_size_z", 1.0
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@CommandService cs
+
+from ch.epfl.biop.kheops.command import KheopsBatchCommand
+from java.io import File
+
+cs.run(KheopsBatchCommand, True,
+    ["input_paths", [File("/path/to/file1.czi"), File("/path/to/file2.czi")],
+     "output_dir", File("/path/to/output/"),
+     "compression", "LZW",
+     "compress_temp_files", False,
+     "subset_series", "",
+     "subset_channels", "",
+     "subset_frames", "",
+     "subset_slices", "",
+     "override_voxel_size", False,
+     "vox_size_xy", 1.0,
+     "vox_size_z", 1.0]
+).get()
+```
+::::
+
+:::::
+
 ### Kheops - Export ImagePlus To OME-TIFF
 
 Converts an already-open Fiji ImagePlus to pyramidal OME-TIFF. Useful when you have processed an image with classic Fiji tools and want to save it in a multi-resolution format.
-
-{menuselection}`Plugins > BIOP > Kheops > Kheops - Export ImagePlus To OME-TIFF`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -247,6 +790,59 @@ Converts an already-open Fiji ImagePlus to pyramidal OME-TIFF. Useful when you h
 | Compression type | Compression algorithm |
 | Compress temporary files (LZW) | Compress temp files during pyramid building |
 | Channels / Timepoints / Slices subset | Subset selections |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins > BIOP > Kheops > Kheops - Export ImagePlus To OME-TIFF`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Kheops - Export ImagePlus To OME-TIFF");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@ij.ImagePlus image
+#@CommandService cs
+
+import ch.epfl.biop.kheops.command.KheopsExportImagePlusCommand
+
+cs.run(KheopsExportImagePlusCommand, true,
+    "image", image,
+    "output_dir", new java.io.File("/path/to/output/"),
+    "compression", "LZW",
+    "compress_temp_files", false,
+    "subset_channels", "",
+    "subset_frames", "",
+    "subset_slices", ""
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@ij.ImagePlus image
+#@CommandService cs
+
+from ch.epfl.biop.kheops.command import KheopsExportImagePlusCommand
+from java.io import File
+
+cs.run(KheopsExportImagePlusCommand, True,
+    ["image", image,
+     "output_dir", File("/path/to/output/"),
+     "compression", "LZW",
+     "compress_temp_files", False,
+     "subset_channels", "",
+     "subset_frames", "",
+     "subset_slices", ""]
+).get()
+```
+::::
+
+:::::
 
 ---
 
