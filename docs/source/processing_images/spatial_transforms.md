@@ -1,0 +1,318 @@
+# Spatial Transforms
+
+Commands for spatially transforming sources and inspecting or editing the transform chain of your datasets.
+
+Each source in a dataset carries a **chain of affine transforms** that maps pixel coordinates to world coordinates. The commands here let you add, remove, inspect, or modify entries in that chain — no pixels are rewritten. Transforms are instant and non-destructive.
+
+---
+
+## Source Transforms
+
+These commands add affine transforms to a source's transform chain interactively or programmatically.
+
+All commands are found under:
+
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Transform`
+
+### Source - Basic Transformation
+
+Performs 90/180/270-degree rotations or mirror flips along X, Y, or Z axes.
+
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Transform > Source - Basic Transformation`
+
+| Parameter | Description |
+|-----------|-------------|
+| Select source(s) | The source(s) to transform |
+| Transformation type | Flip (mirror) or Rot (rotate by 90/180/270 degrees) |
+| Axis | Axis along which to perform the transformation |
+| Global transform | If checked, transforms relative to world origin (0,0,0). Otherwise, keeps each source center unchanged |
+| Initial timepoint | First timepoint to apply the transformation (0-based) |
+| Number of timepoints | Number of timepoints to apply the transformation to |
+
+### Source - Interactive Transformation
+
+Lets you manually drag sources in a BDV window to position them. The sources you select are the ones that move — all other sources in the window stay fixed as reference.
+
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Transform > Source - Interactive Transformation`
+
+| Parameter | Description |
+|-----------|-------------|
+| Select Source(s) | The source(s) to manually transform |
+| Select BDV Window | The BigDataViewer window used for manual positioning |
+| Mode | How to apply the transformation: **Mutate** modifies the existing transform, **Append** adds a new transform layer |
+
+:::{note}
+During interactive transformation, you are placed in the coordinate frame of the moving sources — so the moving sources appear stationary while the reference sources move. This is normal. When you confirm the transform, the result is applied to the moving sources.
+:::
+
+### New Affine Transform
+
+Creates an affine transform from a 4x3 matrix (12 comma-separated values in row-major order). Use this when you need to apply a known numeric transform to sources via the Dataset transform stack commands.
+
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Transform > New Affine Transform`
+
+| Parameter | Description |
+|-----------|-------------|
+| Transform Matrix | 12 comma-separated values defining a 4x3 affine matrix in row-major order |
+
+### Source - Recenter Sources
+
+Moves sources so their center is at the specified world coordinates. Useful for aligning sources to a common reference point.
+
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Transform > Source - Recenter Sources`
+
+| Parameter | Description |
+|-----------|-------------|
+| Select Source(s) | The sources to recenter |
+| Center X/Y/Z | Target world coordinates for the source center |
+| Timepoint | Timepoint used for computing the recentering transform |
+| Mode | **Mutate** modifies the existing transform; **Append** adds a new transform layer |
+
+### Source - Remove Z Offset
+
+Removes the Z position offset from sources, shifting them to Z=0. Useful when imported data has a large Z offset that makes navigation awkward.
+
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Transform > Source - Remove Z Offset`
+
+| Parameter | Description |
+|-----------|-------------|
+| Select Source(s) | The sources to remove Z offset from |
+| Timepoint | Timepoint used to compute the Z offset |
+| Apply to all timepoints | If checked, removes Z offset for each timepoint independently |
+| Mode | **Mutate** modifies the existing transform; **Append** adds a new transform layer |
+
+:::{note}
+**About "Make Transformable"**: Sources created from a dataset already carry a mutable affine transform chain and can be transformed directly. The command **Source - Make Transformable** (`Process > Source - Make Transformable`) is only needed for sources that were not created from a dataset (e.g. procedurally generated sources). It wraps the source in a TransformedSource so that interactive and programmatic transforms can be applied.
+:::
+
+---
+
+## Dataset Transform Stack
+
+These commands let you inspect and edit the full transform chain of a dataset — the ordered list of affine transforms stored in the XML file for each source. They operate on the dataset level and are especially useful for manual corrections or advanced registration workflows.
+
+All commands are found under:
+
+{menuselection}`Plugins > BigDataViewer-Playground > Dataset > Transform Stack`
+
+### Dataset - View Transforms
+
+Displays the full transform chain for each selected source as a table.
+
+| Parameter | Description |
+|-----------|-------------|
+| Sources | The sources whose transforms you want to inspect |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Transform Stack --> Dataset - View Transforms`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - View Transforms");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import sc.fiji.bdvpg.command.dataset.transform.DatasetTransformViewCommand
+
+cs.run(DatasetTransformViewCommand, true,
+    "sources", sources
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from sc.fiji.bdvpg.command.dataset.transform import DatasetTransformViewCommand
+
+cs.run(DatasetTransformViewCommand, True,
+    ["sources", sources]
+).get()
+```
+::::
+
+:::::
+
+### Dataset - Add Transforms
+
+Appends a new affine transform to the chain at a given position.
+
+| Parameter | Description |
+|-----------|-------------|
+| Sources | The sources to modify |
+| Transform Name | A label for this transform entry |
+| Transform Matrix | 12 comma-separated values defining the 3D affine (row-major, no last row) |
+| Position | Index in the chain where the transform is inserted (-1 = append at end) |
+| Timepoint Range | Timepoints to apply to (e.g. `0:last` or `0:5`) |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Transform Stack --> Dataset - Add Transforms`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - Add Transforms");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import sc.fiji.bdvpg.command.dataset.transform.DatasetTransformAddCommand
+
+cs.run(DatasetTransformAddCommand, true,
+    "sources", sources,
+    "transform_name", "Manual correction",
+    "transform_matrix", "1,0,0,0,0,1,0,0,0,0,1,0",
+    "position", -1,
+    "timepoint_range", "0:last"
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from sc.fiji.bdvpg.command.dataset.transform import DatasetTransformAddCommand
+
+cs.run(DatasetTransformAddCommand, True,
+    ["sources", sources,
+     "transform_name", "Manual correction",
+     "transform_matrix", "1,0,0,0,0,1,0,0,0,0,1,0",
+     "position", -1,
+     "timepoint_range", "0:last"]
+).get()
+```
+::::
+
+:::::
+
+### Dataset - Remove Transforms
+
+Removes one or more transforms from the chain by index.
+
+| Parameter | Description |
+|-----------|-------------|
+| Sources | The sources to modify |
+| Transform Index Range | Indices of transforms to remove (e.g. `-1` for the last, `0:2` for the first three) |
+| Timepoint Range | Timepoints to apply to (e.g. `0:last`) |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Transform Stack --> Dataset - Remove Transforms`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - Remove Transforms");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import sc.fiji.bdvpg.command.dataset.transform.DatasetTransformRemoveCommand
+
+cs.run(DatasetTransformRemoveCommand, true,
+    "sources", sources,
+    "transform_index_range", "-1",
+    "timepoint_range", "0:last"
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from sc.fiji.bdvpg.command.dataset.transform import DatasetTransformRemoveCommand
+
+cs.run(DatasetTransformRemoveCommand, True,
+    ["sources", sources,
+     "transform_index_range", "-1",
+     "timepoint_range", "0:last"]
+).get()
+```
+::::
+
+:::::
+
+### Dataset - Set Transforms
+
+Overwrites a transform at a specific position in the chain.
+
+| Parameter | Description |
+|-----------|-------------|
+| Sources | The sources to modify |
+| Transform Index Range | Indices of transforms to overwrite |
+| Transform Name | New label for the transform entry |
+| Transform Matrix | 12 comma-separated values defining the 3D affine |
+| Timepoint Range | Timepoints to apply to (e.g. `0:last`) |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Transform Stack --> Dataset - Set Transforms`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - Set Transforms");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import sc.fiji.bdvpg.command.dataset.transform.DatasetTransformSetCommand
+
+cs.run(DatasetTransformSetCommand, true,
+    "sources", sources,
+    "transform_index_range", "-1",
+    "transform_name", "Manual correction",
+    "transform_matrix", "1,0,0,0,0,1,0,0,0,0,1,0",
+    "timepoint_range", "0:last"
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from sc.fiji.bdvpg.command.dataset.transform import DatasetTransformSetCommand
+
+cs.run(DatasetTransformSetCommand, True,
+    ["sources", sources,
+     "transform_index_range", "-1",
+     "transform_name", "Manual correction",
+     "transform_matrix", "1,0,0,0,0,1,0,0,0,0,1,0",
+     "timepoint_range", "0:last"]
+).get()
+```
+::::
+
+:::::
