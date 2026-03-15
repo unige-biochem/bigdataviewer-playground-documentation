@@ -29,11 +29,40 @@ This means you can set up a complex multi-image, multi-channel dataset, save it,
 
 ---
 
+## The Sources Tree
+
+All images you open appear in the **BigDataViewer Playground** panel, accessible via:
+
+{menuselection}`Plugins --> BigDataViewer-Playground --> Show BDV Playground Window`
+
+![The BDV Playground window showing the sources tree after opening the LLS7 dataset](images/sources_tree_BDV_Sources.png)
+
+The panel displays a **tree of sources**. Think of it as a pipeline of filters: every source you have opened lives at the root, and child nodes progressively narrow down the selection — by dataset, by channel, by tile, by timepoint, and so on. Because the filtering is additive, the same physical source can appear under multiple leaf nodes simultaneously.
+
+For example, after opening a two-channel 3-D acquisition you might see:
+
+```
+All Sources
+└── Hela-Kyoto-1-Timepoint-LLS7          ← dataset filter
+    ├── Channel 0                          ← channel filter
+    └── Channel 1
+```
+
+**Interactions:**
+- **Right-click** any node → context menu with actions (show in a BDV window, change color, export…)
+- **Double-click** any node → center the current viewer on those sources
+
+![Right-click context menu on a source node](images/tree_context_menu.png)
+
+---
+
 ## Creating a Dataset
 
 All dataset creation commands are found under:
 
 {menuselection}`Plugins --> BigDataViewer-Playground --> Import`
+
+![The Import submenu listing all available dataset creation commands](images/import_menu.png)
 
 Each command creates a dataset from a different source. The most common starting point is **Bio-Formats**, which handles the widest range of file formats.
 

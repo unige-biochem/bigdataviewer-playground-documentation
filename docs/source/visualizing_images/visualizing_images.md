@@ -21,8 +21,6 @@ All display commands are found under:
 
 The most common way to visualize your data. Creates a new BDV window and displays the selected sources in it.
 
-{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Show Sources`
-
 | Parameter | Description |
 |-----------|-------------|
 | Select Source(s) | The source(s) to display |
@@ -35,7 +33,55 @@ The most common way to visualize your data. Creates a new BDV window and display
 If you have already opened a BDV window and want to add more sources to it, uncheck **Open In New Window**. The sources will be added to the last active BDV window.
 :::
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Show Sources`
+
 ![BDV window displaying two channels of the LLS7 HeLa dataset](images/bdv_show_sources_BigDataViewer.png)
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("BDV - Show Sources");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import sc.fiji.bdvpg.command.display.bdv.SingleBdvSourcesShowCommand
+
+cs.run(SingleBdvSourcesShowCommand, true,
+    "sources", sources,
+    "adjust_view", true,
+    "auto_contrast", false,
+    "interpolate", true,
+    "make_new_window", true
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from sc.fiji.bdvpg.command.display.bdv import SingleBdvSourcesShowCommand
+
+cs.run(SingleBdvSourcesShowCommand, True,
+    ["sources", sources,
+     "adjust_view", True,
+     "auto_contrast", False,
+     "interpolate", True,
+     "make_new_window", True]
+).get()
+```
+::::
+
+:::::
 
 ### BDV - Create
 
@@ -108,7 +154,19 @@ Opens three synchronized BDV windows showing XY (front), ZY (right), and XZ (bot
 | Interpolate | Enables interpolation for smoother rendering |
 | Synchronize sources | Sources added to one window will automatically appear in all three |
 
-![XY (front) view](images/bdv_orthogonal_views_BigDataViewer-XY.png) ![ZY (right) view](images/bdv_orthogonal_views_BigDataViewer-ZY.png) ![XZ (bottom) view](images/bdv_orthogonal_views_BigDataViewer-XZ.png)
+::::{grid} 2
+:::{grid-item}
+![XY — front view](images/bdv_orthogonal_views_BigDataViewer-XY.png)
+:::
+:::{grid-item}
+![ZY — right view](images/bdv_orthogonal_views_BigDataViewer-ZY.png)
+:::
+:::{grid-item}
+![XZ — bottom view](images/bdv_orthogonal_views_BigDataViewer-XZ.png)
+:::
+:::{grid-item}
+:::
+::::
 
 ---
 
@@ -402,7 +460,19 @@ Creates three synchronized BVV windows with orthogonal orientations, analogous t
 
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BVV --> BVV - Create Orthogonal Views`
 
-![XY (front) view](images/bvv_orthogonal_views_BigVolumeViewer-XY.png) ![ZY (right) view](images/bvv_orthogonal_views_BigVolumeViewer-ZY.png) ![XZ (bottom) view](images/bvv_orthogonal_views_BigVolumeViewer-XZ.png)
+::::{grid} 2
+:::{grid-item}
+![XY — front view](images/bvv_orthogonal_views_BigVolumeViewer-XY.png)
+:::
+:::{grid-item}
+![ZY — right view](images/bvv_orthogonal_views_BigVolumeViewer-ZY.png)
+:::
+:::{grid-item}
+![XZ — bottom view](images/bvv_orthogonal_views_BigVolumeViewer-XZ.png)
+:::
+:::{grid-item}
+:::
+::::
 
 ### BVV - Remove Sources
 

@@ -19,7 +19,8 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx_search.extension',
     'myst_parser',
-    'sphinx_copybutton'
+    'sphinx_copybutton',
+    'sphinx_design',
 ]
 
 # Copy button configuration

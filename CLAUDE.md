@@ -117,6 +117,102 @@ as `SimpleIJLaunch.java` and other test utilities in the project.
 5. Run the class from the IDE to generate the images.
 6. Add `![alt text](images/filename.png)` references in the `.md` file at the appropriate locations.
 
+## Sphinx Extensions in Use
+
+- **sphinx-design** is installed and enabled. Use it for layout features.
+- **sphinx_copybutton** adds copy buttons to all code blocks automatically.
+
+### Image grids (sphinx-design)
+
+Use `{grid}` for multi-image layouts (e.g. orthogonal views). Always use one extra colon
+level on the outer directive compared to its children:
+
+```
+::::{grid} 2
+:::{grid-item}
+![label](images/file.png)
+:::
+:::{grid-item}
+![label](images/file.png)
+:::
+::::
+```
+
+### Multi-language code tabs (sphinx-design)
+
+Every command section should expose four tabs: **GUI**, **IJ Macro**, **Groovy**, **Python**.
+
+**Structure rules:**
+- The parameter table and any admonitions (tip, note, warning) go **above** the tab-set —
+  they describe the command regardless of how it is called.
+- The tab-set contains only the invocation itself (menu path + screenshot for GUI; script for others).
+- Use `:::::`/`::::` nesting so `:::` remains free for admonitions inside tabs.
+
+**Template:**
+
+```
+| Parameter | Description |
+|-----------|-------------|
+| ...       | ...         |
+
+:::{tip}
+...
+:::
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> ... --> Command Name`
+
+![alt text](images/screenshot.png)
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Command Name");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import full.class.Name.Command
+
+cs.run(Command, true,
+    "sources", sources,
+    "param", value
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from full.class.Name import Command
+
+cs.run(Command, True,
+    ["sources", sources,
+     "param", value]
+).get()
+```
+::::
+
+:::::
+```
+
+**Language notes:**
+- **IJ Macro**: complex object parameters (e.g. `SourceAndConverter[]`) cannot be passed
+  from macro — `run("Command Name")` opens the dialog for selection.
+- **Groovy**: use `imagej-groovy` as the code fence language (not `groovy`) so the custom
+  `ImageJGroovyLexer` in `conf.py` handles `#@` preprocessor lines correctly.
+- **Python**: standard `python` fence is fine; `#` is already a valid comment character.
+- Use `#@SourceAndConverter[] sources` (and other `#@` parameters) so the Script Editor
+  shows a picker when the script is run interactively.
+
 ## Writing Guidelines
 
 - Write for bio-image analysts: assume Fiji knowledge, not Java/programming knowledge
