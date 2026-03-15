@@ -70,8 +70,6 @@ Each command creates a dataset from a different source. The most common starting
 
 The general-purpose importer. Supports any file format that Bio-Formats can read (CZI, LIF, ND2, OME-TIFF, and [many more](https://bio-formats.readthedocs.io/en/latest/supported-formats.html)).
 
-{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [Bio-Formats]`
-
 | Parameter | Description |
 |-----------|-------------|
 | Input Files | One or more image files to include in the dataset |
@@ -86,22 +84,112 @@ The general-purpose importer. Supports any file format that Bio-Formats can read
 **Working with CZI files?** Enable the **Quick Start CZI Reader** update site for significantly faster loading. See the [Installation Guide](../installation/installation.md#fast-czi-file-reading).
 :::
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [Bio-Formats]`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - Create [Bio-Formats]");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@File[] files
+#@CommandService cs
+
+import ch.epfl.biop.bdv.img.bioformats.command.DatasetFromBioFormatsCreateCommand
+
+cs.run(DatasetFromBioFormatsCreateCommand, true,
+    "files", files,
+    "datasetname", "My Dataset",
+    "plane_origin_convention", "TOP LEFT",
+    "unit", "MICROMETER",
+    "split_rgb_channels", false,
+    "auto_pyramidize", true,
+    "disable_memo", false
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@File[] files
+#@CommandService cs
+
+from ch.epfl.biop.bdv.img.bioformats.command import DatasetFromBioFormatsCreateCommand
+
+cs.run(DatasetFromBioFormatsCreateCommand, True,
+    ["files", files,
+     "datasetname", "My Dataset",
+     "plane_origin_convention", "TOP LEFT",
+     "unit", "MICROMETER",
+     "split_rgb_channels", False,
+     "auto_pyramidize", True,
+     "disable_memo", False]
+).get()
+```
+::::
+
+:::::
+
 ### Dataset - Create [Current ImagePlus]
 
 Wraps an image that is already open in Fiji as a dataset, so you can use it with BigDataViewer Playground tools.
-
-{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [Current ImagePlus]`
 
 | Parameter | Description |
 |-----------|-------------|
 | Input Image | The ImagePlus window to convert |
 | Dataset Name | Name for the dataset (leave empty to use the image title) |
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [Current ImagePlus]`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - Create [Current ImagePlus]");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@ImagePlus image
+#@CommandService cs
+
+import ch.epfl.biop.bdv.img.imageplus.command.DatasetFromImagePlusCreateCommand
+
+cs.run(DatasetFromImagePlusCreateCommand, true,
+    "image", image,
+    "datasetname", ""
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@ImagePlus image
+#@CommandService cs
+
+from ch.epfl.biop.bdv.img.imageplus.command import DatasetFromImagePlusCreateCommand
+
+cs.run(DatasetFromImagePlusCreateCommand, True,
+    ["image", image,
+     "datasetname", ""]
+).get()
+```
+::::
+
+:::::
+
 ### Dataset - Create [OMERO]
 
 Creates a dataset from images stored on an OMERO server. You must connect to the server first using `Plugins > BIOP > OMERO > Omero - Connect`.
-
-{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [OMERO]`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -110,12 +198,53 @@ Creates a dataset from images stored on an OMERO server. You must connect to the
 | Plane Origin Convention | Where the image origin is located |
 | World coordinate units | Unit for the coordinate system |
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [OMERO]`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - Create [OMERO]");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@CommandService cs
+
+import ch.epfl.biop.bdv.img.omero.command.DatasetFromOMEROCreateCommand
+
+cs.run(DatasetFromOMEROCreateCommand, true,
+    "omero_urls", "omero://your-server/image/1234",
+    "datasetname", "My OMERO Dataset",
+    "plane_origin_convention", "TOP LEFT",
+    "unit", "MICROMETER"
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@CommandService cs
+
+from ch.epfl.biop.bdv.img.omero.command import DatasetFromOMEROCreateCommand
+
+cs.run(DatasetFromOMEROCreateCommand, True,
+    ["omero_urls", "omero://your-server/image/1234",
+     "datasetname", "My OMERO Dataset",
+     "plane_origin_convention", "TOP LEFT",
+     "unit", "MICROMETER"]
+).get()
+```
+::::
+
+:::::
+
 ### Dataset - Create [QuPath]
 
 Imports all images from a QuPath project as a single dataset.
-
-
-{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [QuPath]`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -125,11 +254,57 @@ Imports all images from a QuPath project as a single dataset.
 | World coordinate units | Unit for the coordinate system |
 | Split RGB Channels | Separate RGB into individual channels |
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [QuPath]`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - Create [QuPath]");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@File qupath_project
+#@CommandService cs
+
+import ch.epfl.biop.bdv.img.qupath.command.DatasetFromQuPathCreateCommand
+
+cs.run(DatasetFromQuPathCreateCommand, true,
+    "qupath_project", qupath_project,
+    "datasetname", "",
+    "plane_origin_convention", "TOP LEFT",
+    "unit", "MICROMETER",
+    "split_rgb_channels", false
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@File qupath_project
+#@CommandService cs
+
+from ch.epfl.biop.bdv.img.qupath.command import DatasetFromQuPathCreateCommand
+
+cs.run(DatasetFromQuPathCreateCommand, True,
+    ["qupath_project", qupath_project,
+     "datasetname", "",
+     "plane_origin_convention", "TOP LEFT",
+     "unit", "MICROMETER",
+     "split_rgb_channels", False]
+).get()
+```
+::::
+
+:::::
+
 ### Dataset - Create [Operetta]
 
 Opens PerkinElmer Operetta high-content imaging datasets.
-
-{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [Operetta]`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -138,16 +313,104 @@ Opens PerkinElmer Operetta high-content imaging datasets.
 | Min/Max Display Value | Initial display range |
 | Show in Viewer | Immediately display in a BigDataViewer window |
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [Operetta]`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - Create [Operetta]");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@File folder
+#@CommandService cs
+
+import ch.epfl.biop.command.importer.DatasetFromOperettaCreateCommand
+
+cs.run(DatasetFromOperettaCreateCommand, true,
+    "folder", folder,
+    "unit", "MICROMETER",
+    "min_display_value", 0,
+    "max_display_value", 1000,
+    "show", true
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@File folder
+#@CommandService cs
+
+from ch.epfl.biop.command.importer import DatasetFromOperettaCreateCommand
+
+cs.run(DatasetFromOperettaCreateCommand, True,
+    ["folder", folder,
+     "unit", "MICROMETER",
+     "min_display_value", 0,
+     "max_display_value", 1000,
+     "show", True]
+).get()
+```
+::::
+
+:::::
+
 ### Dataset - Create [CZI LLS7]
 
 Specialized importer for Zeiss Lattice Light Sheet 7 data. Automatically applies the correct skew transformation so the data displays with proper 3D geometry.
-
-{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [CZI LLS7]`
 
 | Parameter | Description |
 |-----------|-------------|
 | CZI LLS7 File | The `.czi` file from an LLS7 acquisition |
 | Use Legacy XY Mode | For compatibility with older datasets |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [CZI LLS7]`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - Create [CZI LLS7]");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@File czi_file
+#@CommandService cs
+
+import ch.epfl.biop.command.workflow.lls7.LLS7DatasetOpenCommand
+
+cs.run(LLS7DatasetOpenCommand, true,
+    "czi_file", czi_file,
+    "legacy_xy_mode", false
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@File czi_file
+#@CommandService cs
+
+from ch.epfl.biop.command.workflow.lls7 import LLS7DatasetOpenCommand
+
+cs.run(LLS7DatasetOpenCommand, True,
+    ["czi_file", czi_file,
+     "legacy_xy_mode", False]
+).get()
+```
+::::
+
+:::::
 
 See the [LLS7 Timelapse workflow](../workflows/lls7_timelapse.md) for a complete processing guide.
 
@@ -155,7 +418,47 @@ See the [LLS7 Timelapse workflow](../workflows/lls7_timelapse.md) for a complete
 
 Opens a sample dataset for testing and exploration. Downloads and caches on first use.
 
+| Parameter | Description |
+|-----------|-------------|
+| Dataset Name | Name of the sample dataset to open |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Samples`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - Samples");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@CommandService cs
+
+import ch.epfl.biop.bdv.img.bioformats.command.OpenSampleCommand
+
+cs.run(OpenSampleCommand, true,
+    "dataset_name", "HeLa Kyoto - LLS7"
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@CommandService cs
+
+from ch.epfl.biop.bdv.img.bioformats.command import OpenSampleCommand
+
+cs.run(OpenSampleCommand, True,
+    ["dataset_name", "HeLa Kyoto - LLS7"]
+).get()
+```
+::::
+
+:::::
 
 ---
 
@@ -167,8 +470,6 @@ Once you have datasets, several commands help you manipulate them at the dataset
 
 Merges multiple saved XML datasets into one, either as additional timepoints or additional channels.
 
-{menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Dataset - Combine XML Datasets`
-
 | Parameter | Description |
 |-----------|-------------|
 | Input XML Files | The XML files to combine (order matters) |
@@ -176,23 +477,388 @@ Merges multiple saved XML datasets into one, either as additional timepoints or 
 | Combine Mode | Combine as separate timepoints or separate channels |
 | Filter Setup IDs | Optional: include only specific setups (e.g. `0:5,10`) |
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Dataset - Combine XML Datasets`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - Combine XML Datasets");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@File[] input_files
+#@CommandService cs
+
+import ch.epfl.biop.command.dataset.DatasetXMLCombineCommand
+
+cs.run(DatasetXMLCombineCommand, true,
+    "input_files", input_files,
+    "datasetname", "Combined Dataset",
+    "combine_mode", "timepoints",
+    "setup_filter", ""
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@File[] input_files
+#@CommandService cs
+
+from ch.epfl.biop.command.dataset import DatasetXMLCombineCommand
+
+cs.run(DatasetXMLCombineCommand, True,
+    ["input_files", input_files,
+     "datasetname", "Combined Dataset",
+     "combine_mode", "timepoints",
+     "setup_filter", ""]
+).get()
+```
+::::
+
+:::::
+
 ### View and Edit Transforms
 
-The transform chain attached to each source can be inspected and modified:
+The transform chain attached to each source can be inspected and modified with four commands.
 
+#### Dataset - View Transforms
+
+Displays the full transform chain for each selected source as a table.
+
+| Parameter | Description |
+|-----------|-------------|
+| Sources | The sources whose transforms you want to inspect |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Transform Stack --> Dataset - View Transforms`
+::::
 
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - View Transforms");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import sc.fiji.bdvpg.command.dataset.transform.DatasetTransformViewCommand
+
+cs.run(DatasetTransformViewCommand, true,
+    "sources", sources
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from sc.fiji.bdvpg.command.dataset.transform import DatasetTransformViewCommand
+
+cs.run(DatasetTransformViewCommand, True,
+    ["sources", sources]
+).get()
+```
+::::
+
+:::::
+
+#### Dataset - Add Transforms
+
+Appends a new affine transform to the chain at a given position.
+
+| Parameter | Description |
+|-----------|-------------|
+| Sources | The sources to modify |
+| Transform Name | A label for this transform entry |
+| Transform Matrix | 12 comma-separated values defining the 3D affine (row-major, no last row) |
+| Position | Index in the chain where the transform is inserted (-1 = append at end) |
+| Timepoint Range | Timepoints to apply to (e.g. `0:last` or `0:5`) |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Transform Stack --> Dataset - Add Transforms`
+::::
 
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - Add Transforms");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import sc.fiji.bdvpg.command.dataset.transform.DatasetTransformAddCommand
+
+cs.run(DatasetTransformAddCommand, true,
+    "sources", sources,
+    "transform_name", "Manual correction",
+    "transform_matrix", "1,0,0,0,0,1,0,0,0,0,1,0",
+    "position", -1,
+    "timepoint_range", "0:last"
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from sc.fiji.bdvpg.command.dataset.transform import DatasetTransformAddCommand
+
+cs.run(DatasetTransformAddCommand, True,
+    ["sources", sources,
+     "transform_name", "Manual correction",
+     "transform_matrix", "1,0,0,0,0,1,0,0,0,0,1,0",
+     "position", -1,
+     "timepoint_range", "0:last"]
+).get()
+```
+::::
+
+:::::
+
+#### Dataset - Remove Transforms
+
+Removes one or more transforms from the chain by index.
+
+| Parameter | Description |
+|-----------|-------------|
+| Sources | The sources to modify |
+| Transform Index Range | Indices of transforms to remove (e.g. `-1` for the last, `0:2` for the first three) |
+| Timepoint Range | Timepoints to apply to (e.g. `0:last`) |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Transform Stack --> Dataset - Remove Transforms`
+::::
 
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - Remove Transforms");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import sc.fiji.bdvpg.command.dataset.transform.DatasetTransformRemoveCommand
+
+cs.run(DatasetTransformRemoveCommand, true,
+    "sources", sources,
+    "transform_index_range", "-1",
+    "timepoint_range", "0:last"
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from sc.fiji.bdvpg.command.dataset.transform import DatasetTransformRemoveCommand
+
+cs.run(DatasetTransformRemoveCommand, True,
+    ["sources", sources,
+     "transform_index_range", "-1",
+     "timepoint_range", "0:last"]
+).get()
+```
+::::
+
+:::::
+
+#### Dataset - Set Transforms
+
+Overwrites a transform at a specific position in the chain.
+
+| Parameter | Description |
+|-----------|-------------|
+| Sources | The sources to modify |
+| Transform Index Range | Indices of transforms to overwrite |
+| Transform Name | New label for the transform entry |
+| Transform Matrix | 12 comma-separated values defining the 3D affine |
+| Timepoint Range | Timepoints to apply to (e.g. `0:last`) |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Transform Stack --> Dataset - Set Transforms`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - Set Transforms");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import sc.fiji.bdvpg.command.dataset.transform.DatasetTransformSetCommand
+
+cs.run(DatasetTransformSetCommand, true,
+    "sources", sources,
+    "transform_index_range", "-1",
+    "transform_name", "Manual correction",
+    "transform_matrix", "1,0,0,0,0,1,0,0,0,0,1,0",
+    "timepoint_range", "0:last"
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from sc.fiji.bdvpg.command.dataset.transform import DatasetTransformSetCommand
+
+cs.run(DatasetTransformSetCommand, True,
+    ["sources", sources,
+     "transform_index_range", "-1",
+     "transform_name", "Manual correction",
+     "transform_matrix", "1,0,0,0,0,1,0,0,0,0,1,0",
+     "timepoint_range", "0:last"]
+).get()
+```
+::::
+
+:::::
 
 These commands let you view, append, remove, or overwrite affine transforms at specific timepoints and positions in the chain. This is useful for manual corrections or advanced registration workflows.
 
-### Other Dataset Commands
+### Dataset - Remove Entities
 
-| Command | Purpose |
-|---------|---------|
-| Dataset - Remove Entities | Strip entity types for compatibility with other tools |
-| Dataset - Make BigStitcher Compatible | Convert a dataset to BigStitcher format |
+Strips entity types from a dataset XML, useful for compatibility with tools that do not understand BigDataViewer Playground entities.
+
+| Parameter | Description |
+|-----------|-------------|
+| Input XML | The source dataset XML file |
+| Output XML | Where to write the stripped XML |
+| Entities to Remove | Comma-separated list of entity class names to strip |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Dataset - Remove Entities`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - Remove Entities");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@File xmlin
+#@File xmlout
+#@CommandService cs
+
+import ch.epfl.biop.command.dataset.DatasetEntitiesRemoveCommand
+
+cs.run(DatasetEntitiesRemoveCommand, true,
+    "xmlin", xmlin,
+    "xmlout", xmlout,
+    "entitiestoremove", ""
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@File xmlin
+#@File xmlout
+#@CommandService cs
+
+from ch.epfl.biop.command.dataset import DatasetEntitiesRemoveCommand
+
+cs.run(DatasetEntitiesRemoveCommand, True,
+    ["xmlin", xmlin,
+     "xmlout", xmlout,
+     "entitiestoremove", ""]
+).get()
+```
+::::
+
+:::::
+
+### Dataset - Make BigStitcher Compatible
+
+Converts a BigDataViewer Playground XML dataset to BigStitcher format.
+
+| Parameter | Description |
+|-----------|-------------|
+| Input XML | The source dataset XML file |
+| Output XML | Where to write the converted XML |
+| View Setup Reference | Index of the view setup to use as reference for the conversion |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Dataset - Make BigStitcher Compatible`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - Make BigStitcher Compatible");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@File xmlin
+#@File xmlout
+#@CommandService cs
+
+import ch.epfl.biop.command.dataset.DatasetXMLToBigStitcherDatasetConvertCommand
+
+cs.run(DatasetXMLToBigStitcherDatasetConvertCommand, true,
+    "xmlin", xmlin,
+    "xmlout", xmlout,
+    "viewsetupreference", 0
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@File xmlin
+#@File xmlout
+#@CommandService cs
+
+from ch.epfl.biop.command.dataset import DatasetXMLToBigStitcherDatasetConvertCommand
+
+cs.run(DatasetXMLToBigStitcherDatasetConvertCommand, True,
+    ["xmlin", xmlin,
+     "xmlout", xmlout,
+     "viewsetupreference", 0]
+).get()
+```
+::::
+
+:::::
