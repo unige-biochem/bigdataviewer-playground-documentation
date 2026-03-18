@@ -14,11 +14,24 @@ All commands are found under:
 
 ---
 
+## Typical workflow
+
+1. **Open your tiled dataset** using any of the import commands (e.g. **Dataset - Create [Bio-Formats]**). Each tile appears as a separate source in the tree.
+2. **Display the sources in BigDataViewer** to verify their spatial placement before fusing.
+3. **Define a resampling grid** with **Source - Define Resampling Grid**: set the desired output voxel size and select all input sources so that the model spans the full field of view.
+4. **Fuse each channel** separately with **Source - Fuse And Resample Sources**: pass the tiles for one channel and the model source, then repeat for the other channel.
+5. **Inspect the result** by opening the fused sources in a new BDV window, optionally synchronised with the raw tiles.
+6. **Pyramidize** the fused sources (optional) with **Source - Pyramidize** to generate multi-resolution levels — this makes navigation smooth at any zoom level.
+
+:::{note}
+Run **Source - Fuse And Resample Sources** once per channel. The model source is shared across all channels; only the input tile selection changes between calls.
+:::
+
+---
+
 ## Source - Define Resampling Grid
 
 Creates an empty model source that spans the bounding box of multiple sources with a custom voxel size. Use this to define the output grid before fusing.
-
-{menuselection}`Plugins > BigDataViewer-Playground > Process > Fuse & Resample > Source - Define Resampling Grid`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -31,8 +44,73 @@ Creates an empty model source that spans the bounding box of multiple sources wi
 | Model Timepoint | Reference timepoint used to compute the bounding box |
 
 :::{tip}
-Choose the voxel size based on your desired output resolution. For example, if your sources have 0.3 um pixels but you want a 1 um isotropic output, set all three voxel sizes to 1.0.
+Choose the voxel size based on your desired output resolution. For example, if your sources have 0.3 µm pixels but you want a 1 µm isotropic output, set all three voxel sizes to 1.0. Set **Resolution Levels** to 1 if you plan to pyramidize later with **Source - Pyramidize**.
 :::
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Fuse & Resample --> Source - Define Resampling Grid`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+// Sources are selected interactively from the dialog.
+run("Source - Define Resampling Grid");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import ch.epfl.biop.command.process.resample.SourcesGridModelMakeCommand
+
+def result = cs.run(SourcesGridModelMakeCommand, true,
+    "sources", sources,
+    "name", "grid_model",
+    "vox_size_x", 0.25,
+    "vox_size_y", 0.25,
+    "vox_size_z", 0.4,
+    "n_resolution_levels", 1,
+    "n_timepoints", 1,
+    "timepoint", 0,
+    "downscale_x", 2,
+    "downscale_y", 2,
+    "downscale_z", 2
+).get()
+
+def model = result.getOutput("source_out")
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from ch.epfl.biop.command.process.resample import SourcesGridModelMakeCommand
+
+result = cs.run(SourcesGridModelMakeCommand, True,
+    ["sources", sources,
+     "name", "grid_model",
+     "vox_size_x", 0.25,
+     "vox_size_y", 0.25,
+     "vox_size_z", 0.4,
+     "n_resolution_levels", 1,
+     "n_timepoints", 1,
+     "timepoint", 0,
+     "downscale_x", 2,
+     "downscale_y", 2,
+     "downscale_z", 2]
+).get()
+
+model = result.getOutput("source_out")
+```
+::::
+
+:::::
 
 ---
 
@@ -93,6 +171,84 @@ Fuses multiple sources into a single source, resampled to match a model source's
 For smooth transitions where tiles overlap, apply **L1 alpha blending masks** to your sources before fusing (see below). Without blending masks, hard edges will be visible at tile boundaries.
 :::
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Fuse & Resample --> Source - Fuse And Resample Sources`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+// Sources and model are selected interactively from the dialog.
+// Run once per channel.
+run("Source - Fuse And Resample Sources");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources_ch0
+#@SourceAndConverter model
+#@CommandService cs
+
+import ch.epfl.biop.command.process.resample.SourcesFuseAndResampleCommand
+
+// Run once per channel — change sources_ch0 to sources_ch1 for the second channel.
+def result = cs.run(SourcesFuseAndResampleCommand, true,
+    "sources", sources_ch0,
+    "model", model,
+    "name", "fused_ch0",
+    "blending_mode", "AVERAGE",
+    "interpolate", true,
+    "reusemipmaps", false,
+    "defaultmipmaplevel", 0,
+    "cache", true,
+    "cache_x", 512,
+    "cache_y", 512,
+    "cache_z", 32,
+    "cache_bounds", -1,
+    "n_threads", 4
+).get()
+
+def fused = result.getOutput("source_out")
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources_ch0
+#@SourceAndConverter model
+#@CommandService cs
+
+from ch.epfl.biop.command.process.resample import SourcesFuseAndResampleCommand
+
+# Run once per channel — change sources_ch0 to sources_ch1 for the second channel.
+result = cs.run(SourcesFuseAndResampleCommand, True,
+    ["sources", sources_ch0,
+     "model", model,
+     "name", "fused_ch0",
+     "blending_mode", "AVERAGE",
+     "interpolate", True,
+     "reusemipmaps", False,
+     "defaultmipmaplevel", 0,
+     "cache", True,
+     "cache_x", 512,
+     "cache_y", 512,
+     "cache_z", 32,
+     "cache_bounds", -1,
+     "n_threads", 4]
+).get()
+
+fused = result.getOutput("source_out")
+```
+::::
+
+:::::
+
+![Brain section tiles displayed in BigDataViewer](images/fuse_resample_BigDataViewer-Tiles.png)
+
+![Fused result: all tiles merged into a single seamless source](images/fuse_resample_BigDataViewer-Fused.png)
+
 ---
 
 ## Source - Set Linear Blending Mask (L1 Alpha)
@@ -106,3 +262,66 @@ Sets a distance-based alpha blending mask on selected sources. The mask fades pi
 | Select Source(s) | The sources to apply L1 alpha blending to |
 
 Apply this to all overlapping sources **before** calling **Source - Fuse And Resample Sources**.
+
+---
+
+## Source - Pyramidize
+
+Adds multi-resolution pyramid levels to one or more sources by progressively downsampling. The result is a new source with built-in mipmaps — navigation stays smooth at any zoom level because BDV automatically picks the appropriate resolution.
+
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Source - Pyramidize`
+
+| Parameter | Description |
+|-----------|-------------|
+| Select Source(s) | The sources to pyramidize |
+
+:::{tip}
+Run **Source - Pyramidize** on fused or resampled sources to get efficient multi-resolution viewing. This is especially useful after **Source - Fuse And Resample Sources** when you set **Resolution Levels** to 1 in the grid model — pyramidize handles downscaling lazily without recomputing the full fusion.
+:::
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Source - Pyramidize`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+// Sources are selected interactively from the dialog.
+run("Source - Pyramidize");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import ch.epfl.biop.command.process.SourcesPyramidizeCommand
+
+def result = cs.run(SourcesPyramidizeCommand, true,
+    "sources", sources
+).get()
+
+def pyramidized = result.getOutput("sources_out")
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from ch.epfl.biop.command.process import SourcesPyramidizeCommand
+
+result = cs.run(SourcesPyramidizeCommand, True,
+    ["sources", sources]
+).get()
+
+pyramidized = result.getOutput("sources_out")
+```
+::::
+
+:::::
+
+![Pyramidized fused source: smooth navigation at any zoom level](images/fuse_resample_BigDataViewer-Pyramidized.png)
