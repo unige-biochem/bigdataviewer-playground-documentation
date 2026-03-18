@@ -22,6 +22,7 @@ BigDataViewer Playground extends `BigDataViewer <https://imagej.net/plugins/bdv/
 
    installation/installation
    opening_images/opening_images
+   workspace/workspace
    visualizing_images/visualizing_images
    processing_images/index
    exporting_images/exporting_images
