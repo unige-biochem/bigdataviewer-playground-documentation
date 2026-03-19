@@ -42,7 +42,7 @@ Menu: Plugins > BigDataViewer-Playground > BDVDataset > Create BDV Dataset [Bio-
 
 The opener automatically recognizes that the dataset is skewed and applies the proper 3D transformation for display. **There is no need to compute a deskewed dataset** - BigDataViewer supports arbitrary 3D transformations, so the skewed data is displayed with the correct geometry directly.
 
-![Raw LLS7 timelapse opened in BigDataViewer](images/lls7_step1_BigDataViewer_Raw_Timelapse.png)
+![Raw LLS7 timelapse opened in BigDataViewer](images/lls7_step1_BigDataViewer-Raw_Timelapse.png)
 
 ### Verify Loading
 
@@ -127,10 +127,10 @@ Choose at least as many threads as you have defined GPU workers in your pool. If
 
 ::::{grid} 2
 :::{grid-item}
-![Raw data](images/lls7_step2_BigDataViewer_Raw.png)
+![Raw data](images/lls7_step2_BigDataViewer-Raw.png)
 :::
 :::{grid-item}
-![Deconvolved data](images/lls7_step2_BigDataViewer_Deconvolved.png)
+![Deconvolved data](images/lls7_step2_BigDataViewer-Deconvolved.png)
 :::
 ::::
 
@@ -171,7 +171,7 @@ Menu: Plugins > BigDataViewer-Playground > BDV > LLS7 - Compensate Z-drift
 **Run on raw data**: It's more efficient to run drift correction on the raw (non-deconvolved) data since it requires no computation - just loading. The correction automatically propagates to deconvolved sources because their transforms are linked.
 :::
 
-![BDV view after Z-drift correction](images/lls7_step3_BigDataViewer_Drift_Corrected.png)
+![BDV view after Z-drift correction](images/lls7_step3_BigDataViewer-Drift_Corrected.png)
 
 ---
 
@@ -197,7 +197,7 @@ Menu: Plugins > BigDataViewer-Playground > BDV > LLS7 - Crop 3D
 2. Adjust the box position and size to encompass your region of interest
 3. Confirm the selection
 
-![Interactive 3D crop bounding box in BDV](images/lls7_step4_BigDataViewer_Crop_Selection.png)
+![Interactive 3D crop bounding box in BDV](images/lls7_step4_BigDataViewer-Crop_Selection.png)
 
 ### What Happens
 
@@ -242,7 +242,7 @@ Menu: Plugins > BigDataViewer-Playground > Sources > Export > Export Sources To 
 
 ## Expected Output
 
-![Cropped deconvolved result in BVV (3D volume rendering)](images/lls7_step5_BigVolumeViewer_Cropped_Deconvolved.png)
+![Cropped deconvolved result in BVV (3D volume rendering)](images/lls7_step5_BigVolumeViewer-Cropped_Deconvolved.png)
 
 After completing this workflow:
 
