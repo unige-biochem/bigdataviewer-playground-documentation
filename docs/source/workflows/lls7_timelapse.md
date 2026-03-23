@@ -36,9 +36,64 @@ Transform raw LLS7 acquisitions into analysis-ready data:
 
 With the **Quick Start CZI Reader** update site enabled, use the standard Bio-Formats opener:
 
+| Parameter | Description |
+|-----------|-------------|
+| Files | Path(s) to your `.czi` acquisition file(s) |
+| Dataset name | Name for the dataset in the BDV workspace |
+| Unit | Physical unit of the metadata (usually MICROMETER) |
+| Split RGB channels | Separate RGB into individual sources |
+| Auto pyramidize | Automatically build resolution pyramid |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins > BigDataViewer-Playground > BDVDataset > Create BDV Dataset [Bio-Formats]`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Create BDV Dataset [Bio-Formats]");
 ```
-Menu: Plugins > BigDataViewer-Playground > BDVDataset > Create BDV Dataset [Bio-Formats]
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@CommandService cs
+
+import ch.epfl.biop.bdv.img.bioformats.command.DatasetFromBioFormatsCreateCommand
+
+cs.run(DatasetFromBioFormatsCreateCommand, true,
+    "files", [new java.io.File("/path/to/data.czi")] as java.io.File[],
+    "datasetname", "LLS7 raw",
+    "unit", "MICROMETER",
+    "split_rgb_channels", false,
+    "auto_pyramidize", true,
+    "disable_memo", false,
+    "plane_origin_convention", "TOP LEFT"
+).get()
 ```
+::::
+
+::::{tab-item} Python
+```python
+#@CommandService cs
+
+from ch.epfl.biop.bdv.img.bioformats.command import DatasetFromBioFormatsCreateCommand
+from java.io import File
+
+cs.run(DatasetFromBioFormatsCreateCommand, True,
+    ["files", [File("/path/to/data.czi")],
+     "datasetname", "LLS7 raw",
+     "unit", "MICROMETER",
+     "split_rgb_channels", False,
+     "auto_pyramidize", True,
+     "disable_memo", False,
+     "plane_origin_convention", "TOP LEFT"]
+).get()
+```
+::::
+
+:::::
 
 The opener automatically recognizes that the dataset is skewed and applies the proper 3D transformation for display. **There is no need to compute a deskewed dataset** - BigDataViewer supports arbitrary 3D transformations, so the skewed data is displayed with the correct geometry directly.
 
@@ -75,17 +130,63 @@ The algorithm:
 
 ### Run Drift Correction
 
-```
-Menu: Plugins > BigDataViewer-Playground > BDV > LLS7 - Compensate Z-drift
-```
-
-| Parameter | Description                                                   |
-|-----------|---------------------------------------------------------------|
+| Parameter | Description |
+|-----------|-------------|
 | Model Source | Source used to detect drift (choose a bright, stable channel) |
-| Sources to Correct | All sources that will receive the correction                  |
-| Intensity Threshold | Value above which sample is considered present (e.g., 250)    |
+| Sources to Correct | All sources that will receive the correction |
+| Intensity Threshold | Value above which sample is considered present (e.g., 250) |
 | Transform Mode | `Mutate` modifies existing transform; `Append` adds new layer |
-| Debug Mode | Shows XZ planes used for detection                            |
+| Debug Mode | Shows XZ planes used for detection |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins > BigDataViewer-Playground > BDV > LLS7 - Compensate Z-drift`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("LLS7 - Compensate Z-drift");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter model_source
+#@SourceAndConverter[] sources_to_correct
+#@CommandService cs
+
+import ch.epfl.biop.command.workflow.lls7.LLS7ZDriftCompensateCommand
+
+cs.run(LLS7ZDriftCompensateCommand, true,
+    "model_source", model_source,
+    "sources_to_correct", sources_to_correct,
+    "threshold", 250.0,
+    "mode", "Mutate",
+    "debug", false
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter model_source
+#@SourceAndConverter[] sources_to_correct
+#@CommandService cs
+
+from ch.epfl.biop.command.workflow.lls7 import LLS7ZDriftCompensateCommand
+
+cs.run(LLS7ZDriftCompensateCommand, True,
+    ["model_source", model_source,
+     "sources_to_correct", sources_to_correct,
+     "threshold", 250.0,
+     "mode", "Mutate",
+     "debug", False]
+).get()
+```
+::::
+
+:::::
 
 :::{tip}
 **Run on raw data**: It's more efficient to run drift correction on the raw (non-deconvolved) data since it requires no computation - just loading. The correction automatically propagates to deconvolved sources because their transforms are linked.
@@ -96,7 +197,7 @@ Menu: Plugins > BigDataViewer-Playground > BDV > LLS7 - Compensate Z-drift
 
 ---
 
-## Step 2: Deconvolve (Recommended)
+## Step 3: Deconvolve (Recommended)
 
 GPU-accelerated Richardson-Lucy deconvolution significantly improves image quality.
 
@@ -143,24 +244,84 @@ This allows you to specify how OpenCL-compatible devices are split and used for 
 
 ### Run Deconvolution
 
-```
-Menu: Plugins > BigDataViewer-Playground > Sources > Deconvolve sources (Richardson Lucy GPU - Tiled)
-```
-
-| Parameter | Description | Recommended                     |
-|-----------|-------------|---------------------------------|
-| Select Source(s) | The LLS7 sources to deconvolve | Your raw data                   |
-| PSF Source | Point spread function | Your loaded PSF                 |
-| Output Pixel Type | Keep original or convert to float | Keep Pixel Type                 |
-| Name Suffix | Appended to output names | `_deconvolved`                  |
+| Parameter | Description | Recommended |
+|-----------|-------------|-------------|
+| Select Source(s) | The LLS7 sources to deconvolve | Your raw data |
+| PSF Source | Point spread function | Your loaded PSF |
+| Output Pixel Type | Keep original or convert to float | Keep Pixel Type |
+| Name Suffix | Appended to output names | `_deconvolved` |
 | Block Size X/Y/Z | Tile size for GPU processing | 128-256 (depends on GPU memory) |
-| Overlap Size | Overlap between tiles | 16-64 pixels                    |
-| Iterations | Richardson-Lucy iterations | 30-60                           |
-| Non-Circulant | Reduces edge artifacts | ✓ Recommended                   |
-| Regularization Factor | Prevents noise amplification | 0.0001-0.01                     |
-| Number of Threads | Parallel tile processing | 4-10                            |
+| Overlap Size | Overlap between tiles | 16-64 pixels |
+| Iterations | Richardson-Lucy iterations | 30-60 |
+| Non-Circulant | Reduces edge artifacts | ✓ Recommended |
+| Regularization Factor | Prevents noise amplification | 0.0001-0.01 |
+| Number of Threads | Parallel tile processing | 4-10 |
 
 Choose at least as many threads as you have defined GPU workers in your pool. If you have 2x4090 GPU, each split in 4, this means at least 8 threads. If you have a single GPU undivided, choose 2.
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins > BigDataViewer-Playground > Sources > Deconvolve sources (Richardson Lucy GPU - Tiled)`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Deconvolve sources (Richardson Lucy GPU - Tiled)");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@SourceAndConverter psf
+#@CommandService cs
+
+import ch.epfl.biop.command.process.deconvolve.SourcesDeconvolveCommand
+
+cs.run(SourcesDeconvolveCommand, true,
+    "sources", sources,
+    "psf", psf,
+    "output_pixel_type", "Same as input",
+    "suffix", "_deconvolved",
+    "block_size_x", 256,
+    "block_size_y", 256,
+    "block_size_z", 256,
+    "overlap_size", 32,
+    "num_iterations", 40,
+    "non_circulant", true,
+    "regularization_factor", 0.001f,
+    "n_threads", 4
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@SourceAndConverter psf
+#@CommandService cs
+
+from ch.epfl.biop.command.process.deconvolve import SourcesDeconvolveCommand
+
+cs.run(SourcesDeconvolveCommand, True,
+    ["sources", sources,
+     "psf", psf,
+     "output_pixel_type", "Same as input",
+     "suffix", "_deconvolved",
+     "block_size_x", 256,
+     "block_size_y", 256,
+     "block_size_z", 256,
+     "overlap_size", 32,
+     "num_iterations", 40,
+     "non_circulant", True,
+     "regularization_factor", 0.001,
+     "n_threads", 4]
+).get()
+```
+::::
+
+:::::
 
 ::::{grid} 2
 :::{grid-item}
@@ -183,15 +344,57 @@ This step combines cropping and deskewing into a single operation. An interactiv
 
 ### Run Interactive Crop
 
-```
-Menu: Plugins > BigDataViewer-Playground > BDV > LLS7 - Crop 3D
-```
-
 | Parameter | Description |
 |-----------|-------------|
-| Select BDV Window | The viewer showing your data |
+| BDV Window | The viewer showing your data |
 | Output Name | Name for the cropped image |
-| Select Source(s) | Sources to crop |
+| Sources | Sources to crop |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins > BigDataViewer-Playground > BDV > LLS7 - Crop 3D`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("LLS7 - Crop 3D");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@bdv.util.BdvHandle bdvh
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import ch.epfl.biop.command.workflow.lls7.LLS7CropCommand
+
+cs.run(LLS7CropCommand, true,
+    "bdvh", bdvh,
+    "sources", sources,
+    "image_name", "cropped_deskewed"
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@bdv.util.BdvHandle bdvh
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from ch.epfl.biop.command.workflow.lls7 import LLS7CropCommand
+
+cs.run(LLS7CropCommand, True,
+    ["bdvh", bdvh,
+     "sources", sources,
+     "image_name", "cropped_deskewed"]
+).get()
+```
+::::
+
+:::::
 
 ### Interactive Selection
 
@@ -222,23 +425,90 @@ Export the processed (cropped, deskewed, optionally deconvolved) data for downst
 
 ### Export to OME-TIFF
 
-```
-Menu: Plugins > BigDataViewer-Playground > Sources > Export > Export Sources To OME Tiff (build pyramid)
-```
-
 | Parameter | Description | Recommended |
 |-----------|-------------|-------------|
 | Sources to export | Your cropped/processed sources | |
 | Selected Channels | Leave blank for all | |
 | Selected Slices | Leave blank for all | |
 | Selected Timepoints | Leave blank for all, or specify range | |
-| Output file | Destination .ome.tiff file | |
+| Output file | Destination `.ome.tiff` file | |
 | Physical unit | MICROMETER or MILLIMETER | MICROMETER |
 | Number of resolution levels | Pyramid levels | 4 |
 | Scaling factor | Downsampling between levels | 2 |
 | Tile Size X/Y | Tile dimensions | 512 |
 | Number of threads | Parallel processing | 8 |
 | Compression type | LZW, JPEG-2000, etc. | LZW |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins > BigDataViewer-Playground > Export > Source - Export To OME-TIFF`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Source - Export To OME-TIFF");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sacs
+#@CommandService cs
+
+import ch.epfl.biop.kheops.command.KheopsExportSourcesCommand
+
+cs.run(KheopsExportSourcesCommand, true,
+    "sacs", sacs,
+    "file", new java.io.File("/path/to/output.ome.tiff"),
+    "n_resolution_levels", 4,
+    "downscaling", 2,
+    "tile_size_x", 512,
+    "tile_size_y", 512,
+    "n_threads", 8,
+    "compression", "LZW",
+    "compress_temp_files", false,
+    "range_channels", "",
+    "range_frames", "",
+    "range_slices", "",
+    "override_voxel_size", false,
+    "vox_size_xy_um", 1.0,
+    "vox_size_z_um", 1.0,
+    "unit", "MICROMETER"
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sacs
+#@CommandService cs
+
+from ch.epfl.biop.kheops.command import KheopsExportSourcesCommand
+from java.io import File
+
+cs.run(KheopsExportSourcesCommand, True,
+    ["sacs", sacs,
+     "file", File("/path/to/output.ome.tiff"),
+     "n_resolution_levels", 4,
+     "downscaling", 2,
+     "tile_size_x", 512,
+     "tile_size_y", 512,
+     "n_threads", 8,
+     "compression", "LZW",
+     "compress_temp_files", False,
+     "range_channels", "",
+     "range_frames", "",
+     "range_slices", "",
+     "override_voxel_size", False,
+     "vox_size_xy_um", 1.0,
+     "vox_size_z_um", 1.0,
+     "unit", "MICROMETER"]
+).get()
+```
+::::
+
+:::::
 
 ---
 
