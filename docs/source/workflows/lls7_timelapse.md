@@ -23,8 +23,8 @@ Transform raw LLS7 acquisitions into analysis-ready data:
 
 ```
 ┌─────────────┐     ┌──────────────┐     ┌─────────────┐     ┌──────────────┐     ┌──────────────┐
-│ Open LLS7   │ --> │ Deconvolve   │ --> │ Correct     │ --> │ Crop         │ --> │ Export       │
-│ Raw Data    │     │ (optional)   │     │ Drift       │     │ (& Deskew)   │     │              │
+│ Open LLS7   │ --> │ Correct      │ --> │ Deconvolve  │ --> │ Crop         │ --> │ Export       │
+│ Raw Data    │     │ Drift        │     │ (optional)  │     │ (& Deskew)   │     │              │
 └─────────────┘     └──────────────┘     └─────────────┘     └──────────────┘     └──────────────┘
 ```
 
@@ -42,7 +42,7 @@ Menu: Plugins > BigDataViewer-Playground > BDVDataset > Create BDV Dataset [Bio-
 
 The opener automatically recognizes that the dataset is skewed and applies the proper 3D transformation for display. **There is no need to compute a deskewed dataset** - BigDataViewer supports arbitrary 3D transformations, so the skewed data is displayed with the correct geometry directly.
 
-![Raw LLS7 timelapse opened in BigDataViewer](images/lls7_step1_BigDataViewer_Raw_Timelapse.png)
+![Raw LLS7 timelapse opened in BigDataViewer](images/lls7_step1_BigDataViewer-Raw_Timelapse.png)
 
 ### Verify Loading
 
@@ -57,6 +57,42 @@ After opening, the source appears in the BDV Sources tree. You can:
 :::{note}
 The raw data appears in its native skewed geometry when visualized, but BDV applies the correct transform so structures appear properly oriented. The actual deskewing (resampling to orthogonal coordinates) happens later during the crop step.
 :::
+
+---
+
+## Step 2: Correct Z-Drift (Optional)
+
+For timelapse acquisitions, the sample may drift in Z over time. This command automatically detects and compensates for Z-drift.
+
+### How It Works
+
+The algorithm:
+1. Extracts the middle XZ plane for each timepoint
+2. Computes a Z intensity profile via median projection
+3. Finds where intensity exceeds a threshold (sample position)
+4. Calculates drift relative to the first timepoint
+5. Applies Z translation to compensate
+
+### Run Drift Correction
+
+```
+Menu: Plugins > BigDataViewer-Playground > BDV > LLS7 - Compensate Z-drift
+```
+
+| Parameter | Description                                                   |
+|-----------|---------------------------------------------------------------|
+| Model Source | Source used to detect drift (choose a bright, stable channel) |
+| Sources to Correct | All sources that will receive the correction                  |
+| Intensity Threshold | Value above which sample is considered present (e.g., 250)    |
+| Transform Mode | `Mutate` modifies existing transform; `Append` adds new layer |
+| Debug Mode | Shows XZ planes used for detection                            |
+
+:::{tip}
+**Run on raw data**: It's more efficient to run drift correction on the raw (non-deconvolved) data since it requires no computation - just loading. The correction automatically propagates to deconvolved sources because their transforms are linked.
+:::
+
+![Kymograph (YT) view before Z-drift correction](images/before_zdrift_correction.png)
+![Kymograph (YT) view after Z-drift correction](images/after_zdrift_correction.png)
 
 ---
 
@@ -89,6 +125,7 @@ Open your PSF image in BigDataViewer Playground using the same Bio-Formats opene
 ```
 Menu: Plugins > BigDataViewer-Playground > BDVDataset > Create BDV Dataset [Bio-Formats]
 ```
+Or simply drag and drop the file into BigDataViewer-Playground's tree view.
 
 :::{tip}
 **Multi-channel tip**: For best results with multi-channel data, use wavelength-specific PSFs. Execute the deconvolution command separately for each channel with its corresponding PSF.
@@ -102,7 +139,7 @@ If you have multiple GPUs or want to optimize GPU usage, configure the OpenCL de
 Menu: Edit > Options > CLIJ Pool Options
 ```
 
-This allows you to specify how OpenCL-compatible devices are split and used for parallel processing.
+This allows you to specify how OpenCL-compatible devices are split and used for parallel processing (Multi-GPU supported).
 
 ### Run Deconvolution
 
@@ -127,51 +164,16 @@ Choose at least as many threads as you have defined GPU workers in your pool. If
 
 ::::{grid} 2
 :::{grid-item}
-![Raw data](images/lls7_step2_BigDataViewer_Raw.png)
+![Raw data](images/lls7_step2_BigDataViewer-Raw.png)
 :::
 :::{grid-item}
-![Deconvolved data](images/lls7_step2_BigDataViewer_Deconvolved.png)
+![Deconvolved data](images/lls7_step2_BigDataViewer-Deconvolved.png)
 :::
 ::::
 
 :::{note}
 **Lazy processing**: The deconvolved sources are created instantly and appear in the tree view, but computation happens on-demand when you view or export. This is a core feature of BigDataViewer - everything is computed lazily.
 :::
-
----
-
-## Step 3: Correct Z-Drift (Optional)
-
-For timelapse acquisitions, the sample may drift in Z over time. This command automatically detects and compensates for Z-drift.
-
-### How It Works
-
-The algorithm:
-1. Extracts the middle XZ plane for each timepoint
-2. Computes a Z intensity profile via median projection
-3. Finds where intensity exceeds a threshold (sample position)
-4. Calculates drift relative to the first timepoint
-5. Applies Z translation to compensate
-
-### Run Drift Correction
-
-```
-Menu: Plugins > BigDataViewer-Playground > BDV > LLS7 - Compensate Z-drift
-```
-
-| Parameter | Description                                                   |
-|-----------|---------------------------------------------------------------|
-| Model Source | Source used to detect drift (choose a bright, stable channel) |
-| Sources to Correct | All sources that will receive the correction                  |
-| Intensity Threshold | Value above which sample is considered present (e.g., 250)    |
-| Transform Mode | `Mutate` modifies existing transform; `Append` adds new layer |
-| Debug Mode | Shows XZ planes used for detection                            |
-
-:::{tip}
-**Run on raw data**: It's more efficient to run drift correction on the raw (non-deconvolved) data since it requires no computation - just loading. The correction automatically propagates to deconvolved sources because their transforms are linked.
-:::
-
-![BDV view after Z-drift correction](images/lls7_step3_BigDataViewer_Drift_Corrected.png)
 
 ---
 
@@ -197,7 +199,7 @@ Menu: Plugins > BigDataViewer-Playground > BDV > LLS7 - Crop 3D
 2. Adjust the box position and size to encompass your region of interest
 3. Confirm the selection
 
-![Interactive 3D crop bounding box in BDV](images/lls7_step4_BigDataViewer_Crop_Selection.png)
+![Interactive 3D crop bounding box in BDV](images/interactive_crop.png)
 
 ### What Happens
 
@@ -242,7 +244,7 @@ Menu: Plugins > BigDataViewer-Playground > Sources > Export > Export Sources To 
 
 ## Expected Output
 
-![Cropped deconvolved result in BVV (3D volume rendering)](images/lls7_step5_BigVolumeViewer_Cropped_Deconvolved.png)
+![Cropped deconvolved result in BVV (3D volume rendering)](images/lls7_step5_BigVolumeViewer-Cropped_Deconvolved.png)
 
 After completing this workflow:
 

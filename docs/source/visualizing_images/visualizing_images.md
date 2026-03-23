@@ -316,7 +316,7 @@ Arranges selected sources in a grid layout within a new BDV window. Each cell sh
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Show Sources On Grid`
 
-![Both channels of the LLS7 HeLa dataset arranged in a 2-column grid](images/bdv_grid_overview_BigDataViewer.png)
+![Both channels of the LLS7 HeLa dataset arranged in a 2-column grid](images/bdv_grid_overview_BigDataViewer_00.png)
 ::::
 
 ::::{tab-item} IJ Macro
