@@ -7,6 +7,10 @@ BigDataViewer Playground provides two types of viewers:
 - **BDV (BigDataViewer)** — a 2D slice viewer that lets you navigate freely through 3D data by slicing at any orientation. This is the primary viewer for most tasks.
 - **BVV (BigVolumeViewer)** — a GPU-accelerated 3D volume renderer that shows your data as a translucent volume. Useful for getting a spatial overview of 3D structures.
 
+:::{note}
+BVV has some limitations compared to BDV: you can't display non-linear warped sources, and you can't display hundreds of sources at the same time, something that BDV handles generally gracefully.
+:::
+
 Both viewers share the same lazy-loading architecture: only the pixels currently visible on screen are fetched, so even terabyte-scale datasets can be explored interactively.
 
 All display commands are found under:
@@ -33,12 +37,13 @@ The most common way to visualize your data. Creates a new BDV window and display
 If you have already opened a BDV window and want to add more sources to it, uncheck **Open In New Window**. The sources will be added to the last active BDV window.
 :::
 
+![BDV window displaying two channels of the LLS7 HeLa dataset](images/bdv_show_sources_BigDataViewer.png)
+
 :::::{tab-set}
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Show Sources`
 
-![BDV window displaying two channels of the LLS7 HeLa dataset](images/bdv_show_sources_BigDataViewer.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -182,27 +187,21 @@ BigDataViewer uses a combination of mouse and keyboard controls for navigation. 
 
 ### Mouse Controls
 
-| Action | Effect |
-|--------|--------|
-| Left-click + drag | Pan (translate) the view |
+| Action                                      | Effect |
+|---------------------------------------------|--------|
+| Left-click + drag                           | Pan (translate) the view |
 | Right-click + drag (or middle-click + drag) | Rotate the view in 3D |
-| Scroll wheel | Zoom in/out |
-| Shift + scroll wheel | Walk through Z slices (translate along the viewing axis) |
+| Scroll wheel                                | Zoom in/out |
+| Shift + scroll wheel                        | Walk through Z slices (translate along the viewing axis) |
 
 ### Keyboard Shortcuts
 
 | Key | Effect |
 |-----|--------|
-| {kbd}`X` / {kbd}`Y` / {kbd}`Z` | Align the view to the X, Y, or Z axis |
-| {kbd}`Shift+X` / {kbd}`Shift+Y` / {kbd}`Shift+Z` | Align to the opposite direction of that axis |
+| {kbd}`Shift+X` / {kbd}`Shift+Y` / {kbd}`Shift+Z` | Align the view to the X, Y, or Z axis |
 | {kbd}`I` | Toggle between nearest-neighbor and interpolated rendering |
-| {kbd}`S` | Toggle brightness/contrast dialog |
-| {kbd}`F6` | Toggle visibility settings (choose which sources are shown) |
-| {kbd}`T` | Toggle timepoint slider |
 | {kbd}`[` / {kbd}`]` | Step backward/forward through timepoints |
-| {kbd}`Numpad 1`–`0` | Toggle visibility of source 1–10 |
-| {kbd}`Shift+Numpad 1`–`0` | Toggle whether source 1–10 belongs to the current group |
-| {kbd}`F` | Set the view transform to show the entire dataset |
+TODO: UP and DOWN and blue arrow
 
 :::{note}
 These are the default BigDataViewer key bindings. They can be customized via **BDV - Preferences - Set (Key) Bindings**.

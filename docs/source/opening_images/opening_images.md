@@ -4,14 +4,19 @@ This guide covers how to get your image data into BigDataViewer Playground.
 
 ## What Is a Dataset?
 
-When you open images in BigDataViewer Playground, they become a **dataset**. Understanding what a dataset is will help you work with every other feature.
+When you open images in BigDataViewer Playground, they become a **dataset**. Understanding what a dataset is will help you work with every other feature. A dataset is composed of many sources, each source representing a XYZT pixel dataset. Each source has additional metadata, to specify their other properties within the dataset (channel, tile, illumination, etc.). 
 
-A dataset is a unified representation of your images that holds two things:
+A dataset is a unified representation of your images that holds three things:
 
 1. **A recipe to read the raw data** — the dataset doesn't copy your pixels. It stores a reference to the original source (a file on disk, an OMERO server, a QuPath project, etc.) and reads data on demand.
 2. **Spatial metadata** — position, orientation, and calibration of each image, stored as a chain of 3D affine transforms. Each channel and timepoint can have its own chain of transforms.
+3. **Source metadata** — channel name and index, tiles, angle, illumination, etc. These are also called `Entities` in BigDataViewer's jargon. This helps to regroup source by kind (all tiles of channel 2, for instance).
 
 This design means you can open terabyte-scale images instantly — no data is loaded until you actually look at it or export it. And when you register, drift-correct, or transform your data, those operations simply add transforms to the chain rather than rewriting pixels.
+
+:::{note}
+The pixel data from a Dataset are 'immutable', this means that you can't modify the pixel data of the dataset. Think of this as a "read-only" file. However you'll be able to compute new data resulting from the processing of Datasets, which can then be saved and exported as new Datasets. 
+:::
 
 ### Saving and Reloading Datasets
 
@@ -19,7 +24,7 @@ Datasets can be **saved to an XML file** and reloaded later. The XML file stores
 
 - Which backend to use (Bio-Formats, OMERO, etc.) and how to reach the raw data
 - The full chain of affine transforms for each channel and timepoint
-- Display settings
+- Other sources metadata and display settings (color, min max display range)
 
 This means you can set up a complex multi-image, multi-channel dataset, save it, and pick up exactly where you left off — or share it with a collaborator who has access to the same raw files.
 
@@ -37,15 +42,21 @@ All images you open appear in the **BigDataViewer Playground** panel, accessible
 
 ![The BDV Playground window showing the sources tree after opening the LLS7 dataset](images/sources_tree_BDV_Sources.png)
 
-The panel displays a **tree of sources**. Think of it as a pipeline of filters: every source you have opened lives at the root, and child nodes progressively narrow down the selection — by dataset, by channel, by tile, by timepoint, and so on. Because the filtering is additive, the same physical source can appear under multiple leaf nodes simultaneously.
+The panel displays a **tree of sources**. Think of it as a pipeline of filters: every source you have opened lives at the root, and child nodes progressively narrow down the selection — by dataset, by channel, by tile, by timepoint, and so on. The same source can appear under multiple leaf nodes simultaneously.
 
 For example, after opening a two-channel 3-D acquisition you might see:
 
 ```
 All Sources
-└── Hela-Kyoto-1-Timepoint-LLS7          ← dataset filter
-    ├── Channel 0                          ← channel filter
-    └── Channel 1
+└── Hela-Kyoto-1-Timepoint-LLS7         ← dataset filter                          
+    ├── All Sources
+    |       ├── Source Ch0 
+    |       └── Source Ch1
+    └── Channel                       
+        ├── Channel 0                   ← channel 0 filter
+        |       └── Source Ch0
+        └── Channel 1                   ← channel 1 filter 
+                └── Source Ch1
 ```
 
 **Interactions:**
@@ -189,7 +200,7 @@ cs.run(DatasetFromImagePlusCreateCommand, True,
 
 ### Dataset - Create [OMERO]
 
-Creates a dataset from images stored on an OMERO server. You must connect to the server first using `Plugins > BIOP > OMERO > Omero - Connect`.
+Creates a dataset from images stored on an OMERO server. You can connect to the server first using `Plugins > BIOP > OMERO > Omero - Connect`, or you will be prompted to connect if you're not yet connected to the server. 
 
 | Parameter | Description |
 |-----------|-------------|
@@ -217,7 +228,7 @@ run("Dataset - Create [OMERO]");
 import ch.epfl.biop.bdv.img.omero.command.DatasetFromOMEROCreateCommand
 
 cs.run(DatasetFromOMEROCreateCommand, true,
-    "omero_urls", "omero://your-server/image/1234",
+    "omero_urls", "https://omero.myorg.org/webclient/?show=image-1234,https://omero.myorg.org/webclient/?show=image-1235",
     "datasetname", "My OMERO Dataset",
     "plane_origin_convention", "TOP LEFT",
     "unit", "MICROMETER"
@@ -232,7 +243,7 @@ cs.run(DatasetFromOMEROCreateCommand, true,
 from ch.epfl.biop.bdv.img.omero.command import DatasetFromOMEROCreateCommand
 
 cs.run(DatasetFromOMEROCreateCommand, True,
-    ["omero_urls", "omero://your-server/image/1234",
+    ["omero_urls", "https://omero.myorg.org/webclient/?show=image-1234,https://omero.myorg.org/webclient/?show=image-1235",
      "datasetname", "My OMERO Dataset",
      "plane_origin_convention", "TOP LEFT",
      "unit", "MICROMETER"]
@@ -416,7 +427,7 @@ See the [LLS7 Timelapse workflow](../workflows/lls7_timelapse.md) for a complete
 
 ### Dataset - Samples
 
-Opens a sample dataset for testing and exploration. Downloads and caches on first use.
+Opens a sample dataset for testing and exploration. Downloads and caches (in `/home/CachedSamples/`) on first use.
 
 | Parameter | Description |
 |-----------|-------------|
@@ -585,7 +596,7 @@ cs.run(DatasetEntitiesRemoveCommand, True,
 
 ### Dataset - Make BigStitcher Compatible
 
-Converts a BigDataViewer Playground XML dataset to BigStitcher format.
+Converts a BigDataViewer Playground XML dataset to BigStitcher format. Essentially, this command will add a transform that will make each pixel of size 1 in XY, which is a BigStitcher convention.
 
 | Parameter | Description |
 |-----------|-------------|

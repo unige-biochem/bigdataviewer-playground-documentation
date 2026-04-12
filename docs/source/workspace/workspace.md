@@ -4,9 +4,8 @@ The workspace is the central hub of BigDataViewer Playground. It keeps track of 
 
 All workspace commands are found under:
 
-```
-Menu: Plugins > BigDataViewer-Playground > Workspace
-```
+
+{menuselection}`Plugins --> BigDataViewer-Playground --> Workspace`
 
 ---
 
@@ -14,9 +13,7 @@ Menu: Plugins > BigDataViewer-Playground > Workspace
 
 The main workspace interface is a window with a **hierarchical tree view** showing all sources currently loaded in the session.
 
-```
-Menu: Plugins > BigDataViewer-Playground > Workspace > Show BDV Playground Window
-```
+{menuselection}`Plugins --> BigDataViewer-Playground --> Workspace --> Show BDV Playground Window`
 
 This window is your primary way of interacting with sources outside of the viewers. Key interactions:
 
@@ -25,7 +22,7 @@ This window is your primary way of interacting with sources outside of the viewe
 - **Select multiple sources** to apply batch operations (e.g. show all selected sources in a viewer, export them together, apply the same transform)
 - Organize sources into **groups** for easier management
 
-The tree is organized hierarchically: datasets appear as top-level nodes, with individual channels, tiles, and timepoints nested below. As you process sources (fuse, classify, resample, etc.), the resulting virtual sources also appear in the tree.
+The tree is organized hierarchically: datasets appear as top-level nodes, with individual channels, tiles, and timepoints nested below. As you process sources (fuse, classify, resample, etc.), the resulting sources also appear in the tree, under the `Other Sources` node.
 
 :::{tip}
 If you close the BDV Playground window by accident, re-open it with **Show BDV Playground Window**. Your sources are not lost — the window is just a view into the workspace, not the workspace itself.
@@ -250,7 +247,7 @@ cs.run(SourceInspectCommand, True,
 
 ## State Save and Load
 
-You can save the entire workspace state — all sources, their display settings, and their transforms — to a JSON file, and restore it later. This is different from saving a dataset XML: the state captures *everything* in the workspace, including virtual sources created by processing commands.
+You can save the entire workspace state — all sources, their display settings, and their transforms — to a JSON file, and restore it later. This is different from saving a dataset XML: the state captures *everything* in the workspace, including virtual (lazy-computed) sources created by processing commands. Note: the processed data is not saved, but rather the "recipe" to compute data, which makes the saving near instantaneous. 
 
 ### State - Save
 
@@ -400,15 +397,24 @@ Use Dataset XML for archiving and sharing. Use State for checkpointing complex a
 
 ## Cache Options
 
-BigDataViewer Playground uses a cache to store recently accessed image tiles in memory, so that scrolling back to a region you've already visited is instantaneous. The cache settings control how much memory is allocated to this cache.
+BigDataViewer Playground uses a cache to store recently accessed image tiles in memory, so that scrolling back to a region you've already visited is instantaneous. The cache settings control how much memory is allocated to this cache, and the backing cache mechanism.
 
-| Parameter | Description |
-|-----------|-------------|
-| Cache type | Cache implementation to use |
-| Cache size (MB) | Fixed cache size in megabytes |
+There are three mutually exclusive memory bounds that you can set:
+1. Set a fixed amount of RAM for the pixel data cache
+2. Set a fixed amount of RAM for the rest of the application
+3. Set a ratio of total RAM available to the JVM for pixel data cache
+
+If you choose a method, let's say method `2.`, you need to set the other parameters to `-1`.
+
+To illustrate the modes, let's imagine the application can use up to 200Gb RAM. The three modes will be equivalent if: you choose option 1 with 150Gb (50Gb remaining for app), or if you choose option 2 with 50Gb (150Gb for pixel cache), or if you choose option 3 with 75% (200Gb * 0.75 = 150Gb cache for pixel data).
+
+| Parameter | Description                                                           |
+|-----------|-----------------------------------------------------------------------|
+| Cache type | Cache implementation to use (`LinkedHashMap` or `Caffeine`)               |
+| Cache size (MB) | Fixed cache size in megabytes                                         |
 | Reserved memory (MB) | Memory reserved for the rest of the application (Fiji, plugins, etc.) |
-| Memory ratio (%) | Percentage of available memory to allocate to the cache |
-| Log interval (ms) | Interval between cache log messages (negative to disable) |
+| Memory ratio (%) | Percentage of available memory to allocate to the cache               |
+| Log interval (ms) | Interval between cache log messages (negative to disable)             |
 
 :::{important}
 Cache options take effect only after restarting Fiji.
@@ -433,11 +439,11 @@ run("Set Cache Options (Needs Restart)");
 import sc.fiji.bdvpg.command.workspace.CacheOptionsSetCommand
 
 cs.run(CacheOptionsSetCommand, true,
-    "cache_type", "BOUNDED",
-    "mem_for_cache_mb", 512,
-    "mem_for_everything_else_mb", 256,
-    "mem_ratio_pc", 50,
-    "log_ms", -1
+    "cache_type", "LinkedHashMap",
+    "mem_for_cache_mb", 128000,
+    "mem_for_everything_else_mb", -1,
+    "mem_ratio_pc", -1,
+    "log_ms", 1000
 ).get()
 ```
 ::::
@@ -449,17 +455,14 @@ cs.run(CacheOptionsSetCommand, true,
 from sc.fiji.bdvpg.command.workspace import CacheOptionsSetCommand
 
 cs.run(CacheOptionsSetCommand, True,
-    ["cache_type", "BOUNDED",
-     "mem_for_cache_mb", 512,
-     "mem_for_everything_else_mb", 256,
-     "mem_ratio_pc", 50,
-     "log_ms", -1]
+    ["cache_type", "LinkedHashMap",
+     "mem_for_cache_mb", 128000,
+     "mem_for_everything_else_mb", -1,
+     "mem_ratio_pc", -1,
+     "log_ms", 1000]
 ).get()
 ```
 ::::
 
 :::::
 
-:::{tip}
-If BigDataViewer feels sluggish when navigating large datasets, increasing the cache size can help — it allows more tiles to stay in memory. Conversely, if Fiji runs out of memory during processing, reduce the cache size to leave more room for other operations.
-:::
