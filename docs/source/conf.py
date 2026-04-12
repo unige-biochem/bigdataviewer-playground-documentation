@@ -17,11 +17,29 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
+    'sphinx.ext.extlinks',
     'sphinx_search.extension',
     'myst_parser',
     'sphinx_copybutton',
     'sphinx_design',
 ]
+
+# Source code links — update these two version strings when bumping the tracked release.
+_bdvpg_version = "0.20.2"   # bigdataviewer-playground (sc.fiji.bdvpg.*)
+_biop_version  = "0.20.4"   # bigdataviewer-biop-tools  (ch.epfl.biop.*)
+
+extlinks = {
+    "bdvpg-src": (
+        f"https://github.com/bigdataviewer/bigdataviewer-playground/blob/"
+        f"bigdataviewer-playground-{_bdvpg_version}/src/main/java/%s",
+        "%s",
+    ),
+    "biop-src": (
+        f"https://github.com/BIOP/bigdataviewer-biop-tools/blob/"
+        f"bigdataviewer-biop-tools-{_biop_version}/src/main/java/%s",
+        "%s",
+    ),
+}
 
 # Copy button configuration
 copybutton_prompt_text = r">>> |\.\.\. |\$ |> "
@@ -44,6 +62,8 @@ html_logo = 'assets/img/bdv_logo.png'
 html_theme_options = {
     'logo_only': True
 }
+html_static_path = ['_static']
+html_js_files = ['js/external_links.js']
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'

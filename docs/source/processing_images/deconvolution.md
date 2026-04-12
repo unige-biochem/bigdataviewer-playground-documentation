@@ -61,7 +61,7 @@ run("Source - Deconvolve (Richardson Lucy GPU - Tiled)");
 
 import ch.epfl.biop.command.process.deconvolve.SourcesDeconvolveCommand
 
-cs.run(SourcesDeconvolveCommand, true,
+def result = cs.run(SourcesDeconvolveCommand, true,
     "sources", sources,
     "psf", psf,
     "num_iterations", 20,
@@ -75,6 +75,8 @@ cs.run(SourcesDeconvolveCommand, true,
     "suffix", "_deconvolved",
     "n_threads", 4
 ).get()
+
+def deconvolved = result.getOutput("sources_out")
 ```
 ::::
 
@@ -86,7 +88,7 @@ cs.run(SourcesDeconvolveCommand, true,
 
 from ch.epfl.biop.command.process.deconvolve import SourcesDeconvolveCommand
 
-cs.run(SourcesDeconvolveCommand, True,
+result = cs.run(SourcesDeconvolveCommand, True,
     ["sources", sources,
      "psf", psf,
      "num_iterations", 20,
@@ -100,6 +102,8 @@ cs.run(SourcesDeconvolveCommand, True,
      "suffix", "_deconvolved",
      "n_threads", 4]
 ).get()
+
+deconvolved = result.getOutput("sources_out")
 ```
 ::::
 

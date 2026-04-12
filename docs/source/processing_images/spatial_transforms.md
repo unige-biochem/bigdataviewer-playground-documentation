@@ -18,8 +18,6 @@ All commands are found under:
 
 Performs 90/180/270-degree rotations or mirror flips along X, Y, or Z axes.
 
-{menuselection}`Plugins > BigDataViewer-Playground > Process > Transform > Source - Basic Transformation`
-
 | Parameter | Description |
 |-----------|-------------|
 | Select source(s) | The source(s) to transform |
@@ -29,11 +27,64 @@ Performs 90/180/270-degree rotations or mirror flips along X, Y, or Z axes.
 | Initial timepoint | First timepoint to apply the transformation (0-based) |
 | Number of timepoints | Number of timepoints to apply the transformation to |
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Transform --> Source - Basic Transformation`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+// Sources are selected interactively from the dialog.
+run("Source - Basic Transformation");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import sc.fiji.bdvpg.command.process.transform.SourceSimpleTransformCommand
+
+// type: "Flip", "Rot90", "Rot180", "Rot270"
+// axis: "X", "Y", "Z"
+cs.run(SourceSimpleTransformCommand, true,
+    "sources", sources,
+    "type", "Rot90",
+    "axis", "Z",
+    "global_change", false,
+    "ini_timepoint", 0,
+    "n_timepoints", 1
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from sc.fiji.bdvpg.command.process.transform import SourceSimpleTransformCommand
+
+# type: "Flip", "Rot90", "Rot180", "Rot270"
+# axis: "X", "Y", "Z"
+cs.run(SourceSimpleTransformCommand, True,
+    ["sources", sources,
+     "type", "Rot90",
+     "axis", "Z",
+     "global_change", False,
+     "ini_timepoint", 0,
+     "n_timepoints", 1]
+).get()
+```
+::::
+
+:::::
+
 ### Source - Interactive Transformation
 
 Lets you manually drag sources in a BDV window to position them. The sources you select are the ones that move — all other sources in the window stay fixed as reference.
-
-{menuselection}`Plugins > BigDataViewer-Playground > Process > Transform > Source - Interactive Transformation`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -45,21 +96,69 @@ Lets you manually drag sources in a BDV window to position them. The sources you
 During interactive transformation, you are placed in the coordinate frame of the moving sources — so the moving sources appear stationary while the reference sources move. This is normal. When you confirm the transform, the result is applied to the moving sources.
 :::
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Transform --> Source - Interactive Transformation`
+::::
+
+:::::
+
 ### New Affine Transform
 
 Creates an affine transform from a 4x3 matrix (12 comma-separated values in row-major order). Use this when you need to apply a known numeric transform to sources via the Dataset transform stack commands.
-
-{menuselection}`Plugins > BigDataViewer-Playground > Process > Transform > New Affine Transform`
 
 | Parameter | Description |
 |-----------|-------------|
 | Transform Matrix | 12 comma-separated values defining a 4x3 affine matrix in row-major order |
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Transform --> New Affine Transform`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("New Affine Transform");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@CommandService cs
+
+import ch.epfl.biop.command.register.AffineTransformCreateCommand
+
+// Identity transform: 1,0,0,0, 0,1,0,0, 0,0,1,0
+def result = cs.run(AffineTransformCreateCommand, true,
+    "string_matrix", "1,0,0,0,0,1,0,0,0,0,1,0"
+).get()
+
+def at3d = result.getOutput("at3d")
+```
+::::
+
+::::{tab-item} Python
+```python
+#@CommandService cs
+
+from ch.epfl.biop.command.register import AffineTransformCreateCommand
+
+# Identity transform: 1,0,0,0, 0,1,0,0, 0,0,1,0
+result = cs.run(AffineTransformCreateCommand, True,
+    ["string_matrix", "1,0,0,0,0,1,0,0,0,0,1,0"]
+).get()
+
+at3d = result.getOutput("at3d")
+```
+::::
+
+:::::
+
 ### Source - Recenter Sources
 
 Moves sources so their center is at the specified world coordinates. Useful for aligning sources to a common reference point.
-
-{menuselection}`Plugins > BigDataViewer-Playground > Process > Transform > Source - Recenter Sources`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -68,11 +167,60 @@ Moves sources so their center is at the specified world coordinates. Useful for 
 | Timepoint | Timepoint used for computing the recentering transform |
 | Mode | **Mutate** modifies the existing transform; **Append** adds a new transform layer |
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Transform --> Source - Recenter Sources`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+// Sources are selected interactively from the dialog.
+run("Source - Recenter Sources");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import ch.epfl.biop.command.process.transform.SourcesRecenterCommand
+
+cs.run(SourcesRecenterCommand, true,
+    "sources", sources,
+    "cx", 0.0,
+    "cy", 0.0,
+    "cz", 0.0,
+    "timepoint", 0,
+    "mode", "Append"
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from ch.epfl.biop.command.process.transform import SourcesRecenterCommand
+
+cs.run(SourcesRecenterCommand, True,
+    ["sources", sources,
+     "cx", 0.0,
+     "cy", 0.0,
+     "cz", 0.0,
+     "timepoint", 0,
+     "mode", "Append"]
+).get()
+```
+::::
+
+:::::
+
 ### Source - Remove Z Offset
 
 Removes the Z position offset from sources, shifting them to Z=0. Useful when imported data has a large Z offset that makes navigation awkward.
-
-{menuselection}`Plugins > BigDataViewer-Playground > Process > Transform > Source - Remove Z Offset`
 
 | Parameter | Description |
 |-----------|-------------|
@@ -80,6 +228,53 @@ Removes the Z position offset from sources, shifting them to Z=0. Useful when im
 | Timepoint | Timepoint used to compute the Z offset |
 | Apply to all timepoints | If checked, removes Z offset for each timepoint independently |
 | Mode | **Mutate** modifies the existing transform; **Append** adds a new transform layer |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Transform --> Source - Remove Z Offset`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+// Sources are selected interactively from the dialog.
+run("Source - Remove Z Offset");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import ch.epfl.biop.command.process.transform.SourcesZOffsetRemoveCommand
+
+cs.run(SourcesZOffsetRemoveCommand, true,
+    "sources", sources,
+    "timepoint", 0,
+    "apply_to_all_timepoints", false,
+    "mode", "Append"
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from ch.epfl.biop.command.process.transform import SourcesZOffsetRemoveCommand
+
+cs.run(SourcesZOffsetRemoveCommand, True,
+    ["sources", sources,
+     "timepoint", 0,
+     "apply_to_all_timepoints", False,
+     "mode", "Append"]
+).get()
+```
+::::
+
+:::::
 
 :::{note}
 **About "Make Transformable"**: Sources created from a dataset already carry a mutable affine transform chain and can be transformed directly. The command **Source - Make Transformable** (`Process > Source - Make Transformable`) is only needed for sources that were not created from a dataset (e.g. procedurally generated sources). It wraps the source in a TransformedSource so that interactive and programmatic transforms can be applied.

@@ -31,6 +31,8 @@ Run **Source - Fuse And Resample Sources** once per channel. The model source is
 
 ## Source - Define Resampling Grid
 
+*Source: {biop-src}`SourcesGridModelMakeCommand.java <ch/epfl/biop/command/process/resample/SourcesGridModelMakeCommand.java>`*
+
 Creates an empty model source that spans the bounding box of multiple sources with a custom voxel size. Use this to define the output grid before fusing.
 
 | Parameter | Description |
@@ -116,9 +118,9 @@ model = result.getOutput("source_out")
 
 ## Source - Create Resampling Grid From Source
 
-A simpler alternative: creates a model source that occupies the same volume as a single existing source but with a different voxel size. Useful when you want to resample one source to a different resolution without changing its spatial extent.
+*Source: {bdvpg-src}`SourceFromModelCreateCommand.java <sc/fiji/bdvpg/command/process/resample/SourceFromModelCreateCommand.java>`*
 
-{menuselection}`Plugins > BigDataViewer-Playground > Process > Fuse & Resample > Source - Create Resampling Grid From Source`
+A simpler alternative: creates a model source that occupies the same volume as a single existing source but with a different voxel size. Useful when you want to resample one source to a different resolution without changing its spatial extent.
 
 | Parameter | Description |
 |-----------|-------------|
@@ -127,13 +129,68 @@ A simpler alternative: creates a model source that occupies the same volume as a
 | Timepoint | Timepoint to use from the model source (0-based) |
 | Voxel Size X/Y/Z | Voxel size in each dimension (in world coordinate units) |
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Fuse & Resample --> Source - Create Resampling Grid From Source`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+// Model source is selected interactively from the dialog.
+run("Source - Create Resampling Grid From Source");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter model
+#@CommandService cs
+
+import sc.fiji.bdvpg.command.process.resample.SourceFromModelCreateCommand
+
+def result = cs.run(SourceFromModelCreateCommand, true,
+    "model", model,
+    "name", "grid_model",
+    "timepoint", 0,
+    "vox_size_x", 1.0,
+    "vox_size_y", 1.0,
+    "vox_size_z", 1.0
+).get()
+
+def grid = result.getOutput("source")
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter model
+#@CommandService cs
+
+from sc.fiji.bdvpg.command.process.resample import SourceFromModelCreateCommand
+
+result = cs.run(SourceFromModelCreateCommand, True,
+    ["model", model,
+     "name", "grid_model",
+     "timepoint", 0,
+     "vox_size_x", 1.0,
+     "vox_size_y", 1.0,
+     "vox_size_z", 1.0]
+).get()
+
+grid = result.getOutput("source")
+```
+::::
+
+:::::
+
 ---
 
 ## Source - Resample Source
 
-Resamples one or more sources to match the voxel grid of a model source. The model source defines the output resolution and dimensions — the resampled source will have exactly the same grid.
+*Source: {bdvpg-src}`SourceResampleCommand.java <sc/fiji/bdvpg/command/process/resample/SourceResampleCommand.java>`*
 
-{menuselection}`Plugins > BigDataViewer-Playground > Process > Fuse & Resample > Source - Resample Source`
+Resamples one or more sources to match the voxel grid of a model source. The model source defines the output resolution and dimensions — the resampled source will have exactly the same grid.
 
 | Parameter | Description |
 |-----------|-------------|
@@ -145,9 +202,70 @@ Resamples one or more sources to match the voxel grid of a model source. The mod
 | MipMap level if not re-used | Resolution level to use when not reusing MipMaps (0 = highest resolution) |
 | Cache | Cache the resampled data in memory |
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Fuse & Resample --> Source - Resample Source`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+// Sources and model are selected interactively from the dialog.
+run("Source - Resample Source");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@SourceAndConverter model
+#@CommandService cs
+
+import sc.fiji.bdvpg.command.process.resample.SourceResampleCommand
+
+def result = cs.run(SourceResampleCommand, true,
+    "sources", sources,
+    "model", model,
+    "name", "resampled",
+    "interpolate", true,
+    "reuse_mipmaps", false,
+    "default_mipmap_level", 0,
+    "cache", true
+).get()
+
+def resampled = result.getOutput("sources_out")
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@SourceAndConverter model
+#@CommandService cs
+
+from sc.fiji.bdvpg.command.process.resample import SourceResampleCommand
+
+result = cs.run(SourceResampleCommand, True,
+    ["sources", sources,
+     "model", model,
+     "name", "resampled",
+     "interpolate", True,
+     "reuse_mipmaps", False,
+     "default_mipmap_level", 0,
+     "cache", True]
+).get()
+
+resampled = result.getOutput("sources_out")
+```
+::::
+
+:::::
+
 ---
 
 ## Source - Fuse And Resample Sources
+
+*Source: {biop-src}`SourcesFuseAndResampleCommand.java <ch/epfl/biop/command/process/resample/SourcesFuseAndResampleCommand.java>`*
 
 Fuses multiple sources into a single source, resampled to match a model source's grid. This is the main command for merging overlapping tiles or combining channels with blending.
 
@@ -253,9 +371,9 @@ fused = result.getOutput("source_out")
 
 ## Source - Set Linear Blending Mask (L1 Alpha)
 
-Sets a distance-based alpha blending mask on selected sources. The mask fades pixel intensity based on the distance from the source edge (L1 distance), so that overlapping regions blend smoothly when fused.
+*Source: {biop-src}`SourcesSetAlphaCommand.java <ch/epfl/biop/command/process/resample/SourcesSetAlphaCommand.java>`*
 
-{menuselection}`Plugins > BigDataViewer-Playground > Process > Fuse & Resample > Source - Set Linear Blending Mask (L1 Alpha)`
+Sets a distance-based alpha blending mask on selected sources. The mask fades pixel intensity based on the distance from the source edge (L1 distance), so that overlapping regions blend smoothly when fused.
 
 | Parameter | Description |
 |-----------|-------------|
@@ -263,9 +381,52 @@ Sets a distance-based alpha blending mask on selected sources. The mask fades pi
 
 Apply this to all overlapping sources **before** calling **Source - Fuse And Resample Sources**.
 
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Fuse & Resample --> Source - Set Linear Blending Mask (L1 Alpha)`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+// Sources are selected interactively from the dialog.
+run("Source - Set Linear Blending Mask (L1 Alpha)");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import ch.epfl.biop.command.process.resample.SourcesSetAlphaCommand
+
+cs.run(SourcesSetAlphaCommand, true,
+    "sources", sources
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from ch.epfl.biop.command.process.resample import SourcesSetAlphaCommand
+
+cs.run(SourcesSetAlphaCommand, True,
+    ["sources", sources]
+).get()
+```
+::::
+
+:::::
+
 ---
 
 ## Source - Pyramidize
+
+*Source: {biop-src}`SourcesPyramidizeCommand.java <ch/epfl/biop/command/process/SourcesPyramidizeCommand.java>`*
 
 Adds multi-resolution pyramid levels to one or more sources by progressively downsampling. The result is a new source with built-in mipmaps — navigation stays smooth at any zoom level because BDV automatically picks the appropriate resolution.
 
