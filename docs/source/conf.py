@@ -6,8 +6,8 @@ project = 'BigDataViewer Playground Documentation'
 copyright = '2026, Nicolas Chiaruttini'
 author = 'Nicolas Chiaruttini'
 
-release = '1.0.0'
-version = '1.0.0'
+release = '0.20.4'
+version = '0.20.4'
 
 # -- General configuration
 
@@ -26,7 +26,10 @@ extensions = [
 
 # Source code links — update these two version strings when bumping the tracked release.
 _bdvpg_version = "0.20.2"   # bigdataviewer-playground (sc.fiji.bdvpg.*)
-_biop_version  = "0.20.4"   # bigdataviewer-biop-tools  (ch.epfl.biop.*)
+_biop_bdv_tools_version  = "0.20.4"   # bigdataviewer-biop-tools  (ch.epfl.biop.*)
+_bdv_image_loaders_version  = "0.20.1"   # bigdataviewer-biop-tools  (ch.epfl.biop.*)
+_bdvpg_display_version = "0.20.0"
+_ijp_kheops_version = "0.20.0"
 
 extlinks = {
     "bdvpg-src": (
@@ -36,9 +39,25 @@ extlinks = {
     ),
     "biop-src": (
         f"https://github.com/BIOP/bigdataviewer-biop-tools/blob/"
-        f"bigdataviewer-biop-tools-{_biop_version}/src/main/java/%s",
+        f"bigdataviewer-biop-tools-{_biop_bdv_tools_version}/src/main/java/%s",
         "%s",
     ),
+    "image-loaders-src": (
+        f"https://github.com/BIOP/bigdataviewer-image-loaders/blob/"
+        f"bigdataviewer-image-loaders-{_bdv_image_loaders_version}/src/main/java/%s",
+        "%s",
+    ),
+    "image-loaders-src": (
+        f"https://github.com/BIOP/bigdataviewer-playground-display/blob/"
+        f"bigdataviewer-playground-display-{_bdvpg_display_version}/src/main/java/%s",
+        "%s",
+    ),
+    "kheops-src": (
+        f"https://github.com/BIOP/ijp-kheops/blob/"
+        f"ijp-kheops-{_ijp_kheops_version}/src/main/java/%s",
+        "%s",
+    ),
+
 }
 
 # Copy button configuration

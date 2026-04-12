@@ -18,6 +18,8 @@ Standalone file-to-file conversion tools (Kheops) are under:
 
 ## Export To OME-TIFF
 
+*Source: {kheops-src}`KheopsExportSourcesCommand.java <ch/epfl/biop/kheops/command/KheopsExportSourcesCommand.java>`*
+
 The primary command for saving sources to disk. Produces a pyramidal OME-TIFF — a widely supported format that preserves multi-resolution levels, multi-channel structure, and physical calibration. This is usually the best choice for archiving or sharing processed data.
 
 | Parameter | Description |
@@ -117,6 +119,8 @@ cs.run(KheopsExportSourcesCommand, True,
 
 ## Export To ImagePlus
 
+*Source: {biop-src}`SourcesToMultipleImagePlusExportCommand.java <ch/epfl/biop/command/exporter/SourcesToMultipleImagePlusExportCommand.java>`*
+
 Converts sources back to standard Fiji ImagePlus stacks. Use this when you need to hand your data off to classic ImageJ/Fiji plugins that don't work with BDV sources.
 
 | Parameter | Description |
@@ -195,6 +199,8 @@ cs.run(SourcesToMultipleImagePlusExportCommand, True,
 ---
 
 ## Export To XML/HDF5 Dataset
+
+*Source: {bdvpg-src}`SourceXMLHDF5ExportCommand.java <sc/fiji/bdvpg/command/exporter/SourceXMLHDF5ExportCommand.java>`*
 
 Exports sources to the native BigDataViewer XML/HDF5 format. This is useful when you want to save processed sources in a format that can be re-opened directly in BigDataViewer or BigStitcher.
 
@@ -278,6 +284,8 @@ cs.run(SourceXMLHDF5ExportCommand, True,
 ---
 
 ## Fuse BigStitcher Dataset To OME-TIFF
+
+*Source: {biop-src}`BigStitcherDatasetToOMETIFFFuseCommand.java <ch/epfl/biop/command/exporter/BigStitcherDatasetToOMETIFFFuseCommand.java>`*
 
 A specialized command for BigStitcher users: reads a BigStitcher XML dataset (with computed tile registrations), fuses the tiles, and writes the result as a pyramidal OME-TIFF. This is a one-step export that combines fusion and file writing.
 
@@ -378,6 +386,8 @@ These commands capture what you see in a BigDataViewer window — including the 
 
 ### BDV - Export Current View As ImagePlus
 
+*Source: {biop-src}`BdvViewToImagePlusExportCommand.java <ch/epfl/biop/command/display/bdv/export/BdvViewToImagePlusExportCommand.java>`*
+
 Full-control export: you specify the output pixel size, region extent, and Z thickness. The exported ImagePlus is sampled at the current BDV view orientation.
 
 | Parameter | Description |
@@ -462,6 +472,8 @@ cs.run(BdvViewToImagePlusExportCommand, True,
 
 ### BDV - Export Current View As ImagePlus (Match Window)
 
+*Source: {biop-src}`BdvViewToImagePlusBasicExportCommand.java <ch/epfl/biop/command/display/bdv/export/BdvViewToImagePlusBasicExportCommand.java>`*
+
 A simplified version that automatically matches the BDV window dimensions for X and Y. You only need to specify the Z thickness and pixel size.
 
 | Parameter | Description |
@@ -534,6 +546,8 @@ cs.run(BdvViewToImagePlusBasicExportCommand, True,
 :::::
 
 ### BDV - Export Current View As Sources
+
+*Source: {biop-src}`BdvViewToSourcesExportCommand.java <ch/epfl/biop/command/display/bdv/export/BdvViewToSourcesExportCommand.java>`*
 
 Instead of producing an ImagePlus, this command creates new BDV sources resampled at the current view orientation. The result stays in the BDV workspace as a lazy source — useful for extracting an oblique reslice that you want to process further or export later.
 
@@ -624,6 +638,8 @@ Kheops is a standalone file conversion tool that converts Bio-Formats–readable
 
 ### Kheops - Convert File to Pyramidal OME TIFF
 
+*Source: {kheops-src}`KheopsCommand.java <ch/epfl/biop/kheops/command/KheopsCommand.java>`*
+
 Converts a single file. Each series in the input becomes a separate OME-TIFF.
 
 | Parameter | Description |
@@ -708,6 +724,8 @@ cs.run(KheopsCommand, True,
 
 ### Kheops - Batch Convert Files to Pyramidal OME TIFF
 
+*Source: {kheops-src}`KheopsBatchCommand.java <ch/epfl/biop/kheops/command/KheopsBatchCommand.java>`*
+
 Converts multiple files in parallel. Same parameters as the single-file version, but accepts multiple input files.
 
 | Parameter | Description |
@@ -780,6 +798,8 @@ cs.run(KheopsBatchCommand, True,
 :::::
 
 ### Kheops - Export ImagePlus To OME-TIFF
+
+*Source: {kheops-src}`KheopsExportImagePlusCommand.java <ch/epfl/biop/kheops/command/KheopsExportImagePlusCommand.java>`*
 
 Converts an already-open Fiji ImagePlus to pyramidal OME-TIFF. Useful when you have processed an image with classic Fiji tools and want to save it in a multi-resolution format.
 

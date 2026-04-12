@@ -16,6 +16,8 @@ See [Source - Pyramidize](fuse_resample.md#source-pyramidize) in the Fuse & Resa
 
 ### Source - Crop Resolution Levels
 
+*Source: {biop-src}`SourcesResolutionLevelsCropCommand.java <ch/epfl/biop/command/process/SourcesResolutionLevelsCropCommand.java>`*
+
 Creates a new source with only a subset of the original resolution levels. Useful when you want to restrict which pyramid levels are available — for example, to skip the lowest-resolution levels or to start from a specific level.
 
 | Parameter | Description |
@@ -84,6 +86,8 @@ Commands for manipulating the time dimension of your sources.
 
 ### Source - Freeze Timepoint
 
+*Source: {biop-src}`SourcesOverTimeDuplicateCommand.java <ch/epfl/biop/command/process/SourcesOverTimeDuplicateCommand.java>`*
+
 Creates a new source that shows a single fixed timepoint across a range of timepoints. Useful for creating a static reference from a time-series — for example, freezing a pre-treatment timepoint so it can be compared side-by-side with later timepoints.
 
 | Parameter | Description |
@@ -149,6 +153,8 @@ frozen = result.getOutput("sources_out")
 
 ### Source - Shift Timepoints
 
+*Source: {biop-src}`SourcesTimeShiftDuplicateCommand.java <ch/epfl/biop/command/process/SourcesTimeShiftDuplicateCommand.java>`*
+
 Creates a new source with timepoints offset by a fixed amount. Useful for aligning time-series data that was acquired with different starting times.
 
 | Parameter | Description |
@@ -212,6 +218,8 @@ shifted = result.getOutput("sources_out")
 
 ### Source - Delete
 
+*Source: {bdvpg-src}`SourceDeleteCommand.java <sc/fiji/bdvpg/command/process/SourceDeleteCommand.java>`*
+
 Removes selected sources from the workspace.
 
 | Parameter | Description |
@@ -260,6 +268,8 @@ cs.run(SourceDeleteCommand, True,
 :::::
 
 ### Source - Duplicate
+
+*Source: {bdvpg-src}`SourceDuplicateCommand.java <sc/fiji/bdvpg/command/process/SourceDuplicateCommand.java>`*
 
 Creates a copy of the selected sources. The duplicated sources appear under the **Other Sources** node in the sources tree.
 
@@ -311,6 +321,8 @@ cs.run(SourceDuplicateCommand, True,
 :::::
 
 ### Source - Add Metadata
+
+*Source: {bdvpg-src}`SourceMetadataAddCommand.java <sc/fiji/bdvpg/command/process/SourceMetadataAddCommand.java>`*
 
 Attaches a key-value metadata string to selected sources. Metadata is useful for filtering in the tree view (e.g. group sources by experiment condition).
 

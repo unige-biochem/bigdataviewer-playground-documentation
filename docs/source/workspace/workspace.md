@@ -36,6 +36,8 @@ When working with many sources, the tree can become crowded. These commands help
 
 ### Tree - Filter By Name
 
+*Source: {biop-src}`FilterNodeNameAddCommand.java <ch/epfl/biop/command/workspace/FilterNodeNameAddCommand.java>`*
+
 Adds a filter node to the tree that shows (or hides) sources matching a text pattern. Useful for quickly finding specific channels or tiles in a large dataset.
 
 | Parameter | Description |
@@ -91,6 +93,8 @@ cs.run(FilterNodeNameAddCommand, True,
 
 ### Tree - Filter By Metadata
 
+*Source: {bdvpg-src}`FilterNodeMetadataAddCommand.java <sc/fiji/bdvpg/command/workspace/tree/FilterNodeMetadataAddCommand.java>`*
+
 Adds a filter node that selects sources based on a metadata key-value pair. This is useful for filtering by properties you have attached with **Source - Add Metadata** (see [Source Utilities](../processing_images/source_utilities.md)).
 
 | Parameter | Description |
@@ -142,6 +146,8 @@ cs.run(FilterNodeMetadataAddCommand, True,
 :::::
 
 ### Tree - Make Global Source Group
+
+*Source: {bdvpg-src}`SourceGroupMakeCommand.java <sc/fiji/bdvpg/command/workspace/tree/SourceGroupMakeCommand.java>`*
 
 Creates a named group node containing specific sources. Use this to manually curate a subset of sources — for example, grouping all channels of a particular region of interest.
 
@@ -197,6 +203,8 @@ cs.run(SourceGroupMakeCommand, True,
 
 ### Tree - Inspect Sources
 
+*Source: {bdvpg-src}`SourceInspectCommand.java <sc/fiji/bdvpg/command/workspace/tree/SourceInspectCommand.java>`*
+
 Adds an inspection node for each selected source, showing details about its properties and type hierarchy. Useful for debugging or understanding what kind of source you are working with.
 
 | Parameter | Description |
@@ -251,6 +259,8 @@ You can save the entire workspace state — all sources, their display settings,
 
 ### State - Save
 
+*Source: {bdvpg-src}`StateSaveCommand.java <sc/fiji/bdvpg/command/workspace/state/StateSaveCommand.java>`*
+
 | Parameter | Description |
 |-----------|-------------|
 | State file (JSON) | Path to save the state file |
@@ -295,6 +305,8 @@ cs.run(StateSaveCommand, True,
 :::::
 
 ### State - Load
+
+*Source: {bdvpg-src}`StateLoadCommand.java <sc/fiji/bdvpg/command/workspace/state/StateLoadCommand.java>`*
 
 | Parameter | Description |
 |-----------|-------------|
@@ -343,6 +355,8 @@ cs.run(StateLoadCommand, True,
 :::::
 
 ### State - Clear
+
+*Source: {bdvpg-src}`StateClearCommand.java <sc/fiji/bdvpg/command/workspace/state/StateClearCommand.java>`*
 
 Removes all sources from the workspace. Use this to start fresh.
 
@@ -396,6 +410,8 @@ Use Dataset XML for archiving and sharing. Use State for checkpointing complex a
 ---
 
 ## Cache Options
+
+*Source: {bdvpg-src}`CacheOptionsSetCommand.java <sc/fiji/bdvpg/command/workspace/CacheOptionsSetCommand.java>`*
 
 BigDataViewer Playground uses a cache to store recently accessed image tiles in memory, so that scrolling back to a region you've already visited is instantaneous. The cache settings control how much memory is allocated to this cache, and the backing cache mechanism.
 

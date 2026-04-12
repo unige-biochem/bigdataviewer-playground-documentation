@@ -23,6 +23,8 @@ All display commands are found under:
 
 ### BDV - Show Sources
 
+*Source: {bdvpg-src}`SingleBdvSourcesShowCommand.java <sc/fiji/bdvpg/command/display/bdv/SingleBdvSourcesShowCommand.java>`*
+
 The most common way to visualize your data. Creates a new BDV window and displays the selected sources in it.
 
 | Parameter | Description |
@@ -90,6 +92,8 @@ cs.run(SingleBdvSourcesShowCommand, True,
 
 ### BDV - Create
 
+*Source: {bdvpg-src}`BdvCreateCommand.java <sc/fiji/bdvpg/command/display/bdv/BdvCreateCommand.java>`*
+
 Creates an empty BDV window without any sources. You can then add sources to it later using **BDV - Show Sources** or **BDV - Show Sources In Multiple Windows**.
 
 :::::{tab-set}
@@ -127,6 +131,8 @@ cs.run(BdvCreateCommand, True).get()
 :::::
 
 ### BDV - Show Sources In Multiple Windows
+
+*Source: {bdvpg-src}`BdvSourcesShowCommand.java <sc/fiji/bdvpg/command/display/bdv/BdvSourcesShowCommand.java>`*
 
 Adds sources to several existing BDV windows at once.
 
@@ -212,6 +218,8 @@ These are the default BigDataViewer key bindings. They can be customized via **B
 ## Orthogonal Views
 
 ### BDV - Create Orthogonal Views
+
+*Source: {bdvpg-src}`BdvOrthoCreateCommand.java <sc/fiji/bdvpg/command/display/bdv/BdvOrthoCreateCommand.java>`*
 
 Opens three synchronized BDV windows showing XY (front), ZY (right), and XZ (bottom) views. Navigating in one window automatically updates the other two.
 
@@ -301,6 +309,8 @@ When working with many sources (e.g. multiple tiles or channels), it can be help
 
 ### BDV - Show Sources On Grid
 
+*Source: {biop-src}`SourcesOverviewCommand.java <ch/epfl/biop/command/display/bdv/SourcesOverviewCommand.java>`*
+
 Arranges selected sources in a grid layout within a new BDV window. Each cell shows one source, giving you a quick overview of all your data.
 
 | Parameter | Description |
@@ -360,6 +370,8 @@ cs.run(SourcesOverviewCommand, True,
 
 ### BDV - Create Grid BDV
 
+*Source: {biop-src}`BdvGridCreateCommand.java <ch/epfl/biop/command/display/bdv/BdvGridCreateCommand.java>`*
+
 Creates an empty BDV window pre-configured for grid display. You can then add sources to it.
 
 :::::{tab-set}
@@ -403,6 +415,8 @@ cs.run(BdvGridCreateCommand, True).get()
 These commands control how individual sources look in any viewer window — color, brightness, and visibility. They affect display only, never the underlying data.
 
 ### Source - Set Color
+
+*Source: {bdvpg-src}`SourceColorChangeCommand.java <sc/fiji/bdvpg/command/display/source/SourceColorChangeCommand.java>`*
 
 Changes the display color of one or more sources.
 
@@ -463,6 +477,8 @@ cs.run(SourceColorChangeCommand, True,
 
 ### Source - Set Brightness
 
+*Source: {bdvpg-src}`SourceBrightnessAdjustCommand.java <sc/fiji/bdvpg/command/display/source/SourceBrightnessAdjustCommand.java>`*
+
 Sets the display range (min and max intensity values) for one or more sources. This is the equivalent of adjusting the "Brightness & Contrast" in Fiji.
 
 | Parameter | Description |
@@ -517,6 +533,8 @@ cs.run(SourceBrightnessAdjustCommand, True,
 
 ### Source - Make Visible
 
+*Source: {bdvpg-src}`SourceVisibilityONCommand.java <sc/fiji/bdvpg/command/display/source/SourceVisibilityONCommand.java>`*
+
 Toggles sources on so they are drawn in all BDV windows where they are present.
 
 | Parameter | Description |
@@ -564,6 +582,8 @@ cs.run(SourceVisibilityONCommand, True,
 :::::
 
 ### Source - Make Invisible
+
+*Source: {bdvpg-src}`SourceVisibilityOFFCommand.java <sc/fiji/bdvpg/command/display/source/SourceVisibilityOFFCommand.java>`*
 
 Hides sources in all BDV windows where they are present.
 
@@ -616,6 +636,8 @@ cs.run(SourceVisibilityOFFCommand, True,
 ## Managing BDV Windows
 
 ### BDV - Adjust View On Sources
+
+*Source: {bdvpg-src}`BdvViewSourcesAdjustCommand.java <sc/fiji/bdvpg/command/display/bdv/BdvViewSourcesAdjustCommand.java>`*
 
 Reframes the current view to fit the selected sources. Useful when you have lost your bearings or want to quickly navigate to a specific source.
 
@@ -670,6 +692,8 @@ cs.run(BdvViewSourcesAdjustCommand, True,
 
 ### BDV - Remove Sources
 
+*Source: {bdvpg-src}`BdvSourcesRemoveCommand.java <sc/fiji/bdvpg/command/display/bdv/BdvSourcesRemoveCommand.java>`*
+
 Removes sources from one or more BDV windows. This only removes them from the viewer — it does not delete the sources from the dataset.
 
 | Parameter | Description |
@@ -723,6 +747,8 @@ cs.run(BdvSourcesRemoveCommand, True,
 
 ### BDV - Close
 
+*Source: {bdvpg-src}`BdvCloseCommand.java <sc/fiji/bdvpg/command/display/bdv/BdvCloseCommand.java>`*
+
 Closes one or more BDV windows.
 
 | Parameter | Description |
@@ -770,6 +796,8 @@ cs.run(BdvCloseCommand, True,
 :::::
 
 ### BDV - Set Title
+
+*Source: {bdvpg-src}`BdvTitleSetCommand.java <sc/fiji/bdvpg/command/display/bdv/settings/BdvTitleSetCommand.java>`*
 
 Changes the title of a BDV window.
 
@@ -828,6 +856,8 @@ Overlays add visual annotations on top of the viewer without modifying the data.
 
 ### BDV - Add Center Cross Overlay
 
+*Source: {bdvpg-src}`BdvOverlayCrossAddCommand.java <sc/fiji/bdvpg/command/display/bdv/overlay/BdvOverlayCrossAddCommand.java>`*
+
 Draws a crosshair at the center of the BDV window. Helpful for orthogonal view setups to see where the three planes intersect.
 
 | Parameter | Description |
@@ -875,6 +905,8 @@ cs.run(BdvOverlayCrossAddCommand, True,
 :::::
 
 ### BDV - Add Sources Name Overlay
+
+*Source: {bdvpg-src}`BdvOverlaySourceNameAddCommand.java <sc/fiji/bdvpg/command/display/bdv/overlay/BdvOverlaySourceNameAddCommand.java>`*
 
 Displays the name of each visible source as a text label on the viewer.
 
@@ -930,6 +962,8 @@ cs.run(BdvOverlaySourceNameAddCommand, True,
 
 ### BDV - Add Debug Overlay
 
+*Source: {bdvpg-src}`BdvOverlayDebugAddCommand.java <sc/fiji/bdvpg/command/display/bdv/overlay/BdvOverlayDebugAddCommand.java>`*
+
 Shows the internal tiled rendering grid. Primarily useful for debugging rendering performance.
 
 | Parameter | Description |
@@ -984,6 +1018,8 @@ These commands add UI elements or configure defaults for BDV windows.
 
 ### BDV - Add Z Slider
 
+*Source: {bdvpg-src}`BdvZSliderAddCommand.java <sc/fiji/bdvpg/command/display/bdv/settings/BdvZSliderAddCommand.java>`*
+
 Adds a Z-position slider to the bottom of BDV windows, giving you a familiar way to scroll through Z slices.
 
 | Parameter | Description |
@@ -1032,6 +1068,8 @@ cs.run(BdvZSliderAddCommand, True,
 
 ### BDV - Add Sources Slider
 
+*Source: {bdvpg-src}`BdvSourceNavigatorAddCommand.java <sc/fiji/bdvpg/command/display/bdv/settings/BdvSourceNavigatorAddCommand.java>`*
+
 Adds a slider to step through sources one by one. Useful when you have many sources and want to flip through them.
 
 | Parameter | Description |
@@ -1079,6 +1117,8 @@ cs.run(BdvSourceNavigatorAddCommand, True,
 :::::
 
 ### BDV - Add Editor
+
+*Source: {bdvpg-src}`BdvEditorInstallCommand.java <sc/fiji/bdvpg/command/display/bdv/settings/BdvEditorInstallCommand.java>`*
 
 Installs a source selection editor on BDV windows. Press the toggle key to switch between navigation and editor mode.
 
@@ -1232,6 +1272,8 @@ cs.run(BdvTimepointsAdaptCommand, True,
 
 ### BDV - Preferences - Set (Key) Bindings
 
+*Source: {bdvpg-src}`BdvSettingsSetCommand.java <sc/fiji/bdvpg/command/display/bdv/settings/BdvSettingsSetCommand.java>`*
+
 Opens a dialog to customize the keyboard and mouse bindings for BDV windows.
 
 :::::{tab-set}
@@ -1275,6 +1317,8 @@ cs.run(BdvSettingsSetCommand, True).get()
 These commands configure the default appearance and behavior of **newly created** BDV windows. They do not affect windows that are already open.
 
 ### BDV - Set Style (Default)
+
+*Source: {bdvpg-src}`BdvStyleDefaultSetCommand.java <sc/fiji/bdvpg/command/display/bdv/settings/BdvStyleDefaultSetCommand.java>`*
 
 | Parameter | Description |
 |-----------|-------------|
@@ -1348,6 +1392,8 @@ cs.run(BdvStyleDefaultSetCommand, True,
 :::::
 
 ### BDV - Set Style (BIOP)
+
+*Source: {image-loaders-src}`BdvStyleBIOPSetCommand.java <sc/fiji/bdvpg/bdv/supplier/biop/BdvStyleBIOPSetCommand.java>`*
 
 An alternative default style provided by the BIOP team. Includes additional options like font and font size for the source name overlay.
 
@@ -1429,6 +1475,8 @@ cs.run(BdvStyleBIOPSetCommand, True,
 :::::
 
 ### BDV - Set Style (Alpha)
+
+*Source: {biop-src}`BdvStyleAlphaSetCommand.java <ch/epfl/biop/command/display/bdv/settings/BdvStyleAlphaSetCommand.java>`*
 
 A style that supports alpha (transparency) blending and white background. Useful when preparing figures or overlaying partially transparent sources.
 
@@ -1514,6 +1562,8 @@ When working with multiple viewer windows, you can synchronize them so they move
 
 ### Viewers - Synchronize Views
 
+*Source: {bdvpg-src}`ViewSynchronizeCommand.java <sc/fiji/bdvpg/command/display/ViewSynchronizeCommand.java>`*
+
 Locks the navigation of multiple BDV and/or BVV windows together. When you pan, zoom, or rotate in one window, all synchronized windows follow. A small popup window appears — close it to stop the synchronization.
 
 | Parameter | Description |
@@ -1567,6 +1617,8 @@ cs.run(ViewSynchronizeCommand, True,
 :::::
 
 ### Viewers - Synchronize States
+
+*Source: {bdvpg-src}`StateSynchronizeCommand.java <sc/fiji/bdvpg/command/display/StateSynchronizeCommand.java>`*
 
 Synchronizes which sources are visible across multiple viewer windows. When you toggle a source on or off in one window, all synchronized windows update. Close the popup window to stop.
 
@@ -1643,6 +1695,8 @@ BVV requires a GPU with OpenGL 3.3+ support. It may not be available on all syst
 
 ### BVV - Create
 
+*Source: {bdvpg-src}`BvvCreateCommand.java <sc/fiji/bdvpg/command/display/bvv/BvvCreateCommand.java>`*
+
 Creates an empty BVV window.
 
 | Parameter | Description |
@@ -1688,6 +1742,8 @@ cs.run(BvvCreateCommand, True,
 :::::
 
 ### BVV - Show Sources
+
+*Source: {bdvpg-src}`BvvSourcesShowCommand.java <sc/fiji/bdvpg/command/display/bvv/BvvSourcesShowCommand.java>`*
 
 Adds sources to an existing BVV window.
 
@@ -1746,6 +1802,8 @@ cs.run(BvvSourcesShowCommand, True,
 :::::
 
 ### BVV - Create Orthogonal Views
+
+*Source: {bdvpg-src}`BvvOrthoCreateCommand.java <sc/fiji/bdvpg/command/display/bvv/BvvOrthoCreateCommand.java>`*
 
 Creates three synchronized BVV windows with orthogonal orientations, analogous to the BDV orthogonal views but with volume rendering.
 
@@ -1826,6 +1884,8 @@ cs.run(BvvOrthoCreateCommand, True,
 
 ### BVV - Remove Sources
 
+*Source: {bdvpg-src}`BvvSourcesRemoveCommand.java <sc/fiji/bdvpg/command/display/bvv/BvvSourcesRemoveCommand.java>`*
+
 Removes sources from BVV windows.
 
 | Parameter | Description |
@@ -1878,6 +1938,8 @@ cs.run(BvvSourcesRemoveCommand, True,
 :::::
 
 ### BVV - Set Number Of Timepoints
+
+*Source: {bdvpg-src}`BvvTimepointsSetCommand.java <sc/fiji/bdvpg/command/display/bvv/settings/BvvTimepointsSetCommand.java>`*
 
 Sets the number of timepoints available in BVV windows.
 

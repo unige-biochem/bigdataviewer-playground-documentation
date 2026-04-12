@@ -79,6 +79,8 @@ Each command creates a dataset from a different source. The most common starting
 
 ### Dataset - Create [Bio-Formats]
 
+*Source: {image-loaders-src}`DatasetFromBioFormatsCreateCommand.java <ch/epfl/biop/bdv/img/bioformats/command/DatasetFromBioFormatsCreateCommand.java>`*
+
 The general-purpose importer. Supports any file format that Bio-Formats can read (CZI, LIF, ND2, OME-TIFF, and [many more](https://bio-formats.readthedocs.io/en/latest/supported-formats.html)).
 
 | Parameter | Description |
@@ -149,6 +151,8 @@ cs.run(DatasetFromBioFormatsCreateCommand, True,
 
 ### Dataset - Create [Current ImagePlus]
 
+*Source: {image-loaders-src}`DatasetFromImagePlusCreateCommand.java <ch/epfl/biop/bdv/img/imageplus/command/DatasetFromImagePlusCreateCommand.java>`*
+
 Wraps an image that is already open in Fiji as a dataset, so you can use it with BigDataViewer Playground tools.
 
 | Parameter | Description |
@@ -199,6 +203,8 @@ cs.run(DatasetFromImagePlusCreateCommand, True,
 :::::
 
 ### Dataset - Create [OMERO]
+
+*Source: {image-loaders-src}`DatasetFromOMEROCreateCommand.java <ch/epfl/biop/bdv/img/omero/command/DatasetFromOMEROCreateCommand.java>`*
 
 Creates a dataset from images stored on an OMERO server. You can connect to the server first using `Plugins > BIOP > OMERO > Omero - Connect`, or you will be prompted to connect if you're not yet connected to the server. 
 
@@ -254,6 +260,8 @@ cs.run(DatasetFromOMEROCreateCommand, True,
 :::::
 
 ### Dataset - Create [QuPath]
+
+*Source: {image-loaders-src}`DatasetFromQuPathCreateCommand.java <ch/epfl/biop/bdv/img/qupath/command/DatasetFromQuPathCreateCommand.java>`*
 
 Imports all images from a QuPath project as a single dataset.
 
@@ -315,6 +323,8 @@ cs.run(DatasetFromQuPathCreateCommand, True,
 
 ### Dataset - Create [Operetta]
 
+*Source: {biop-src}`DatasetFromOperettaCreateCommand.java <ch/epfl/biop/command/importer/DatasetFromOperettaCreateCommand.java>`*
+
 Opens PerkinElmer Operetta high-content imaging datasets.
 
 | Parameter | Description |
@@ -374,6 +384,8 @@ cs.run(DatasetFromOperettaCreateCommand, True,
 
 ### Dataset - Create [CZI LLS7]
 
+*Source: {biop-src}`LLS7DatasetOpenCommand.java <ch/epfl/biop/command/workflow/lls7/LLS7DatasetOpenCommand.java>`*
+
 Specialized importer for Zeiss Lattice Light Sheet 7 data. Automatically applies the correct skew transformation so the data displays with proper 3D geometry.
 
 | Parameter | Description |
@@ -426,6 +438,8 @@ cs.run(LLS7DatasetOpenCommand, True,
 See the [LLS7 Timelapse workflow](../workflows/lls7_timelapse.md) for a complete processing guide.
 
 ### Dataset - Samples
+
+*Source: {image-loaders-src}`OpenSampleCommand.java <ch/epfl/biop/bdv/img/bioformats/command/OpenSampleCommand.java>`*
 
 Opens a sample dataset for testing and exploration. Downloads and caches (in `/home/CachedSamples/`) on first use.
 
@@ -482,6 +496,8 @@ To inspect or edit the affine transform chain of your sources (view, add, remove
 :::
 
 ### Combine XML Datasets
+
+*Source: {biop-src}`DatasetXMLCombineCommand.java <ch/epfl/biop/command/dataset/DatasetXMLCombineCommand.java>`*
 
 Merges multiple saved XML datasets into one, either as additional timepoints or additional channels.
 
@@ -540,6 +556,8 @@ cs.run(DatasetXMLCombineCommand, True,
 
 ### Dataset - Remove Entities
 
+*Source: {biop-src}`DatasetEntitiesRemoveCommand.java <ch/epfl/biop/command/dataset/DatasetEntitiesRemoveCommand.java>`*
+
 Strips entity types from a dataset XML, useful for compatibility with tools that do not understand BigDataViewer Playground entities.
 
 | Parameter | Description |
@@ -595,6 +613,8 @@ cs.run(DatasetEntitiesRemoveCommand, True,
 :::::
 
 ### Dataset - Make BigStitcher Compatible
+
+*Source: {biop-src}`DatasetXMLToBigStitcherDatasetConvertCommand.java <ch/epfl/biop/command/dataset/DatasetXMLToBigStitcherDatasetConvertCommand.java>`*
 
 Converts a BigDataViewer Playground XML dataset to BigStitcher format. Essentially, this command will add a transform that will make each pixel of size 1 in XY, which is a BigStitcher convention.
 

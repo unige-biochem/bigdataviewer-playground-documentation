@@ -16,6 +16,8 @@ All commands are found under:
 
 ### Source - Basic Transformation
 
+*Source: {bdvpg-src}`SourceSimpleTransformCommand.java <sc/fiji/bdvpg/command/process/transform/SourceSimpleTransformCommand.java>`*
+
 Performs 90/180/270-degree rotations or mirror flips along X, Y, or Z axes.
 
 | Parameter | Description |
@@ -84,6 +86,8 @@ cs.run(SourceSimpleTransformCommand, True,
 
 ### Source - Interactive Transformation
 
+*Source: {bdvpg-src}`SourceManualTransformCommand.java <sc/fiji/bdvpg/command/process/transform/SourceManualTransformCommand.java>`*
+
 Lets you manually drag sources in a BDV window to position them. The sources you select are the ones that move — all other sources in the window stay fixed as reference.
 
 | Parameter | Description |
@@ -105,6 +109,8 @@ During interactive transformation, you are placed in the coordinate frame of the
 :::::
 
 ### New Affine Transform
+
+*Source: {biop-src}`AffineTransformCreateCommand.java <ch/epfl/biop/command/register/AffineTransformCreateCommand.java>`*
 
 Creates an affine transform from a 4x3 matrix (12 comma-separated values in row-major order). Use this when you need to apply a known numeric transform to sources via the Dataset transform stack commands.
 
@@ -157,6 +163,8 @@ at3d = result.getOutput("at3d")
 :::::
 
 ### Source - Recenter Sources
+
+*Source: {biop-src}`SourcesRecenterCommand.java <ch/epfl/biop/command/process/transform/SourcesRecenterCommand.java>`*
 
 Moves sources so their center is at the specified world coordinates. Useful for aligning sources to a common reference point.
 
@@ -219,6 +227,8 @@ cs.run(SourcesRecenterCommand, True,
 :::::
 
 ### Source - Remove Z Offset
+
+*Source: {biop-src}`SourcesZOffsetRemoveCommand.java <ch/epfl/biop/command/process/transform/SourcesZOffsetRemoveCommand.java>`*
 
 Removes the Z position offset from sources, shifting them to Z=0. Useful when imported data has a large Z offset that makes navigation awkward.
 
@@ -292,6 +302,8 @@ All commands are found under:
 
 ### Dataset - View Transforms
 
+*Source: {bdvpg-src}`DatasetTransformViewCommand.java <sc/fiji/bdvpg/command/dataset/transform/DatasetTransformViewCommand.java>`*
+
 Displays the full transform chain for each selected source as a table.
 
 | Parameter | Description |
@@ -339,6 +351,8 @@ cs.run(DatasetTransformViewCommand, True,
 :::::
 
 ### Dataset - Add Transforms
+
+*Source: {bdvpg-src}`DatasetTransformAddCommand.java <sc/fiji/bdvpg/command/dataset/transform/DatasetTransformAddCommand.java>`*
 
 Appends a new affine transform to the chain at a given position.
 
@@ -400,6 +414,8 @@ cs.run(DatasetTransformAddCommand, True,
 
 ### Dataset - Remove Transforms
 
+*Source: {bdvpg-src}`DatasetTransformRemoveCommand.java <sc/fiji/bdvpg/command/dataset/transform/DatasetTransformRemoveCommand.java>`*
+
 Removes one or more transforms from the chain by index.
 
 | Parameter | Description |
@@ -453,6 +469,8 @@ cs.run(DatasetTransformRemoveCommand, True,
 :::::
 
 ### Dataset - Set Transforms
+
+*Source: {bdvpg-src}`DatasetTransformSetCommand.java <sc/fiji/bdvpg/command/dataset/transform/DatasetTransformSetCommand.java>`*
 
 Overwrites a transform at a specific position in the chain.
 

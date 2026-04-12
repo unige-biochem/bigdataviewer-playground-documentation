@@ -23,6 +23,8 @@ A single PSF is applied to all selected sources. If you have measured a separate
 
 ## Source - Deconvolve (Richardson Lucy GPU - Tiled)
 
+*Source: {biop-src}`SourcesDeconvolveCommand.java <ch/epfl/biop/command/process/deconvolve/SourcesDeconvolveCommand.java>`*
+
 | Parameter | Description |
 |-----------|-------------|
 | Select Source(s) | The sources to deconvolve |

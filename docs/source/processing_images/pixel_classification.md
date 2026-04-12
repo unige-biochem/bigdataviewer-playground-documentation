@@ -10,6 +10,8 @@ All commands are found under:
 
 ## Source - Open Labkit
 
+*Source: {biop-src}`SourcesLabkitOpenCommand.java <ch/epfl/biop/command/process/labkit/SourcesLabkitOpenCommand.java>`*
+
 Opens the Labkit pixel classification GUI for the selected sources. Each source is treated as a separate channel input to the classifier.
 
 | Parameter | Description |
@@ -67,6 +69,8 @@ cs.run(SourcesLabkitOpenCommand, True,
 ---
 
 ## Source - Apply Labkit Classifier
+
+*Source: {biop-src}`SourcesLabkitClassifyCommand.java <ch/epfl/biop/command/process/labkit/SourcesLabkitClassifyCommand.java>`*
 
 Creates a lazy segmentation source by applying a previously saved Labkit classifier. The classification is computed on-the-fly — only the pixels you view or export are actually classified.
 
