@@ -4,18 +4,28 @@
 
 Register a fluorescent image onto a RGB H-DAB image using an interactive GUI.
 
+
+::::{grid} 2
+:::{grid-item}
 ![Fluorescent Image](images/fluo.png)
 *Fluorescent image showing EdU labeling*
-
+:::
+:::{grid-item}
 ![DAB Image](images/dab.png)
 *H-DAB stained image*
+:::
+::::
 
-Dividing cells are labeled with DAB in the RGB image, and as fluorescent EdU within the second channel of the fluorescent image. More information about the dataset is provided in the Zenodo repository.
 
-### The goal of this exercise is to:
+
+
+
+Dividing cells are labeled with DAB in the RGB image, and as fluorescent EdU within the second channel of the fluorescent image. More information about the dataset is provided in the [Zenodo repository](https://doi.org/10.5281/zenodo.5675686).
+
+### The goal of this example workflow is to:
 
 1. **Register** a fluorescent image onto a RGB H-DAB image
-   - We will call the Fluorescent image the **moving source**
+   - We will choose the Fluorescent image as the **moving source**
    - The H-DAB image is the **fixed source**
 
 2. **Use this registration** to transfer objects from one image to another in QuPath (reversibly)
@@ -24,7 +34,9 @@ Dividing cells are labeled with DAB in the RGB image, and as fluorescent EdU wit
 
 ---
 
-> **Optional:** If you want to save time, you can already run the macro recorder (`Plugins > Macro > Record…`) while doing this part.
+:::{note}
+You can run the macro recorder (`Plugins > Macro > Record…`) while doing this part in order to see how each command can be recorded.
+:::
 
 ## Part A: Registration with GUI
 
@@ -33,12 +45,12 @@ Dividing cells are labeled with DAB in the RGB image, and as fluorescent EdU wit
 We will be working on the project named `warpy-demo-project`.
 
 1. In Fiji's search bar, type `QuPath`
-2. Find and run the command **`Create BDV Dataset [QuPath]`**
+2. Find and run the command **`Dataset - Create [QuPath]`**
 
-   ![Create BDV Dataset Command](images/create_bdv_dataset_qupath_search.png)
+   ![Create BDV Dataset Command](images/create_registration_pair_search.png)
 
 3. Select the file `project.qpproj` within the warpy project folder (you can also drag and drop the file in the field)
-4. Make sure that **MILLIMETER** is set in the `Physical units of the dataset` field
+4. Make sure that **MILLIMETER** is set in the `World coordinate units` field. That's the conventional unit for Warpy, this also means that your image data needs to be calibrated in physical units when used in Warpy (i.e. not '1 pixel').
 5. Make sure that **TOP LEFT** is set in the `Plane Origin Convention` field
 6. **Split RGB channels** should be **unchecked**
 7. Click **OK**
@@ -49,10 +61,9 @@ We will be working on the project named `warpy-demo-project`.
 
 A **BDV Sources** window will pop up. You can double click on nodes to reveal the data contained in it:
 
-![BDV Sources Window](images/bdvpg_tree_collapsed.png)
 ![BDV Sources Window](images/bdvpg_tree_expanded.png)
 
-QuPath images are uniquely identified as `QuPathEntryIdEntity` (1 and 2). The first image consists of 2 fluorescent channels: `Fluo-DAPI` and `Fluo-EdU`.
+QuPath images are uniquely identified within the `QuPathEntryIdEntity` (1 and 2), also in the `ImageName` subnodes (as 'Fluo' and 'DAB'). The first image consists of 2 fluorescent channels: `Fluo-DAPI` and `Fluo-EdU`.
 
 ### 2. Visualize with BigDataViewer
 
@@ -60,8 +71,8 @@ For those unfamiliar with the BigDataViewer visualizer, there may be too many de
 
 To restrict the viewer to 2D movements:
 
-1. Right-click on the **BDV Sources** window
-2. Select **`Set BDV Window - BIOP`** as per the screenshot
+1. Right-click anywhere on the **BDV Sources** window
+2. Select **`BDV - Set Style (BIOP)`** as per the screenshot
 
    ![BDV Window Settings](images/bdvpg_options_setbdvbiop.png)
 
@@ -70,8 +81,6 @@ To restrict the viewer to 2D movements:
    ![Set BDV Window Option](images/bdvbiop_options.png)
 
 4. Click **OK**
-
-> **NOTE I2K:** Right click context different on Ubuntu on fresh Fiji install
 
 #### Display the Images
 
@@ -82,7 +91,7 @@ To visualize the images within the QuPath project:
 
    ![BDV Show Sources Menu](images/sources_display_newbdv.png)
 
-3. Then select **`Auto Contrast`** and **`Adjust View on Source`**
+3. Then select **`Auto Contrast`**, **`Adjust View on Sources`** and **`Open In New Window`
 
    ![Auto Contrast Options](images/show_sources_options.png)
 

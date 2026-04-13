@@ -9,11 +9,15 @@ We will be using data from this repository: [doi.org/10.5281/zenodo.5675686](htt
 
 ## Software
 
+### ImageJ/Fiji
+
+Please follow the instructions found in [the bdv-playground installation instructions](installation.md).
+
 ### QuPath
 
 QuPath is required as well as the Warpy extension.
 
-1. **Install QuPath 0.6**
+1. **Install QuPath 0.7**
    - Download from [https://qupath.github.io/](https://qupath.github.io/)
    - Follow installation instructions for your operating system
 
@@ -23,37 +27,6 @@ QuPath is required as well as the Warpy extension.
    - Click `Manage extension catalogs`
    - Enter the catalog URL: `https://github.com/BIOP/qupath-biop-catalog`
    - Browse and install the Warpy extension
-
-### ImageJ/Fiji
-
-ImageJ/Fiji is required as well as the PTBIOP update site:
-
-1. **Download and install Fiji**
-   - Download from [https://fiji.sc/](https://fiji.sc/)
-   - Extract to a permanent location
-
-2. **Update Fiji**
-   - Run Fiji
-   - Click `Help > Update…`
-   - Make sure everything is up to date (several updates and restarts may be required)
-
-3. **Add PTBIOP Update Site**
-   - When everything is up to date, click `Help > Update…`
-   - Click `Manage Update Sites`
-   - Select `PTBIOP`
-   - Click `Apply and Close`
-   - Restart Fiji
-
-### Elastix
-
-Elastix is a standard and stable registration library that is called from within Fiji.
-
-1. **Download Elastix 5.0.1**
-   - Download from [https://github.com/SuperElastix/elastix/releases/tag/5.0.1](https://github.com/SuperElastix/elastix/releases/tag/5.0.1)
-   - ⚠️ **Do NOT install version 5.1.0**
-
-2. **Install Elastix**
-   - Unzip to a "permanent" location (e.g., `C:\elastix-5.0.1-win64`)
 
 ## Installation Check
 
