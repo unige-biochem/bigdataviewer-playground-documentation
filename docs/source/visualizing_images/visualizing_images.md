@@ -8,7 +8,7 @@ BigDataViewer Playground provides two types of viewers:
 - **BVV (BigVolumeViewer)** — a GPU-accelerated 3D volume renderer that shows your data as a translucent volume. Useful for getting a spatial overview of 3D structures.
 
 :::{note}
-BVV has some limitations compared to BDV: you can't display non-linear warped sources, and you can't display hundreds of sources at the same time, something that BDV handles generally gracefully.
+BVV has some limitations compared to BDV: you can't display non-linear warped sources, and you can't display hundreds of sources at the same time, something that BDV handles generally gracefully, up to a few tens of thousand sources.
 :::
 
 Both viewers share the same lazy-loading architecture: only the pixels currently visible on screen are fetched, so even terabyte-scale datasets can be explored interactively.
@@ -639,7 +639,7 @@ cs.run(SourceVisibilityOFFCommand, True,
 
 *Source: {bdvpg-src}`BdvViewSourcesAdjustCommand.java <sc/fiji/bdvpg/command/display/bdv/BdvViewSourcesAdjustCommand.java>`*
 
-Reframes the current view to fit the selected sources. Useful when you have lost your bearings or want to quickly navigate to a specific source.
+Reframes the current view to fit the selected sources. Useful when you have lost your bearings or want to quickly navigate to a specific source. Note that double-clicking on a source or on a set of sources in the tree view has the same effect.
 
 | Parameter | Description |
 |-----------|-------------|
@@ -1020,7 +1020,7 @@ These commands add UI elements or configure defaults for BDV windows.
 
 *Source: {bdvpg-src}`BdvZSliderAddCommand.java <sc/fiji/bdvpg/command/display/bdv/settings/BdvZSliderAddCommand.java>`*
 
-Adds a Z-position slider to the bottom of BDV windows, giving you a familiar way to scroll through Z slices.
+Adds a Z-position slider to the bottom of BDV windows, giving you a familiar way to scroll through Z slices. Note that given the arbitrary orientation of viewers and the potential presence of many sources, the behaviour of this slider is quite different from normal z sliders. The way it works is by casting a ray from the center point of the viewer and finds all intersecting planes along this ray. The slider then indexed by the order of these planes. Note that if no image plane is found to intersect the ray, then the slider has no effect.
 
 | Parameter | Description |
 |-----------|-------------|
@@ -1070,7 +1070,7 @@ cs.run(BdvZSliderAddCommand, True,
 
 *Source: {bdvpg-src}`BdvSourceNavigatorAddCommand.java <sc/fiji/bdvpg/command/display/bdv/settings/BdvSourceNavigatorAddCommand.java>`*
 
-Adds a slider to step through sources one by one. Useful when you have many sources and want to flip through them.
+Adds a slider to step through sources one by one. Useful when you have many sources and want to flip through them. This slider appears on top of the window.
 
 | Parameter | Description |
 |-----------|-------------|
@@ -1120,7 +1120,9 @@ cs.run(BdvSourceNavigatorAddCommand, True,
 
 *Source: {bdvpg-src}`BdvEditorInstallCommand.java <sc/fiji/bdvpg/command/display/bdv/settings/BdvEditorInstallCommand.java>`*
 
-Installs a source selection editor on BDV windows. Press the toggle key to switch between navigation and editor mode.
+Installs a source selection editor on BDV windows. Press the toggle key to switch between navigation and editor mode. This editor is useful in order to select one or several sources based on their spatial position and then act on them. 
+
+Within the editor mode you can draw rectangle and with modifier keys, you can either add (shift) or remove (ctrl) sources from the current selection. Once the selection is set, you can right-click to enter the contextual menu and choose a batch action command.
 
 | Parameter | Description |
 |-----------|-------------|
@@ -1393,9 +1395,9 @@ cs.run(BdvStyleDefaultSetCommand, True,
 
 ### BDV - Set Style (BIOP)
 
-*Source: {image-loaders-src}`BdvStyleBIOPSetCommand.java <sc/fiji/bdvpg/bdv/supplier/biop/BdvStyleBIOPSetCommand.java>`*
+*Source: {bdvpg-display-src}`BdvStyleBIOPSetCommand.java <sc/fiji/bdvpg/bdv/supplier/biop/BdvStyleBIOPSetCommand.java>`*
 
-An alternative default style provided by the BIOP team. Includes additional options like font and font size for the source name overlay.
+An alternative default style provided by the BIOP team. Includes additional options like font and font size for the source name overlay. This style also brings by default a Z-Slider and a center cross overlay, a source browser slider, an editor mode.
 
 | Parameter | Description |
 |-----------|-------------|

@@ -47,7 +47,7 @@ extlinks = {
         f"bigdataviewer-image-loaders-{_bdv_image_loaders_version}/src/main/java/%s",
         "%s",
     ),
-    "image-loaders-src": (
+    "bdvpg-display-src": (
         f"https://github.com/BIOP/bigdataviewer-playground-display/blob/"
         f"bigdataviewer-playground-display-{_bdvpg_display_version}/src/main/java/%s",
         "%s",

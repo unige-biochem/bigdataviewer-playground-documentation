@@ -263,7 +263,7 @@ cs.run(DatasetFromOMEROCreateCommand, True,
 
 *Source: {image-loaders-src}`DatasetFromQuPathCreateCommand.java <ch/epfl/biop/bdv/img/qupath/command/DatasetFromQuPathCreateCommand.java>`*
 
-Imports all images from a QuPath project as a single dataset.
+Imports all images from a QuPath project as a single dataset. Note that only Bio-Formats image servers and OMERO (Ice) image servers are supported. 
 
 | Parameter | Description |
 |-----------|-------------|
@@ -325,7 +325,7 @@ cs.run(DatasetFromQuPathCreateCommand, True,
 
 *Source: {biop-src}`DatasetFromOperettaCreateCommand.java <ch/epfl/biop/command/importer/DatasetFromOperettaCreateCommand.java>`*
 
-Opens PerkinElmer Operetta high-content imaging datasets.
+Opens PerkinElmer Operetta high-content imaging datasets. Note that Perkin Elmer dataset can also be opened with the direct Bio-Formats command. But listing all potential 100 thousands files from the dataset can be an issue. It is thus easier to use this command where you can select the parent Operetta dataset folder.
 
 | Parameter | Description |
 |-----------|-------------|
@@ -558,7 +558,7 @@ cs.run(DatasetXMLCombineCommand, True,
 
 *Source: {biop-src}`DatasetEntitiesRemoveCommand.java <ch/epfl/biop/command/dataset/DatasetEntitiesRemoveCommand.java>`*
 
-Strips entity types from a dataset XML, useful for compatibility with tools that do not understand BigDataViewer Playground entities.
+Strips entity types from a dataset XML, useful for compatibility with tools that do not understand BigDataViewer Playground specific entities.
 
 | Parameter | Description |
 |-----------|-------------|
@@ -616,7 +616,7 @@ cs.run(DatasetEntitiesRemoveCommand, True,
 
 *Source: {biop-src}`DatasetXMLToBigStitcherDatasetConvertCommand.java <ch/epfl/biop/command/dataset/DatasetXMLToBigStitcherDatasetConvertCommand.java>`*
 
-Converts a BigDataViewer Playground XML dataset to BigStitcher format. Essentially, this command will add a transform that will make each pixel of size 1 in XY, which is a BigStitcher convention.
+Converts a BigDataViewer Playground XML dataset to BigStitcher format. Essentially, this command will add a transform that will make each pixel of size 1 in XY, which is a BigStitcher convention, and strips out BigDataViewer-Playground specific entities.
 
 | Parameter | Description |
 |-----------|-------------|

@@ -402,7 +402,7 @@ cs.run(StateClearCommand, True, []).get()
 **State vs. Dataset XML** — what's the difference?
 
 - A **Dataset XML** file stores the recipe for reading raw data plus spatial transforms. It is format-specific and can be shared with collaborators.
-- A **State JSON** file captures the full workspace snapshot: all sources (including virtual/processed ones), display settings, and viewer configurations. It is session-specific and primarily useful for resuming your own work.
+- A **State JSON** file captures the full workspace snapshot: all sources (including virtual/processed ones), display settings, (and in the future, viewer configurations). It is session-specific and primarily useful for resuming your own work.
 
 Use Dataset XML for archiving and sharing. Use State for checkpointing complex analysis sessions.
 :::
@@ -424,13 +424,13 @@ If you choose a method, let's say method `2.`, you need to set the other paramet
 
 To illustrate the modes, let's imagine the application can use up to 200Gb RAM. The three modes will be equivalent if: you choose option 1 with 150Gb (50Gb remaining for app), or if you choose option 2 with 50Gb (150Gb for pixel cache), or if you choose option 3 with 75% (200Gb * 0.75 = 150Gb cache for pixel data).
 
-| Parameter | Description                                                           |
-|-----------|-----------------------------------------------------------------------|
-| Cache type | Cache implementation to use (`LinkedHashMap` or `Caffeine`)               |
-| Cache size (MB) | Fixed cache size in megabytes                                         |
-| Reserved memory (MB) | Memory reserved for the rest of the application (Fiji, plugins, etc.) |
-| Memory ratio (%) | Percentage of available memory to allocate to the cache               |
-| Log interval (ms) | Interval between cache log messages (negative to disable)             |
+| Parameter | Description                                                         |
+|-----------|---------------------------------------------------------------------|
+| Cache type | Cache implementation to use (`LinkedHashMap` or `Caffeine`)         |
+| Cache size (MB) | Fixed cache size in megabytes (Option 1.)                           |
+| Reserved memory (MB) | Memory reserved for the rest of the application (Option 2.)         |
+| Memory ratio (%) | Percentage of available memory to allocate to the cache (Option 3.) |
+| Log interval (ms) | Interval between cache log messages (negative to disable)           |
 
 :::{important}
 Cache options take effect only after restarting Fiji.

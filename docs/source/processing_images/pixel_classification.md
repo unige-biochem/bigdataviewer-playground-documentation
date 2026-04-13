@@ -6,6 +6,10 @@ All commands are found under:
 
 {menuselection}`Plugins > BigDataViewer-Playground > Process > Classify (Labkit)`
 
+The workflow below is illustrated on the LLS7 HeLa dataset (two channels). We start by visualising the raw data, train a three-class classifier (background / cytoplasm / nucleus) inside Labkit, save it, and then apply it lazily to the whole volume.
+
+![Raw LLS7 HeLa image in BDV before classification](../workflows/images/labkit_step1_BigDataViewer-Raw.png)
+
 ---
 
 ## Source - Open Labkit
@@ -27,6 +31,8 @@ For large datasets, start with a higher resolution level (e.g. 2 or 3) to train 
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Classify (Labkit) --> Source - Open Labkit`
+
+![Labkit window just opened on the two LLS7 channels](../workflows/images/labkit_step2_Labkit_-_Scene_1-LatticeLightsheet.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -65,6 +71,28 @@ cs.run(SourcesLabkitOpenCommand, True,
 ::::
 
 :::::
+
+### Training the classifier in Labkit
+
+Inside Labkit, create one label per class and scribble representative strokes on a few slices. A handful of strokes per class is usually enough — add more only where the live segmentation fails. Once satisfied, save the classifier via {menuselection}`Segmentation --> Save Classifier as...` and close the Labkit window.
+
+::::{grid} 3
+:::{grid-item}
+![Background scribbles](../workflows/images/labkit_step3_Labkit_-_Scene_1-LatticeLightsheet.png)
+
+*1. Background scribbles*
+:::
+:::{grid-item}
+![Cytoplasm scribbles](../workflows/images/labkit_step4_Labkit_-_Scene_1-LatticeLightsheet.png)
+
+*2. Cytoplasm scribbles*
+:::
+:::{grid-item}
+![Nucleus scribbles and trained classifier overlay](../workflows/images/labkit_step5_Labkit_-_Scene_1-LatticeLightsheet.png)
+
+*3. Nucleus scribbles + Train Classifier*
+:::
+::::
 
 ---
 
@@ -136,3 +164,18 @@ classified = result.getOutput("source_out")
 ::::
 
 :::::
+
+The classified source behaves like any other source — you can browse it in BDV side by side with the raw data (synchronised with {menuselection}`Display --> BDV - Synchronize Views`), export it, or feed it into downstream commands. Only the tiles you look at are actually computed.
+
+::::{grid} 2
+:::{grid-item}
+![Raw LLS7 image](../workflows/images/labkit_step7_BigDataViewer-Raw.png)
+
+*Raw image*
+:::
+:::{grid-item}
+![Lazy classification result (background / cytoplasm / nucleus)](../workflows/images/labkit_step7_BigDataViewer-Classified.png)
+
+*Lazy classification result*
+:::
+::::

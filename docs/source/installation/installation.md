@@ -5,8 +5,8 @@ This guide covers how to install and set up BigDataViewer Playground in Fiji.
 ## System Requirements
 
 - **Fiji**: Latest version recommended
-- **Java**: Java 11 or higher (bundled with Fiji)
-- **Memory**: 8 GB RAM minimum, 16+ GB recommended for large datasets
+- **Java**: Java 8 or higher (bundled with Fiji)
+- **Memory**: 8+ GB recommended
 - **GPU** (optional): OpenCL-compatible GPU for deconvolution features
 
 ## Quick Installation
@@ -55,6 +55,11 @@ For improved performance when working with Zeiss CZI files:
 2. Check **Quick Start CZI Reader**
 3. Click `Close`, then `Apply changes`
 4. Restart Fiji
+
+Check that the new reader will be picked up:
+
+1. Go to `Plugins › Bio-Formats › Bio-Formats Plugins Configuration`
+2. In the second tab named `Formats`, navigate to the bottom of the list, click `Zeiss CZI (Quick Start)` and make sure that it is enabled
 
 This significantly speeds up opening and navigating large CZI datasets.
 
