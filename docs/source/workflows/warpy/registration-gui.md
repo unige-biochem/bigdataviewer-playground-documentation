@@ -115,7 +115,7 @@ Drag and drop the **RGB-DAB** source from the BDV window to the viewer:
 
 ### 3. Defining a Pair: Fixed/Moving Images to Register
 
-1. Run the **`Create registration pair`** command
+1. Run the **`Create Registration Pair`** command
 
    ![Create Registration Pair](images/create_registration_pair_search.png)
 
@@ -165,7 +165,7 @@ To get a correct registration, you will apply 3 successive registration steps am
 
 #### Step 1: Center Sources
 
-Click **`Registration Pair - Center moving sources on fixed sources`**
+Click **`Register Pair - Center Moving Sources On Fixed Sources`**
 
 It's a parameter-less registration. Note how the image is centered but still does not match the DAB image:
 
@@ -173,7 +173,7 @@ It's a parameter-less registration. Note how the image is centered but still doe
 
 #### Step 2: Register with SIFT
 
-1. Click **`Registration Pair 2D - Sift Affine`**
+1. Click **`Register Pair - Affine SIFT 2D`**
 2. Select the following parameters (you can set anything for the 4 ROI parameters `pos x`, `pos y`, `size x`, `size y`: their values are ignored because **intersection** is selected instead of **custom**)
 
    ![SIFT Parameters](images/page_16_img_2.png)
@@ -182,7 +182,7 @@ It's a parameter-less registration. Note how the image is centered but still doe
 
 ##### Parameter Explanation
 
-**ROI for registration:** The moving and fixed images are not necessarily occupying the same physical area. When the registration is performed, it is performed on resampled images (see registration re-sampling) over a certain region of the physical space.
+**ROI mode:** The moving and fixed images are not necessarily occupying the same physical area. When the registration is performed, it is performed on resampled images (see registration re-sampling) over a certain region of the physical space.
 
 You can set this region manually with the `pos xy` and `size xy` parameters, or (and that's easier) you can let the software compute either the **union** or the **intersection** of the moving and the fixed sources.
 
@@ -192,9 +192,11 @@ You can set this region manually with the `pos xy` and `size xy` parameters, or 
 ![Intersection vs Union](images/page_17_img_1.png)
 *Effect of choosing intersection (Green) or union (Red)*
 
+As you can see in the case above, within the intersection, there is no matching area between fixed and moving image. All automated registration method will fail. As soon as the fixed and moving images are approximately aligned, choosing `intersection` is usually recommended.
+
 **invert_moving_image:** Since we are registering an image with a black background with an image with a white background, it is important to invert one of the two images so they are as similar as possible before running any registration algorithms.
 
-**registration re-sampling:** The registration re-sampling parameter defines the resolution at which the images will be recomputed before being registered. A high value leads to a faster registration but the registration may be imprecise or fail due to the failure of detection of matching features.
+**Pixel size (um):** The registration re-sampling parameter defines the resolution at which the images will be recomputed before being registered. A high value leads to a faster registration but the registration may be imprecise or fail due to the failure of detection of matching features.
 
 After the SIFT registration step you should obtain a decent matching:
 
@@ -208,12 +210,12 @@ After the SIFT registration step you should obtain a decent matching:
 
 So far the two registration steps are concatenated affine transforms (center and then SIFT), but it is possible to go beyond and apply non-linear spline transforms. There is a choice between:
 
-- **`Registration Pair 2D - BigWarp Spline`** (fully manual transformation method)
-- **`Registration Pair 2D - Elastix Spline`** (fully automated, output can be loaded in BigWarp for manual adjustment)
+- **`Register Pair - Spline BigWarp Spline`** (fully manual transformation method)
+- **`Register Pair - Spline Elastix 2D`** (fully automated, output can be loaded in BigWarp for manual adjustment)
 
 Let's try Elastix Spline:
 
-1. Run **`Registration Pair 2D - Elastix Spline`**
+1. Run **`Register Pair - Spline Elastix 2D`**
 2. Select the following parameters:
 
    ![Elastix Spline Parameters](images/page_19_img_1.png)
@@ -222,11 +224,22 @@ The only different parameter is the **number of control points**. This parameter
 
 To visualize what it means, here's a comparison of the positioned landmarks when this parameter is set to 4 versus 8:
 
+
+::::{grid} 2
+:::{grid-item}
 ![4 Control Points](images/page_20_img_1.png)
 *#ctrl points in X = 4; 8 total landmarks*
-
+:::
+:::{grid-item}
 ![8 Control Points](images/page_20_img_2.png)
 *#ctrl points in X = 8; 40 total landmarks*
+:::
+::::
+
+
+
+
+
 
 > **Note:** Having a total number of landmarks above a few hundred can lead to pretty long computations.
 
@@ -234,14 +247,14 @@ To visualize what it means, here's a comparison of the positioned landmarks when
 
 This optional part demonstrates how to use BigWarp to edit the result of the Elastix spline transformation:
 
-1. Run **`Registration Pair - Edit last registration`**
+1. Run **`Register Pair - Edit Last Registration`**
 2. Press **Space** to enter landmark edition mode and move landmarks around
 3. Add new landmarks by pressing **Ctrl + left-click** before moving them around
 4. Click **OK** on the "choose slice" window to save your edition
 
 ### 6. Write the Registration Result to QuPath
 
-1. Run **`Registration Pair - Export registration result to QuPath project`**
+1. Run **`Register Pair - Export To QuPath`**
 2. Make sure that **`allow_overwrite`** is checked
    - Otherwise, because there is already a transformation in the QuPath project, the software will not write the new transformation
 
