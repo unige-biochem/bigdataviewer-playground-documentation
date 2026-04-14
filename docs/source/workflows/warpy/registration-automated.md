@@ -2,7 +2,9 @@
 
 All the commands used previously also exist directly in Fiji's search bar and are **macro recordable**. This is the basis of how we will perform headless registration.
 
-> **NOTE:** A registration may fail (for instance if SIFT does not find any corresponding landmarks). The macro way of batching can't handle this failure currently. If you want to handle registration failures, scripting should be done with another language (groovy, jython).
+:::{note}
+A registration may fail (for instance if SIFT does not find any corresponding landmarks). The macro way of batching can't handle this failure currently. If you want to handle registration failures, scripting should be done with another language (groovy, jython).
+:::
 
 ## Recording the Macro
 
@@ -14,15 +16,18 @@ All the commands used previously also exist directly in Fiji's search bar and ar
 
 Here's a summary of what we've done:
 
-1. `Create BDV Dataset [QuPath]`
-2. `Create registration pair`
-3. `Register Pair - Center moving sources on fixed sources`
-4. `Register Pair 2D - Sift Affine`
-5. `Register Pair 2D - Elastix Spline`
-6. `Register Pair - Export registration result to QuPath project`
+1. `Dataset - Create [QuPath]`
+2. `Create Registration Pair`
+3. `Register Pair - Center Moving Sources On Fixed Sources`
+4. `Register Pair - Affine SIFT 2D`
+5. `Register Pair - Spline Elastix 2D`
+6. `Register Pair - Export To QuPath`
 
-> **NOTE:** If you want to clean up and clear memory, you can run the command `Delete registration pair`. You can also run `Clear Bdv Playground State` when you're fully done with a specific QuPath project.
 
+:::{note}
+If you want to clean up and clear memory, you can run the command `Delete Registration Pair`. You can also run `State - Clear` when you're fully done with a specific QuPath project.
+:::
+ 
 4. Press **Create** on the recorder window
 
 ## Editing the Recorded Macro
@@ -33,40 +38,42 @@ You will get a draft macro that will need to be slightly tweaked to perform regi
 
 ```{code-block} imagej
 :caption: ImageJ Macro
-run("Create BDV Dataset [QuPath]",
-"qupath_project=C:\\Users\\oburri\\Desktop\\warpy-demo-project\\project.qpproj
-datasetname=warpy-demo-project unit=MILLIMETER split_rgb_channels=false
-plane_origin_convention=[TOP LEFT]");
 
-run("BDV - Set BDV window (biop)", "resettodefault=false width=640 height=480
-screenscales=[1, 0.5, 0.25, 0.125] numrenderingthreads=3 numsourcegroups=10
-frametitle=BigDataViewer is2d=true interpolate=false numtimepoints=1 fontsize=18
-font=Courier");
+run("Dataset - Create [QuPath]",
+    "qupath_project=C:\\Users\\Nicolas\\Documents\\warpy-demo-project.qpproj datasetname=warpy-demo-project split_rgb_channels=false plane_origin_convention=[TOP_LEFT] unit=MILLIMETER");
 
-run("Create registration pair", "fixed_sources=[Lbdv.viewer.SourceAndConverter;@794c6f92
-moving_sources=[Lbdv.viewer.SourceAndConverter;@7c555e51 registration_name=[Fluo to
-DAB]");
+run("BDV - Set Style (BIOP)",
+    "resettodefault=false width=640 height=480 screenscales=[1, 0.5, 0.25, 0.125] numrenderingthreads=3 numtimepoints=10 framerate=10 fontSize=18 font=Courier interpolate=false");
 
-run("Register Pair - Center moving sources on fixed sources");
+run("BDV - Show Sources",
+    "sources=[Lbdv.viewer.SourceAndConverter;@2f96ec0d auto_contrast=true adjust_view=true make_new_window=true interpolate=false");
 
-run("Register Pair 2D - Sift Affine", "bounds=intersection px=-1.029893000000037
-py=-0.7710045000000371 sx=2.0596159999999997 sy=1.5418389999999993
-channels_fixed_csv=0 channels_moving_csv=0 pixel_size_micrometer=1.0 invert_moving=true
-invert_fixed=false");
+run("Create Registration Pair",
+    "fixed_sources=[Lbdv.viewer.SourceAndConverter;@5300cdb5 moving_sources=[Lbdv.viewer.SourceAndConverter;@2a8dfadc registration_name=dab_fluo");
 
-run("Register Pair 2D - Elastix Spline", "bounds=intersection px=-1.2157094775991526
-py=-0.7215601283964763 sx=2.022231206667339 sy=1.4959165183359435
-nb_control_points_x=8 channels_fixed_csv=0 channels_moving_csv=0
-pixel_size_micrometer=2.0 show_imageplus_registration_result=false");
+run("Register Pair - Add GUI",
+    "registration_pair=dab_fluo");
 
-run("Register Pair - Export registration to QuPath project", "allow_overwrite=true");
+run("Register Pair - Center Moving Sources On Fixed Sources");
+
+run("Register Pair - Affine SIFT 2D",
+    "bounds=intersection px=1.277347001011156 py=0.5464955005773834 sx=2.0596159999999992 sy=1.5418389999999995 transformation_model=AFFINE channels_fixed_csv=0 channels_moving_csv=0 pixel_size_micrometer=1.0 invert_moving=false invert_fixed=false");
+
+run("Register Pair - Spline Elastic 2D",
+    "bounds=intersection px=1.0915305234120407 py=0.595938721809441 sx=2.022231206667339 sy=1.495165183359435 nb_control_points_x=8 channels_fixed_csv=0 channels_moving_csv=0 pixel_size_micrometer=2.0 show_imageplus_registration_result=false");
+
+run("Register Pair - Export To QuPath",
+    "allow_overwrite=true");
+
 ```
 
 ### Required Edits
 
+You can get rid of all unnecessary commands for batch processing (anything GUI related: BIOP Style, Show Sources, ...).
+
 #### 1. Replace px, py, sx, sy with 0
 
-All the `px`, `py`, `sx`, and `sy` parameters are irrelevant but still need to be there.
+All the `px`, `py`, `sx`, and `sy` parameters are irrelevant since we specify intersection or union, but they still need to be there.
 
 - Replace these parameter values with **0**
 
@@ -76,55 +83,52 @@ Take the time to format all parameters in multiple lines for readability:
 
 ```{code-block} imagej
 :caption: ImageJ Macro
-run("Create BDV Dataset [QuPath]",
-    "qupath_project=C:\\Users\\oburri\\Desktop\\warpy-demo-project\\project.qpproj "+
+
+run("Dataset - Create [QuPath]",
+    "qupath_project=C:\\Users\\Nicolas\\Documents\\warpy-demo-project.qpproj "+
     "datasetname=warpy-demo-project "+
-    "unit=MILLIMETER "+
     "split_rgb_channels=false "+
-    "plane_origin_convention=[TOP LEFT]");
+    "plane_origin_convention=[TOP_LEFT] "+
+    "unit=MILLIMETER");
 
-run("Create registration pair",
-    "fixed_sources=[Lbdv.viewer.SourceAndConverter;@794c6f92 "+
-    "moving_sources=[Lbdv.viewer.SourceAndConverter;@7c555e51 "+
-    "registration_name=[Fluo to DAB]");
+run("Create Registration Pair",
+    "fixed_sources=[Lbdv.viewer.SourceAndConverter;@5300cdb5 "+
+    "moving_sources=[Lbdv.viewer.SourceAndConverter;@2a8dfadc "+
+    "registration_name=dab_fluo");
 
-run("Register Pair - Center moving sources on fixed sources");
+run("Register Pair - Center Moving Sources On Fixed Sources");
 
-run("Register Pair 2D - Sift Affine",
+run("Register Pair - Affine SIFT 2D",
     "bounds=intersection "+
-    "px=0 "+
-    "py=0 "+
-    "sx=0 "+
-    "sy=0 "+
+    "px=0 py=0 sx=0 sy=0 "+
+    "transformation_model=AFFINE "+
     "channels_fixed_csv=0 "+
     "channels_moving_csv=0 "+
     "pixel_size_micrometer=1.0 "+
-    "invert_moving=true "+
+    "invert_moving=false "+
     "invert_fixed=false");
 
-run("Register Pair 2D - Elastix Spline",
+run("Register Pair - Spline Elastic 2D",
     "bounds=intersection "+
-    "px=0 "+
-    "py=0 "+
-    "sx=0 "+
-    "sy=0 "+
+    "px=0 py=0 sx=0 sy=0 "+
     "nb_control_points_x=8 "+
     "channels_fixed_csv=0 "+
     "channels_moving_csv=0 "+
     "pixel_size_micrometer=2.0 "+
     "show_imageplus_registration_result=false");
 
-run("Register Pair - Export registration to QuPath project", "allow_overwrite=true");
+run("Register Pair - Export To QuPath",
+    "allow_overwrite=true");
 ```
 
 #### 3. Fix Source Selection
 
-The remaining blocking point is the way to set the **fixed sources** and **moving sources** in the `Create registration pair` command (highlighted above). These parameters are unfortunately not well recorded, and running the script will give an error.
+The remaining blocking point is the way to set the **fixed sources** and **moving sources** in the `Create Registration Pair` command. These parameters are unfortunately not well recorded, and running the script will give an error.
 
 The way to specify the sources is to write the path of the sources as it appears in the BDV Sources window. Multiple paths can lead to the same sources.
 
 **Example paths:**
-- `warpy-demo-project>All Sources>Fluo`
+- `warpy-demo-project>ImageName>Fluo`
 - `warpy-demo-project>QuPathEntryIdEntity>QuPathEntryIdEntity 1`
 
 To select several sources, identify the parent of this path.
@@ -133,10 +137,10 @@ To select several sources, identify the parent of this path.
 
 ```{code-block} imagej
 :caption: ImageJ Macro
-run("Create registration pair",
+run("Create Registration Pair",
     "fixed_sources=[warpy-demo-project>QuPathEntryIdEntity>QuPathEntryIdEntity 2] "+
     "moving_sources=[warpy-demo-project>QuPathEntryIdEntity>QuPathEntryIdEntity 1] "+
-    "registration_name=[Fluo to DAB]");
+    "registration_name=dab_fluo");
 ```
 
 - Edit the macro according to your choices to get the right selection of fixed and moving sources
@@ -144,29 +148,31 @@ run("Create registration pair",
 
 ### Important: Add Registration Pair Parameter
 
-⚠️ **Warning:** When registration commands are run through the GUI, there is a parameter missing in the recorder that tells the software which registration pair to work on.
+:::{warning}
+When registration commands are run through the GUI, there is a parameter missing in the recorder that tells the software which registration pair to work on.
+:::
 
 You can correct this by adding a line to each registration command:
 
 **Before:**
 ```{code-block} imagej
 :caption: ImageJ Macro
-run("Register Pair - Center moving sources on fixed sources");
+run("Register Pair - Center Moving Sources On Fixed Sources");
 ```
 
 **After:**
 ```{code-block} imagej
 :caption: ImageJ Macro
-run("Register Pair - Center moving sources on fixed sources",
-    "registration_pair=[Fluo to DAB]");
+run("Register Pair - Center Moving Sources On Fixed Sources",
+    "registration_pair=[dab_fluo]");
 ```
 
 **Complete corrected command:**
 
 ```{code-block} imagej
 :caption: ImageJ Macro
-run("Register Pair 2D - Sift Affine",
-    "registration_pair=[Fluo to DAB] "+
+run("Register Pair - Affine SIFT 2D",
+    "registration_pair=[dab_fluo] "+
     "bounds=intersection "+
     "px=0 "+
     "py=0 "+
@@ -179,7 +185,7 @@ run("Register Pair 2D - Sift Affine",
     "invert_fixed=false");
 ```
 
-**OR** run the command outside of the GUI during the registration process.
+**OR** run the command outside of the GUI during the registration process when recording.
 
 When you run the command from outside the registration pair GUI, you will be prompted to specify which registration pair you need to work on (don't forget to click the line, even if it's a single line):
 
@@ -204,10 +210,10 @@ You can find an example of a full macro including SciJava parameters:
 #@ String registration_pair_name (label = "Name of registration pair", value="Fluo to DAB")
 
 // Make sure there are no sources before we start with the registration
-run("Clear Bdv Playground State");
+run("State - Clear");
 
 // Load the data from the QuPath project
-run("Create BDV Dataset [QuPath]",
+run("Dataset - Create [QuPath]",
     "qupath_project=["+qupath_project+"] "+
     "datasetname=["+registration_dataset_name+"] "+
     "unit=MILLIMETER "+
@@ -216,17 +222,17 @@ run("Create BDV Dataset [QuPath]",
 
 // This macro will only create one registration pair, but of course we could do multiple,
 // as long as they are uniquely named
-run("Create registration pair",
+run("Create Registration Pair",
     "fixed_sources=["+registration_dataset_name+">QuPathEntryIdEntity>QuPathEntryIdEntity "+fixed_source_qupath_entry_id+"] "+
     "moving_sources=["+registration_dataset_name+">QuPathEntryIdEntity>QuPathEntryIdEntity "+moving_source_qupath_entry_id+"] "+
     "registration_name=["+registration_pair_name+"]");
 
 // First registration: Centering the two sources
-run("Register Pair - Center moving sources on fixed sources",
+run("Register Pair - Center Moving Sources On Fixed Sources",
     "registration_pair=["+registration_pair_name+"]");
 
 // An affine transform using Scale Invariant Features
-run("Register Pair 2D - Sift Affine",
+run("Register Pair - Affine SIFT 2D",
     "registration_pair=["+registration_pair_name+"] "+
     "bounds=intersection "+
     "px=0 "+
@@ -240,7 +246,7 @@ run("Register Pair 2D - Sift Affine",
     "invert_fixed=false");
 
 // A fancier local registration using a grid of 8x8 spline registrations
-run("Register Pair 2D - Elastix Spline",
+run("Register Pair - Spline Elastix 2D",
     "registration_pair=["+registration_pair_name+"] "+
     "bounds=intersection "+
     "px=0 "+
@@ -254,7 +260,7 @@ run("Register Pair 2D - Elastix Spline",
     "show_imageplus_registration_result=false");
 
 // Finish the job: Export the necessary results to QuPath so Warpy can detect the work we did
-run("Register Pair - Export registration to QuPath project",
+run("Register Pair - Export To QuPath",
     "registration_pair=["+registration_pair_name+"] "+
     "allow_overwrite=true");
 

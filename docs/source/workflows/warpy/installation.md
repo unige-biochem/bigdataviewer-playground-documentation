@@ -49,7 +49,10 @@ QuPath is required as well as the Warpy extension.
 
 **Mac:** You probably need to run the `elastix.sh`, `transformix.sh`, and `.dylib` files once to make security exceptions.
 
-> **In Mac, you probably need to run once the elastix sh and transformix sh and .dylib files to make security exceptions.**
+:::{important}
+In Mac, you probably need to run once the elastix sh and transformix sh and .dylib files to make security exceptions.
+:::
+
 
 ### Test QuPath Project
 

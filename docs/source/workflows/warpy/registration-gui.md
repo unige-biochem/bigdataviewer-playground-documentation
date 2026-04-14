@@ -91,7 +91,7 @@ To visualize the images within the QuPath project:
 
    ![BDV Show Sources Menu](images/sources_display_newbdv.png)
 
-3. Then select **`Auto Contrast`**, **`Adjust View on Sources`** and **`Open In New Window`
+3. Then select **`Auto Contrast`**, **`Adjust View on Sources`** and **`Open In New Window`**
 
    ![Auto Contrast Options](images/show_sources_options.png)
 
@@ -236,12 +236,10 @@ To visualize what it means, here's a comparison of the positioned landmarks when
 :::
 ::::
 
+:::{note}
+Having a total number of landmarks above a few hundred can lead to pretty long computations.
+:::
 
-
-
-
-
-> **Note:** Having a total number of landmarks above a few hundred can lead to pretty long computations.
 
 ### 5. Optional: Edit the Last Spline Transformation
 
