@@ -28,14 +28,14 @@ Create a new QuPath project and insert all VSI images in it:
 #### Open the QuPath Project in Fiji
 
 1. In Fiji's search bar, type `QuPath`
-2. Find and run the command **`Create BDV Dataset [QuPath]`**
+2. Find and run the command **`Dataset - Create [QuPath]`**
 
    ![Create BDV Dataset](images/page_33_img_1.png)
 
 3. Select the file `project.qpproj` within the warpy project folder (you can also drag and drop)
-4. Make sure that **MILLIMETER** is set in the `Physical units of the dataset` field
+4. Make sure that **MILLIMETER** is set in the `World coordinate units` field
 5. Make sure that **TOP LEFT** is set in the `Plane Origin Convention` field
-6. **Split RGB channels** should be **unchecked**
+6. **Split RGB Channels** should be **unchecked**
 7. Click **OK**
 
 ### 2. Registration Process
@@ -49,7 +49,7 @@ Using the GUI for registering all successive pairs is doable but tedious. Instea
 
 ## Automated Registration Script
 
-Here's the complete script for batch registration of serial sections: delete
+Here's the complete script for batch registration of serial sections:
 
 ```{code-block} imagej-groovy
 :caption: ImageJ Groovy
@@ -101,19 +101,19 @@ try {
             println("MOVING - "+moving_source_path)
             
             if (create_pair) {
-                IJ.run("Create registration pair",
+                IJ.run("Create Registration Pair",
                     "fixed_sources=["+fixed_source_path+"] "+
                     "moving_sources=["+moving_source_path+"] "+
                     "registration_name=["+registration_pair_name+"]");
             }
             
             if (center_registration) {
-                IJ.run("Register Pair - Center moving sources on fixed sources",
+                IJ.run("Register Pair - Center Moving Sources On Fixed Sources",
                     "registration_pair=["+registration_pair_name+"]");
             }
             
             if (sift_registration) {
-                IJ.run("Register Pair 2D - Sift Affine",
+                IJ.run("Register Pair - Affine SIFT 2D",
                     "bounds=union px=-1 py=-1 sx=-1 sy=-1 "+
                     "registration_pair=["+registration_pair_name+"] "+
                     "channels_fixed_csv=0 "+
@@ -125,7 +125,7 @@ try {
             }
             
             if (affine_registration) {
-                IJ.run("Register Pair 2D - Elastix Affine",
+                IJ.run("Register Pair - Affine Elastix 2D",
                     "bounds=union px=-1 py=-1 sx=-1 sy=-1 "+
                     "registration_pair=["+registration_pair_name+"] "+
                     "channels_fixed_csv="+channels_reg+" "+
@@ -135,7 +135,7 @@ try {
             }
             
             if (spline_registration) {
-                IJ.run("Register Pair 2D - Elastix Spline",
+                IJ.run("Register Pair - Spline Elastix 2D",
                     "bounds=union px=-1 py=-1 sx=-1 sy=-1 "+
                     "registration_pair=["+registration_pair_name+"] "+
                     "channels_fixed_csv="+channels_reg+" "+
@@ -146,23 +146,23 @@ try {
             }
             
             if (export_to_qupath) {
-                IJ.run("Register Pair - Export registration to QuPath project",
+                IJ.run("Register Pair - Export To QuPath",
                     "registration_pair=["+registration_pair_name+"] "+
                     "allow_overwrite=true");
             }
             
             if (remove_last_registration) {
-                IJ.run("Register Pair - Remove last registration",
+                IJ.run("Register Pair - Remove Last Registration",
                     "registration_pair=["+registration_pair_name+"] ");
             }
             
             if (show_pair) {
-                IJ.run("Registration pair - Add GUI",
+                IJ.run("Register Pair - Add GUI",
                     "registration_pair=["+registration_pair_name+"]");
             }
             
             if (cleanup_pair) {
-                IJ.run("Delete registration pair",
+                IJ.run("Delete Registration Pair",
                     "registration_pair=["+registration_pair_name+"]");
             }
             
@@ -242,7 +242,7 @@ Some parameters are hardcoded in the script and can be modified:
 "pixel_size_micrometer=20 "  // Resampling resolution
 ```
 
-These settings work nicely on the demo sample but may need adjustment for your data.
+These settings work nicely on the demo sample but may need adjustment for your data. They can be made modular with script parameters.
 
 ### Running the Full Registration
 
@@ -528,4 +528,4 @@ You've now learned to:
 2. Propagate transformations through the stack
 3. Create a browsable 3D reconstruction in QuPath
 
-This workflow enables powerful 3D analysis of serial section data while maintaining the flexibility of QuPath's analysis tools.
+This workflow enables 3D analysis of serial section data while maintaining the flexibility of QuPath's analysis tools.

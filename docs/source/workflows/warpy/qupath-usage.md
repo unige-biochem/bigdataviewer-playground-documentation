@@ -9,7 +9,9 @@ Inside QuPath, you can use the resulting transformation files in two ways:
 1. **Transfer annotations or detections** from one image to another (the deformation is applied to the vector shape, and measurements are carried over the new image)
 2. **Generate a new image** that combines the fixed image and the moving images (with on-the-fly computation)
 
-> ⚠️ **Warning:** Images in QuPath project entries created with this tool may not show the original pixel values! The pixel difference between the original and the transformed image depends on the transformation, the interpolation used, and the downsampling in the current viewer. This must be taken into account in all analysis steps performed on such transformed images.
+:::{warning}
+Images in QuPath project entries created with this tool may not show the original pixel values! The pixel difference between the original and the transformed image depends on the transformation, the interpolation used, and the downsampling in the current viewer. This must be taken into account in all analysis steps performed on such transformed images.
+:::
 
 ## 1. Convert Annotations from One Image to Another
 
@@ -45,7 +47,9 @@ After a few seconds you should see the annotations and detections transferred to
 
 ![DAB Image With Transfered Cells](images/page_30_img_1.png)
 
-> **Note:** The measurements from the fluorescent images are transferred as well. Each detection thus contains measures from both the H-DAB and the fluorescent image.
+:::{note}
+The measurements from the fluorescent images are transferred as well. Each detection thus contains measures from both the H-DAB and the fluorescent image.
+:::
 
 ## 2. Create a Combined Image
 
