@@ -101,6 +101,20 @@
     ],
     "output": []
   },
+  "sc.fiji.bdvpg.command.display.bdv.overlay.BdvOverlayAxesAddCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.overlay.BdvOverlayAxesAddCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eOverlay\u003eBDV - Add Axes Overlay",
+    "description": "Adds a 3D axes orientation gizmo onto BDV windows",
+    "input": [
+      {
+        "type": "BdvHandle[]",
+        "name": "bdvhs",
+        "label": "Select BDV Windows",
+        "description": "The BigDataViewer windows where axes overlays will be added"
+      }
+    ],
+    "output": []
+  },
   "sc.fiji.bdvpg.command.dataset.transform.DatasetTransformSetCommand": {
     "name": "sc.fiji.bdvpg.command.dataset.transform.DatasetTransformSetCommand",
     "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDataset\u003eTransform Stack\u003eDataset - Set Transforms",
@@ -1072,6 +1086,20 @@
     ],
     "output": []
   },
+  "sc.fiji.bdvpg.command.display.bdv.overlay.BdvOverlayDebugAddCommand": {
+    "name": "sc.fiji.bdvpg.command.display.bdv.overlay.BdvOverlayDebugAddCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eOverlay\u003eBDV - Add Debug Overlay",
+    "description": "Adds the overlay of the bdv tiled renderer",
+    "input": [
+      {
+        "type": "BdvHandle",
+        "name": "bdvh",
+        "label": "Select BDV Window",
+        "description": "The BigDataViewer window where the debug tile overlay will be shown"
+      }
+    ],
+    "output": []
+  },
   "sc.fiji.bdvpg.command.display.bvv.BvvCreateCommand": {
     "name": "sc.fiji.bdvpg.command.display.bvv.BvvCreateCommand",
     "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBVV\u003eBVV - Create",
@@ -1092,20 +1120,6 @@
         "description": "The newly created BigVolumeViewer window"
       }
     ]
-  },
-  "sc.fiji.bdvpg.command.display.bdv.overlay.BdvOverlayDebugAddCommand": {
-    "name": "sc.fiji.bdvpg.command.display.bdv.overlay.BdvOverlayDebugAddCommand",
-    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eOverlay\u003eBDV - Add Debug Overlay",
-    "description": "Adds the overlay of the bdv tiled renderer",
-    "input": [
-      {
-        "type": "BdvHandle",
-        "name": "bdvh",
-        "label": "Select BDV Window",
-        "description": "The BigDataViewer window where the debug tile overlay will be shown"
-      }
-    ],
-    "output": []
   },
   "sc.fiji.bdvpg.command.display.source.SourceVisibilityOFFCommand": {
     "name": "sc.fiji.bdvpg.command.display.source.SourceVisibilityOFFCommand",

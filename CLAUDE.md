@@ -33,7 +33,7 @@ sphinx-build -b html source build/html
 
 ## Current Version
 
-The documentation currently tracks release: `ch.epfl.biop:bigdataviewer-biop-tools:0.20.4`
+The documentation currently tracks release: `ch.epfl.biop:bigdataviewer-biop-tools:0.21.0`
 
 ## Deployment (ReadTheDocs)
 
@@ -56,10 +56,10 @@ When adding an extension, add the package in the same commit.
 
 ### Versioning / tagging scheme
 
-- Tag format is **PEP 440 4-segment**: `MAJOR.MINOR.PATCH.DOC` (e.g. `0.20.4.0`, `0.20.4.1`).
+- Tag format is **PEP 440 4-segment**: `MAJOR.MINOR.PATCH.DOC` (e.g. `0.21.0.0`, `0.21.0.1`).
   The first three digits mirror the documented `bigdataviewer-biop-tools` release; the 4th is the
-  doc-only revision. (Avoid `0.20.4-doc.N` — sorts as a *pre-release*, before `0.20.4`; avoid
-  `0.20.4+doc.N` — build metadata has undefined ordering. Both break RTD `stable` detection.)
+  doc-only revision. (Avoid `0.21.0-doc.N` — sorts as a *pre-release*, before `0.21.0`; avoid
+  `0.21.0+doc.N` — build metadata has undefined ordering. Both break RTD `stable` detection.)
 - `latest` auto-tracks `main`, so doc fixes publish on every push — a tag is only for a frozen snapshot.
 - New tags must be **activated once** in the RTD admin (Versions tab) before they build/appear.
 - **When upstream bumps** (e.g. to 0.20.5): update `version`/`release` and the `extlinks` version strings
@@ -71,13 +71,13 @@ A tool for introspecting the ecosystem is in `fiji-tools/`. Read that directory 
 available subcommands before calling it. Invoked via:
 ```bash
 jgo -r scijava=https://maven.scijava.org/content/groups/public \
-  "ch.epfl.biop:fiji-tools:0.1.0-SNAPSHOT:ch.epfl.biop.fiji.tools.CLI+ch.epfl.biop:bigdataviewer-biop-tools:0.20.4" \
+  "ch.epfl.biop:fiji-tools:0.1.0-SNAPSHOT:ch.epfl.biop.fiji.tools.CLI+ch.epfl.biop:bigdataviewer-biop-tools:0.21.0" \
   <subcommand> <args..>
 ```
 
 ## Versioned CLI Outputs
 
-Save CLI outputs under `cli-outputs/<version>/` (e.g. `cli-outputs/0.20.4/`).
+Save CLI outputs under `cli-outputs/<version>/` (e.g. `cli-outputs/0.21.0/`).
 This enables diffing outputs across versions to guide incremental documentation updates.
 
 ## Looking Up Command Signatures for Scripting Tabs
@@ -85,8 +85,8 @@ This enables diffing outputs across versions to guide incremental documentation 
 When adding multi-language tabs to a documentation page, you need the **full Java class name**
 and **parameter names** for every command. Both are stored in the pre-computed JSON snapshots:
 
-- `cli-outputs/0.20.4/snapshot-sc.fiji.bdvpg.json` — core BDV Playground commands (`sc.fiji.bdvpg.*`)
-- `cli-outputs/0.20.4/snapshot-ch.epfl.biop.json` — BIOP-specific commands (`ch.epfl.biop.*`)
+- `cli-outputs/0.21.0/snapshot-sc.fiji.bdvpg.json` — core BDV Playground commands (`sc.fiji.bdvpg.*`)
+- `cli-outputs/0.21.0/snapshot-ch.epfl.biop.json` — BIOP-specific commands (`ch.epfl.biop.*`)
 
 ### JSON structure
 
@@ -102,8 +102,8 @@ Each entry in those files is a command descriptor with at minimum:
 2. Launch **one** Explore agent with the full list, instructing it to search both JSON files and
    return the class name + list of input `name` fields for every command. Example prompt shape:
 
-   > Search `cli-outputs/0.20.4/snapshot-sc.fiji.bdvpg.json` and
-   > `cli-outputs/0.20.4/snapshot-ch.epfl.biop.json`. For each of the following commands,
+   > Search `cli-outputs/0.21.0/snapshot-sc.fiji.bdvpg.json` and
+   > `cli-outputs/0.21.0/snapshot-ch.epfl.biop.json`. For each of the following commands,
    > return the full `className` and all input `name` fields:
    > 1. BDV - Show Sources
    > 2. Source - Set Color
@@ -175,7 +175,7 @@ as `SimpleIJLaunch.java` and other test utilities in the project.
 2. Create `Generate<PageName>Screenshots.java` in `ijp-imglib2bdvdemo-ij2/src/test/java/ch/epfl/biop/docs/`,
    modelled on `GenerateVisualizingImagesScreenshots.java`.
 3. Look up the exact class names of the commands to invoke from
-   `cli-outputs/0.20.4/snapshot-sc.fiji.bdvpg.json` and `snapshot-ch.epfl.biop.json`.
+   `cli-outputs/0.21.0/snapshot-sc.fiji.bdvpg.json` and `snapshot-ch.epfl.biop.json`.
 4. For each scenario: run the command via `ij.command().run(...)`, set window title, call
    `DemoHelper.shot(OUTPUT_DIR, "prefix", waitMs, "TitleFilter")`, then dispose + wait.
 5. Run the class from the IDE to generate the images.

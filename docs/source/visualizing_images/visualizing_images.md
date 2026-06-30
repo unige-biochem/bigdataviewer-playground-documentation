@@ -303,6 +303,66 @@ cs.run(BdvOrthoCreateCommand, True,
 
 ---
 
+## Overlays
+
+Overlays draw extra information on top of the rendered sources without modifying the data itself.
+
+### BDV - Add Axes Overlay
+
+*Source: {bdvpg-src}`BdvOverlayAxesAddCommand.java <sc/fiji/bdvpg/command/display/bdv/overlay/BdvOverlayAxesAddCommand.java>`*
+
+Adds a 3D axes orientation gizmo to the corner of one or more BDV windows. The gizmo shows the three data axes — labelled **X**, **Y**, and **Z** — and rotates together with the view, so you can always tell how the dataset is oriented while navigating in 3D.
+
+The labels are also interactive: **clicking the X, Y, or Z letter snaps the view to the corresponding orthogonal orientation** (looking straight down that axis), giving you a quick way to jump back to a canonical front / side / top view.
+
+![Axes orientation gizmo in the corner of a BDV window, showing the coloured X, Y and Z axes](images/bdv_axes_overlay.png)
+
+| Parameter | Description |
+|-----------|-------------|
+| Select BDV Windows | The BigDataViewer windows where axes overlays will be added |
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Overlay --> BDV - Add Axes Overlay`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("BDV - Add Axes Overlay");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@BdvHandle[] bdvhs
+#@CommandService cs
+
+import sc.fiji.bdvpg.command.display.bdv.overlay.BdvOverlayAxesAddCommand
+
+cs.run(BdvOverlayAxesAddCommand, true,
+    "bdvhs", bdvhs
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@BdvHandle[] bdvhs
+#@CommandService cs
+
+from sc.fiji.bdvpg.command.display.bdv.overlay import BdvOverlayAxesAddCommand
+
+cs.run(BdvOverlayAxesAddCommand, True,
+    ["bdvhs", bdvhs]
+).get()
+```
+::::
+
+:::::
+
+---
+
 ## Grid Overview
 
 When working with many sources (e.g. multiple tiles or channels), it can be helpful to see them all at once.

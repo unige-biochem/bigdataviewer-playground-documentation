@@ -165,6 +165,7 @@
     ?   ?       ??? Source - LLS7 - Compensate Z-Drift  [LLS7ZDriftCompensateCommand]
     ?   ?       ??? Source - LLS7 - Crop 3D  [LLS7CropCommand]
     ?   ??? Workspace
+    ?       ??? Set Bio-Formats Memo Directory  [SetBioFormatsMemoDirectoryCommand]
     ?       ??? Tree
     ?           ??? Tree - Filter By Name  [FilterNodeNameAddCommand]
     ??? Sandbox
@@ -183,6 +184,7 @@
 ?           ?       ?       ??? BdvShowFileBioFormatsCommand  (menu: Open File with Bio-Formats)
 ?           ?       ?       ??? DatasetFromBioFormatsCreateCommand  (menu: Dataset - Create [Bio-Formats])
 ?           ?       ?       ??? OpenSampleCommand  (menu: Dataset - Samples)
+?           ?       ?       ??? SetBioFormatsMemoDirectoryCommand  (menu: Set Bio-Formats Memo Directory)
 ?           ?       ??? imageplus
 ?           ?       ?   ??? command
 ?           ?       ?       ??? DatasetFromImagePlusCreateCommand  (menu: Dataset - Create [Current ImagePlus])

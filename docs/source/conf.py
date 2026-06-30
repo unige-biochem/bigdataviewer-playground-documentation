@@ -6,8 +6,8 @@ project = 'BigDataViewer Playground Documentation'
 copyright = '2026, Nicolas Chiaruttini'
 author = 'Nicolas Chiaruttini'
 
-release = '0.20.4'
-version = '0.20.4'
+release = '0.21.0'
+version = '0.21.0'
 
 # -- General configuration
 
@@ -25,10 +25,10 @@ extensions = [
 ]
 
 # Source code links — update these two version strings when bumping the tracked release.
-_bdvpg_version = "0.20.2"   # bigdataviewer-playground (sc.fiji.bdvpg.*)
-_biop_bdv_tools_version  = "0.20.4"   # bigdataviewer-biop-tools  (ch.epfl.biop.*)
-_bdv_image_loaders_version  = "0.20.1"   # bigdataviewer-biop-tools  (ch.epfl.biop.*)
-_bdvpg_display_version = "0.20.0"
+_bdvpg_version = "0.21.0"   # bigdataviewer-playground (sc.fiji.bdvpg.*)
+_biop_bdv_tools_version  = "0.21.0"   # bigdataviewer-biop-tools  (ch.epfl.biop.*)
+_bdv_image_loaders_version  = "0.21.1"   # bigdataviewer-biop-tools  (ch.epfl.biop.*)
+_bdvpg_display_version = "0.20.1"
 _ijp_kheops_version = "0.20.0"
 
 extlinks = {

@@ -684,6 +684,26 @@
       }
     ]
   },
+  "ch.epfl.biop.bdv.img.bioformats.command.SetBioFormatsMemoDirectoryCommand": {
+    "name": "ch.epfl.biop.bdv.img.bioformats.command.SetBioFormatsMemoDirectoryCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eWorkspace\u003eSet Bio-Formats Memo Directory",
+    "description": "Sets the folder where Bio-Formats stores its memo (.bfmemo) caching files. Useful when image folders are read-only.",
+    "input": [
+      {
+        "type": "File",
+        "name": "memo_directory",
+        "label": "Memo directory",
+        "description": "Folder where Bio-Formats memo (.bfmemo) files will be stored."
+      },
+      {
+        "type": "boolean",
+        "name": "reset_to_default",
+        "label": "Reset to default location",
+        "description": "Ignore the chosen folder and revert to the default (\u003cuser.home\u003e/.bf-memo)."
+      }
+    ],
+    "output": []
+  },
   "ch.epfl.biop.wrappers.deepslice.ij2commands.DeepSlicePrefsSet": {
     "name": "ch.epfl.biop.wrappers.deepslice.ij2commands.DeepSlicePrefsSet",
     "menuPath": "Plugins\u003eBIOP\u003eDeepSlice\u003eDeepSlice setup...",
@@ -3669,7 +3689,14 @@
         "description": "The registration pair to export"
       }
     ],
-    "output": []
+    "output": [
+      {
+        "type": "boolean",
+        "name": "success",
+        "label": "Success",
+        "description": "True if the registration export completed successfully"
+      }
+    ]
   },
   "ch.epfl.biop.command.register.warpy.wizard.WarpyRegisteredImageExportCommand": {
     "name": "ch.epfl.biop.command.register.warpy.wizard.WarpyRegisteredImageExportCommand",

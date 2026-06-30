@@ -26,6 +26,7 @@
         ?   ?   ??? BDV - Show Sources  [SingleBdvSourcesShowCommand]
         ?   ?   ??? BDV - Show Sources In Multiple Windows  [BdvSourcesShowCommand]
         ?   ?   ??? Overlay
+        ?   ?   ?   ??? BDV - Add Axes Overlay  [BdvOverlayAxesAddCommand]
         ?   ?   ?   ??? BDV - Add Center Cross Overlay  [BdvOverlayCrossAddCommand]
         ?   ?   ?   ??? BDV - Add Debug Overlay  [BdvOverlayDebugAddCommand]
         ?   ?   ?   ??? BDV - Add Sources Name Overlay  [BdvOverlaySourceNameAddCommand]
@@ -116,6 +117,7 @@
                 ?   ?   ??? BdvViewTransformCommand
                 ?   ?   ??? SingleBdvSourcesShowCommand  (menu: BDV - Show Sources)
                 ?   ?   ??? overlay
+                ?   ?   ?   ??? BdvOverlayAxesAddCommand  (menu: BDV - Add Axes Overlay)
                 ?   ?   ?   ??? BdvOverlayCrossAddCommand  (menu: BDV - Add Center Cross Overlay)
                 ?   ?   ?   ??? BdvOverlayDebugAddCommand  (menu: BDV - Add Debug Overlay)
                 ?   ?   ?   ??? BdvOverlaySourceNameAddCommand  (menu: BDV - Add Sources Name Overlay)

@@ -482,3 +482,80 @@ cs.run(CacheOptionsSetCommand, True,
 
 :::::
 
+---
+
+## Bio-Formats Memo Directory
+
+*Source: {image-loaders-src}`SetBioFormatsMemoDirectoryCommand.java <ch/epfl/biop/bdv/img/bioformats/command/SetBioFormatsMemoDirectoryCommand.java>`*
+
+**Memoization** makes re-opening a file fast. The first time Bio-Formats opens an image, it parses the (sometimes slow) format metadata; it then caches that initialization in a small `.bfmemo` file. On later openings it reads the `.bfmemo` instead of re-parsing, which can turn a multi-second open into a near-instant one.
+
+Where does that `.bfmemo` go? **Plain Bio-Formats writes it next to the original image data.** That is a problem in practice: it fails when the data sits in a **read-only** location (network share, mounted archive, dataset on a cluster), and it scatters `.bfmemo` files throughout your data folders. To avoid both issues, BigDataViewer Playground does **not** use that behavior — it always stores every `.bfmemo` in a **single, central directory**, which defaults to `<user.home>/.bf-memo`. This command lets you choose a different central directory.
+
+This means memoization already works out of the box, writing to `<user.home>/.bf-memo`, even when your images are read-only. You only need this command if you want the memo files somewhere else — for example on a fast local scratch disk when your home directory is a slow network mount, or in a shared location on a cluster.
+
+| Parameter | Description |
+|-----------|-------------|
+| Memo directory | Folder where all Bio-Formats `.bfmemo` files are stored. Pre-filled with the directory currently in effect |
+| Reset to default location | Clears the directory you set (both the saved preference and the current session) so the location falls back to the default — see the note below |
+
+### How the memo directory is resolved
+
+When BigDataViewer Playground needs the memo directory, it picks the first of these that is set (highest priority first):
+
+1. **Session directory** — set by this command (or programmatically). Applies only to the running Fiji session.
+2. **System property** — `-Dbigdataviewer.bioformats.memodir=/path/to/memo` passed on the Fiji launcher. Handy for headless / cluster runs.
+3. **Saved preference** — the directory you last chose with this command, persisted across restarts in the Fiji preferences.
+4. **Default** — `<user.home>/.bf-memo`.
+
+When you pick a folder here and apply, the command sets **both** the saved preference (so it survives restarts) *and* the session directory (so it takes effect immediately, overriding any system property for the rest of this session).
+
+:::{note}
+**Reset to default** clears the session directory *and* the saved preference (priorities 1 and 3). If a `-Dbigdataviewer.bioformats.memodir` system property is still set on your launcher (priority 2), the location reverts to **that**, not to `<user.home>/.bf-memo`. With no system property set, it reverts to `<user.home>/.bf-memo`.
+:::
+
+:::{tip}
+Memoization is enabled by default. It can be turned off for a single opener through the `BF_MEMO` Bio-Formats option, or disabled globally by launching Fiji with `-Dbigdataviewer.bioformats.memo.disable=true` (mostly useful for tests / troubleshooting). When memoization is disabled, the memo directory is irrelevant.
+:::
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Workspace --> Set Bio-Formats Memo Directory`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Set Bio-Formats Memo Directory");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@CommandService cs
+
+import ch.epfl.biop.bdv.img.bioformats.command.SetBioFormatsMemoDirectoryCommand
+
+cs.run(SetBioFormatsMemoDirectoryCommand, true,
+    "memo_directory", new File("/path/to/writable/memo-folder"),
+    "reset_to_default", false
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@CommandService cs
+#@File memo_directory
+
+from ch.epfl.biop.bdv.img.bioformats.command import SetBioFormatsMemoDirectoryCommand
+
+cs.run(SetBioFormatsMemoDirectoryCommand, True,
+    ["memo_directory", memo_directory,
+     "reset_to_default", False]
+).get()
+```
+::::
+
+:::::
+
