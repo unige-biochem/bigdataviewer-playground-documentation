@@ -8,14 +8,14 @@ When you open images in BigDataViewer Playground, they become a **dataset**. Und
 
 A dataset is a unified representation of your images that holds three things:
 
-1. **A recipe to read the raw data** — the dataset doesn't copy your pixels. It stores a reference to the original source (a file on disk, an OMERO server, a QuPath project, etc.) and reads data on demand.
+1. **A recipe to read the raw data** — the dataset doesn't copy your pixels. It stores a reference to the original source (a file on disk, an OMERO server, a QuPath project, etc.) and reads data on demand, stored in cache in RAM (configurable).
 2. **Spatial metadata** — position, orientation, and calibration of each image, stored as a chain of 3D affine transforms. Each channel and timepoint can have its own chain of transforms.
 3. **Source metadata** — channel name and index, tiles, angle, illumination, etc. These are also called `Entities` in BigDataViewer's jargon. This helps to regroup source by kind (all tiles of channel 2, for instance).
 
 This design means you can open terabyte-scale images instantly — no data is loaded until you actually look at it or export it. And when you register, drift-correct, or transform your data, those operations simply add transforms to the chain rather than rewriting pixels.
 
 :::{note}
-The pixel data from a Dataset are 'immutable', this means that you can't modify the pixel data of the dataset. Think of this as a "read-only" file. However you'll be able to compute new data resulting from the processing of Datasets, which can then be saved and exported as new Datasets. 
+The pixel data from a Dataset are 'immutable', this means that you can't modify the pixel data of the dataset. Think of this as a "read-only" file (similar to QuPath). However you'll be able to compute new data resulting from the processing of Datasets, which can then be saved and exported as new Datasets. 
 :::
 
 ### Saving and Reloading Datasets
