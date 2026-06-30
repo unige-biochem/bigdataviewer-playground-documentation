@@ -35,6 +35,36 @@ sphinx-build -b html source build/html
 
 The documentation currently tracks release: `ch.epfl.biop:bigdataviewer-biop-tools:0.20.4`
 
+## Deployment (ReadTheDocs)
+
+- **Repo home**: `unige-biochem/bigdataviewer-playground-documentation` (public). `origin` points here.
+- **Hosting**: ReadTheDocs **Community** (free tier — correct for public OSS docs). Integration is via the
+  RTD **GitHub App** installed on the `unige-biochem` org, *not* a classic per-repo webhook — so
+  `gh api repos/.../hooks` returns `[]` even though auto-builds work. Pushes to `main` trigger rebuilds.
+- **Published URLs**:
+  - `https://bigdataviewer-playground-documentation.readthedocs.io/en/latest/` — tracks `main` (living docs)
+  - `https://bigdataviewer-playground-documentation.readthedocs.io/en/stable/` — tracks the highest version tag
+- **Build env**: `ubuntu-22.04` / Python 3.10 (see `.readthedocs.yaml`). RTD installs **only**
+  `docs/requirements.txt` — it does *not* see your local conda env.
+
+### Critical: keep `docs/requirements.txt` in sync with `conf.py` extensions
+
+Every extension listed in `conf.py`'s `extensions` (and anything `myst_enable_extensions` needs) must have
+its pip package in `docs/requirements.txt`, or the RTD build fails with `Could not import extension ...`.
+This bit us once: `sphinx_design` was enabled in `conf.py` but missing from `requirements.txt`.
+When adding an extension, add the package in the same commit.
+
+### Versioning / tagging scheme
+
+- Tag format is **PEP 440 4-segment**: `MAJOR.MINOR.PATCH.DOC` (e.g. `0.20.4.0`, `0.20.4.1`).
+  The first three digits mirror the documented `bigdataviewer-biop-tools` release; the 4th is the
+  doc-only revision. (Avoid `0.20.4-doc.N` — sorts as a *pre-release*, before `0.20.4`; avoid
+  `0.20.4+doc.N` — build metadata has undefined ordering. Both break RTD `stable` detection.)
+- `latest` auto-tracks `main`, so doc fixes publish on every push — a tag is only for a frozen snapshot.
+- New tags must be **activated once** in the RTD admin (Versions tab) before they build/appear.
+- **When upstream bumps** (e.g. to 0.20.5): update `version`/`release` and the `extlinks` version strings
+  in `conf.py`, then tag `0.20.5.0`.
+
 ## CLI Introspection Tool
 
 A tool for introspecting the ecosystem is in `fiji-tools/`. Read that directory to understand
