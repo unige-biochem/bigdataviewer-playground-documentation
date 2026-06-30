@@ -4,3 +4,4 @@ linkify-it-py
 readthedocs-sphinx-search
 myst_parser
 sphinx-copybutton
+sphinx-design
