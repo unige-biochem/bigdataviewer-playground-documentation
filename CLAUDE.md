@@ -67,18 +67,44 @@ When adding an extension, add the package in the same commit.
 
 ## CLI Introspection Tool
 
-A tool for introspecting the ecosystem is in `fiji-tools/`. Read that directory to understand
-available subcommands before calling it. Invoked via:
+The introspection tool is **scijava-introspect**, a separate repository (`F:/code/github/scijava-introspect`,
+published as `github.com/unige-biochem/scijava-introspect`). It replaces the older `ch.epfl.biop:fiji-tools`,
+which was never deployed to any Maven repository and no longer resolves. Read that repo's README for the
+full subcommand list: `list-commands`, `describe-command`, `source-code`, `snapshot`, `diff`, `tree`.
+
+Run `mvn clean install` there once, then invoke:
 ```bash
-jgo -r scijava=https://maven.scijava.org/content/groups/public \
-  "ch.epfl.biop:fiji-tools:0.1.0-SNAPSHOT:ch.epfl.biop.fiji.tools.CLI+ch.epfl.biop:bigdataviewer-biop-tools:0.21.0" \
+jgo -u --lenient --class-path-only \
+  "ch.unige.biochem:scijava-introspect:0.1.0-SNAPSHOT:ch.unige.biochem.scijava.introspect.CLI+ch.epfl.biop:bigdataviewer-biop-tools:0.21.0" \
   <subcommand> <args..>
 ```
+
+Both flags are mandatory under jgo 3.1.0 — `--class-path-only` avoids a JPMS clash between
+`scijava-common` and `scijava-search`, and `--lenient` tolerates an uninterpolated
+`${project.parent.version}` in a transitive POM. The main class must come *before* the `+`
+dependency, or jgo parses it as a Maven classifier. Do not pass `-r`: jgo 3.1.0 strips the URL
+scheme and fails. The SciJava repository belongs in `~/.jgorc` instead:
+```ini
+[repositories]
+scijava.public = https://maven.scijava.org/content/groups/public
+```
+
+On Windows, neither Java nor jgo is on PATH by default: use Fiji's bundled JDK
+(`C:/Program Files/ImageJ/Fiji/java/win64/zulu21.*`) and a conda env that has `jgo[cli]` installed.
 
 ## Versioned CLI Outputs
 
 Save CLI outputs under `cli-outputs/<version>/` (e.g. `cli-outputs/0.21.0/`).
 This enables diffing outputs across versions to guide incremental documentation updates.
+
+Each version directory holds `snapshot-<package>.json` and `tree-<package>.txt` for the two
+packages `sc.fiji.bdvpg` and `ch.epfl.biop`; the newer of two compared versions also holds
+`diff-<package>.json`.
+
+**Regenerate a whole version directory with a single tool build.** Snapshots produced by
+different tool versions are not comparable: a diff across a tool change reports parameter
+additions that no upstream release actually made. If the tool changes, re-run the baseline
+version too, then recompute the diff.
 
 ## Looking Up Command Signatures for Scripting Tabs
 

@@ -1,172 +1,170 @@
 === Menu Hierarchy ===
 
-??? (no menu path)
-?   ??? BdvPlaygroundActionCommand  [BdvPlaygroundActionCommand]
-?   ??? BdvSelectCommand  [BdvSelectCommand]
-?   ??? BdvViewLogCommand  [BdvViewLogCommand]
-?   ??? BdvViewTransformCommand  [BdvViewTransformCommand]
-?   ??? SourceTransformCommand  [SourceTransformCommand]
-??? Plugins
-    ??? BigDataViewer-Playground
-        ??? Dataset
-        ?   ??? Dataset - Open XML Dataset  [DatasetXMLLoadCommand]
-        ?   ??? Dataset - Save XML Dataset  [DatasetXMLSaveCommand]
-        ?   ??? Transform Stack
-        ?       ??? Dataset - Add Transforms  [DatasetTransformAddCommand]
-        ?       ??? Dataset - Remove Transforms  [DatasetTransformRemoveCommand]
-        ?       ??? Dataset - Set Transforms  [DatasetTransformSetCommand]
-        ?       ??? Dataset - View Transforms  [DatasetTransformViewCommand]
-        ??? Display
-        ?   ??? BDV
-        ?   ?   ??? BDV - Adjust View On Sources  [BdvViewSourcesAdjustCommand]
-        ?   ?   ??? BDV - Close  [BdvCloseCommand]
-        ?   ?   ??? BDV - Create  [BdvCreateCommand]
-        ?   ?   ??? BDV - Create Orthogonal Views  [BdvOrthoCreateCommand]
-        ?   ?   ??? BDV - Remove Sources  [BdvSourcesRemoveCommand]
-        ?   ?   ??? BDV - Show Sources  [SingleBdvSourcesShowCommand]
-        ?   ?   ??? BDV - Show Sources In Multiple Windows  [BdvSourcesShowCommand]
-        ?   ?   ??? Overlay
-        ?   ?   ?   ??? BDV - Add Center Cross Overlay  [BdvOverlayCrossAddCommand]
-        ?   ?   ?   ??? BDV - Add Debug Overlay  [BdvOverlayDebugAddCommand]
-        ?   ?   ?   ??? BDV - Add Sources Name Overlay  [BdvOverlaySourceNameAddCommand]
-        ?   ?   ??? Settings
-        ?   ?       ??? BDV - Adapt Number Of Timepoints To Sources  [BdvTimepointsAdaptCommand]
-        ?   ?       ??? BDV - Add Editor  [BdvEditorInstallCommand]
-        ?   ?       ??? BDV - Add Sources Slider  [BdvSourceNavigatorAddCommand]
-        ?   ?       ??? BDV - Add Z Slider  [BdvZSliderAddCommand]
-        ?   ?       ??? BDV - Preferences - Set (Key) Bindings  [BdvSettingsSetCommand]
-        ?   ?       ??? BDV - Set Number Of Timepoints  [BdvTimepointsSetCommand]
-        ?   ?       ??? BDV - Set Style (BIOP)  [BdvStyleBIOPSetCommand]
-        ?   ?       ??? BDV - Set Style (Default)  [BdvStyleDefaultSetCommand]
-        ?   ?       ??? BDV - Set Title  [BdvTitleSetCommand]
-        ?   ??? BVV
-        ?   ?   ??? BVV - Create  [BvvCreateCommand]
-        ?   ?   ??? BVV - Create Orthogonal Views  [BvvOrthoCreateCommand]
-        ?   ?   ??? BVV - Remove Sources  [BvvSourcesRemoveCommand]
-        ?   ?   ??? BVV - Show Sources  [BvvSourcesShowCommand]
-        ?   ?   ??? Settings
-        ?   ?       ??? BVV - Set Number Of Timepoints  [BvvTimepointsSetCommand]
-        ?   ??? Source
-        ?   ?   ??? Source - Make Invisible  [SourceVisibilityOFFCommand]
-        ?   ?   ??? Source - Make Visible  [SourceVisibilityONCommand]
-        ?   ?   ??? Source - Set Brightness  [SourceBrightnessAdjustCommand]
-        ?   ?   ??? Source - Set Color  [SourceColorChangeCommand]
-        ?   ??? Viewers - Synchronize States  [StateSynchronizeCommand]
-        ?   ??? Viewers - Synchronize Views  [ViewSynchronizeCommand]
-        ??? Export
-        ?   ??? Source - Export To XML/HDF5 Dataset  [SourceXMLHDF5ExportCommand]
-        ??? Import
-        ?   ??? Source - Open Sample Source  [SourceSampleOpenCommand]
-        ??? Process
-        ?   ??? Fuse & Resample
-        ?   ?   ??? Source - Create Resampling Grid From Source  [SourceFromModelCreateCommand]
-        ?   ?   ??? Source - Resample Source  [SourceResampleCommand]
-        ?   ??? Source - Add Metadata  [SourceMetadataAddCommand]
-        ?   ??? Source - Delete  [SourceDeleteCommand]
-        ?   ??? Source - Duplicate  [SourceDuplicateCommand]
-        ?   ??? Source - Make Transformable  [SourceWrapTransformCommand]
-        ?   ??? Transform
-        ?       ??? Source - Basic Transformation  [SourceSimpleTransformCommand]
-        ?       ??? Source - Interactive Transformation  [SourceManualTransformCommand]
-        ??? Register
-        ?   ??? Source - Launch BigWarp  [SourceBigWarpLaunchCommand]
-        ??? Workspace
-            ??? Set Cache Options (Needs Restart)  [CacheOptionsSetCommand]
-            ??? Show BDV Playground Window  [SourceServiceShowCommand]
-            ??? State
-            ?   ??? State - Clear  [StateClearCommand]
-            ?   ??? State - Load  [StateLoadCommand]
-            ?   ??? State - Save  [StateSaveCommand]
-            ??? Tree
-                ??? Tree - Filter By Metadata  [FilterNodeMetadataAddCommand]
-                ??? Tree - Inspect Sources  [SourceInspectCommand]
-                ??? Tree - Make Global Source Group  [SourceGroupMakeCommand]
+├── (no menu path)
+│   ├── BdvSelectCommand  [BdvSelectCommand]
+│   ├── BdvViewLogCommand  [BdvViewLogCommand]
+│   ├── BdvViewTransformCommand  [BdvViewTransformCommand]
+│   └── SourceTransformCommand  [SourceTransformCommand]
+└── Plugins
+    └── BigDataViewer-Playground
+        ├── Dataset
+        │   ├── Dataset - Open XML Dataset  [DatasetXMLLoadCommand]
+        │   ├── Dataset - Save XML Dataset  [DatasetXMLSaveCommand]
+        │   └── Transform Stack
+        │       ├── Dataset - Add Transforms  [DatasetTransformAddCommand]
+        │       ├── Dataset - Remove Transforms  [DatasetTransformRemoveCommand]
+        │       ├── Dataset - Set Transforms  [DatasetTransformSetCommand]
+        │       └── Dataset - View Transforms  [DatasetTransformViewCommand]
+        ├── Display
+        │   ├── BDV
+        │   │   ├── BDV - Adjust View On Sources  [BdvViewSourcesAdjustCommand]
+        │   │   ├── BDV - Close  [BdvCloseCommand]
+        │   │   ├── BDV - Create  [BdvCreateCommand]
+        │   │   ├── BDV - Create Orthogonal Views  [BdvOrthoCreateCommand]
+        │   │   ├── BDV - Remove Sources  [BdvSourcesRemoveCommand]
+        │   │   ├── BDV - Show Sources  [SingleBdvSourcesShowCommand]
+        │   │   ├── BDV - Show Sources In Multiple Windows  [BdvSourcesShowCommand]
+        │   │   ├── Overlay
+        │   │   │   ├── BDV - Add Center Cross Overlay  [BdvOverlayCrossAddCommand]
+        │   │   │   ├── BDV - Add Debug Overlay  [BdvOverlayDebugAddCommand]
+        │   │   │   └── BDV - Add Sources Name Overlay  [BdvOverlaySourceNameAddCommand]
+        │   │   └── Settings
+        │   │       ├── BDV - Adapt Number Of Timepoints To Sources  [BdvTimepointsAdaptCommand]
+        │   │       ├── BDV - Add Editor  [BdvEditorInstallCommand]
+        │   │       ├── BDV - Add Sources Slider  [BdvSourceNavigatorAddCommand]
+        │   │       ├── BDV - Add Z Slider  [BdvZSliderAddCommand]
+        │   │       ├── BDV - Preferences - Set (Key) Bindings  [BdvSettingsSetCommand]
+        │   │       ├── BDV - Set Number Of Timepoints  [BdvTimepointsSetCommand]
+        │   │       ├── BDV - Set Style (BIOP)  [BdvStyleBIOPSetCommand]
+        │   │       ├── BDV - Set Style (Default)  [BdvStyleDefaultSetCommand]
+        │   │       └── BDV - Set Title  [BdvTitleSetCommand]
+        │   ├── BVV
+        │   │   ├── BVV - Create  [BvvCreateCommand]
+        │   │   ├── BVV - Create Orthogonal Views  [BvvOrthoCreateCommand]
+        │   │   ├── BVV - Remove Sources  [BvvSourcesRemoveCommand]
+        │   │   ├── BVV - Show Sources  [BvvSourcesShowCommand]
+        │   │   └── Settings
+        │   │       └── BVV - Set Number Of Timepoints  [BvvTimepointsSetCommand]
+        │   ├── Source
+        │   │   ├── Source - Make Invisible  [SourceVisibilityOFFCommand]
+        │   │   ├── Source - Make Visible  [SourceVisibilityONCommand]
+        │   │   ├── Source - Set Brightness  [SourceBrightnessAdjustCommand]
+        │   │   └── Source - Set Color  [SourceColorChangeCommand]
+        │   ├── Viewers - Synchronize States  [StateSynchronizeCommand]
+        │   └── Viewers - Synchronize Views  [ViewSynchronizeCommand]
+        ├── Export
+        │   └── Source - Export To XML/HDF5 Dataset  [SourceXMLHDF5ExportCommand]
+        ├── Import
+        │   └── Source - Open Sample Source  [SourceSampleOpenCommand]
+        ├── Process
+        │   ├── Fuse & Resample
+        │   │   ├── Source - Create Resampling Grid From Source  [SourceFromModelCreateCommand]
+        │   │   └── Source - Resample Source  [SourceResampleCommand]
+        │   ├── Source - Add Metadata  [SourceMetadataAddCommand]
+        │   ├── Source - Delete  [SourceDeleteCommand]
+        │   ├── Source - Duplicate  [SourceDuplicateCommand]
+        │   ├── Source - Make Transformable  [SourceWrapTransformCommand]
+        │   └── Transform
+        │       ├── Source - Basic Transformation  [SourceSimpleTransformCommand]
+        │       └── Source - Interactive Transformation  [SourceManualTransformCommand]
+        ├── Register
+        │   └── Source - Launch BigWarp  [SourceBigWarpLaunchCommand]
+        └── Workspace
+            ├── Set Cache Options (Needs Restart)  [CacheOptionsSetCommand]
+            ├── Show BDV Playground Window  [SourceServiceShowCommand]
+            ├── State
+            │   ├── State - Clear  [StateClearCommand]
+            │   ├── State - Load  [StateLoadCommand]
+            │   └── State - Save  [StateSaveCommand]
+            └── Tree
+                ├── Tree - Filter By Metadata  [FilterNodeMetadataAddCommand]
+                ├── Tree - Inspect Sources  [SourceInspectCommand]
+                └── Tree - Make Global Source Group  [SourceGroupMakeCommand]
 
 === Package Hierarchy ===
 
-??? sc
-    ??? fiji
-        ??? bdvpg
-            ??? bdv
-            ?   ??? supplier
-            ?       ??? biop
-            ?           ??? BdvStyleBIOPSetCommand  (menu: BDV - Set Style (BIOP))
-            ??? command
-                ??? BdvPlaygroundActionCommand
-                ??? dataset
-                ?   ??? DatasetXMLLoadCommand  (menu: Dataset - Open XML Dataset)
-                ?   ??? DatasetXMLSaveCommand  (menu: Dataset - Save XML Dataset)
-                ?   ??? transform
-                ?       ??? DatasetTransformAddCommand  (menu: Dataset - Add Transforms)
-                ?       ??? DatasetTransformRemoveCommand  (menu: Dataset - Remove Transforms)
-                ?       ??? DatasetTransformSetCommand  (menu: Dataset - Set Transforms)
-                ?       ??? DatasetTransformViewCommand  (menu: Dataset - View Transforms)
-                ??? display
-                ?   ??? StateSynchronizeCommand  (menu: Viewers - Synchronize States)
-                ?   ??? ViewSynchronizeCommand  (menu: Viewers - Synchronize Views)
-                ?   ??? bdv
-                ?   ?   ??? BdvCloseCommand  (menu: BDV - Close)
-                ?   ?   ??? BdvCreateCommand  (menu: BDV - Create)
-                ?   ?   ??? BdvOrthoCreateCommand  (menu: BDV - Create Orthogonal Views)
-                ?   ?   ??? BdvSelectCommand
-                ?   ?   ??? BdvSourcesRemoveCommand  (menu: BDV - Remove Sources)
-                ?   ?   ??? BdvSourcesShowCommand  (menu: BDV - Show Sources In Multiple Windows)
-                ?   ?   ??? BdvViewLogCommand
-                ?   ?   ??? BdvViewSourcesAdjustCommand  (menu: BDV - Adjust View On Sources)
-                ?   ?   ??? BdvViewTransformCommand
-                ?   ?   ??? SingleBdvSourcesShowCommand  (menu: BDV - Show Sources)
-                ?   ?   ??? overlay
-                ?   ?   ?   ??? BdvOverlayCrossAddCommand  (menu: BDV - Add Center Cross Overlay)
-                ?   ?   ?   ??? BdvOverlayDebugAddCommand  (menu: BDV - Add Debug Overlay)
-                ?   ?   ?   ??? BdvOverlaySourceNameAddCommand  (menu: BDV - Add Sources Name Overlay)
-                ?   ?   ??? settings
-                ?   ?       ??? BdvEditorInstallCommand  (menu: BDV - Add Editor)
-                ?   ?       ??? BdvSettingsSetCommand  (menu: BDV - Preferences - Set (Key) Bindings)
-                ?   ?       ??? BdvSourceNavigatorAddCommand  (menu: BDV - Add Sources Slider)
-                ?   ?       ??? BdvStyleDefaultSetCommand  (menu: BDV - Set Style (Default))
-                ?   ?       ??? BdvTimepointsAdaptCommand  (menu: BDV - Adapt Number Of Timepoints To Sources)
-                ?   ?       ??? BdvTimepointsSetCommand  (menu: BDV - Set Number Of Timepoints)
-                ?   ?       ??? BdvTitleSetCommand  (menu: BDV - Set Title)
-                ?   ?       ??? BdvZSliderAddCommand  (menu: BDV - Add Z Slider)
-                ?   ??? bvv
-                ?   ?   ??? BvvCreateCommand  (menu: BVV - Create)
-                ?   ?   ??? BvvOrthoCreateCommand  (menu: BVV - Create Orthogonal Views)
-                ?   ?   ??? BvvSourcesRemoveCommand  (menu: BVV - Remove Sources)
-                ?   ?   ??? BvvSourcesShowCommand  (menu: BVV - Show Sources)
-                ?   ?   ??? settings
-                ?   ?       ??? BvvTimepointsSetCommand  (menu: BVV - Set Number Of Timepoints)
-                ?   ??? source
-                ?       ??? SourceBrightnessAdjustCommand  (menu: Source - Set Brightness)
-                ?       ??? SourceColorChangeCommand  (menu: Source - Set Color)
-                ?       ??? SourceVisibilityOFFCommand  (menu: Source - Make Invisible)
-                ?       ??? SourceVisibilityONCommand  (menu: Source - Make Visible)
-                ??? exporter
-                ?   ??? SourceXMLHDF5ExportCommand  (menu: Source - Export To XML/HDF5 Dataset)
-                ??? importer
-                ?   ??? SourceSampleOpenCommand  (menu: Source - Open Sample Source)
-                ??? process
-                ?   ??? SourceDeleteCommand  (menu: Source - Delete)
-                ?   ??? SourceDuplicateCommand  (menu: Source - Duplicate)
-                ?   ??? SourceMetadataAddCommand  (menu: Source - Add Metadata)
-                ?   ??? SourceWrapTransformCommand  (menu: Source - Make Transformable)
-                ?   ??? resample
-                ?   ?   ??? SourceFromModelCreateCommand  (menu: Source - Create Resampling Grid From Source)
-                ?   ?   ??? SourceResampleCommand  (menu: Source - Resample Source)
-                ?   ??? transform
-                ?       ??? SourceManualTransformCommand  (menu: Source - Interactive Transformation)
-                ?       ??? SourceSimpleTransformCommand  (menu: Source - Basic Transformation)
-                ?       ??? SourceTransformCommand
-                ??? register
-                ?   ??? SourceBigWarpLaunchCommand  (menu: Source - Launch BigWarp)
-                ??? workspace
-                    ??? CacheOptionsSetCommand  (menu: Set Cache Options (Needs Restart))
-                    ??? SourceServiceShowCommand  (menu: Show BDV Playground Window)
-                    ??? state
-                    ?   ??? StateClearCommand  (menu: State - Clear)
-                    ?   ??? StateLoadCommand  (menu: State - Load)
-                    ?   ??? StateSaveCommand  (menu: State - Save)
-                    ??? tree
-                        ??? FilterNodeMetadataAddCommand  (menu: Tree - Filter By Metadata)
-                        ??? SourceGroupMakeCommand  (menu: Tree - Make Global Source Group)
-                        ??? SourceInspectCommand  (menu: Tree - Inspect Sources)
+└── sc
+    └── fiji
+        └── bdvpg
+            ├── bdv
+            │   └── supplier
+            │       └── biop
+            │           └── BdvStyleBIOPSetCommand  (menu: BDV - Set Style (BIOP))
+            └── command
+                ├── dataset
+                │   ├── DatasetXMLLoadCommand  (menu: Dataset - Open XML Dataset)
+                │   ├── DatasetXMLSaveCommand  (menu: Dataset - Save XML Dataset)
+                │   └── transform
+                │       ├── DatasetTransformAddCommand  (menu: Dataset - Add Transforms)
+                │       ├── DatasetTransformRemoveCommand  (menu: Dataset - Remove Transforms)
+                │       ├── DatasetTransformSetCommand  (menu: Dataset - Set Transforms)
+                │       └── DatasetTransformViewCommand  (menu: Dataset - View Transforms)
+                ├── display
+                │   ├── StateSynchronizeCommand  (menu: Viewers - Synchronize States)
+                │   ├── ViewSynchronizeCommand  (menu: Viewers - Synchronize Views)
+                │   ├── bdv
+                │   │   ├── BdvCloseCommand  (menu: BDV - Close)
+                │   │   ├── BdvCreateCommand  (menu: BDV - Create)
+                │   │   ├── BdvOrthoCreateCommand  (menu: BDV - Create Orthogonal Views)
+                │   │   ├── BdvSelectCommand
+                │   │   ├── BdvSourcesRemoveCommand  (menu: BDV - Remove Sources)
+                │   │   ├── BdvSourcesShowCommand  (menu: BDV - Show Sources In Multiple Windows)
+                │   │   ├── BdvViewLogCommand
+                │   │   ├── BdvViewSourcesAdjustCommand  (menu: BDV - Adjust View On Sources)
+                │   │   ├── BdvViewTransformCommand
+                │   │   ├── SingleBdvSourcesShowCommand  (menu: BDV - Show Sources)
+                │   │   ├── overlay
+                │   │   │   ├── BdvOverlayCrossAddCommand  (menu: BDV - Add Center Cross Overlay)
+                │   │   │   ├── BdvOverlayDebugAddCommand  (menu: BDV - Add Debug Overlay)
+                │   │   │   └── BdvOverlaySourceNameAddCommand  (menu: BDV - Add Sources Name Overlay)
+                │   │   └── settings
+                │   │       ├── BdvEditorInstallCommand  (menu: BDV - Add Editor)
+                │   │       ├── BdvSettingsSetCommand  (menu: BDV - Preferences - Set (Key) Bindings)
+                │   │       ├── BdvSourceNavigatorAddCommand  (menu: BDV - Add Sources Slider)
+                │   │       ├── BdvStyleDefaultSetCommand  (menu: BDV - Set Style (Default))
+                │   │       ├── BdvTimepointsAdaptCommand  (menu: BDV - Adapt Number Of Timepoints To Sources)
+                │   │       ├── BdvTimepointsSetCommand  (menu: BDV - Set Number Of Timepoints)
+                │   │       ├── BdvTitleSetCommand  (menu: BDV - Set Title)
+                │   │       └── BdvZSliderAddCommand  (menu: BDV - Add Z Slider)
+                │   ├── bvv
+                │   │   ├── BvvCreateCommand  (menu: BVV - Create)
+                │   │   ├── BvvOrthoCreateCommand  (menu: BVV - Create Orthogonal Views)
+                │   │   ├── BvvSourcesRemoveCommand  (menu: BVV - Remove Sources)
+                │   │   ├── BvvSourcesShowCommand  (menu: BVV - Show Sources)
+                │   │   └── settings
+                │   │       └── BvvTimepointsSetCommand  (menu: BVV - Set Number Of Timepoints)
+                │   └── source
+                │       ├── SourceBrightnessAdjustCommand  (menu: Source - Set Brightness)
+                │       ├── SourceColorChangeCommand  (menu: Source - Set Color)
+                │       ├── SourceVisibilityOFFCommand  (menu: Source - Make Invisible)
+                │       └── SourceVisibilityONCommand  (menu: Source - Make Visible)
+                ├── exporter
+                │   └── SourceXMLHDF5ExportCommand  (menu: Source - Export To XML/HDF5 Dataset)
+                ├── importer
+                │   └── SourceSampleOpenCommand  (menu: Source - Open Sample Source)
+                ├── process
+                │   ├── SourceDeleteCommand  (menu: Source - Delete)
+                │   ├── SourceDuplicateCommand  (menu: Source - Duplicate)
+                │   ├── SourceMetadataAddCommand  (menu: Source - Add Metadata)
+                │   ├── SourceWrapTransformCommand  (menu: Source - Make Transformable)
+                │   ├── resample
+                │   │   ├── SourceFromModelCreateCommand  (menu: Source - Create Resampling Grid From Source)
+                │   │   └── SourceResampleCommand  (menu: Source - Resample Source)
+                │   └── transform
+                │       ├── SourceManualTransformCommand  (menu: Source - Interactive Transformation)
+                │       ├── SourceSimpleTransformCommand  (menu: Source - Basic Transformation)
+                │       └── SourceTransformCommand
+                ├── register
+                │   └── SourceBigWarpLaunchCommand  (menu: Source - Launch BigWarp)
+                └── workspace
+                    ├── CacheOptionsSetCommand  (menu: Set Cache Options (Needs Restart))
+                    ├── SourceServiceShowCommand  (menu: Show BDV Playground Window)
+                    ├── state
+                    │   ├── StateClearCommand  (menu: State - Clear)
+                    │   ├── StateLoadCommand  (menu: State - Load)
+                    │   └── StateSaveCommand  (menu: State - Save)
+                    └── tree
+                        ├── FilterNodeMetadataAddCommand  (menu: Tree - Filter By Metadata)
+                        ├── SourceGroupMakeCommand  (menu: Tree - Make Global Source Group)
+                        └── SourceInspectCommand  (menu: Tree - Inspect Sources)
 

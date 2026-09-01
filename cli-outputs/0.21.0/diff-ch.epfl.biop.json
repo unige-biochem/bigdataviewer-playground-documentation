@@ -89,7 +89,6 @@
     "ch.epfl.biop.command.workflow.lls7.LLS7DatasetOpenCommand",
     "ch.epfl.biop.command.workflow.lls7.LLS7ZDriftCompensateCommand",
     "ch.epfl.biop.command.workspace.FilterNodeNameAddCommand",
-    "ch.epfl.biop.fiji.tools.DummySumCommand",
     "ch.epfl.biop.java.utilities.roi.VectorizeLabelImage",
     "ch.epfl.biop.kheops.command.KheopsBatchCommand",
     "ch.epfl.biop.kheops.command.KheopsCommand",

@@ -306,7 +306,7 @@ A specialized command for BigStitcher users: reads a BigStitcher XML dataset (wi
 | XY/Z Anisotropy Ratio | Custom ratio between XY and Z pixel sizes (only used if override is checked) |
 
 :::{tip}
-To prepare a dataset for this command, first convert it with **Dataset - Make BigStitcher Compatible** (see [Opening Images](../opening_images/opening_images.md#dataset-operations)), then run tile registration in BigStitcher.
+To prepare a dataset for this command, first convert it with **Dataset - Make BigStitcher Compatible** (see [Opening Images](#dataset-operations)), then run tile registration in BigStitcher.
 :::
 
 :::::{tab-set}

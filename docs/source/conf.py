@@ -77,9 +77,9 @@ templates_path = ['_templates']
 # -- Options for HTML output
 
 html_theme = 'sphinx_rtd_theme'
-html_logo = 'assets/img/bdv_logo.png'
+# html_logo = 'assets/img/bdv_logo.png'  # re-enable once the logo asset exists
 html_theme_options = {
-    'logo_only': True
+    'logo_only': False
 }
 html_static_path = ['_static']
 html_js_files = ['js/external_links.js']

@@ -1184,26 +1184,43 @@
     ],
     "output": []
   },
-  "ch.epfl.biop.fiji.tools.DummySumCommand": {
-    "name": "ch.epfl.biop.fiji.tools.DummySumCommand",
-    "menuPath": "Plugins\u003eSandbox\u003eDummy Sum",
-    "description": "Computes the sum of 2 integers",
+  "ch.epfl.biop.wrappers.elastix.ij2commands.Elastix_Register": {
+    "name": "ch.epfl.biop.wrappers.elastix.ij2commands.Elastix_Register",
+    "menuPath": "Plugins\u003eBIOP\u003eElastix\u003eRegister",
     "input": [
       {
-        "type": "Integer",
-        "name": "a",
-        "label": "First Number"
+        "type": "boolean",
+        "name": "affine"
       },
       {
-        "type": "Integer",
-        "name": "b",
-        "label": "Second Number"
+        "type": "boolean",
+        "name": "fast_affine"
+      },
+      {
+        "type": "ImagePlus",
+        "name": "fixed_image"
+      },
+      {
+        "type": "ImagePlus",
+        "name": "moving_image"
+      },
+      {
+        "type": "boolean",
+        "name": "rigid"
+      },
+      {
+        "type": "boolean",
+        "name": "spline"
+      },
+      {
+        "type": "int",
+        "name": "spline_grid_spacing"
       }
     ],
     "output": [
       {
-        "type": "Integer",
-        "name": "c"
+        "type": "RegisterHelper",
+        "name": "rh"
       }
     ]
   },
@@ -1248,46 +1265,6 @@
       }
     ],
     "output": []
-  },
-  "ch.epfl.biop.wrappers.elastix.ij2commands.Elastix_Register": {
-    "name": "ch.epfl.biop.wrappers.elastix.ij2commands.Elastix_Register",
-    "menuPath": "Plugins\u003eBIOP\u003eElastix\u003eRegister",
-    "input": [
-      {
-        "type": "boolean",
-        "name": "affine"
-      },
-      {
-        "type": "boolean",
-        "name": "fast_affine"
-      },
-      {
-        "type": "ImagePlus",
-        "name": "fixed_image"
-      },
-      {
-        "type": "ImagePlus",
-        "name": "moving_image"
-      },
-      {
-        "type": "boolean",
-        "name": "rigid"
-      },
-      {
-        "type": "boolean",
-        "name": "spline"
-      },
-      {
-        "type": "int",
-        "name": "spline_grid_spacing"
-      }
-    ],
-    "output": [
-      {
-        "type": "RegisterHelper",
-        "name": "rh"
-      }
-    ]
   },
   "ch.epfl.biop.kheops.command.KheopsExportSourcesCommand": {
     "name": "ch.epfl.biop.kheops.command.KheopsExportSourcesCommand",
@@ -1781,6 +1758,12 @@
     "input": [
       {
         "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "When checked, uses interpolation when resampling images"
+      },
+      {
+        "type": "boolean",
         "name": "invert_fixed",
         "label": "Invert Fixed",
         "description": "When checked, inverts the intensity of the fixed image for matching"
@@ -1792,10 +1775,28 @@
         "description": "When checked, inverts the intensity of the moving image for matching"
       },
       {
+        "type": "int",
+        "name": "level_fixed_source",
+        "label": "Fixed Resolution Level",
+        "description": "Resolution level of the fixed source (0 \u003d highest resolution)"
+      },
+      {
+        "type": "int",
+        "name": "level_moving_source",
+        "label": "Moving Resolution Level",
+        "description": "Resolution level of the moving source (0 \u003d highest resolution)"
+      },
+      {
         "type": "double",
         "name": "px",
         "label": "ROI Position X",
         "description": "X coordinate of the registration region top-left corner"
+      },
+      {
+        "type": "double",
+        "name": "px_size_in_current_unit",
+        "label": "Resampling Pixel Size",
+        "description": "Pixel size in world coordinates units used when resampling images for registration"
       },
       {
         "type": "double",
@@ -1810,6 +1811,18 @@
         "description": "Z coordinate of the registration plane"
       },
       {
+        "type": "SourceAndConverter[]",
+        "name": "sources_fixed",
+        "label": "Fixed Source(s)",
+        "description": "Reference source(s) that remain stationary during registration"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_moving",
+        "label": "Moving Source(s)",
+        "description": "Source(s) to be aligned to the fixed reference"
+      },
+      {
         "type": "double",
         "name": "sx",
         "label": "ROI Size X",
@@ -1820,6 +1833,18 @@
         "name": "sy",
         "label": "ROI Size Y",
         "description": "Height of the registration region"
+      },
+      {
+        "type": "int",
+        "name": "tp_fixed",
+        "label": "Fixed Timepoint",
+        "description": "Timepoint of the fixed source to use for registration"
+      },
+      {
+        "type": "int",
+        "name": "tp_moving",
+        "label": "Moving Timepoint",
+        "description": "Timepoint of the moving source to use for registration"
       },
       {
         "type": "String",
@@ -2225,6 +2250,24 @@
         "description": "Value to add to moving image background for better matching"
       },
       {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "When checked, uses interpolation when resampling images"
+      },
+      {
+        "type": "int",
+        "name": "level_fixed_source",
+        "label": "Fixed Resolution Level",
+        "description": "Resolution level of the fixed source (0 \u003d highest resolution)"
+      },
+      {
+        "type": "int",
+        "name": "level_moving_source",
+        "label": "Moving Resolution Level",
+        "description": "Resolution level of the moving source (0 \u003d highest resolution)"
+      },
+      {
         "type": "int",
         "name": "max_iteration_per_scale",
         "label": "Iterations Per Scale",
@@ -2237,10 +2280,70 @@
         "description": "Minimum image size in pixels for the coarsest pyramid level"
       },
       {
+        "type": "double",
+        "name": "px",
+        "label": "ROI Position X",
+        "description": "X coordinate of the registration region top-left corner"
+      },
+      {
+        "type": "double",
+        "name": "px_size_in_current_unit",
+        "label": "Resampling Pixel Size",
+        "description": "Pixel size in world coordinates units used when resampling images for registration"
+      },
+      {
+        "type": "double",
+        "name": "py",
+        "label": "ROI Position Y",
+        "description": "Y coordinate of the registration region top-left corner"
+      },
+      {
+        "type": "double",
+        "name": "pz",
+        "label": "ROI Position Z",
+        "description": "Z coordinate of the registration plane"
+      },
+      {
         "type": "boolean",
         "name": "show_image_registration",
         "label": "Show Registration",
         "description": "When checked, displays registration results in ImageJ windows (not compatible with RGB images)"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_fixed",
+        "label": "Fixed Source(s)",
+        "description": "Reference source(s) that remain stationary during registration"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_moving",
+        "label": "Moving Source(s)",
+        "description": "Source(s) to be aligned to the fixed reference"
+      },
+      {
+        "type": "double",
+        "name": "sx",
+        "label": "ROI Size X",
+        "description": "Width of the registration region"
+      },
+      {
+        "type": "double",
+        "name": "sy",
+        "label": "ROI Size Y",
+        "description": "Height of the registration region"
+      },
+      {
+        "type": "int",
+        "name": "tp_fixed",
+        "label": "Fixed Timepoint",
+        "description": "Timepoint of the fixed source to use for registration"
+      },
+      {
+        "type": "int",
+        "name": "tp_moving",
+        "label": "Moving Timepoint",
+        "description": "Timepoint of the moving source to use for registration"
       },
       {
         "type": "boolean",
@@ -2250,6 +2353,11 @@
       }
     ],
     "output": [
+      {
+        "type": "AffineTransform3D",
+        "name": "at3d",
+        "description": "The computed affine transformation to align moving to fixed"
+      },
       {
         "type": "boolean",
         "name": "success"
@@ -2304,6 +2412,12 @@
         "description": "Y coordinate of the ROI origin (only used when ROI Mode is \u0027custom\u0027)"
       },
       {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The registration pair to apply the registration to"
+      },
+      {
         "type": "boolean",
         "name": "show_imageplus_registration_result",
         "label": "Show Result",
@@ -2322,7 +2436,14 @@
         "description": "Height of the ROI (only used when ROI Mode is \u0027custom\u0027)"
       }
     ],
-    "output": []
+    "output": [
+      {
+        "type": "boolean",
+        "name": "success",
+        "label": "Success",
+        "description": "True if the registration completed successfully"
+      }
+    ]
   },
   "ch.epfl.biop.command.register.warpy.PairRegistrationElastix2DAffineRegisterCommand": {
     "name": "ch.epfl.biop.command.register.warpy.PairRegistrationElastix2DAffineRegisterCommand",
@@ -2366,6 +2487,12 @@
         "description": "Y coordinate of the ROI origin (only used when ROI Mode is \u0027custom\u0027)"
       },
       {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The registration pair to apply the registration to"
+      },
+      {
         "type": "boolean",
         "name": "show_imageplus_registration_result",
         "label": "Show Result",
@@ -2384,7 +2511,14 @@
         "description": "Height of the ROI (only used when ROI Mode is \u0027custom\u0027)"
       }
     ],
-    "output": []
+    "output": [
+      {
+        "type": "boolean",
+        "name": "success",
+        "label": "Success",
+        "description": "True if the registration completed successfully"
+      }
+    ]
   },
   "ch.epfl.biop.command.process.SourcesPyramidizeCommand": {
     "name": "ch.epfl.biop.command.process.SourcesPyramidizeCommand",
@@ -4407,6 +4541,12 @@
         "description": "Y coordinate of the ROI origin (only used when ROI Mode is \u0027custom\u0027)"
       },
       {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The registration pair to apply the registration to"
+      },
+      {
         "type": "double",
         "name": "sx",
         "label": "ROI Size X",
@@ -4424,7 +4564,14 @@
         "label": "Transformation model"
       }
     ],
-    "output": []
+    "output": [
+      {
+        "type": "boolean",
+        "name": "success",
+        "label": "Success",
+        "description": "True if the registration completed successfully"
+      }
+    ]
   },
   "ch.epfl.biop.command.register.warpy.PairRegistrationCenterCommand": {
     "name": "ch.epfl.biop.command.register.warpy.PairRegistrationCenterCommand",
@@ -4504,6 +4651,24 @@
         "description": "Value to add to moving image background for better matching"
       },
       {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "When checked, uses interpolation when resampling images"
+      },
+      {
+        "type": "int",
+        "name": "level_fixed_source",
+        "label": "Fixed Resolution Level",
+        "description": "Resolution level of the fixed source (0 \u003d highest resolution)"
+      },
+      {
+        "type": "int",
+        "name": "level_moving_source",
+        "label": "Moving Resolution Level",
+        "description": "Resolution level of the moving source (0 \u003d highest resolution)"
+      },
+      {
         "type": "int",
         "name": "max_iteration_per_scale",
         "label": "Iterations Per Scale",
@@ -4522,10 +4687,70 @@
         "description": "Number of B-spline control points along the X axis"
       },
       {
+        "type": "double",
+        "name": "px",
+        "label": "ROI Position X",
+        "description": "X coordinate of the registration region top-left corner"
+      },
+      {
+        "type": "double",
+        "name": "px_size_in_current_unit",
+        "label": "Resampling Pixel Size",
+        "description": "Pixel size in world coordinates units used when resampling images for registration"
+      },
+      {
+        "type": "double",
+        "name": "py",
+        "label": "ROI Position Y",
+        "description": "Y coordinate of the registration region top-left corner"
+      },
+      {
+        "type": "double",
+        "name": "pz",
+        "label": "ROI Position Z",
+        "description": "Z coordinate of the registration plane"
+      },
+      {
         "type": "boolean",
         "name": "show_image_registration",
         "label": "Show Registration",
         "description": "When checked, displays registration results in ImageJ windows (not compatible with RGB images)"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_fixed",
+        "label": "Fixed Source(s)",
+        "description": "Reference source(s) that remain stationary during registration"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_moving",
+        "label": "Moving Source(s)",
+        "description": "Source(s) to be aligned to the fixed reference"
+      },
+      {
+        "type": "double",
+        "name": "sx",
+        "label": "ROI Size X",
+        "description": "Width of the registration region"
+      },
+      {
+        "type": "double",
+        "name": "sy",
+        "label": "ROI Size Y",
+        "description": "Height of the registration region"
+      },
+      {
+        "type": "int",
+        "name": "tp_fixed",
+        "label": "Fixed Timepoint",
+        "description": "Timepoint of the fixed source to use for registration"
+      },
+      {
+        "type": "int",
+        "name": "tp_moving",
+        "label": "Moving Timepoint",
+        "description": "Timepoint of the moving source to use for registration"
       },
       {
         "type": "boolean",
@@ -4535,6 +4760,11 @@
       }
     ],
     "output": [
+      {
+        "type": "AffineTransform3D",
+        "name": "at3d",
+        "description": "The computed affine transformation to align moving to fixed"
+      },
       {
         "type": "RealTransform",
         "name": "rt",

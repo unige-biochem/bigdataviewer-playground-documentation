@@ -3,7 +3,7 @@
 GPU-accelerated Richardson-Lucy deconvolution, computed lazily in tiles. The deconvolved result is a virtual source — tiles are deconvolved on-the-fly as you navigate or export.
 
 :::{important}
-GPU deconvolution requires CLIJ2 and an OpenCL-compatible graphics card. See the [Installation Guide](../installation/installation.md#gpu-deconvolution-clij) for setup instructions.
+GPU deconvolution requires CLIJ2 and an OpenCL-compatible graphics card. See the [Installation Guide](#gpu-deconvolution-clij) for setup instructions.
 :::
 
 ---

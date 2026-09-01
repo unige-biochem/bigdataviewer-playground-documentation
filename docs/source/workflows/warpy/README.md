@@ -1,3 +1,7 @@
+---
+orphan: true
+---
+
 # Warpy Image Registration Workshop
 
 **Expected duration:** ~90 minutes  

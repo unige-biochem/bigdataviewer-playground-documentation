@@ -424,6 +424,8 @@ cs.run(SourcesSetAlphaCommand, True,
 
 ---
 
+(fuse-resample-source-pyramidize)=
+
 ## Source - Pyramidize
 
 *Source: {biop-src}`SourcesPyramidizeCommand.java <ch/epfl/biop/command/process/SourcesPyramidizeCommand.java>`*

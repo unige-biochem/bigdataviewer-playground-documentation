@@ -1,375 +1,350 @@
 === Menu Hierarchy ===
 
-??? (no menu path)
-?   ??? Abstract2DRegistrationInRectangleCommand  [Abstract2DRegistrationInRectangleCommand]
-?   ??? AbstractElastix2DRegistrationInRectangleCommand  [AbstractElastix2DRegistrationInRectangleCommand]
-?   ??? AbstractPairRegistration2DCommand  [AbstractPairRegistration2DCommand]
-?   ??? AbstractPairRegistrationInROI2DCommand  [AbstractPairRegistrationInROI2DCommand]
-?   ??? BasicOpenFilesWithBigdataviewerBioformatsBridgeCommand  [BasicOpenFilesWithBigdataviewerBioformatsBridgeCommand]
-?   ??? BdvPlaygroundActionCommand  [BdvPlaygroundActionCommand]
-?   ??? BioformatsBigdataviewerBridgeDatasetCommand  [BioformatsBigdataviewerBridgeDatasetCommand]
-?   ??? CellposeAbstractCommand  [CellposeAbstractCommand]
-?   ??? DatasetFromCZICreateCommand  [DatasetFromCZICreateCommand]
-?   ??? DatasetFromImarisCreateCommand  [DatasetFromImarisCreateCommand]
-?   ??? DatasetReorderCommand  [DatasetReorderCommand]
-?   ??? DisplayEllipseFromTransformCommand  [DisplayEllipseFromTransformCommand]
-?   ??? Elastix2DAffineRegisterCommand  [Elastix2DAffineRegisterCommand]
-?   ??? Elastix2DSparsePointsRegisterCommand  [Elastix2DSparsePointsRegisterCommand]
-?   ??? Elastix2DSplineRegisterCommand  [Elastix2DSplineRegisterCommand]
-?   ??? FixFilePathsCommand  [FixFilePathsCommand]
-?   ??? MamutWarperCommand  [MamutWarperCommand]
-?   ??? OpenFilesWithBigdataviewerBioformatsBridgeCommand  [OpenFilesWithBigdataviewerBioformatsBridgeCommand]
-?   ??? QuPathProjectToBDVDatasetLegacyCommand  [QuPathProjectToBDVDatasetLegacyCommand]
-?   ??? Sources2DRegisterCommand  [Sources2DRegisterCommand]
-?   ??? SourcesAffineTransformCommand  [SourcesAffineTransformCommand]
-?   ??? SourcesForRegistrationSelectCommand  [SourcesForRegistrationSelectCommand]
-?   ??? SourcesMultiscaleRegisterCommand  [SourcesMultiscaleRegisterCommand]
-?   ??? SourcesRealTransformCommand  [SourcesRealTransformCommand]
-?   ??? SourcesSift2DAffineRegisterCommand  [SourcesSift2DAffineRegisterCommand]
-?   ??? SourcesToImagePlusExportCommand  [SourcesToImagePlusExportCommand]
-?   ??? StandaloneOpenFileWithBigdataviewerBioformatsBridgeCommand  [StandaloneOpenFileWithBigdataviewerBioformatsBridgeCommand]
-?   ??? StarDistAbstractCommand  [StarDistAbstractCommand]
-?   ??? Wizard2DWholeScanRegisterCommand  [Wizard2DWholeScanRegisterCommand]
-??? Image
-?   ??? Stacks
-?       ??? Rotation 3D Resample  [ImagePlusRot3DReSampleCommand]
-??? Plugins
-    ??? BIOP
-    ?   ??? Cellpose/Omnipose
-    ?   ?   ??? Cellpose ...  [Cellpose]
-    ?   ?   ??? Cellpose SAM...  [CellposeSAM]
-    ?   ?   ??? Omnipose ...  [Omnipose]
-    ?   ??? DeepSlice
-    ?   ?   ??? DeepSlice (folder)  [DeepSliceFolderCommand]
-    ?   ?   ??? DeepSlice setup...  [DeepSlicePrefsSet]
-    ?   ??? Elastix
-    ?   ?   ??? Inverse registration  [Elastix_InverseTransform]
-    ?   ?   ??? Load Registration  [Elastix_Load_Registration]
-    ?   ?   ??? Register  [Elastix_Register]
-    ?   ?   ??? Save Registration  [Elastix_Save_Registration]
-    ?   ?   ??? Test Elastix  [Elastix_Test]
-    ?   ??? Kheops
-    ?   ?   ??? (Deprecated) Kheops - Adv. Convert File to Pyramidal OME  [KheopsAdvCommand]
-    ?   ?   ??? (Deprecated) Kheops - Convert File to Pyramidal OME  [KheopsMainCommand]
-    ?   ?   ??? (Deprecated) Kheops - No Param. Convert File to Pyramidal OME  [KheopsSimpleCommand]
-    ?   ?   ??? Kheops - Batch Convert Files to Pyramidal OME TIFF  [KheopsBatchCommand]
-    ?   ?   ??? Kheops - Convert File to Pyramidal OME TIFF  [KheopsCommand]
-    ?   ?   ??? Kheops - Export ImagePlus To OME-TIFF  [KheopsExportImagePlusCommand]
-    ?   ?   ??? Kheops - Read Documentation...  [KheopsDocCommand]
-    ?   ??? OMERO
-    ?   ?   ??? Omero - Connect  [OmeroConnectCommand]
-    ?   ?   ??? Omero - Disconnect  [OmeroDisconnectCommand]
-    ?   ??? Operetta Importer
-    ?   ?   ??? Operetta Archive Importer...  [OperettaArchiveImporter]
-    ?   ?   ??? Operetta Importer Settings...  [OperettaImporterHiddenSettings]
-    ?   ?   ??? Operetta Importer...  [OperettaImporter]
-    ?   ??? Set and Check Wrappers  [BiopWrappersSet]
-    ?   ??? Spotiflow
-    ?   ?   ??? Spotiflow...  [Spotiflow]
-    ?   ??? StarDist
-    ?   ?   ??? StarDist2D Adv. ...  [StarDist2D_Advanced]
-    ?   ?   ??? StarDist2D...  [StarDist2D]
-    ?   ?   ??? StarDist3D Adv. ...  [StarDist3D_Advanced]
-    ?   ?   ??? StarDist3D...  [StarDist3D]
-    ?   ??? Transformix
-    ?   ?   ??? Transform Image  [Transformix_TransformImgPlus]
-    ?   ?   ??? Transform Rois  [Transformix_TransformROIs]
-    ?   ??? Vectorize Label Image  [VectorizeLabelImage]
-    ??? BigDataViewer
-    ?   ??? Bio-Formats
-    ?       ??? Open File with Bio-Formats  [BdvShowFileBioFormatsCommand]
-    ??? BigDataViewer-Playground
-    ?   ??? Dataset
-    ?   ?   ??? Dataset - Combine XML Datasets  [DatasetXMLCombineCommand]
-    ?   ?   ??? Dataset - Make BigStitcher Compatible  [DatasetXMLToBigStitcherDatasetConvertCommand]
-    ?   ?   ??? Dataset - Remove Entities  [DatasetEntitiesRemoveCommand]
-    ?   ??? Display
-    ?   ?   ??? BDV
-    ?   ?       ??? BDV - Create Grid BDV  [BdvGridCreateCommand]
-    ?   ?       ??? BDV - Show Sources On Grid  [SourcesOverviewCommand]
-    ?   ?       ??? Export
-    ?   ?       ?   ??? BDV - Export Current View As ImagePlus  [BdvViewToImagePlusExportCommand]
-    ?   ?       ?   ??? BDV - Export Current View As ImagePlus (Match Window)  [BdvViewToImagePlusBasicExportCommand]
-    ?   ?       ?   ??? BDV - Export Current View As Sources  [BdvViewToSourcesExportCommand]
-    ?   ?       ??? ROI
-    ?   ?       ?   ??? BDV - Define Box  [UserBoxGetCommand]
-    ?   ?       ?   ??? BDV - Define Points  [UserPointsGetCommand]
-    ?   ?       ?   ??? BDV - Define Rectangle  [UserRectangleGetCommand]
-    ?   ?       ??? Settings
-    ?   ?           ??? BDV - Set Style (Alpha)  [BdvStyleAlphaSetCommand]
-    ?   ??? Export
-    ?   ?   ??? Dataset - Fuse BigStitcher Dataset To OME-TIFF  [BigStitcherDatasetToOMETIFFFuseCommand]
-    ?   ?   ??? Source - Export To ImagePlus  [SourcesToMultipleImagePlusExportCommand]
-    ?   ?   ??? Source - Export To OME-TIFF  [KheopsExportSourcesCommand]
-    ?   ??? Import
-    ?   ?   ??? Dataset - Create [Bio-Formats]  [DatasetFromBioFormatsCreateCommand]
-    ?   ?   ??? Dataset - Create [CZI LLS7]  [LLS7DatasetOpenCommand]
-    ?   ?   ??? Dataset - Create [Current ImagePlus]  [DatasetFromImagePlusCreateCommand]
-    ?   ?   ??? Dataset - Create [OMERO]  [DatasetFromOMEROCreateCommand]
-    ?   ?   ??? Dataset - Create [Operetta]  [DatasetFromOperettaCreateCommand]
-    ?   ?   ??? Dataset - Create [QuPath]  [DatasetFromQuPathCreateCommand]
-    ?   ?   ??? Dataset - Samples  [OpenSampleCommand]
-    ?   ??? Process
-    ?   ?   ??? Classify (Labkit)
-    ?   ?   ?   ??? Source - Apply Labkit Classifier  [SourcesLabkitClassifyCommand]
-    ?   ?   ?   ??? Source - Open Labkit  [SourcesLabkitOpenCommand]
-    ?   ?   ??? Deconvolve
-    ?   ?   ?   ??? Source - Deconvolve (Richardson Lucy GPU - Tiled)  [SourcesDeconvolveCommand]
-    ?   ?   ??? Fuse & Resample
-    ?   ?   ?   ??? Source - Define Resampling Grid  [SourcesGridModelMakeCommand]
-    ?   ?   ?   ??? Source - Fuse And Resample Sources  [SourcesFuseAndResampleCommand]
-    ?   ?   ?   ??? Source - Set Linear Blending Mask (L1 Alpha)  [SourcesSetAlphaCommand]
-    ?   ?   ??? Source - Crop Resolution Levels  [SourcesResolutionLevelsCropCommand]
-    ?   ?   ??? Source - Freeze Timepoint  [SourcesOverTimeDuplicateCommand]
-    ?   ?   ??? Source - Pyramidize  [SourcesPyramidizeCommand]
-    ?   ?   ??? Source - Shift Timepoints  [SourcesTimeShiftDuplicateCommand]
-    ?   ?   ??? Transform
-    ?   ?       ??? New Affine Transform  [AffineTransformCreateCommand]
-    ?   ?       ??? Source - Recenter Sources  [SourcesRecenterCommand]
-    ?   ?       ??? Source - Remove Z Offset  [SourcesZOffsetRemoveCommand]
-    ?   ??? Register
-    ?   ?   ??? Source - Edit Sources Warping  [SourcesWarpingEditCommand]
-    ?   ?   ??? Warpy
-    ?   ?   ?   ??? Create Registration Pair  [PairRegistrationCreateCommand]
-    ?   ?   ?   ??? Create Registration Pair (Specify Timepoint)  [PairRegistrationCreateAdvancedCommand]
-    ?   ?   ?   ??? Delete Registration Pair  [PairRegistrationDeleteCommand]
-    ?   ?   ?   ??? Register Pair - Add GUI  [PairRegistrationAddGUICommand]
-    ?   ?   ?   ??? Register Pair - Affine Elastix 2D  [PairRegistrationElastix2DAffineRegisterCommand]
-    ?   ?   ?   ??? Register Pair - Affine SIFT 2D  [PairRegistrationSift2DAffineRegisterCommand]
-    ?   ?   ?   ??? Register Pair - Center Moving Sources On Fixed Sources  [PairRegistrationCenterCommand]
-    ?   ?   ?   ??? Register Pair - Edit Last Registration  [PairRegistrationLastRegistrationEditCommand]
-    ?   ?   ?   ??? Register Pair - Export To OME-TIFF  [PairRegistrationOMETIFFExportCommand]
-    ?   ?   ?   ??? Register Pair - Export To QuPath  [PairRegistrationQuPathExportCommand]
-    ?   ?   ?   ??? Register Pair - Flip  [PairRegistrationFlipCommand]
-    ?   ?   ?   ??? Register Pair - Load And Edit An Existing Registration  [PairRegistrationLoadAndEditCommand]
-    ?   ?   ?   ??? Register Pair - Remove Last Registration  [PairRegistrationLastRegistrationRemoveCommand]
-    ?   ?   ?   ??? Register Pair - Rotate  [PairRegistrationRotateCommand]
-    ?   ?   ?   ??? Register Pair - Spline BigWarp 2D  [PairRegistrationBigWarp2DSplineRegisterCommand]
-    ?   ?   ?   ??? Register Pair - Spline Elastix 2D  [PairRegistrationElastix2DSplineRegisterCommand]
-    ?   ?   ??? Warpy (Wizard)
-    ?   ?       ??? Warpy - Create Multiscale Registration  [WarpyMultiscaleRegisterCommand]
-    ?   ?       ??? Warpy - Create Registration  [WarpyRegisterCommand]
-    ?   ?       ??? Warpy - Edit Registration  [WarpyRegistrationEditCommand]
-    ?   ?       ??? Warpy - Export Registered Image  [WarpyRegisteredImageExportCommand]
-    ?   ??? Specialized Workflows
-    ?   ?   ??? Elliptic Transform
-    ?   ?   ?   ??? Source - Create Elliptic Voronoi Source  [GetVoronoiEllipseSampleCommand]
-    ?   ?   ?   ??? Source - Elliptic 3D Transform Optimization  [Optimize3DEllipticalTransformCommand]
-    ?   ?   ?   ??? Source - Elliptic 3D Transform Sources  [Elliptic3DTransformerCommand]
-    ?   ?   ?   ??? Source - Export Elliptic 3D Transform  [Elliptic3DTransformExporterCommand]
-    ?   ?   ?   ??? Source - Export Elliptic 3D Transformed Sources  [ExportEllipticProjection]
-    ?   ?   ?   ??? Source - Export Elliptic 3D Transformed Sources (Interactive Box)  [EasyExportEllipticProjection]
-    ?   ?   ?   ??? Source - Import Elliptic 3D Transform  [Elliptic3DTransformImporterCommand]
-    ?   ?   ?   ??? Source - New Elliptic 3D Transform  [Elliptic3DTransformCreatorCommand]
-    ?   ?   ??? LLS7
-    ?   ?       ??? Source - LLS7 - Compensate Z-Drift  [LLS7ZDriftCompensateCommand]
-    ?   ?       ??? Source - LLS7 - Crop 3D  [LLS7CropCommand]
-    ?   ??? Workspace
-    ?       ??? Tree
-    ?           ??? Tree - Filter By Name  [FilterNodeNameAddCommand]
-    ??? Sandbox
-        ??? Dummy Sum  [DummySumCommand]
+├── (no menu path)
+│   ├── BasicOpenFilesWithBigdataviewerBioformatsBridgeCommand  [BasicOpenFilesWithBigdataviewerBioformatsBridgeCommand]
+│   ├── BioformatsBigdataviewerBridgeDatasetCommand  [BioformatsBigdataviewerBridgeDatasetCommand]
+│   ├── DatasetFromCZICreateCommand  [DatasetFromCZICreateCommand]
+│   ├── DatasetFromImarisCreateCommand  [DatasetFromImarisCreateCommand]
+│   ├── DatasetReorderCommand  [DatasetReorderCommand]
+│   ├── DisplayEllipseFromTransformCommand  [DisplayEllipseFromTransformCommand]
+│   ├── Elastix2DAffineRegisterCommand  [Elastix2DAffineRegisterCommand]
+│   ├── Elastix2DSparsePointsRegisterCommand  [Elastix2DSparsePointsRegisterCommand]
+│   ├── Elastix2DSplineRegisterCommand  [Elastix2DSplineRegisterCommand]
+│   ├── FixFilePathsCommand  [FixFilePathsCommand]
+│   ├── MamutWarperCommand  [MamutWarperCommand]
+│   ├── OpenFilesWithBigdataviewerBioformatsBridgeCommand  [OpenFilesWithBigdataviewerBioformatsBridgeCommand]
+│   ├── QuPathProjectToBDVDatasetLegacyCommand  [QuPathProjectToBDVDatasetLegacyCommand]
+│   ├── Sources2DRegisterCommand  [Sources2DRegisterCommand]
+│   ├── SourcesAffineTransformCommand  [SourcesAffineTransformCommand]
+│   ├── SourcesMultiscaleRegisterCommand  [SourcesMultiscaleRegisterCommand]
+│   ├── SourcesRealTransformCommand  [SourcesRealTransformCommand]
+│   ├── SourcesSift2DAffineRegisterCommand  [SourcesSift2DAffineRegisterCommand]
+│   ├── SourcesToImagePlusExportCommand  [SourcesToImagePlusExportCommand]
+│   ├── StandaloneOpenFileWithBigdataviewerBioformatsBridgeCommand  [StandaloneOpenFileWithBigdataviewerBioformatsBridgeCommand]
+│   └── Wizard2DWholeScanRegisterCommand  [Wizard2DWholeScanRegisterCommand]
+├── Image
+│   └── Stacks
+│       └── Rotation 3D Resample  [ImagePlusRot3DReSampleCommand]
+└── Plugins
+    ├── BIOP
+    │   ├── Cellpose/Omnipose
+    │   │   ├── Cellpose ...  [Cellpose]
+    │   │   ├── Cellpose SAM...  [CellposeSAM]
+    │   │   └── Omnipose ...  [Omnipose]
+    │   ├── DeepSlice
+    │   │   ├── DeepSlice (folder)  [DeepSliceFolderCommand]
+    │   │   └── DeepSlice setup...  [DeepSlicePrefsSet]
+    │   ├── Elastix
+    │   │   ├── Inverse registration  [Elastix_InverseTransform]
+    │   │   ├── Load Registration  [Elastix_Load_Registration]
+    │   │   ├── Register  [Elastix_Register]
+    │   │   ├── Save Registration  [Elastix_Save_Registration]
+    │   │   └── Test Elastix  [Elastix_Test]
+    │   ├── Kheops
+    │   │   ├── (Deprecated) Kheops - Adv. Convert File to Pyramidal OME  [KheopsAdvCommand]
+    │   │   ├── (Deprecated) Kheops - Convert File to Pyramidal OME  [KheopsMainCommand]
+    │   │   ├── (Deprecated) Kheops - No Param. Convert File to Pyramidal OME  [KheopsSimpleCommand]
+    │   │   ├── Kheops - Batch Convert Files to Pyramidal OME TIFF  [KheopsBatchCommand]
+    │   │   ├── Kheops - Convert File to Pyramidal OME TIFF  [KheopsCommand]
+    │   │   ├── Kheops - Export ImagePlus To OME-TIFF  [KheopsExportImagePlusCommand]
+    │   │   └── Kheops - Read Documentation...  [KheopsDocCommand]
+    │   ├── OMERO
+    │   │   ├── Omero - Connect  [OmeroConnectCommand]
+    │   │   └── Omero - Disconnect  [OmeroDisconnectCommand]
+    │   ├── Operetta Importer
+    │   │   ├── Operetta Archive Importer...  [OperettaArchiveImporter]
+    │   │   ├── Operetta Importer Settings...  [OperettaImporterHiddenSettings]
+    │   │   └── Operetta Importer...  [OperettaImporter]
+    │   ├── Set and Check Wrappers  [BiopWrappersSet]
+    │   ├── Spotiflow
+    │   │   └── Spotiflow...  [Spotiflow]
+    │   ├── StarDist
+    │   │   ├── StarDist2D Adv. ...  [StarDist2D_Advanced]
+    │   │   ├── StarDist2D...  [StarDist2D]
+    │   │   ├── StarDist3D Adv. ...  [StarDist3D_Advanced]
+    │   │   └── StarDist3D...  [StarDist3D]
+    │   ├── Transformix
+    │   │   ├── Transform Image  [Transformix_TransformImgPlus]
+    │   │   └── Transform Rois  [Transformix_TransformROIs]
+    │   └── Vectorize Label Image  [VectorizeLabelImage]
+    ├── BigDataViewer
+    │   └── Bio-Formats
+    │       └── Open File with Bio-Formats  [BdvShowFileBioFormatsCommand]
+    └── BigDataViewer-Playground
+        ├── Dataset
+        │   ├── Dataset - Combine XML Datasets  [DatasetXMLCombineCommand]
+        │   ├── Dataset - Make BigStitcher Compatible  [DatasetXMLToBigStitcherDatasetConvertCommand]
+        │   └── Dataset - Remove Entities  [DatasetEntitiesRemoveCommand]
+        ├── Display
+        │   └── BDV
+        │       ├── BDV - Create Grid BDV  [BdvGridCreateCommand]
+        │       ├── BDV - Show Sources On Grid  [SourcesOverviewCommand]
+        │       ├── Export
+        │       │   ├── BDV - Export Current View As ImagePlus  [BdvViewToImagePlusExportCommand]
+        │       │   ├── BDV - Export Current View As ImagePlus (Match Window)  [BdvViewToImagePlusBasicExportCommand]
+        │       │   └── BDV - Export Current View As Sources  [BdvViewToSourcesExportCommand]
+        │       ├── ROI
+        │       │   ├── BDV - Define Box  [UserBoxGetCommand]
+        │       │   ├── BDV - Define Points  [UserPointsGetCommand]
+        │       │   └── BDV - Define Rectangle  [UserRectangleGetCommand]
+        │       └── Settings
+        │           └── BDV - Set Style (Alpha)  [BdvStyleAlphaSetCommand]
+        ├── Export
+        │   ├── Dataset - Fuse BigStitcher Dataset To OME-TIFF  [BigStitcherDatasetToOMETIFFFuseCommand]
+        │   ├── Source - Export To ImagePlus  [SourcesToMultipleImagePlusExportCommand]
+        │   └── Source - Export To OME-TIFF  [KheopsExportSourcesCommand]
+        ├── Import
+        │   ├── Dataset - Create [Bio-Formats]  [DatasetFromBioFormatsCreateCommand]
+        │   ├── Dataset - Create [CZI LLS7]  [LLS7DatasetOpenCommand]
+        │   ├── Dataset - Create [Current ImagePlus]  [DatasetFromImagePlusCreateCommand]
+        │   ├── Dataset - Create [OMERO]  [DatasetFromOMEROCreateCommand]
+        │   ├── Dataset - Create [Operetta]  [DatasetFromOperettaCreateCommand]
+        │   ├── Dataset - Create [QuPath]  [DatasetFromQuPathCreateCommand]
+        │   └── Dataset - Samples  [OpenSampleCommand]
+        ├── Process
+        │   ├── Classify (Labkit)
+        │   │   ├── Source - Apply Labkit Classifier  [SourcesLabkitClassifyCommand]
+        │   │   └── Source - Open Labkit  [SourcesLabkitOpenCommand]
+        │   ├── Deconvolve
+        │   │   └── Source - Deconvolve (Richardson Lucy GPU - Tiled)  [SourcesDeconvolveCommand]
+        │   ├── Fuse & Resample
+        │   │   ├── Source - Define Resampling Grid  [SourcesGridModelMakeCommand]
+        │   │   ├── Source - Fuse And Resample Sources  [SourcesFuseAndResampleCommand]
+        │   │   └── Source - Set Linear Blending Mask (L1 Alpha)  [SourcesSetAlphaCommand]
+        │   ├── Source - Crop Resolution Levels  [SourcesResolutionLevelsCropCommand]
+        │   ├── Source - Freeze Timepoint  [SourcesOverTimeDuplicateCommand]
+        │   ├── Source - Pyramidize  [SourcesPyramidizeCommand]
+        │   ├── Source - Shift Timepoints  [SourcesTimeShiftDuplicateCommand]
+        │   └── Transform
+        │       ├── New Affine Transform  [AffineTransformCreateCommand]
+        │       ├── Source - Recenter Sources  [SourcesRecenterCommand]
+        │       └── Source - Remove Z Offset  [SourcesZOffsetRemoveCommand]
+        ├── Register
+        │   ├── Source - Edit Sources Warping  [SourcesWarpingEditCommand]
+        │   ├── Warpy
+        │   │   ├── Create Registration Pair  [PairRegistrationCreateCommand]
+        │   │   ├── Create Registration Pair (Specify Timepoint)  [PairRegistrationCreateAdvancedCommand]
+        │   │   ├── Delete Registration Pair  [PairRegistrationDeleteCommand]
+        │   │   ├── Register Pair - Add GUI  [PairRegistrationAddGUICommand]
+        │   │   ├── Register Pair - Affine Elastix 2D  [PairRegistrationElastix2DAffineRegisterCommand]
+        │   │   ├── Register Pair - Affine SIFT 2D  [PairRegistrationSift2DAffineRegisterCommand]
+        │   │   ├── Register Pair - Center Moving Sources On Fixed Sources  [PairRegistrationCenterCommand]
+        │   │   ├── Register Pair - Edit Last Registration  [PairRegistrationLastRegistrationEditCommand]
+        │   │   ├── Register Pair - Export To OME-TIFF  [PairRegistrationOMETIFFExportCommand]
+        │   │   ├── Register Pair - Export To QuPath  [PairRegistrationQuPathExportCommand]
+        │   │   ├── Register Pair - Flip  [PairRegistrationFlipCommand]
+        │   │   ├── Register Pair - Load And Edit An Existing Registration  [PairRegistrationLoadAndEditCommand]
+        │   │   ├── Register Pair - Remove Last Registration  [PairRegistrationLastRegistrationRemoveCommand]
+        │   │   ├── Register Pair - Rotate  [PairRegistrationRotateCommand]
+        │   │   ├── Register Pair - Spline BigWarp 2D  [PairRegistrationBigWarp2DSplineRegisterCommand]
+        │   │   └── Register Pair - Spline Elastix 2D  [PairRegistrationElastix2DSplineRegisterCommand]
+        │   └── Warpy (Wizard)
+        │       ├── Warpy - Create Multiscale Registration  [WarpyMultiscaleRegisterCommand]
+        │       ├── Warpy - Create Registration  [WarpyRegisterCommand]
+        │       ├── Warpy - Edit Registration  [WarpyRegistrationEditCommand]
+        │       └── Warpy - Export Registered Image  [WarpyRegisteredImageExportCommand]
+        ├── Specialized Workflows
+        │   ├── Elliptic Transform
+        │   │   ├── Source - Create Elliptic Voronoi Source  [GetVoronoiEllipseSampleCommand]
+        │   │   ├── Source - Elliptic 3D Transform Optimization  [Optimize3DEllipticalTransformCommand]
+        │   │   ├── Source - Elliptic 3D Transform Sources  [Elliptic3DTransformerCommand]
+        │   │   ├── Source - Export Elliptic 3D Transform  [Elliptic3DTransformExporterCommand]
+        │   │   ├── Source - Export Elliptic 3D Transformed Sources  [ExportEllipticProjection]
+        │   │   ├── Source - Export Elliptic 3D Transformed Sources (Interactive Box)  [EasyExportEllipticProjection]
+        │   │   ├── Source - Import Elliptic 3D Transform  [Elliptic3DTransformImporterCommand]
+        │   │   └── Source - New Elliptic 3D Transform  [Elliptic3DTransformCreatorCommand]
+        │   └── LLS7
+        │       ├── Source - LLS7 - Compensate Z-Drift  [LLS7ZDriftCompensateCommand]
+        │       └── Source - LLS7 - Crop 3D  [LLS7CropCommand]
+        └── Workspace
+            └── Tree
+                └── Tree - Filter By Name  [FilterNodeNameAddCommand]
 
 === Package Hierarchy ===
 
-??? ch
-?   ??? epfl
-?       ??? biop
-?           ??? bdv
-?           ?   ??? img
-?           ?       ??? FixFilePathsCommand
-?           ?       ??? bioformats
-?           ?       ?   ??? command
-?           ?       ?       ??? BdvShowFileBioFormatsCommand  (menu: Open File with Bio-Formats)
-?           ?       ?       ??? DatasetFromBioFormatsCreateCommand  (menu: Dataset - Create [Bio-Formats])
-?           ?       ?       ??? OpenSampleCommand  (menu: Dataset - Samples)
-?           ?       ??? imageplus
-?           ?       ?   ??? command
-?           ?       ?       ??? DatasetFromImagePlusCreateCommand  (menu: Dataset - Create [Current ImagePlus])
-?           ?       ??? legacy
-?           ?       ?   ??? bioformats
-?           ?       ?   ?   ??? command
-?           ?       ?   ?       ??? BasicOpenFilesWithBigdataviewerBioformatsBridgeCommand
-?           ?       ?   ?       ??? BioformatsBigdataviewerBridgeDatasetCommand
-?           ?       ?   ?       ??? OpenFilesWithBigdataviewerBioformatsBridgeCommand
-?           ?       ?   ?       ??? StandaloneOpenFileWithBigdataviewerBioformatsBridgeCommand
-?           ?       ?   ??? qupath
-?           ?       ?       ??? command
-?           ?       ?           ??? QuPathProjectToBDVDatasetLegacyCommand
-?           ?       ??? omero
-?           ?       ?   ??? command
-?           ?       ?       ??? DatasetFromOMEROCreateCommand  (menu: Dataset - Create [OMERO])
-?           ?       ?       ??? OmeroConnectCommand  (menu: Omero - Connect)
-?           ?       ?       ??? OmeroDisconnectCommand  (menu: Omero - Disconnect)
-?           ?       ??? qupath
-?           ?           ??? command
-?           ?               ??? DatasetFromQuPathCreateCommand  (menu: Dataset - Create [QuPath])
-?           ??? command
-?           ?   ??? dataset
-?           ?   ?   ??? DatasetEntitiesRemoveCommand  (menu: Dataset - Remove Entities)
-?           ?   ?   ??? DatasetReorderCommand
-?           ?   ?   ??? DatasetXMLCombineCommand  (menu: Dataset - Combine XML Datasets)
-?           ?   ?   ??? DatasetXMLToBigStitcherDatasetConvertCommand  (menu: Dataset - Make BigStitcher Compatible)
-?           ?   ??? display
-?           ?   ?   ??? bdv
-?           ?   ?       ??? BdvGridCreateCommand  (menu: BDV - Create Grid BDV)
-?           ?   ?       ??? SourcesOverviewCommand  (menu: BDV - Show Sources On Grid)
-?           ?   ?       ??? export
-?           ?   ?       ?   ??? BdvViewToImagePlusBasicExportCommand  (menu: BDV - Export Current View As ImagePlus (Match Window))
-?           ?   ?       ?   ??? BdvViewToImagePlusExportCommand  (menu: BDV - Export Current View As ImagePlus)
-?           ?   ?       ?   ??? BdvViewToSourcesExportCommand  (menu: BDV - Export Current View As Sources)
-?           ?   ?       ??? region
-?           ?   ?       ?   ??? UserBoxGetCommand  (menu: BDV - Define Box)
-?           ?   ?       ?   ??? UserPointsGetCommand  (menu: BDV - Define Points)
-?           ?   ?       ?   ??? UserRectangleGetCommand  (menu: BDV - Define Rectangle)
-?           ?   ?       ??? settings
-?           ?   ?           ??? BdvStyleAlphaSetCommand  (menu: BDV - Set Style (Alpha))
-?           ?   ??? exporter
-?           ?   ?   ??? BigStitcherDatasetToOMETIFFFuseCommand  (menu: Dataset - Fuse BigStitcher Dataset To OME-TIFF)
-?           ?   ?   ??? SourcesToImagePlusExportCommand
-?           ?   ?   ??? SourcesToMultipleImagePlusExportCommand  (menu: Source - Export To ImagePlus)
-?           ?   ??? importer
-?           ?   ?   ??? DatasetFromCZICreateCommand
-?           ?   ?   ??? DatasetFromImarisCreateCommand
-?           ?   ?   ??? DatasetFromOperettaCreateCommand  (menu: Dataset - Create [Operetta])
-?           ?   ??? process
-?           ?   ?   ??? SourcesOverTimeDuplicateCommand  (menu: Source - Freeze Timepoint)
-?           ?   ?   ??? SourcesPyramidizeCommand  (menu: Source - Pyramidize)
-?           ?   ?   ??? SourcesResolutionLevelsCropCommand  (menu: Source - Crop Resolution Levels)
-?           ?   ?   ??? SourcesTimeShiftDuplicateCommand  (menu: Source - Shift Timepoints)
-?           ?   ?   ??? deconvolve
-?           ?   ?   ?   ??? SourcesDeconvolveCommand  (menu: Source - Deconvolve (Richardson Lucy GPU - Tiled))
-?           ?   ?   ??? labkit
-?           ?   ?   ?   ??? SourcesLabkitClassifyCommand  (menu: Source - Apply Labkit Classifier)
-?           ?   ?   ?   ??? SourcesLabkitOpenCommand  (menu: Source - Open Labkit)
-?           ?   ?   ??? resample
-?           ?   ?   ?   ??? SourcesFuseAndResampleCommand  (menu: Source - Fuse And Resample Sources)
-?           ?   ?   ?   ??? SourcesGridModelMakeCommand  (menu: Source - Define Resampling Grid)
-?           ?   ?   ?   ??? SourcesSetAlphaCommand  (menu: Source - Set Linear Blending Mask (L1 Alpha))
-?           ?   ?   ??? transform
-?           ?   ?       ??? ImagePlusRot3DReSampleCommand  (menu: Rotation 3D Resample)
-?           ?   ?       ??? SourcesRecenterCommand  (menu: Source - Recenter Sources)
-?           ?   ?       ??? SourcesWarpingEditCommand  (menu: Source - Edit Sources Warping)
-?           ?   ?       ??? SourcesZOffsetRemoveCommand  (menu: Source - Remove Z Offset)
-?           ?   ??? register
-?           ?   ?   ??? Abstract2DRegistrationInRectangleCommand
-?           ?   ?   ??? AbstractElastix2DRegistrationInRectangleCommand
-?           ?   ?   ??? AffineTransformCreateCommand  (menu: New Affine Transform)
-?           ?   ?   ??? Elastix2DAffineRegisterCommand
-?           ?   ?   ??? Elastix2DSparsePointsRegisterCommand
-?           ?   ?   ??? Elastix2DSplineRegisterCommand
-?           ?   ?   ??? Sources2DRegisterCommand
-?           ?   ?   ??? SourcesAffineTransformCommand
-?           ?   ?   ??? SourcesForRegistrationSelectCommand
-?           ?   ?   ??? SourcesMultiscaleRegisterCommand
-?           ?   ?   ??? SourcesRealTransformCommand
-?           ?   ?   ??? SourcesSift2DAffineRegisterCommand
-?           ?   ?   ??? warpy
-?           ?   ?       ??? AbstractPairRegistration2DCommand
-?           ?   ?       ??? AbstractPairRegistrationInROI2DCommand
-?           ?   ?       ??? PairRegistrationAddGUICommand  (menu: Register Pair - Add GUI)
-?           ?   ?       ??? PairRegistrationBigWarp2DSplineRegisterCommand  (menu: Register Pair - Spline BigWarp 2D)
-?           ?   ?       ??? PairRegistrationCenterCommand  (menu: Register Pair - Center Moving Sources On Fixed Sources)
-?           ?   ?       ??? PairRegistrationCreateAdvancedCommand  (menu: Create Registration Pair (Specify Timepoint))
-?           ?   ?       ??? PairRegistrationCreateCommand  (menu: Create Registration Pair)
-?           ?   ?       ??? PairRegistrationDeleteCommand  (menu: Delete Registration Pair)
-?           ?   ?       ??? PairRegistrationElastix2DAffineRegisterCommand  (menu: Register Pair - Affine Elastix 2D)
-?           ?   ?       ??? PairRegistrationElastix2DSplineRegisterCommand  (menu: Register Pair - Spline Elastix 2D)
-?           ?   ?       ??? PairRegistrationFlipCommand  (menu: Register Pair - Flip)
-?           ?   ?       ??? PairRegistrationLastRegistrationEditCommand  (menu: Register Pair - Edit Last Registration)
-?           ?   ?       ??? PairRegistrationLastRegistrationRemoveCommand  (menu: Register Pair - Remove Last Registration)
-?           ?   ?       ??? PairRegistrationLoadAndEditCommand  (menu: Register Pair - Load And Edit An Existing Registration)
-?           ?   ?       ??? PairRegistrationOMETIFFExportCommand  (menu: Register Pair - Export To OME-TIFF)
-?           ?   ?       ??? PairRegistrationQuPathExportCommand  (menu: Register Pair - Export To QuPath)
-?           ?   ?       ??? PairRegistrationRotateCommand  (menu: Register Pair - Rotate)
-?           ?   ?       ??? PairRegistrationSift2DAffineRegisterCommand  (menu: Register Pair - Affine SIFT 2D)
-?           ?   ?       ??? wizard
-?           ?   ?           ??? WarpyMultiscaleRegisterCommand  (menu: Warpy - Create Multiscale Registration)
-?           ?   ?           ??? WarpyRegisterCommand  (menu: Warpy - Create Registration)
-?           ?   ?           ??? WarpyRegisteredImageExportCommand  (menu: Warpy - Export Registered Image)
-?           ?   ?           ??? WarpyRegistrationEditCommand  (menu: Warpy - Edit Registration)
-?           ?   ?           ??? Wizard2DWholeScanRegisterCommand
-?           ?   ??? workflow
-?           ?   ?   ??? elliptic
-?           ?   ?   ?   ??? DisplayEllipseFromTransformCommand
-?           ?   ?   ?   ??? EasyExportEllipticProjection  (menu: Source - Export Elliptic 3D Transformed Sources (Interactive Box))
-?           ?   ?   ?   ??? Elliptic3DTransformCreatorCommand  (menu: Source - New Elliptic 3D Transform)
-?           ?   ?   ?   ??? Elliptic3DTransformExporterCommand  (menu: Source - Export Elliptic 3D Transform)
-?           ?   ?   ?   ??? Elliptic3DTransformImporterCommand  (menu: Source - Import Elliptic 3D Transform)
-?           ?   ?   ?   ??? Elliptic3DTransformerCommand  (menu: Source - Elliptic 3D Transform Sources)
-?           ?   ?   ?   ??? ExportEllipticProjection  (menu: Source - Export Elliptic 3D Transformed Sources)
-?           ?   ?   ?   ??? GetVoronoiEllipseSampleCommand  (menu: Source - Create Elliptic Voronoi Source)
-?           ?   ?   ?   ??? Optimize3DEllipticalTransformCommand  (menu: Source - Elliptic 3D Transform Optimization)
-?           ?   ?   ??? lls7
-?           ?   ?   ?   ??? LLS7CropCommand  (menu: Source - LLS7 - Crop 3D)
-?           ?   ?   ?   ??? LLS7DatasetOpenCommand  (menu: Dataset - Create [CZI LLS7])
-?           ?   ?   ?   ??? LLS7ZDriftCompensateCommand  (menu: Source - LLS7 - Compensate Z-Drift)
-?           ?   ?   ??? mastodon
-?           ?   ?       ??? MamutWarperCommand
-?           ?   ??? workspace
-?           ?       ??? FilterNodeNameAddCommand  (menu: Tree - Filter By Name)
-?           ??? fiji
-?           ?   ??? tools
-?           ?       ??? DummySumCommand  (menu: Dummy Sum)
-?           ??? java
-?           ?   ??? utilities
-?           ?       ??? roi
-?           ?           ??? VectorizeLabelImage  (menu: Vectorize Label Image)
-?           ??? kheops
-?           ?   ??? command
-?           ?       ??? KheopsBatchCommand  (menu: Kheops - Batch Convert Files to Pyramidal OME TIFF)
-?           ?       ??? KheopsCommand  (menu: Kheops - Convert File to Pyramidal OME TIFF)
-?           ?       ??? KheopsDocCommand  (menu: Kheops - Read Documentation...)
-?           ?       ??? KheopsExportImagePlusCommand  (menu: Kheops - Export ImagePlus To OME-TIFF)
-?           ?       ??? KheopsExportSourcesCommand  (menu: Source - Export To OME-TIFF)
-?           ?       ??? deprecated
-?           ?           ??? KheopsAdvCommand  (menu: (Deprecated) Kheops - Adv. Convert File to Pyramidal OME)
-?           ?           ??? KheopsMainCommand  (menu: (Deprecated) Kheops - Convert File to Pyramidal OME)
-?           ?           ??? KheopsSimpleCommand  (menu: (Deprecated) Kheops - No Param. Convert File to Pyramidal OME)
-?           ??? operetta
-?           ?   ??? commands
-?           ?       ??? OperettaArchiveImporter  (menu: Operetta Archive Importer...)
-?           ?       ??? OperettaImporter  (menu: Operetta Importer...)
-?           ?       ??? OperettaImporterHiddenSettings  (menu: Operetta Importer Settings...)
-?           ??? wrappers
-?               ??? cellpose
-?               ?   ??? ij2commands
-?               ?       ??? Cellpose  (menu: Cellpose ...)
-?               ?       ??? CellposeAbstractCommand
-?               ?       ??? CellposeSAM  (menu: Cellpose SAM...)
-?               ??? deepslice
-?               ?   ??? ij2commands
-?               ?       ??? DeepSliceFolderCommand  (menu: DeepSlice (folder))
-?               ?       ??? DeepSlicePrefsSet  (menu: DeepSlice setup...)
-?               ??? elastix
-?               ?   ??? ij2commands
-?               ?       ??? Elastix_InverseTransform  (menu: Inverse registration)
-?               ?       ??? Elastix_Load_Registration  (menu: Load Registration)
-?               ?       ??? Elastix_Register  (menu: Register)
-?               ?       ??? Elastix_Save_Registration  (menu: Save Registration)
-?               ?       ??? Elastix_Test  (menu: Test Elastix)
-?               ??? ij2command
-?               ?   ??? BiopWrappersSet  (menu: Set and Check Wrappers)
-?               ??? omnipose
-?               ?   ??? ij2commands
-?               ?       ??? Omnipose  (menu: Omnipose ...)
-?               ??? spotiflow
-?               ?   ??? ij2commands
-?               ?       ??? Spotiflow  (menu: Spotiflow...)
-?               ??? stardist
-?               ?   ??? ij2commands
-?               ?       ??? StarDist2D  (menu: StarDist2D...)
-?               ?       ??? StarDist2D_Advanced  (menu: StarDist2D Adv. ...)
-?               ?       ??? StarDist3D  (menu: StarDist3D...)
-?               ?       ??? StarDist3D_Advanced  (menu: StarDist3D Adv. ...)
-?               ?       ??? StarDistAbstractCommand
-?               ??? transformix
-?                   ??? ij2commands
-?                       ??? Transformix_TransformImgPlus  (menu: Transform Image)
-?                       ??? Transformix_TransformROIs  (menu: Transform Rois)
-??? sc
-    ??? fiji
-        ??? bdvpg
-            ??? command
-                ??? BdvPlaygroundActionCommand
+└── ch
+    └── epfl
+        └── biop
+            ├── bdv
+            │   └── img
+            │       ├── FixFilePathsCommand
+            │       ├── bioformats
+            │       │   └── command
+            │       │       ├── BdvShowFileBioFormatsCommand  (menu: Open File with Bio-Formats)
+            │       │       ├── DatasetFromBioFormatsCreateCommand  (menu: Dataset - Create [Bio-Formats])
+            │       │       └── OpenSampleCommand  (menu: Dataset - Samples)
+            │       ├── imageplus
+            │       │   └── command
+            │       │       └── DatasetFromImagePlusCreateCommand  (menu: Dataset - Create [Current ImagePlus])
+            │       ├── legacy
+            │       │   ├── bioformats
+            │       │   │   └── command
+            │       │   │       ├── BasicOpenFilesWithBigdataviewerBioformatsBridgeCommand
+            │       │   │       ├── BioformatsBigdataviewerBridgeDatasetCommand
+            │       │   │       ├── OpenFilesWithBigdataviewerBioformatsBridgeCommand
+            │       │   │       └── StandaloneOpenFileWithBigdataviewerBioformatsBridgeCommand
+            │       │   └── qupath
+            │       │       └── command
+            │       │           └── QuPathProjectToBDVDatasetLegacyCommand
+            │       ├── omero
+            │       │   └── command
+            │       │       ├── DatasetFromOMEROCreateCommand  (menu: Dataset - Create [OMERO])
+            │       │       ├── OmeroConnectCommand  (menu: Omero - Connect)
+            │       │       └── OmeroDisconnectCommand  (menu: Omero - Disconnect)
+            │       └── qupath
+            │           └── command
+            │               └── DatasetFromQuPathCreateCommand  (menu: Dataset - Create [QuPath])
+            ├── command
+            │   ├── dataset
+            │   │   ├── DatasetEntitiesRemoveCommand  (menu: Dataset - Remove Entities)
+            │   │   ├── DatasetReorderCommand
+            │   │   ├── DatasetXMLCombineCommand  (menu: Dataset - Combine XML Datasets)
+            │   │   └── DatasetXMLToBigStitcherDatasetConvertCommand  (menu: Dataset - Make BigStitcher Compatible)
+            │   ├── display
+            │   │   └── bdv
+            │   │       ├── BdvGridCreateCommand  (menu: BDV - Create Grid BDV)
+            │   │       ├── SourcesOverviewCommand  (menu: BDV - Show Sources On Grid)
+            │   │       ├── export
+            │   │       │   ├── BdvViewToImagePlusBasicExportCommand  (menu: BDV - Export Current View As ImagePlus (Match Window))
+            │   │       │   ├── BdvViewToImagePlusExportCommand  (menu: BDV - Export Current View As ImagePlus)
+            │   │       │   └── BdvViewToSourcesExportCommand  (menu: BDV - Export Current View As Sources)
+            │   │       ├── region
+            │   │       │   ├── UserBoxGetCommand  (menu: BDV - Define Box)
+            │   │       │   ├── UserPointsGetCommand  (menu: BDV - Define Points)
+            │   │       │   └── UserRectangleGetCommand  (menu: BDV - Define Rectangle)
+            │   │       └── settings
+            │   │           └── BdvStyleAlphaSetCommand  (menu: BDV - Set Style (Alpha))
+            │   ├── exporter
+            │   │   ├── BigStitcherDatasetToOMETIFFFuseCommand  (menu: Dataset - Fuse BigStitcher Dataset To OME-TIFF)
+            │   │   ├── SourcesToImagePlusExportCommand
+            │   │   └── SourcesToMultipleImagePlusExportCommand  (menu: Source - Export To ImagePlus)
+            │   ├── importer
+            │   │   ├── DatasetFromCZICreateCommand
+            │   │   ├── DatasetFromImarisCreateCommand
+            │   │   └── DatasetFromOperettaCreateCommand  (menu: Dataset - Create [Operetta])
+            │   ├── process
+            │   │   ├── SourcesOverTimeDuplicateCommand  (menu: Source - Freeze Timepoint)
+            │   │   ├── SourcesPyramidizeCommand  (menu: Source - Pyramidize)
+            │   │   ├── SourcesResolutionLevelsCropCommand  (menu: Source - Crop Resolution Levels)
+            │   │   ├── SourcesTimeShiftDuplicateCommand  (menu: Source - Shift Timepoints)
+            │   │   ├── deconvolve
+            │   │   │   └── SourcesDeconvolveCommand  (menu: Source - Deconvolve (Richardson Lucy GPU - Tiled))
+            │   │   ├── labkit
+            │   │   │   ├── SourcesLabkitClassifyCommand  (menu: Source - Apply Labkit Classifier)
+            │   │   │   └── SourcesLabkitOpenCommand  (menu: Source - Open Labkit)
+            │   │   ├── resample
+            │   │   │   ├── SourcesFuseAndResampleCommand  (menu: Source - Fuse And Resample Sources)
+            │   │   │   ├── SourcesGridModelMakeCommand  (menu: Source - Define Resampling Grid)
+            │   │   │   └── SourcesSetAlphaCommand  (menu: Source - Set Linear Blending Mask (L1 Alpha))
+            │   │   └── transform
+            │   │       ├── ImagePlusRot3DReSampleCommand  (menu: Rotation 3D Resample)
+            │   │       ├── SourcesRecenterCommand  (menu: Source - Recenter Sources)
+            │   │       ├── SourcesWarpingEditCommand  (menu: Source - Edit Sources Warping)
+            │   │       └── SourcesZOffsetRemoveCommand  (menu: Source - Remove Z Offset)
+            │   ├── register
+            │   │   ├── AffineTransformCreateCommand  (menu: New Affine Transform)
+            │   │   ├── Elastix2DAffineRegisterCommand
+            │   │   ├── Elastix2DSparsePointsRegisterCommand
+            │   │   ├── Elastix2DSplineRegisterCommand
+            │   │   ├── Sources2DRegisterCommand
+            │   │   ├── SourcesAffineTransformCommand
+            │   │   ├── SourcesMultiscaleRegisterCommand
+            │   │   ├── SourcesRealTransformCommand
+            │   │   ├── SourcesSift2DAffineRegisterCommand
+            │   │   └── warpy
+            │   │       ├── PairRegistrationAddGUICommand  (menu: Register Pair - Add GUI)
+            │   │       ├── PairRegistrationBigWarp2DSplineRegisterCommand  (menu: Register Pair - Spline BigWarp 2D)
+            │   │       ├── PairRegistrationCenterCommand  (menu: Register Pair - Center Moving Sources On Fixed Sources)
+            │   │       ├── PairRegistrationCreateAdvancedCommand  (menu: Create Registration Pair (Specify Timepoint))
+            │   │       ├── PairRegistrationCreateCommand  (menu: Create Registration Pair)
+            │   │       ├── PairRegistrationDeleteCommand  (menu: Delete Registration Pair)
+            │   │       ├── PairRegistrationElastix2DAffineRegisterCommand  (menu: Register Pair - Affine Elastix 2D)
+            │   │       ├── PairRegistrationElastix2DSplineRegisterCommand  (menu: Register Pair - Spline Elastix 2D)
+            │   │       ├── PairRegistrationFlipCommand  (menu: Register Pair - Flip)
+            │   │       ├── PairRegistrationLastRegistrationEditCommand  (menu: Register Pair - Edit Last Registration)
+            │   │       ├── PairRegistrationLastRegistrationRemoveCommand  (menu: Register Pair - Remove Last Registration)
+            │   │       ├── PairRegistrationLoadAndEditCommand  (menu: Register Pair - Load And Edit An Existing Registration)
+            │   │       ├── PairRegistrationOMETIFFExportCommand  (menu: Register Pair - Export To OME-TIFF)
+            │   │       ├── PairRegistrationQuPathExportCommand  (menu: Register Pair - Export To QuPath)
+            │   │       ├── PairRegistrationRotateCommand  (menu: Register Pair - Rotate)
+            │   │       ├── PairRegistrationSift2DAffineRegisterCommand  (menu: Register Pair - Affine SIFT 2D)
+            │   │       └── wizard
+            │   │           ├── WarpyMultiscaleRegisterCommand  (menu: Warpy - Create Multiscale Registration)
+            │   │           ├── WarpyRegisterCommand  (menu: Warpy - Create Registration)
+            │   │           ├── WarpyRegisteredImageExportCommand  (menu: Warpy - Export Registered Image)
+            │   │           ├── WarpyRegistrationEditCommand  (menu: Warpy - Edit Registration)
+            │   │           └── Wizard2DWholeScanRegisterCommand
+            │   ├── workflow
+            │   │   ├── elliptic
+            │   │   │   ├── DisplayEllipseFromTransformCommand
+            │   │   │   ├── EasyExportEllipticProjection  (menu: Source - Export Elliptic 3D Transformed Sources (Interactive Box))
+            │   │   │   ├── Elliptic3DTransformCreatorCommand  (menu: Source - New Elliptic 3D Transform)
+            │   │   │   ├── Elliptic3DTransformExporterCommand  (menu: Source - Export Elliptic 3D Transform)
+            │   │   │   ├── Elliptic3DTransformImporterCommand  (menu: Source - Import Elliptic 3D Transform)
+            │   │   │   ├── Elliptic3DTransformerCommand  (menu: Source - Elliptic 3D Transform Sources)
+            │   │   │   ├── ExportEllipticProjection  (menu: Source - Export Elliptic 3D Transformed Sources)
+            │   │   │   ├── GetVoronoiEllipseSampleCommand  (menu: Source - Create Elliptic Voronoi Source)
+            │   │   │   └── Optimize3DEllipticalTransformCommand  (menu: Source - Elliptic 3D Transform Optimization)
+            │   │   ├── lls7
+            │   │   │   ├── LLS7CropCommand  (menu: Source - LLS7 - Crop 3D)
+            │   │   │   ├── LLS7DatasetOpenCommand  (menu: Dataset - Create [CZI LLS7])
+            │   │   │   └── LLS7ZDriftCompensateCommand  (menu: Source - LLS7 - Compensate Z-Drift)
+            │   │   └── mastodon
+            │   │       └── MamutWarperCommand
+            │   └── workspace
+            │       └── FilterNodeNameAddCommand  (menu: Tree - Filter By Name)
+            ├── java
+            │   └── utilities
+            │       └── roi
+            │           └── VectorizeLabelImage  (menu: Vectorize Label Image)
+            ├── kheops
+            │   └── command
+            │       ├── KheopsBatchCommand  (menu: Kheops - Batch Convert Files to Pyramidal OME TIFF)
+            │       ├── KheopsCommand  (menu: Kheops - Convert File to Pyramidal OME TIFF)
+            │       ├── KheopsDocCommand  (menu: Kheops - Read Documentation...)
+            │       ├── KheopsExportImagePlusCommand  (menu: Kheops - Export ImagePlus To OME-TIFF)
+            │       ├── KheopsExportSourcesCommand  (menu: Source - Export To OME-TIFF)
+            │       └── deprecated
+            │           ├── KheopsAdvCommand  (menu: (Deprecated) Kheops - Adv. Convert File to Pyramidal OME)
+            │           ├── KheopsMainCommand  (menu: (Deprecated) Kheops - Convert File to Pyramidal OME)
+            │           └── KheopsSimpleCommand  (menu: (Deprecated) Kheops - No Param. Convert File to Pyramidal OME)
+            ├── operetta
+            │   └── commands
+            │       ├── OperettaArchiveImporter  (menu: Operetta Archive Importer...)
+            │       ├── OperettaImporter  (menu: Operetta Importer...)
+            │       └── OperettaImporterHiddenSettings  (menu: Operetta Importer Settings...)
+            └── wrappers
+                ├── cellpose
+                │   └── ij2commands
+                │       ├── Cellpose  (menu: Cellpose ...)
+                │       └── CellposeSAM  (menu: Cellpose SAM...)
+                ├── deepslice
+                │   └── ij2commands
+                │       ├── DeepSliceFolderCommand  (menu: DeepSlice (folder))
+                │       └── DeepSlicePrefsSet  (menu: DeepSlice setup...)
+                ├── elastix
+                │   └── ij2commands
+                │       ├── Elastix_InverseTransform  (menu: Inverse registration)
+                │       ├── Elastix_Load_Registration  (menu: Load Registration)
+                │       ├── Elastix_Register  (menu: Register)
+                │       ├── Elastix_Save_Registration  (menu: Save Registration)
+                │       └── Elastix_Test  (menu: Test Elastix)
+                ├── ij2command
+                │   └── BiopWrappersSet  (menu: Set and Check Wrappers)
+                ├── omnipose
+                │   └── ij2commands
+                │       └── Omnipose  (menu: Omnipose ...)
+                ├── spotiflow
+                │   └── ij2commands
+                │       └── Spotiflow  (menu: Spotiflow...)
+                ├── stardist
+                │   └── ij2commands
+                │       ├── StarDist2D  (menu: StarDist2D...)
+                │       ├── StarDist2D_Advanced  (menu: StarDist2D Adv. ...)
+                │       ├── StarDist3D  (menu: StarDist3D...)
+                │       └── StarDist3D_Advanced  (menu: StarDist3D Adv. ...)
+                └── transformix
+                    └── ij2commands
+                        ├── Transformix_TransformImgPlus  (menu: Transform Image)
+                        └── Transformix_TransformROIs  (menu: Transform Rois)
 

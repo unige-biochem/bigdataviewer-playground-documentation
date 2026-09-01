@@ -11,7 +11,7 @@ Unlike feature documentation that explains what each tool does, workflows show *
 | [ABBA: Aligning Big Brains and Atlases](https://abba-documentation.readthedocs.io/) | Please directly check ABBA's documentation             |  |
 | [Warpy: Large 2D Image Registration](warpy/index.md)                          | Register whole slide images, transfer annotations      | ~90 min |
 | [Process LLS7 Timelapse](lls7_timelapse.md)                                   | Deskew, deconvolve, correct drift, crop | ~30 min |
-| [Fuse Multi-Tile Acquisition](fuse_tiles.md)                                  | Combine tiled images into a single volume              | ~20 min |
+| Fuse Multi-Tile Acquisition *(page not yet written)*                                  | Combine tiled images into a single volume              | ~20 min |
 
 ## Documentation
 
@@ -21,7 +21,6 @@ Unlike feature documentation that explains what each tool does, workflows show *
 warpy/index
 lls7_timelapse
 lls7_psf_acquisition
-fuse_tiles
 ```
 
 ## How to Use These Guides

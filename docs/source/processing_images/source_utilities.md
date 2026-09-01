@@ -12,7 +12,7 @@ These commands manage the pyramid (multi-resolution) levels of your sources. Pyr
 
 Generates multi-resolution pyramid levels for sources that don't already have them (e.g. sources derived from processing operations).
 
-See [Source - Pyramidize](fuse_resample.md#source-pyramidize) in the Fuse & Resample page for the full parameter table and scripting tabs.
+See [Source - Pyramidize](#fuse-resample-source-pyramidize) in the Fuse & Resample page for the full parameter table and scripting tabs.
 
 ### Source - Crop Resolution Levels
 

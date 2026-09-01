@@ -556,4 +556,4 @@ This means you can set up the entire pipeline instantly, preview results interac
 
 - [PSF Acquisition Guide](lls7_psf_acquisition.md) - How to acquire PSFs for LLS7
 - [Installation](../installation/installation.md) - Required update sites
-- [Export Formats](../processing_images/export_formats.md) - Export options
+- [Exporting Images](../exporting_images/exporting_images.md) - Export options

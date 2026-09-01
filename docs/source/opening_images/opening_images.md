@@ -94,7 +94,7 @@ The general-purpose importer. Supports any file format that Bio-Formats can read
 | Disable Memoization | Turn off Bio-Formats caching (not recommended for large files) |
 
 :::{tip}
-**Working with CZI files?** Enable the **Quick Start CZI Reader** update site for significantly faster loading. See the [Installation Guide](../installation/installation.md#fast-czi-file-reading).
+**Working with CZI files?** Enable the **Quick Start CZI Reader** update site for significantly faster loading. See the [Installation Guide](#fast-czi-file-reading).
 :::
 
 :::::{tab-set}
@@ -487,12 +487,14 @@ cs.run(OpenSampleCommand, True,
 
 ---
 
+(dataset-operations)=
+
 ## Dataset Operations
 
 Once you have datasets, several commands help you manipulate them at the dataset level.
 
 :::{seealso}
-To inspect or edit the affine transform chain of your sources (view, add, remove, or overwrite transforms per timepoint), see [Spatial Transforms — Dataset Transform Stack](../processing_images/spatial_transforms.md#dataset-transform-stack).
+To inspect or edit the affine transform chain of your sources (view, add, remove, or overwrite transforms per timepoint), see [Spatial Transforms — Dataset Transform Stack](#dataset-transform-stack).
 :::
 
 ### Combine XML Datasets

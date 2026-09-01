@@ -31,6 +31,8 @@ That's it! BigDataViewer Playground is now installed.
 
 ## Optional Components
 
+(gpu-deconvolution-clij)=
+
 ### GPU Deconvolution (CLIJ)
 
 For GPU-accelerated deconvolution, add the CLIJ update sites:
@@ -44,8 +46,10 @@ For GPU-accelerated deconvolution, add the CLIJ update sites:
 4. Restart Fiji
 
 :::{note}
-GPU deconvolution requires an OpenCL-compatible graphics card. See [Deconvolution](../processing_images/processing_images.md#deconvolution) for details.
+GPU deconvolution requires an OpenCL-compatible graphics card. See [Deconvolution](../processing_images/deconvolution.md) for details.
 :::
+
+(fast-czi-file-reading)=
 
 ### Fast CZI File Reading
 

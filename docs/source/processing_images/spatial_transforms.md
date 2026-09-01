@@ -292,6 +292,8 @@ cs.run(SourcesZOffsetRemoveCommand, True,
 
 ---
 
+(dataset-transform-stack)=
+
 ## Dataset Transform Stack
 
 These commands let you inspect and edit the full transform chain of a dataset — the ordered list of affine transforms stored in the XML file for each source. They operate on the dataset level and are especially useful for manual corrections or advanced registration workflows.
