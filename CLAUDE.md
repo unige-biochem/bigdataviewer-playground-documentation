@@ -21,15 +21,65 @@ functionalities are themselves undocumented and the goal of this repo is to fill
 - New pages must be added to the appropriate toctree in `index.rst` or a section's own index file
 
 ## Build Commands
-```bash
-# Activate the conda environment first
-conda activate bdvpg-documentation
 
-# Build (from docs/ directory)
+```bash
+conda activate bdvpg-documentation
 cd docs
 sphinx-build -b html source build/html
 # Output: docs/build/html/
 ```
+
+`sphinx-build` is not on PATH and `conda activate` does not work from a non-interactive
+shell, so in practice invoke the module directly:
+
+```powershell
+& "$env:LOCALAPPDATA\miniforge3\envs\bdvpg-documentation\python.exe" -m sphinx -b html `
+  docs\source docs\build\html
+```
+
+**The build has zero warnings. Keep it that way** — treat any new warning as a defect to fix
+before committing, not as noise. `docs/build/` is gitignored.
+
+To preview the built site: `python -m http.server 8000 --directory docs/build/html`.
+
+## Local Toolchain (this machine)
+
+None of these are on PATH; use the absolute paths.
+
+| Tool | Path |
+|---|---|
+| Python / Sphinx | `%LOCALAPPDATA%\miniforge3\envs\bdvpg-documentation\python.exe` |
+| jgo | same env (`...\envs\bdvpg-documentation\Scripts\jgo.exe`, installed via `pip install "jgo[cli]"`) |
+| JDK 21 | `C:\Program Files\ImageJ\Fiji\java\win64\zulu21.42.19-ca-jdk21.0.7-win_x64` |
+| Maven | `C:\Program Files\JetBrains\IntelliJ IDEA 2026.1.2\plugins\maven\lib\maven3\bin` |
+
+PowerShell prelude for any command that shells out to Java:
+
+```powershell
+$env:JAVA_HOME = "C:\Program Files\ImageJ\Fiji\java\win64\zulu21.42.19-ca-jdk21.0.7-win_x64"
+$env:PATH = "$env:JAVA_HOME\bin;$env:LOCALAPPDATA\miniforge3\envs\bdvpg-documentation\Scripts;$env:PATH"
+```
+
+## Editing Gotchas
+
+- **Repo files are CRLF** (`core.autocrlf=true`). Preserve line endings when editing, or the
+  diff becomes unreadable.
+- **MyST does not resolve `file.md#anchor` links.** It only registers heading slugs as targets
+  when `myst_heading_anchors` is set, which is deliberately off: its slugifier turns
+  `Source - Pyramidize` into `source---pyramidize` and would break as many links as it fixes.
+  Instead put an explicit target above the heading and link to it by slug alone:
+
+  ```markdown
+  (dataset-operations)=
+  ## Dataset Operations
+  ```
+  referenced from any page as `[Opening Images](#dataset-operations)`.
+
+  **The slug must be unique across the whole project.** An ambiguous slug silently resolves to
+  the current page's own heading and still builds without warnings — so after adding a
+  cross-page link, check the generated `href` in `docs/build/html/`, not just the build output.
+  `fuse-resample-source-pyramidize` is named that way because two pages have a
+  `Source - Pyramidize` heading.
 
 ## Current Version
 
@@ -62,8 +112,10 @@ When adding an extension, add the package in the same commit.
   `0.21.0+doc.N` — build metadata has undefined ordering. Both break RTD `stable` detection.)
 - `latest` auto-tracks `main`, so doc fixes publish on every push — a tag is only for a frozen snapshot.
 - New tags must be **activated once** in the RTD admin (Versions tab) before they build/appear.
-- **When upstream bumps** (e.g. to 0.20.5): update `version`/`release` and the `extlinks` version strings
-  in `conf.py`, then tag `0.20.5.0`.
+- **When upstream bumps**: follow [BUMP_DOC.md](BUMP_DOC.md), the end-to-end runbook for moving
+  the docs to a new `bigdataviewer-biop-tools` release. In short: regenerate the CLI outputs,
+  diff against the previous version, update the affected pages, bump `version`/`release` and the
+  `extlinks` version strings in `conf.py`, then tag `<NEW_VERSION>.0`.
 
 ## CLI Introspection Tool
 
@@ -111,14 +163,20 @@ version too, then recompute the diff.
 When adding multi-language tabs to a documentation page, you need the **full Java class name**
 and **parameter names** for every command. Both are stored in the pre-computed JSON snapshots:
 
-- `cli-outputs/0.21.0/snapshot-sc.fiji.bdvpg.json` — core BDV Playground commands (`sc.fiji.bdvpg.*`)
-- `cli-outputs/0.21.0/snapshot-ch.epfl.biop.json` — BIOP-specific commands (`ch.epfl.biop.*`)
+- `cli-outputs/<current version>/snapshot-sc.fiji.bdvpg.json` — core BDV Playground commands (`sc.fiji.bdvpg.*`)
+- `cli-outputs/<current version>/snapshot-ch.epfl.biop.json` — BIOP-specific commands (`ch.epfl.biop.*`)
 
 ### JSON structure
 
-Each entry in those files is a command descriptor with at minimum:
-- `"className"` — the full Java class name to use in `import` / `cs.run(...)`
-- `"inputs"` — list of parameter objects, each with a `"name"` field (the string key for `cs.run`)
+The file is a JSON object keyed by fully qualified class name. Each value is a command
+descriptor with exactly these fields:
+
+- `"name"` — the full Java class name, to use in `import` / `cs.run(...)` (same as the key)
+- `"menuPath"` — the Fiji menu path, `>`-separated, matching the `{menuselection}` role
+- `"description"` — the command's own description
+- `"input"` / `"output"` — lists of parameter objects, each with `"type"`, `"name"`,
+  `"label"` and `"description"`. `"name"` is the string key for `cs.run`; `"label"` is what
+  the GUI dialog shows, so it is usually the right first column for a parameter table.
 
 ### Efficient lookup procedure
 
@@ -128,8 +186,8 @@ Each entry in those files is a command descriptor with at minimum:
 2. Launch **one** Explore agent with the full list, instructing it to search both JSON files and
    return the class name + list of input `name` fields for every command. Example prompt shape:
 
-   > Search `cli-outputs/0.21.0/snapshot-sc.fiji.bdvpg.json` and
-   > `cli-outputs/0.21.0/snapshot-ch.epfl.biop.json`. For each of the following commands,
+   > Search `cli-outputs/<current version>/snapshot-sc.fiji.bdvpg.json` and
+   > `cli-outputs/<current version>/snapshot-ch.epfl.biop.json`. For each of the following commands,
    > return the full `className` and all input `name` fields:
    > 1. BDV - Show Sources
    > 2. Source - Set Color
