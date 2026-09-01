@@ -69,8 +69,7 @@ serial-sections
 
 Before starting, you'll need:
 - QuPath 0.6+ with Warpy extension
-- Fiji with PTBIOP update site
-- Elastix 5.0.1 (for automated registration)
+- The latest Fiji, with the UNIGE-Biochem update site enabled (this also brings in Elastix for automated registration)
 
 See [Installation](installation.md) for detailed setup instructions.
 

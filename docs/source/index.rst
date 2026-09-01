@@ -12,7 +12,8 @@ BigDataViewer Playground extends `BigDataViewer <https://imagej.net/plugins/bdv/
 * GPU-accelerated deconvolution
 * Export to OME-TIFF, XML/HDF5, QuPath
 
-**Getting Started:** Install via the :doc:`installation guide <installation/installation>`
+**Getting Started:** Install via the :doc:`installation guide <installation/installation>` —
+enable the **UNIGE-Biochem** update site in the **latest** Fiji (*Fiji stable* is not supported).
 
 **Support:** `GitHub <https://github.com/bigdataviewer/bigdataviewer-playground>`_ · `Image.sc Forum <https://forum.image.sc/>`_
 

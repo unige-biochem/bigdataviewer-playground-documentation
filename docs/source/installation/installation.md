@@ -2,30 +2,39 @@
 
 This guide covers how to install and set up BigDataViewer Playground in Fiji.
 
+(system-requirements)=
+
 ## System Requirements
 
-- **Fiji**: Latest version recommended
+- **Fiji**: a recent download from [fiji.sc](https://fiji.sc/) — see the note below
 - **Java**: Java 8 or higher (bundled with Fiji)
 - **Memory**: 8+ GB recommended
 - **GPU** (optional): OpenCL-compatible GPU for deconvolution features
+
+:::{important}
+BigDataViewer Playground requires the **latest** Fiji distribution. The older *Fiji stable*
+distribution is **not** supported — the components shipped by the update site will not run there.
+Download a fresh Fiji from [fiji.sc](https://fiji.sc/) if you are unsure which one you have.
+:::
 
 ## Quick Installation
 
 ### Step 1: Download Fiji
 
-Download Fiji from [fiji.sc](https://fiji.sc/) and extract it to your preferred location.
+Download the latest Fiji from [fiji.sc](https://fiji.sc/) and extract it to your preferred location.
 
-### Step 2: Add the PTBIOP Update Site
+### Step 2: Add the UNIGE-Biochem Update Site
 
 1. Open Fiji
 2. Go to `Help > Update...`
 3. Click `Manage update sites`
-4. Find and check **PTBIOP** in the list
+4. Find and check **UNIGE-Biochem** in the list
 5. Click `Close`
 6. Click `Apply changes`
 7. Restart Fiji
 
-That's it! BigDataViewer Playground is now installed.
+That's it! BigDataViewer Playground is now installed, together with the automated registration
+tools (Elastix/Transformix) — nothing else to download or configure.
 
 ---
 
@@ -67,59 +76,41 @@ Check that the new reader will be picked up:
 
 This significantly speeds up opening and navigating large CZI datasets.
 
+(elastix-installation)=
+
 ### Elastix/Transformix (Automated Registration)
 
-Elastix is required for automated 2D registration workflows. It must be installed separately from Fiji.
+Nothing to install. The first time a registration command needs it, Fiji uses
+[Appose](https://github.com/apposed/appose) to build a self-contained environment providing
+[itk-elastix](https://github.com/InsightSoftwareConsortium/ITKElastix), on Windows, macOS and
+Linux alike. There is nothing to download by hand, no path to configure and no system library
+to add.
 
-#### Download Elastix
-
-1. Download elastix version 5.2.0 from [GitHub releases](https://github.com/SuperElastix/elastix/releases/tag/5.2.0)
-2. Choose the version for your operating system
-3. Extract to a convenient location (e.g., `C:\elastix` or `/opt/elastix`)
-
-#### Platform-Specific Setup
-
-**Windows:**
-- Install the Visual C++ Redistributable from [Microsoft](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist)
-- Download and run `vc_redist.x64.exe` for 64-bit systems
-
-**macOS:**
-- You may need to allow the executables in Security settings
-- See [Apple's guidance](https://support.apple.com/en-hk/guide/mac-help/mh40616/mac) for opening apps from unidentified developers
-
-**Linux:**
-- No additional setup required
-- Ensure the executables have execute permissions: `chmod +x elastix transformix`
-
-#### Configure in Fiji
-
-1. Go to `Plugins > BIOP > Elastix > Test elastix`
-2. Set the paths to the `elastix` and `transformix` executables
-3. Click OK to verify the installation
-
-Successful setup will show 3 windows with a successful registration.
+Building that environment happens once and takes a few minutes, so the first registration you
+run is slower than the following ones. Make sure you are online the first time.
 
 ---
 
 ## Summary of Update Sites
 
-| Update Site                      | Purpose                       | Required? |
-|----------------------------------|-------------------------------|-----------|
-| **PTBIOP**                       | Core BigDataViewer Playground | Yes       |
-| clij, clij2, clijx-deconvolution | GPU deconvolution             | Optional  |
-| Quick Start CZI Reader           | Fast CZI file handling        | Optional  |
-
-| External Tool       | Purpose                   | Required? |
-|---------------------|---------------------------|-----------|
-| Elastix/Transformix | Automated 2D registration | Optional  |
+| Update Site                      | Purpose                                          | Required? |
+|----------------------------------|--------------------------------------------------|-----------|
+| **UNIGE-Biochem**                | Core BigDataViewer Playground + registration tools | Yes       |
+| clij, clij2, clijx-deconvolution | GPU deconvolution                                | Optional  |
+| Quick Start CZI Reader           | Fast CZI file handling                           | Optional  |
 
 ---
 
 ## Troubleshooting
 
+### Commands Are Missing After Installing
+
+- Make sure you are running the **latest** Fiji, not *Fiji stable* — see [System Requirements](#system-requirements)
+- Re-run `Help > Update...` and confirm **UNIGE-Biochem** is still checked
+- Restart Fiji after applying changes
+
 ### Elastix Not Working
 
-- Verify paths point to the actual executables, not the folder
-- On Windows, ensure Visual C++ Redistributable is installed
-- On macOS, check Security & Privacy settings
+- Check that you have a working internet connection the first time a registration runs — Appose
+  builds the itk-elastix environment on demand
 - Check the Fiji console for specific error messages
