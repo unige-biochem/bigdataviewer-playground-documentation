@@ -72,7 +72,7 @@ For those unfamiliar with the BigDataViewer visualizer, there may be too many de
 To restrict the viewer to 2D movements:
 
 1. Right-click anywhere on the **BDV Sources** window
-2. Select **`BDV - Set Style (BIOP)`** as per the screenshot
+2. Select **`BDV - Set Style (Playground)`** as per the screenshot
 
    ![BDV Window Settings](images/bdvpg_options_setbdvbiop.png)
 
@@ -161,6 +161,8 @@ To get a correct registration, you will apply 3 successive registration steps am
 - Register with SIFT
 - Register with Elastix spline
 
+A **`Register Pair - Manual Affine`** step is also available if the automated methods need a hand.
+
 ![Registration Options](images/page_15_img_2.png)
 
 #### Step 1: Center Sources
@@ -170,6 +172,24 @@ Click **`Register Pair - Center Moving Sources On Fixed Sources`**
 It's a parameter-less registration. Note how the image is centered but still does not match the DAB image:
 
 ![Centered Image](images/page_16_img_1.png)
+
+#### Optional: Manual Affine Alignment
+
+*Source: {biop-src}`PairRegistrationManualAffineCommand.java <ch/epfl/biop/command/register/warpy/PairRegistrationManualAffineCommand.java>`*
+
+If the automated steps struggle — very different modalities, a large initial rotation, or too few
+matching features for SIFT — run **`Register Pair - Manual Affine`**. It opens a viewer in which you
+drag, rotate and scale the moving sources onto the fixed sources by hand, and stores the result as an
+affine registration step like any other.
+
+| Parameter | Description |
+|-----------|-------------|
+| Registration Pair | The registration pair to apply the registration to |
+
+:::{tip}
+A rough manual alignment is often enough to bring the images close enough for **intersection** ROI mode
+to work, which then lets SIFT or Elastix finish the job precisely.
+:::
 
 #### Step 2: Register with SIFT
 

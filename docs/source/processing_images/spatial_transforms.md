@@ -531,3 +531,89 @@ cs.run(DatasetTransformSetCommand, True,
 ::::
 
 :::::
+
+(dataset-add-deskew-transform)=
+### Dataset - Add Deskew Transform
+
+*Source: {biop-src}`DatasetDeskewCommand.java <ch/epfl/biop/command/dataset/DatasetDeskewCommand.java>`*
+
+Appends a deskew transform to the chain of SpimData-backed sources. Light-sheet microscopes that
+scan at an angle — the Zeiss LLS7 among them — acquire planes that are sheared with respect to the
+sample. Adding the deskew as a *transform* means no pixel is resampled: the data stays on disk in
+its raw geometry and BigDataViewer displays it correctly.
+
+| Parameter | Description |
+|-----------|-------------|
+| Select source(s) | Sources whose SpimData transforms will be modified |
+| Stack (scan) axis | Axis of the raw data along which the planes are stacked, i.e. the scan direction (`X`, `Y`, `Z`; default `Z`) |
+| Shear direction axis | In-plane axis along which the successive planes are shifted (`X`, `-X`, `Y`, `-Y`, `Z`, `-Z`; default `X`) |
+| Deskew angle (degrees) | Angle between the scan direction and the image plane (30 degrees for a Zeiss LLS7) |
+| Flip axis (before deskew) | Axis flipped before the deskew is applied, if any (`None`, `X`, `Y`, `Z`) |
+| Put the stack axis along Z | Rotates the data after the deskew so that the deskewed stack axis points along Z |
+| Deskew around the image origin | Applies the deskew around the origin of each image instead of the origin of the physical space |
+| Transform name | Name given to the transform added in the transform chain |
+
+:::{tip}
+The dialog has a **Set the parameters for a Zeiss LLS7 dataset** button that fills in the whole
+parameter set for LLS7 data in one click. Use it as a starting point if your microscope is an LLS7.
+:::
+
+:::{note}
+This command only works on sources backed by a SpimData dataset — the same restriction as the other
+commands in this section. The deskew is *appended* to the existing chain, so running it twice applies
+it twice; use [Dataset - Remove Transforms](#dataset-transform-stack) to undo.
+:::
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Transform Stack --> Dataset - Add Deskew Transform`
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+run("Dataset - Add Deskew Transform");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+import ch.epfl.biop.command.dataset.DatasetDeskewCommand
+
+cs.run(DatasetDeskewCommand, true,
+    "sources", sources,
+    "stack_axis", "Z",
+    "shear_axis", "X",
+    "angle", 30.0,
+    "flip_axis", "None",
+    "reorient_along_z", false,
+    "around_image_origin", true,
+    "transform_name", "Deskew"
+).get()
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] sources
+#@CommandService cs
+
+from ch.epfl.biop.command.dataset import DatasetDeskewCommand
+
+cs.run(DatasetDeskewCommand, True,
+    ["sources", sources,
+     "stack_axis", "Z",
+     "shear_axis", "X",
+     "angle", 30.0,
+     "flip_axis", "None",
+     "reorient_along_z", False,
+     "around_image_origin", True,
+     "transform_name", "Deskew"]
+).get()
+```
+::::
+
+:::::

@@ -102,7 +102,12 @@ Crop the bead image stack to a manageable size:
 
 ### Step 2: Detect Bead Centers
 
-Use the **DetectBeads** script to find bead positions and generate a "points" image:
+Both PSF commands need to know where the beads are, but they want that information in different forms:
+
+- **For averaging** — detect the beads in **TrackMate** (a LoG detector on the bead channel works well)
+  and save the TrackMate XML. The command reads the spot positions from that file.
+- **For distillation** — you need a *point mask*: an image the same size as the bead stack with a single
+  non-zero pixel at the centre of each bead. The **DetectBeads** script produces exactly this.
 
 ```{code-block} imagej-groovy
 :caption: DetectBeads.groovy
@@ -114,25 +119,31 @@ Use the **DetectBeads** script to find bead positions and generate a "points" im
 
 **Full script**: [DetectBeads.groovy on GitHub Gist](https://gist.github.com/NicoKiaru/5371ff696d34a5d87d6e2bf8249e7c5b)
 
-### Step 3: Compute the PSF (Distillation)
+### Step 3: Compute the PSF
 
-Use the **ComputePSF** script to solve the deconvolution problem:
+Two commands compute the PSF from the cropped stack and the bead positions. Both are documented in
+full — parameters, tips and scripting snippets — on the deconvolution page:
 
-```
-points ⊗ PSF = bead_image
-```
+- [Source - Average PSF from Beads (TrackMate spots)](#psf-average-from-beads) — crops a box around each
+  bead and averages them, re-centring on the subpixel spot positions. **CPU only**, and forgiving when
+  you have few beads. Because the beads sit at random subpixel offsets, it can compute the average on a
+  finer voxel grid than the input.
+- [Source - Distill PSF (Richardson Lucy GPU)](#psf-distill-gpu) — solves the deconvolution problem
 
-This "distillation" process extracts the average PSF from multiple beads.
+  ```
+  points ⊗ PSF = bead_image
+  ```
 
-```{code-block} imagej-groovy
-:caption: ComputePSF.groovy
+  on the GPU. This "distillation" recovers more of the PSF's faint outer structure, but processes the
+  whole volume as a single tile and so needs a lot of VRAM.
 
-// ComputePSF script
-// Computes PSF by solving: points convolved by PSF = bead image
-// Source: https://gist.github.com/NicoKiaru/7769f139c988dbdabc3f5dc5f0120daa
-```
+Start with averaging unless you have a good GPU and need the faint tails of the PSF.
 
-**Full script**: [ComputePSF.groovy on GitHub Gist](https://gist.github.com/NicoKiaru/7769f139c988dbdabc3f5dc5f0120daa)
+:::{note}
+Earlier versions of this workflow used two standalone scripts, **DetectBeads** and **ComputePSF**. The
+`ComputePSF` step is now a shipped command; the [ComputePSF gist](https://gist.github.com/NicoKiaru/7769f139c988dbdabc3f5dc5f0120daa)
+remains available if you need the original implementation.
+:::
 
 ---
 
@@ -149,8 +160,8 @@ Once you have computed your PSF, load it into BigDataViewer Playground:
 | 1 | Prepare agarose gel with beads | Sample ready for imaging |
 | 2 | Acquire Z-stack (~500 slices, 0.2 µm) | Raw bead images |
 | 3 | Crop stack (256×256×128) | Manageable data size |
-| 4 | Run DetectBeads script | Points image |
-| 5 | Run ComputePSF script | Final PSF |
+| 4 | Detect beads (TrackMate XML, or DetectBeads script for a point mask) | Bead positions |
+| 5 | Run **Average PSF from Beads** or **Distill PSF** | Final PSF |
 
 ---
 

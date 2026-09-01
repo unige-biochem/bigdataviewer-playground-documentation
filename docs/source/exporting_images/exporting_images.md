@@ -28,16 +28,15 @@ The primary command for saving sources to disk. Produces a pyramidal OME-TIFF �
 | Output file | Path to the output `.ome.tiff` file |
 | Number of resolution levels | Number of pyramid levels to generate |
 | Scaling factor between resolution levels | Downsampling factor between consecutive levels |
-| Tile Size X / Y | Tile dimensions for the TIFF (negative = no tiling) |
+| Tile size X / Y (negative: no tiling) | Tile dimensions in pixels. 512 or 1024 are good values for a pyramidal file; a negative value writes untiled (strip based) planes |
 | Number of threads (0 = serial) | Parallel threads for writing |
-| Compression type | Compression algorithm (e.g. LZW, ZLIB, Uncompressed) |
-| Compress temporary files | Use LZW compression on temporary files during pyramid building (saves disk space) |
-| Selected Channels | Channel indices to export (e.g. `0,1` or `0:2`). Leave blank for all |
-| Selected Timepoints | Timepoint indices to export. Leave blank for all |
-| Selected Slices | Z-slice indices to export. Leave blank for all |
+| Compression type | LZW (lossless, the safe default), Uncompressed (fastest to write, biggest files), JPEG-2000 (lossless but slow), JPEG-2000 Lossy and JPEG (smallest files, but pixel values are modified) |
+| Channels subset | Indices of the sources to export, in the order they were selected. Blank = all of them |
+| Timepoints subset | Indices of the timepoints to export. Blank = all timepoints |
+| Slices subset | Indices of the Z slices to export. Blank = all slices |
 | Override voxel sizes | When checked, uses the custom voxel sizes below instead of the source metadata |
-| Voxel size in micrometer (XY) | Custom XY pixel size |
-| Voxel Z size in micrometer (Z) | Custom Z pixel size |
+| XY voxel size (micrometer) | Physical size of a pixel along X and Y. Used only if *Override voxel sizes* is checked |
+| Z voxel size (micrometer) | Distance between two Z slices. Used only if *Override voxel sizes* is checked |
 | Physical unit | Unit string written into the OME-TIFF metadata |
 
 :::{tip}
@@ -58,13 +57,13 @@ run("Source - Export To OME-TIFF");
 
 ::::{tab-item} Groovy
 ```imagej-groovy
-#@SourceAndConverter[] sacs
+#@SourceAndConverter[] sources
 #@CommandService cs
 
 import ch.epfl.biop.kheops.command.KheopsExportSourcesCommand
 
 cs.run(KheopsExportSourcesCommand, true,
-    "sacs", sacs,
+    "sources", sources,
     "file", new java.io.File("/path/to/output.ome.tiff"),
     "n_resolution_levels", 5,
     "downscaling", 2,
@@ -72,7 +71,6 @@ cs.run(KheopsExportSourcesCommand, true,
     "tile_size_y", 512,
     "n_threads", 4,
     "compression", "LZW",
-    "compress_temp_files", false,
     "range_channels", "",
     "range_frames", "",
     "range_slices", "",
@@ -86,14 +84,14 @@ cs.run(KheopsExportSourcesCommand, true,
 
 ::::{tab-item} Python
 ```python
-#@SourceAndConverter[] sacs
+#@SourceAndConverter[] sources
 #@CommandService cs
 
 from ch.epfl.biop.kheops.command import KheopsExportSourcesCommand
 from java.io import File
 
 cs.run(KheopsExportSourcesCommand, True,
-    ["sacs", sacs,
+    ["sources", sources,
      "file", File("/path/to/output.ome.tiff"),
      "n_resolution_levels", 5,
      "downscaling", 2,
@@ -101,7 +99,6 @@ cs.run(KheopsExportSourcesCommand, True,
      "tile_size_y", 512,
      "n_threads", 4,
      "compression", "LZW",
-     "compress_temp_files", False,
      "range_channels", "",
      "range_frames", "",
      "range_slices", "",
@@ -644,18 +641,17 @@ Converts a single file. Each series in the input becomes a separate OME-TIFF.
 
 | Parameter | Description |
 |-----------|-------------|
-| Select an input file | The file to convert (any Bio-Formats–readable format) |
-| Output folder | Where to save the OME-TIFF(s). If left empty, saves next to the input file |
-| Compression type | Compression algorithm |
-| Compress temporary files (LZW) | Compress temp files during pyramid building |
+| Input file (required) | The file to convert. Any format readable by Bio-Formats works (`.czi`, `.lif`, `.nd2`, `.vsi`, `.svs`, `.ome.tiff`, …) |
+| Output folder (optional) | Where the `.ome.tiff` files are written. Leave empty to write them next to the input file. The folder is created if it does not exist |
+| Compression type | LZW (lossless, the safe default), Uncompressed (fastest to write, biggest files), JPEG-2000 (lossless but slow), JPEG-2000 Lossy and JPEG (smallest files, but pixel values are modified) |
 | Series subset | Which series to convert (leave blank for all) |
 | Channels subset | Which channels to convert |
 | Timepoints subset | Which timepoints to convert |
 | Slices subset | Which Z-slices to convert |
-| Split Channels / Timepoints / Slices | Export each as a separate file |
+| Split channels / timepoints / slices | Write one file per channel, timepoint or Z slice of the selected subset |
 | Override voxel sizes | Use custom voxel sizes instead of file metadata |
-| XY Voxel size in micrometer | Custom XY pixel size |
-| Z Voxel size in micrometer | Custom Z pixel size |
+| XY voxel size (micrometer) | Physical size of a pixel along X and Y. Used only if *Override voxel sizes* is checked |
+| Z voxel size (micrometer) | Distance between two Z slices. Used only if *Override voxel sizes* is checked |
 
 :::::{tab-set}
 
@@ -679,7 +675,6 @@ cs.run(KheopsCommand, true,
     "input_path", new java.io.File("/path/to/input.czi"),
     "output_dir", new java.io.File("/path/to/output/"),
     "compression", "LZW",
-    "compress_temp_files", false,
     "subset_series", "",
     "subset_channels", "",
     "subset_frames", "",
@@ -705,7 +700,6 @@ cs.run(KheopsCommand, True,
     ["input_path", File("/path/to/input.czi"),
      "output_dir", File("/path/to/output/"),
      "compression", "LZW",
-     "compress_temp_files", False,
      "subset_series", "",
      "subset_channels", "",
      "subset_frames", "",
@@ -730,13 +724,12 @@ Converts multiple files in parallel. Same parameters as the single-file version,
 
 | Parameter | Description |
 |-----------|-------------|
-| Select input files | The files to convert |
-| Output folder | Where to save all OME-TIFFs |
-| Compression type | Compression algorithm |
-| Compress temporary files (LZW) | Compress temp files during pyramid building |
+| Input files (required) | The files to convert. Any format readable by Bio-Formats works, and the files do not need to be of the same format |
+| Output folder (optional) | Where the `.ome.tiff` files are written. Leave empty to write them next to the first input file |
+| Compression type | LZW (lossless, the safe default), Uncompressed (fastest to write, biggest files), JPEG-2000 (lossless but slow), JPEG-2000 Lossy and JPEG (smallest files, but pixel values are modified) |
 | Series / Channels / Timepoints / Slices subset | Subset selections (apply to all files) |
 | Override voxel sizes | Use custom voxel sizes |
-| XY / Z Voxel size in micrometer | Custom pixel sizes |
+| XY / Z voxel size (micrometer) | Custom pixel sizes, used only if *Override voxel sizes* is checked |
 
 :::::{tab-set}
 
@@ -760,7 +753,6 @@ cs.run(KheopsBatchCommand, true,
     "input_paths", [new java.io.File("/path/to/file1.czi"), new java.io.File("/path/to/file2.czi")] as java.io.File[],
     "output_dir", new java.io.File("/path/to/output/"),
     "compression", "LZW",
-    "compress_temp_files", false,
     "subset_series", "",
     "subset_channels", "",
     "subset_frames", "",
@@ -783,7 +775,6 @@ cs.run(KheopsBatchCommand, True,
     ["input_paths", [File("/path/to/file1.czi"), File("/path/to/file2.czi")],
      "output_dir", File("/path/to/output/"),
      "compression", "LZW",
-     "compress_temp_files", False,
      "subset_series", "",
      "subset_channels", "",
      "subset_frames", "",
@@ -805,10 +796,9 @@ Converts an already-open Fiji ImagePlus to pyramidal OME-TIFF. Useful when you h
 
 | Parameter | Description |
 |-----------|-------------|
-| Image | The open ImagePlus to export |
-| Output folder | Where to save the OME-TIFF |
-| Compression type | Compression algorithm |
-| Compress temporary files (LZW) | Compress temp files during pyramid building |
+| Image to export | The open image to save. Its title gives the name of the output file. Virtual stacks are supported |
+| Output folder (optional) | Folder where `<image title>.ome.tiff` is written. Leave empty to write it next to the file the image was opened from |
+| Compression type | LZW (lossless, the safe default), Uncompressed (fastest to write, biggest files), JPEG-2000 (lossless but slow), JPEG-2000 Lossy and JPEG (smallest files, but pixel values are modified) |
 | Channels / Timepoints / Slices subset | Subset selections |
 
 :::::{tab-set}
@@ -834,7 +824,6 @@ cs.run(KheopsExportImagePlusCommand, true,
     "image", image,
     "output_dir", new java.io.File("/path/to/output/"),
     "compression", "LZW",
-    "compress_temp_files", false,
     "subset_channels", "",
     "subset_frames", "",
     "subset_slices", ""
@@ -854,7 +843,6 @@ cs.run(KheopsExportImagePlusCommand, True,
     ["image", image,
      "output_dir", File("/path/to/output/"),
      "compression", "LZW",
-     "compress_temp_files", False,
      "subset_channels", "",
      "subset_frames", "",
      "subset_slices", ""]

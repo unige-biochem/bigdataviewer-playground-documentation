@@ -1,0 +1,5452 @@
+{
+  "ch.epfl.biop.wrappers.stardist.ij2commands.StarDist2D": {
+    "name": "ch.epfl.biop.wrappers.stardist.ij2commands.StarDist2D",
+    "menuPath": "Plugins\u003eBIOP\u003eStarDist\u003eStarDist2D...",
+    "input": [
+      {
+        "type": "File",
+        "name": "env_path",
+        "label": "conda environment path"
+      },
+      {
+        "type": "String",
+        "name": "env_type",
+        "label": "virtual environment type"
+      },
+      {
+        "type": "ImagePlus",
+        "name": "imp"
+      },
+      {
+        "type": "File",
+        "name": "model_path"
+      }
+    ],
+    "output": [
+      {
+        "type": "ImagePlus",
+        "name": "stardist_imp"
+      }
+    ]
+  },
+  "ch.epfl.biop.wrappers.stardist.ij2commands.StarDist2D_Advanced": {
+    "name": "ch.epfl.biop.wrappers.stardist.ij2commands.StarDist2D_Advanced",
+    "menuPath": "Plugins\u003eBIOP\u003eStarDist\u003eStarDist2D Adv. ...",
+    "input": [
+      {
+        "type": "File",
+        "name": "env_path",
+        "label": "conda environment path"
+      },
+      {
+        "type": "String",
+        "name": "env_type",
+        "label": "virtual environment type"
+      },
+      {
+        "type": "ImagePlus",
+        "name": "imp"
+      },
+      {
+        "type": "float",
+        "name": "max_norm"
+      },
+      {
+        "type": "float",
+        "name": "min_norm"
+      },
+      {
+        "type": "File",
+        "name": "model_path"
+      },
+      {
+        "type": "float",
+        "name": "nms_thresh"
+      },
+      {
+        "type": "float",
+        "name": "prob_thresh"
+      },
+      {
+        "type": "int",
+        "name": "x_tiles"
+      },
+      {
+        "type": "int",
+        "name": "y_tiles"
+      }
+    ],
+    "output": [
+      {
+        "type": "ImagePlus",
+        "name": "stardist_imp"
+      }
+    ]
+  },
+  "ch.epfl.biop.bdv.img.omero.command.DatasetFromOMEROCreateCommand": {
+    "name": "ch.epfl.biop.bdv.img.omero.command.DatasetFromOMEROCreateCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eImport\u003eDataset - Create [OMERO]",
+    "description": "Creates a BDV dataset from one or more OMERO image URLs.",
+    "input": [
+      {
+        "type": "String",
+        "name": "datasetname",
+        "label": "Dataset Name",
+        "description": "Name for the resulting BDV dataset."
+      },
+      {
+        "type": "String",
+        "name": "omero_urls",
+        "label": "OMERO URLs",
+        "description": "Comma-separated list of OMERO image URLs to include in the dataset."
+      },
+      {
+        "type": "String",
+        "name": "plane_origin_convention",
+        "label": "Plane Origin Convention",
+        "description": "Defines where the image origin is located."
+      },
+      {
+        "type": "String",
+        "name": "unit",
+        "label": "World coordinate units",
+        "description": "Unit for the coordinate system where images will be positioned."
+      }
+    ],
+    "output": [
+      {
+        "type": "AbstractSpimData",
+        "name": "spimdata",
+        "label": "BDV Dataset",
+        "description": "The resulting BDV dataset."
+      }
+    ]
+  },
+  "ch.epfl.biop.wrappers.spotiflow.ij2commands.Spotiflow": {
+    "name": "ch.epfl.biop.wrappers.spotiflow.ij2commands.Spotiflow",
+    "menuPath": "Plugins\u003eBIOP\u003eSpotiflow\u003eSpotiflow...",
+    "input": [
+      {
+        "type": "String",
+        "name": "additional_flags",
+        "label": "To add more parameters (use comma separated list of flags)"
+      },
+      {
+        "type": "File",
+        "name": "env_path",
+        "label": "conda environment path"
+      },
+      {
+        "type": "String",
+        "name": "env_type",
+        "label": "virtual environment type"
+      },
+      {
+        "type": "ImagePlus",
+        "name": "imp"
+      },
+      {
+        "type": "RoiManager",
+        "name": "rm"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.wrappers.transformix.ij2commands.Transformix_TransformImgPlus": {
+    "name": "ch.epfl.biop.wrappers.transformix.ij2commands.Transformix_TransformImgPlus",
+    "menuPath": "Plugins\u003eBIOP\u003eTransformix\u003eTransform Image",
+    "input": [
+      {
+        "type": "ImagePlus",
+        "name": "img_in"
+      },
+      {
+        "type": "RegisterHelper",
+        "name": "rh"
+      }
+    ],
+    "output": [
+      {
+        "type": "ImagePlus",
+        "name": "img_out"
+      }
+    ]
+  },
+  "ch.epfl.biop.wrappers.elastix.ij2commands.Elastix_Test": {
+    "name": "ch.epfl.biop.wrappers.elastix.ij2commands.Elastix_Test",
+    "menuPath": "Plugins\u003eBIOP\u003eElastix\u003eTest Elastix",
+    "input": [],
+    "output": []
+  },
+  "ch.epfl.biop.wrappers.elastix.ij2commands.Elastix_Save_Registration": {
+    "name": "ch.epfl.biop.wrappers.elastix.ij2commands.Elastix_Save_Registration",
+    "menuPath": "Plugins\u003eBIOP\u003eElastix\u003eSave Registration",
+    "input": [
+      {
+        "type": "File",
+        "name": "file"
+      },
+      {
+        "type": "RegisterHelper",
+        "name": "rh"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.java.utilities.roi.VectorizeLabelImage": {
+    "name": "ch.epfl.biop.java.utilities.roi.VectorizeLabelImage",
+    "menuPath": "Plugins\u003eBIOP\u003eVectorize Label Image",
+    "input": [
+      {
+        "type": "ImagePlus",
+        "name": "img_label"
+      },
+      {
+        "type": "boolean",
+        "name": "put_in_roi_manager"
+      }
+    ],
+    "output": [
+      {
+        "type": "ConvertibleRois",
+        "name": "cr"
+      }
+    ]
+  },
+  "ch.epfl.biop.bdv.img.qupath.command.DatasetFromQuPathCreateCommand": {
+    "name": "ch.epfl.biop.bdv.img.qupath.command.DatasetFromQuPathCreateCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eImport\u003eDataset - Create [QuPath]",
+    "description": "Creates a BDV dataset from all images in a QuPath project.",
+    "input": [
+      {
+        "type": "String",
+        "name": "datasetname",
+        "label": "Dataset Name",
+        "description": "Name for the dataset (leave empty to use the project folder name)."
+      },
+      {
+        "type": "String",
+        "name": "plane_origin_convention",
+        "label": "Plane Origin Convention",
+        "description": "Defines where the image origin is located."
+      },
+      {
+        "type": "File",
+        "name": "qupath_project",
+        "label": "QuPath Project",
+        "description": "The QuPath project file (project.qpproj) to import."
+      },
+      {
+        "type": "boolean",
+        "name": "split_rgb_channels",
+        "label": "Split RGB Channels",
+        "description": "When checked, splits RGB images into separate channels."
+      },
+      {
+        "type": "String",
+        "name": "unit",
+        "label": "World coordinate units",
+        "description": "Unit for the coordinate system where images will be positioned."
+      }
+    ],
+    "output": [
+      {
+        "type": "AbstractSpimData",
+        "name": "spimData",
+        "label": "BDV Dataset",
+        "description": "The resulting BDV dataset."
+      }
+    ]
+  },
+  "ch.epfl.biop.kheops.command.KheopsCommand": {
+    "name": "ch.epfl.biop.kheops.command.KheopsCommand",
+    "menuPath": "Plugins\u003eBIOP\u003eKheops\u003eKheops - Convert File to Pyramidal OME TIFF",
+    "description": "Converts one Bio-Formats readable file into tiled pyramidal OME-TIFF files, one file per series.",
+    "input": [
+      {
+        "type": "String",
+        "name": "compression",
+        "label": "Compression type",
+        "description": "LZW: lossless, the safe default. Uncompressed: fastest to write, biggest files. JPEG-2000: lossless but slow. JPEG-2000 Lossy and JPEG: smallest files, but pixel values are modified (JPEG only handles 8-bit and RGB images)."
+      },
+      {
+        "type": "File",
+        "name": "input_path",
+        "label": "Input file (required)",
+        "description": "The file to convert. Any format readable by Bio-Formats works (.czi, .lif, .nd2, .vsi, .svs, .ome.tiff, ...)."
+      },
+      {
+        "type": "File",
+        "name": "output_dir",
+        "label": "Output folder (optional)",
+        "description": "Where the .ome.tiff files are written. Leave empty to write them next to the input file. The folder is created if it does not exist."
+      },
+      {
+        "type": "boolean",
+        "name": "override_voxel_size",
+        "label": "Override voxel sizes",
+        "description": "Check this if the input file is not calibrated, or if its calibration is wrong. The two values below are then used for all converted series."
+      },
+      {
+        "type": "boolean",
+        "name": "split_channels",
+        "label": "Split channels",
+        "description": "Write one file per channel of the selected subset, instead of one multi-channel file."
+      },
+      {
+        "type": "boolean",
+        "name": "split_frames",
+        "label": "Split timepoints",
+        "description": "Write one file per timepoint of the selected subset, instead of one time series."
+      },
+      {
+        "type": "boolean",
+        "name": "split_slices",
+        "label": "Split slices",
+        "description": "Write one file per Z slice of the selected subset, instead of one Z stack."
+      },
+      {
+        "type": "String",
+        "name": "subset_channels",
+        "label": "Channels subset",
+        "description": "Indices of the channels to keep in each converted file. Blank \u003d all channels."
+      },
+      {
+        "type": "String",
+        "name": "subset_frames",
+        "label": "Timepoints subset",
+        "description": "Indices of the timepoints to keep in each converted file. Blank \u003d all timepoints."
+      },
+      {
+        "type": "String",
+        "name": "subset_series",
+        "label": "Series subset",
+        "description": "Indices of the series to convert, e.g. \u00270\u0027 for the first series only. Blank \u003d all series."
+      },
+      {
+        "type": "String",
+        "name": "subset_slices",
+        "label": "Slices subset",
+        "description": "Indices of the Z slices to keep in each converted file. Blank \u003d all slices."
+      },
+      {
+        "type": "double",
+        "name": "vox_size_xy",
+        "label": "XY voxel size (micrometer)",
+        "description": "Physical size of a pixel along X and Y, in micrometer. Used only if \u0027Override voxel sizes\u0027 is checked."
+      },
+      {
+        "type": "double",
+        "name": "vox_size_z",
+        "label": "Z voxel size (micrometer)",
+        "description": "Distance between two Z slices, in micrometer. Used only if \u0027Override voxel sizes\u0027 is checked."
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.wrappers.elastix.ij2commands.Elastix_InverseTransform": {
+    "name": "ch.epfl.biop.wrappers.elastix.ij2commands.Elastix_InverseTransform",
+    "menuPath": "Plugins\u003eBIOP\u003eElastix\u003eInverse registration",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "affine"
+      },
+      {
+        "type": "boolean",
+        "name": "fast_affine"
+      },
+      {
+        "type": "ImagePlus",
+        "name": "image"
+      },
+      {
+        "type": "RegisterHelper",
+        "name": "rh_toinvert"
+      },
+      {
+        "type": "boolean",
+        "name": "rigid"
+      },
+      {
+        "type": "boolean",
+        "name": "spline"
+      }
+    ],
+    "output": [
+      {
+        "type": "RegisterHelper",
+        "name": "rh_inverted"
+      }
+    ]
+  },
+  "ch.epfl.biop.kheops.command.KheopsBatchCommand": {
+    "name": "ch.epfl.biop.kheops.command.KheopsBatchCommand",
+    "menuPath": "Plugins\u003eBIOP\u003eKheops\u003eKheops - Batch Convert Files to Pyramidal OME TIFF",
+    "description": "Converts many Bio-Formats readable files to pyramidal OME-TIFF files, one file per CPU core.",
+    "input": [
+      {
+        "type": "String",
+        "name": "compression",
+        "label": "Compression type",
+        "description": "LZW: lossless, the safe default. Uncompressed: fastest to write, biggest files. JPEG-2000: lossless but slow. JPEG-2000 Lossy and JPEG: smallest files, but pixel values are modified (JPEG only handles 8-bit and RGB images)."
+      },
+      {
+        "type": "File[]",
+        "name": "input_paths",
+        "label": "Input files (required)",
+        "description": "The files to convert. Any format readable by Bio-Formats works, and the files do not need to be of the same format."
+      },
+      {
+        "type": "File",
+        "name": "output_dir",
+        "label": "Output folder (optional)",
+        "description": "Where the .ome.tiff files are written. Leave empty to write them next to the first input file. The folder is created if it does not exist."
+      },
+      {
+        "type": "boolean",
+        "name": "override_voxel_size",
+        "label": "Override voxel sizes",
+        "description": "Check this if the input files are not calibrated, or if their calibration is wrong. The two values below are then used for all converted files."
+      },
+      {
+        "type": "String",
+        "name": "subset_channels",
+        "label": "Channels subset",
+        "description": "Indices of the channels to keep in each converted file. Blank \u003d all channels."
+      },
+      {
+        "type": "String",
+        "name": "subset_frames",
+        "label": "Timepoints subset",
+        "description": "Indices of the timepoints to keep in each converted file. Blank \u003d all timepoints."
+      },
+      {
+        "type": "String",
+        "name": "subset_series",
+        "label": "Series subset",
+        "description": "Indices of the series to convert in each file, e.g. \u00270\u0027 for the first series only. Blank \u003d all series."
+      },
+      {
+        "type": "String",
+        "name": "subset_slices",
+        "label": "Slices subset",
+        "description": "Indices of the Z slices to keep in each converted file. Blank \u003d all slices."
+      },
+      {
+        "type": "double",
+        "name": "vox_size_xy",
+        "label": "XY voxel size (micrometer)",
+        "description": "Physical size of a pixel along X and Y, in micrometer. Used only if \u0027Override voxel sizes\u0027 is checked."
+      },
+      {
+        "type": "double",
+        "name": "vox_size_z",
+        "label": "Z voxel size (micrometer)",
+        "description": "Distance between two Z slices, in micrometer. Used only if \u0027Override voxel sizes\u0027 is checked."
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.kheops.command.KheopsDocCommand": {
+    "name": "ch.epfl.biop.kheops.command.KheopsDocCommand",
+    "menuPath": "Plugins\u003eBIOP\u003eKheops\u003eKheops - Read Documentation...",
+    "description": "Opens the Kheops documentation (https://github.com/BIOP/ijp-kheops) in your web browser.",
+    "input": [],
+    "output": []
+  },
+  "ch.epfl.biop.wrappers.elastix.ij2commands.Elastix_Load_Registration": {
+    "name": "ch.epfl.biop.wrappers.elastix.ij2commands.Elastix_Load_Registration",
+    "menuPath": "Plugins\u003eBIOP\u003eElastix\u003eLoad Registration",
+    "input": [
+      {
+        "type": "File",
+        "name": "file"
+      }
+    ],
+    "output": [
+      {
+        "type": "RegisterHelper",
+        "name": "rh"
+      }
+    ]
+  },
+  "ch.epfl.biop.bdv.img.bioformats.command.BdvShowFileBioFormatsCommand": {
+    "name": "ch.epfl.biop.bdv.img.bioformats.command.BdvShowFileBioFormatsCommand",
+    "menuPath": "Plugins\u003eBigDataViewer\u003eBio-Formats\u003eOpen File with Bio-Formats",
+    "description": "Opens a file in BigDataViewer using Bio-Formats, with colors from metadata.",
+    "input": [
+      {
+        "type": "File",
+        "name": "file",
+        "label": "Input File",
+        "description": "The image file to open in BigDataViewer."
+      },
+      {
+        "type": "String",
+        "name": "position_convention",
+        "label": "Plane Origin Convention",
+        "description": "Defines where the image origin is located."
+      },
+      {
+        "type": "boolean",
+        "name": "splitrgbchannels",
+        "label": "Split RGB Channels",
+        "description": "When checked, splits RGB images into separate channels (recommended for 16-bit RGB)."
+      },
+      {
+        "type": "String",
+        "name": "unit",
+        "label": "World coordinate units",
+        "description": "Unit for the coordinate system where images will be positioned."
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.wrappers.stardist.ij2commands.StarDist3D": {
+    "name": "ch.epfl.biop.wrappers.stardist.ij2commands.StarDist3D",
+    "menuPath": "Plugins\u003eBIOP\u003eStarDist\u003eStarDist3D...",
+    "input": [
+      {
+        "type": "File",
+        "name": "env_path",
+        "label": "conda environment path"
+      },
+      {
+        "type": "String",
+        "name": "env_type",
+        "label": "virtual environment type"
+      },
+      {
+        "type": "ImagePlus",
+        "name": "imp"
+      },
+      {
+        "type": "File",
+        "name": "model_path"
+      }
+    ],
+    "output": [
+      {
+        "type": "ImagePlus",
+        "name": "stardist_imp"
+      }
+    ]
+  },
+  "ch.epfl.biop.wrappers.omnipose.ij2commands.Omnipose": {
+    "name": "ch.epfl.biop.wrappers.omnipose.ij2commands.Omnipose",
+    "menuPath": "Plugins\u003eBIOP\u003eCellpose/Omnipose\u003eOmnipose ...",
+    "input": [
+      {
+        "type": "String",
+        "name": "additional_flags",
+        "label": "To add more parameters (use comma separated list of flags)"
+      },
+      {
+        "type": "int",
+        "name": "ch1",
+        "label": "--chan"
+      },
+      {
+        "type": "int",
+        "name": "ch2",
+        "label": "--chan2"
+      },
+      {
+        "type": "int",
+        "name": "diameter",
+        "label": "--diameter"
+      },
+      {
+        "type": "File",
+        "name": "env_path",
+        "label": "conda environment path"
+      },
+      {
+        "type": "String",
+        "name": "env_type",
+        "label": "virtual environment type"
+      },
+      {
+        "type": "ImagePlus",
+        "name": "imp"
+      },
+      {
+        "type": "String",
+        "name": "model",
+        "label": "--pretrained_model"
+      },
+      {
+        "type": "File",
+        "name": "model_path",
+        "label": "model_path"
+      }
+    ],
+    "output": [
+      {
+        "type": "ImagePlus",
+        "name": "omnipose_imp"
+      }
+    ]
+  },
+  "ch.epfl.biop.bdv.img.omero.command.OmeroConnectCommand": {
+    "name": "ch.epfl.biop.bdv.img.omero.command.OmeroConnectCommand",
+    "menuPath": "Plugins\u003eBIOP\u003eOMERO\u003eOmero - Connect",
+    "description": "Connects to an OMERO server using your credentials.",
+    "input": [
+      {
+        "type": "String",
+        "name": "host",
+        "label": "OMERO Host",
+        "description": "The hostname or IP address of the OMERO server."
+      },
+      {
+        "type": "String",
+        "name": "password",
+        "label": "Password",
+        "description": "Your OMERO password."
+      },
+      {
+        "type": "int",
+        "name": "port",
+        "label": "Port",
+        "description": "The OMERO Ice port (default is 4064)."
+      },
+      {
+        "type": "String",
+        "name": "username",
+        "label": "Username",
+        "description": "Your OMERO username."
+      }
+    ],
+    "output": [
+      {
+        "type": "Exception",
+        "name": "error",
+        "label": "Error",
+        "description": "The exception if connection failed, null otherwise."
+      },
+      {
+        "type": "IOMEROSession",
+        "name": "omeroSession",
+        "label": "OMERO Session",
+        "description": "The active OMERO session if connection succeeds."
+      },
+      {
+        "type": "Boolean",
+        "name": "success",
+        "label": "Success",
+        "description": "True if the connection was successful."
+      }
+    ]
+  },
+  "ch.epfl.biop.wrappers.stardist.ij2commands.StarDist3D_Advanced": {
+    "name": "ch.epfl.biop.wrappers.stardist.ij2commands.StarDist3D_Advanced",
+    "menuPath": "Plugins\u003eBIOP\u003eStarDist\u003eStarDist3D Adv. ...",
+    "input": [
+      {
+        "type": "File",
+        "name": "env_path",
+        "label": "conda environment path"
+      },
+      {
+        "type": "String",
+        "name": "env_type",
+        "label": "virtual environment type"
+      },
+      {
+        "type": "ImagePlus",
+        "name": "imp"
+      },
+      {
+        "type": "float",
+        "name": "max_norm"
+      },
+      {
+        "type": "float",
+        "name": "min_norm"
+      },
+      {
+        "type": "File",
+        "name": "model_path"
+      },
+      {
+        "type": "float",
+        "name": "nms_thresh"
+      },
+      {
+        "type": "float",
+        "name": "prob_thresh"
+      },
+      {
+        "type": "int",
+        "name": "x_tiles"
+      },
+      {
+        "type": "int",
+        "name": "y_tiles"
+      },
+      {
+        "type": "int",
+        "name": "z_tiles"
+      }
+    ],
+    "output": [
+      {
+        "type": "ImagePlus",
+        "name": "stardist_imp"
+      }
+    ]
+  },
+  "ch.epfl.biop.bdv.img.bioformats.command.SetBioFormatsMemoDirectoryCommand": {
+    "name": "ch.epfl.biop.bdv.img.bioformats.command.SetBioFormatsMemoDirectoryCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eWorkspace\u003eSet Bio-Formats Memo Directory",
+    "description": "Sets the folder where Bio-Formats stores its memo (.bfmemo) caching files. Useful when image folders are read-only.",
+    "input": [
+      {
+        "type": "File",
+        "name": "memo_directory",
+        "label": "Memo directory",
+        "description": "Folder where Bio-Formats memo (.bfmemo) files will be stored."
+      },
+      {
+        "type": "boolean",
+        "name": "reset_to_default",
+        "label": "Reset to default location",
+        "description": "Ignore the chosen folder and revert to the default (\u003cuser.home\u003e/.bf-memo)."
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.wrappers.deepslice.ij2commands.DeepSlicePrefsSet": {
+    "name": "ch.epfl.biop.wrappers.deepslice.ij2commands.DeepSlicePrefsSet",
+    "menuPath": "Plugins\u003eBIOP\u003eDeepSlice\u003eDeepSlice setup...",
+    "description": "Set the conda environment that contains a functional DeepSlice module",
+    "input": [
+      {
+        "type": "File",
+        "name": "deepslice_env_dir"
+      },
+      {
+        "type": "String",
+        "name": "version"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.bdv.img.imageplus.command.DatasetFromImagePlusCreateCommand": {
+    "name": "ch.epfl.biop.bdv.img.imageplus.command.DatasetFromImagePlusCreateCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eImport\u003eDataset - Create [Current ImagePlus]",
+    "description": "Creates a BDV dataset from the current ImagePlus window.",
+    "input": [
+      {
+        "type": "String",
+        "name": "datasetname",
+        "label": "Dataset Name",
+        "description": "Name for the dataset (leave empty to use the image title)."
+      },
+      {
+        "type": "ImagePlus",
+        "name": "image",
+        "label": "Input Image",
+        "description": "The ImagePlus image to convert to a BDV dataset."
+      }
+    ],
+    "output": [
+      {
+        "type": "AbstractSpimData",
+        "name": "spimdata",
+        "label": "BDV Dataset",
+        "description": "The resulting BDV dataset."
+      }
+    ]
+  },
+  "ch.epfl.biop.wrappers.ij2command.BiopWrappersSet": {
+    "name": "ch.epfl.biop.wrappers.ij2command.BiopWrappersSet",
+    "menuPath": "Plugins\u003eBIOP\u003eSet and Check Wrappers",
+    "input": [
+      {
+        "type": "File",
+        "name": "elastix_executable"
+      },
+      {
+        "type": "File",
+        "name": "transformix_executable"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.bdv.img.bioformats.command.DatasetFromBioFormatsCreateCommand": {
+    "name": "ch.epfl.biop.bdv.img.bioformats.command.DatasetFromBioFormatsCreateCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eImport\u003eDataset - Create [Bio-Formats]",
+    "description": "Creates a BDV dataset from one or more Bio-Formats compatible files.",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "auto_pyramidize",
+        "label": "Auto-Pyramidize",
+        "description": "Generates multi-resolution pyramids for large images without native multiresolution."
+      },
+      {
+        "type": "String",
+        "name": "datasetname",
+        "label": "Dataset Name",
+        "description": "Name for the resulting BDV dataset."
+      },
+      {
+        "type": "boolean",
+        "name": "disable_memo",
+        "label": "Disable Memoization",
+        "description": "Disables Bio-Formats file caching (not recommended for large files)."
+      },
+      {
+        "type": "File[]",
+        "name": "files",
+        "label": "Input Files",
+        "description": "The image files to include in the dataset."
+      },
+      {
+        "type": "String",
+        "name": "plane_origin_convention",
+        "label": "Plane Origin Convention",
+        "description": "Defines where the image origin is located."
+      },
+      {
+        "type": "boolean",
+        "name": "split_rgb_channels",
+        "label": "Split RGB Channels",
+        "description": "When checked, splits RGB images into separate channels."
+      },
+      {
+        "type": "String",
+        "name": "unit",
+        "label": "World coordinate units",
+        "description": "Unit for the coordinate system where images will be positioned."
+      }
+    ],
+    "output": [
+      {
+        "type": "AbstractSpimData",
+        "name": "spimdata",
+        "label": "BDV Dataset",
+        "description": "The resulting BDV dataset."
+      }
+    ]
+  },
+  "ch.epfl.biop.wrappers.cellpose.ij2commands.Cellpose": {
+    "name": "ch.epfl.biop.wrappers.cellpose.ij2commands.Cellpose",
+    "menuPath": "Plugins\u003eBIOP\u003eCellpose/Omnipose\u003eCellpose ...",
+    "input": [
+      {
+        "type": "String",
+        "name": "additional_flags",
+        "label": "To add more parameters (use comma separated list of flags"
+      },
+      {
+        "type": "int",
+        "name": "ch1",
+        "label": "--chan"
+      },
+      {
+        "type": "int",
+        "name": "ch2",
+        "label": "--chan2"
+      },
+      {
+        "type": "float",
+        "name": "diameter",
+        "label": "--diameter"
+      },
+      {
+        "type": "File",
+        "name": "env_path",
+        "label": "conda environment path"
+      },
+      {
+        "type": "String",
+        "name": "env_type",
+        "label": "virtual environment type"
+      },
+      {
+        "type": "ImagePlus",
+        "name": "imp"
+      },
+      {
+        "type": "String",
+        "name": "model",
+        "label": "--pretrained_model"
+      },
+      {
+        "type": "File",
+        "name": "model_path",
+        "label": "model_path"
+      }
+    ],
+    "output": [
+      {
+        "type": "ImagePlus",
+        "name": "cellpose_imp"
+      }
+    ]
+  },
+  "ch.epfl.biop.bdv.img.omero.command.OmeroDisconnectCommand": {
+    "name": "ch.epfl.biop.bdv.img.omero.command.OmeroDisconnectCommand",
+    "menuPath": "Plugins\u003eBIOP\u003eOMERO\u003eOmero - Disconnect",
+    "description": "Disconnects from an OMERO server and closes all sessions.",
+    "input": [
+      {
+        "type": "String",
+        "name": "host",
+        "label": "OMERO Host",
+        "description": "The hostname of the OMERO server to disconnect from."
+      }
+    ],
+    "output": [
+      {
+        "type": "Exception",
+        "name": "error",
+        "label": "Error",
+        "description": "The exception if disconnection failed, null otherwise."
+      },
+      {
+        "type": "Boolean",
+        "name": "success",
+        "label": "Success",
+        "description": "True if the disconnection was successful."
+      }
+    ]
+  },
+  "ch.epfl.biop.operetta.commands.OperettaArchiveImporter": {
+    "name": "ch.epfl.biop.operetta.commands.OperettaArchiveImporter",
+    "menuPath": "Plugins\u003eBIOP \u003e Operetta Importer \u003e Operetta Archive Importer...",
+    "input": [
+      {
+        "type": "File",
+        "name": "xmlFile",
+        "label": "Select the XML file from your Operetta archive",
+        "description": "The XML file in Harmony-Archive/XML/MEASUREMENT/\u003cuuid\u003e.xml"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.wrappers.deepslice.ij2commands.DeepSliceFolderCommand": {
+    "name": "ch.epfl.biop.wrappers.deepslice.ij2commands.DeepSliceFolderCommand",
+    "menuPath": "Plugins\u003eBIOP\u003eDeepSlice\u003eDeepSlice (folder)",
+    "description": "Runs DeepSlice locally on a folder of your choice.",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "enforce_index_order",
+        "description": "order your sections according to the section number (section number should be present)"
+      },
+      {
+        "type": "String",
+        "name": "enforce_index_spacing",
+        "description": "alternative to enforce_index_order: if you know the\n precise spacing (ie; 1, 2, 4, indicates that section 3\n has been left out of the series), then you can set the\n section thickness in microns with this parameter, or type \u0027None\u0027  if you want DeepSlice to guess the spacing"
+      },
+      {
+        "type": "boolean",
+        "name": "ensemble",
+        "description": "try with and without ensemble to find the model which best works for you"
+      },
+      {
+        "type": "File",
+        "name": "input_folder"
+      },
+      {
+        "type": "String",
+        "name": "model"
+      },
+      {
+        "type": "File",
+        "name": "output_folder",
+        "description": "path of the output folder (input used by default)"
+      },
+      {
+        "type": "boolean",
+        "name": "propagate_angle",
+        "description": "if you would like to normalise the angles"
+      },
+      {
+        "type": "boolean",
+        "name": "section_number",
+        "description": "if you have section numbers included in the filename as _sXXX set this to true"
+      },
+      {
+        "type": "boolean",
+        "name": "use_enforce_index_spacing",
+        "description": "use enforce index spacing"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.operetta.commands.OperettaImporterHiddenSettings": {
+    "name": "ch.epfl.biop.operetta.commands.OperettaImporterHiddenSettings",
+    "menuPath": "Plugins\u003eBIOP \u003e Operetta Importer \u003e Operetta Importer Settings...",
+    "input": [
+      {
+        "type": "Double",
+        "name": "correction_factor",
+        "label": "XY coordinates correction factor (default is 0.995)"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.operetta.commands.OperettaImporter": {
+    "name": "ch.epfl.biop.operetta.commands.OperettaImporter",
+    "menuPath": "Plugins\u003eBIOP \u003e Operetta Importer \u003e Operetta Importer...",
+    "input": [
+      {
+        "type": "File",
+        "name": "folder",
+        "label": "Select the \u0027Images\u0027 folder of your Operetta dataset"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.wrappers.transformix.ij2commands.Transformix_TransformROIs": {
+    "name": "ch.epfl.biop.wrappers.transformix.ij2commands.Transformix_TransformROIs",
+    "menuPath": "Plugins\u003eBIOP\u003eTransformix\u003eTransform Rois",
+    "input": [
+      {
+        "type": "ConvertibleRois",
+        "name": "cr_in"
+      },
+      {
+        "type": "boolean",
+        "name": "output_to_roi_manager"
+      },
+      {
+        "type": "RegisterHelper",
+        "name": "rh"
+      },
+      {
+        "type": "boolean",
+        "name": "rois_from_roi_manager"
+      }
+    ],
+    "output": [
+      {
+        "type": "ConvertibleRois",
+        "name": "cr_out"
+      }
+    ]
+  },
+  "ch.epfl.biop.wrappers.cellpose.ij2commands.CellposeSAM": {
+    "name": "ch.epfl.biop.wrappers.cellpose.ij2commands.CellposeSAM",
+    "menuPath": "Plugins\u003eBIOP\u003eCellpose/Omnipose\u003eCellpose SAM...",
+    "input": [
+      {
+        "type": "String",
+        "name": "additional_flags",
+        "label": "To add more parameters (use comma separated list of flags"
+      },
+      {
+        "type": "float",
+        "name": "diameter",
+        "label": "--diameter"
+      },
+      {
+        "type": "File",
+        "name": "env_path",
+        "label": "conda environment path"
+      },
+      {
+        "type": "String",
+        "name": "env_type",
+        "label": "virtual environment type"
+      },
+      {
+        "type": "ImagePlus",
+        "name": "imp"
+      },
+      {
+        "type": "String",
+        "name": "model",
+        "label": "--pretrained_model"
+      },
+      {
+        "type": "File",
+        "name": "model_path",
+        "label": "model_path"
+      }
+    ],
+    "output": [
+      {
+        "type": "ImagePlus",
+        "name": "cellpose_imp"
+      }
+    ]
+  },
+  "ch.epfl.biop.bdv.img.FixFilePathsCommand": {
+    "name": "ch.epfl.biop.bdv.img.FixFilePathsCommand",
+    "description": "Allows fixing invalid file paths in a BDV dataset by providing replacement paths.",
+    "input": [
+      {
+        "type": "File[]",
+        "name": "fixedFilePaths",
+        "label": "Replacement Files",
+        "description": "The replacement files in the same order as the invalid files."
+      },
+      {
+        "type": "File[]",
+        "name": "invalidFilePaths",
+        "label": "Invalid Files",
+        "description": "The files with invalid paths that need to be fixed."
+      }
+    ],
+    "output": [
+      {
+        "type": "File[]",
+        "name": "fixedFilePaths",
+        "label": "Replacement Files",
+        "description": "The replacement files in the same order as the invalid files."
+      },
+      {
+        "type": "File[]",
+        "name": "invalidFilePaths",
+        "label": "Invalid Files",
+        "description": "The files with invalid paths that need to be fixed."
+      }
+    ]
+  },
+  "ch.epfl.biop.bdv.img.bioformats.command.OpenSampleCommand": {
+    "name": "ch.epfl.biop.bdv.img.bioformats.command.OpenSampleCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eImport\u003eDataset - Samples",
+    "description": "Opens a sample dataset from a selection of test images (downloads and caches on first use).",
+    "input": [
+      {
+        "type": "DemoDataset",
+        "name": "dataset_name"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.kheops.command.KheopsExportImagePlusCommand": {
+    "name": "ch.epfl.biop.kheops.command.KheopsExportImagePlusCommand",
+    "menuPath": "Plugins\u003eBIOP\u003eKheops\u003eKheops - Export ImagePlus To OME-TIFF",
+    "description": "Saves an image already opened in Fiji as a tiled pyramidal OME-TIFF file.",
+    "input": [
+      {
+        "type": "String",
+        "name": "compression",
+        "label": "Compression type",
+        "description": "LZW: lossless, the safe default. Uncompressed: fastest to write, biggest files. JPEG-2000: lossless but slow. JPEG-2000 Lossy and JPEG: smallest files, but pixel values are modified (JPEG only handles 8-bit and RGB images)."
+      },
+      {
+        "type": "ImagePlus",
+        "name": "image",
+        "label": "Image to export",
+        "description": "The open image to save. Its title gives the name of the output file. Virtual stacks are supported."
+      },
+      {
+        "type": "File",
+        "name": "output_dir",
+        "label": "Output folder (optional)",
+        "description": "Folder where \u003cimage title\u003e.ome.tiff is written. Leave empty to write it next to the file the image was opened from. The folder is created if it does not exist."
+      },
+      {
+        "type": "String",
+        "name": "subset_channels",
+        "label": "Channels subset",
+        "description": "Indices of the channels to export. Blank \u003d all channels."
+      },
+      {
+        "type": "String",
+        "name": "subset_frames",
+        "label": "Timepoints subset",
+        "description": "Indices of the timepoints to export. Blank \u003d all timepoints."
+      },
+      {
+        "type": "String",
+        "name": "subset_slices",
+        "label": "Slices subset",
+        "description": "Indices of the Z slices to export. Blank \u003d all slices."
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.wrappers.elastix.ij2commands.Elastix_Register": {
+    "name": "ch.epfl.biop.wrappers.elastix.ij2commands.Elastix_Register",
+    "menuPath": "Plugins\u003eBIOP\u003eElastix\u003eRegister",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "affine"
+      },
+      {
+        "type": "boolean",
+        "name": "fast_affine"
+      },
+      {
+        "type": "ImagePlus",
+        "name": "fixed_image"
+      },
+      {
+        "type": "ImagePlus",
+        "name": "moving_image"
+      },
+      {
+        "type": "boolean",
+        "name": "rigid"
+      },
+      {
+        "type": "boolean",
+        "name": "spline"
+      },
+      {
+        "type": "int",
+        "name": "spline_grid_spacing"
+      }
+    ],
+    "output": [
+      {
+        "type": "RegisterHelper",
+        "name": "rh"
+      }
+    ]
+  },
+  "ch.epfl.biop.kheops.command.KheopsExportSourcesCommand": {
+    "name": "ch.epfl.biop.kheops.command.KheopsExportSourcesCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eExport\u003eSource - Export To OME-TIFF",
+    "description": "Saves BDV sources as a single multi-channel pyramidal OME-TIFF file, with the resolution levels recomputed from the highest resolution level.",
+    "input": [
+      {
+        "type": "String",
+        "name": "compression",
+        "label": "Compression type",
+        "description": "LZW: lossless, the safe default. Uncompressed: fastest to write, biggest files. JPEG-2000: lossless but slow. JPEG-2000 Lossy and JPEG: smallest files, but pixel values are modified (JPEG only handles 8-bit and RGB images)."
+      },
+      {
+        "type": "int",
+        "name": "downscaling",
+        "label": "Scaling factor between resolution levels",
+        "description": "Size ratio between two successive levels of the pyramid. 2 means each level is twice smaller in X and Y than the previous one."
+      },
+      {
+        "type": "File",
+        "name": "file",
+        "label": "Output file",
+        "description": "Path of the file to write. The \u0027.ome.tiff\u0027 extension is expected; the file name (without extension) is used as the OME image name."
+      },
+      {
+        "type": "int",
+        "name": "n_resolution_levels",
+        "label": "Number of resolution levels",
+        "description": "Number of levels in the pyramid, the full resolution level included. Use 1 to write a single resolution file."
+      },
+      {
+        "type": "int",
+        "name": "n_threads",
+        "label": "Number of threads (0 \u003d serial)",
+        "description": "Number of threads computing and compressing tiles. Writing to the file always happens in a single thread. A good default is the number of cores minus one."
+      },
+      {
+        "type": "boolean",
+        "name": "override_voxel_size",
+        "label": "Override voxel sizes",
+        "description": "Check this to ignore the voxel size of the sources and use the two values below instead."
+      },
+      {
+        "type": "String",
+        "name": "range_channels",
+        "label": "Channels subset",
+        "description": "Indices of the sources to export, in the order they were selected. Blank \u003d all of them."
+      },
+      {
+        "type": "String",
+        "name": "range_frames",
+        "label": "Timepoints subset",
+        "description": "Indices of the timepoints to export. Blank \u003d all timepoints."
+      },
+      {
+        "type": "String",
+        "name": "range_slices",
+        "label": "Slices subset",
+        "description": "Indices of the Z slices to export. Blank \u003d all slices."
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Sources to export",
+        "description": "The BDV sources to write. Each source becomes one channel of the output file."
+      },
+      {
+        "type": "int",
+        "name": "tile_size_x",
+        "label": "Tile size X (negative: no tiling)",
+        "description": "Width of the tiles, in pixels. 512 or 1024 are good values for a pyramidal file; a negative value writes untiled (strip based) planes."
+      },
+      {
+        "type": "int",
+        "name": "tile_size_y",
+        "label": "Tile size Y (negative: no tiling)",
+        "description": "Height of the tiles, in pixels. Usually kept equal to the tile size X."
+      },
+      {
+        "type": "String",
+        "name": "unit",
+        "label": "Physical unit",
+        "description": "Unit written in the OME metadata for the voxel size read from the sources."
+      },
+      {
+        "type": "double",
+        "name": "vox_size_xy_um",
+        "label": "XY voxel size (micrometer)",
+        "description": "Physical size of a pixel along X and Y, in micrometer. Used only if \u0027Override voxel sizes\u0027 is checked."
+      },
+      {
+        "type": "double",
+        "name": "vox_size_z_um",
+        "label": "Z voxel size (micrometer)",
+        "description": "Distance between two Z slices, in micrometer. Used only if \u0027Override voxel sizes\u0027 is checked."
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.workflow.elliptic.EasyExportEllipticProjection": {
+    "name": "ch.epfl.biop.command.workflow.elliptic.EasyExportEllipticProjection",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eSpecialized Workflows\u003eElliptic Transform\u003eSource - Export Elliptic 3D Transformed Sources (Interactive Box)",
+    "description": "Interactively select a region in spherical coordinates and export to ImagePlus",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "Elliptically-transformed sources to export"
+      }
+    ],
+    "output": [
+      {
+        "type": "ImagePlus",
+        "name": "imp_out",
+        "description": "The exported image"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.process.deconvolve.AveragePSFFromSpotsCommand": {
+    "name": "ch.epfl.biop.command.process.deconvolve.AveragePSFFromSpotsCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eDeconvolve\u003eSource - Average PSF from Beads (TrackMate spots)",
+    "description": "Averages sub-resolution beads into an experimental PSF, re-centring each bead with subpixel precision on the spot positions of a TrackMate XML file. CPU only.",
+    "input": [
+      {
+        "type": "double",
+        "name": "background_percentile",
+        "label": "Background Percentile",
+        "description": "Percentile of each bead\u0027s crop taken as its background level, subtracted before the bead is normalised to its own peak. A bead is tiny compared to its box, so the median (50) is the right estimator; a lower percentile sits below the background by about that many sigmas of the noise and leaves a positive pedestal in the averaged PSF. Lower it only if the bead fills a large part of the box."
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "beads",
+        "label": "Bead Image Source(s)",
+        "description": "One or more 3D images containing sub-resolution beads (e.g. the channels of a multi-channel acquisition). Each is averaged separately, using the same spot list."
+      },
+      {
+        "type": "int",
+        "name": "n_threads",
+        "label": "Number of Threads",
+        "description": "Number of parallel threads used to compute the average"
+      },
+      {
+        "type": "String",
+        "name": "name",
+        "label": "Name",
+        "description": "Name of the averaged PSF output source"
+      },
+      {
+        "type": "int",
+        "name": "psf_size_x",
+        "label": "PSF Size X",
+        "description": "Output PSF width, in output voxels"
+      },
+      {
+        "type": "int",
+        "name": "psf_size_y",
+        "label": "PSF Size Y",
+        "description": "Output PSF height, in output voxels"
+      },
+      {
+        "type": "int",
+        "name": "psf_size_z",
+        "label": "PSF Size Z",
+        "description": "Output PSF depth, in output voxels"
+      },
+      {
+        "type": "File",
+        "name": "trackmate_file",
+        "label": "TrackMate File",
+        "description": "TrackMate XML file holding the detected bead positions (POSITION_X/Y/Z, in the physical units of the source). Spots of frame 0 are used."
+      },
+      {
+        "type": "boolean",
+        "name": "visible_spots_only",
+        "label": "Visible Spots Only",
+        "description": "Use only the spots that pass the filters saved in the TrackMate file (VISIBILITY \u003d 1). Uncheck to average every detected spot."
+      },
+      {
+        "type": "double",
+        "name": "voxel_size_x",
+        "label": "Output Voxel Size X (0 \u003d same as input)",
+        "description": "Voxel size of the averaged PSF along X, in the unit of the input source. Because the beads sit at random subpixel offsets, a value finer than the input is meaningful."
+      },
+      {
+        "type": "double",
+        "name": "voxel_size_y",
+        "label": "Output Voxel Size Y (0 \u003d same as input)",
+        "description": "Voxel size of the averaged PSF along Y, in the unit of the input source"
+      },
+      {
+        "type": "double",
+        "name": "voxel_size_z",
+        "label": "Output Voxel Size Z (0 \u003d same as input)",
+        "description": "Voxel size of the averaged PSF along Z, in the unit of the input source"
+      }
+    ],
+    "output": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "psf_out",
+        "description": "The averaged PSF sources, one per input bead source (same order)"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.warpy.PairRegistrationCreateCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.PairRegistrationCreateCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy\u003eCreate Registration Pair",
+    "description": "Creates a new registration pair from fixed and moving sources for the Warpy workflow",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "fixed_sources",
+        "label": "Fixed Source(s)",
+        "description": "The reference source(s) that will remain stationary during registration"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "moving_sources",
+        "label": "Moving Source(s)",
+        "description": "The source(s) to be registered and aligned to the fixed source(s)"
+      },
+      {
+        "type": "String",
+        "name": "registration_name",
+        "label": "Registration Name",
+        "description": "A unique name to identify this registration pair"
+      }
+    ],
+    "output": [
+      {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The created registration pair object"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.workflow.elliptic.GetVoronoiEllipseSampleCommand": {
+    "name": "ch.epfl.biop.command.workflow.elliptic.GetVoronoiEllipseSampleCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eSpecialized Workflows\u003eElliptic Transform\u003eSource - Create Elliptic Voronoi Source",
+    "description": "Creates a sample 3D source with weighted Voronoi ellipse patterns for testing",
+    "input": [],
+    "output": [
+      {
+        "type": "SourceAndConverter",
+        "name": "sample_source",
+        "description": "The generated sample source with Voronoi ellipse patterns"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.exporter.BigStitcherDatasetToOMETIFFFuseCommand": {
+    "name": "ch.epfl.biop.command.exporter.BigStitcherDatasetToOMETIFFFuseCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eExport\u003eDataset - Fuse BigStitcher Dataset To OME-TIFF",
+    "description": "Fuses a BigStitcher dataset and exports it as a pyramidal OME-TIFF file",
+    "input": [
+      {
+        "type": "String",
+        "name": "fusion_method",
+        "label": "Fusion Method",
+        "description": "Method used to blend overlapping tiles"
+      },
+      {
+        "type": "int",
+        "name": "n_resolution_levels",
+        "label": "Resolution Levels",
+        "description": "Number of pyramid resolution levels to generate (scale factor \u003d 2)"
+      },
+      {
+        "type": "File",
+        "name": "output_path_directory",
+        "label": "Output Folder",
+        "description": "The folder where the fused OME-TIFF will be saved"
+      },
+      {
+        "type": "boolean",
+        "name": "override_z_ratio",
+        "label": "Override Z Anisotropy",
+        "description": "When checked, uses a custom XY/Z anisotropy ratio instead of the dataset value"
+      },
+      {
+        "type": "String",
+        "name": "range_channels",
+        "label": "Selected Channels",
+        "description": "Channels to export (e.g., \u00270,1\u0027 or \u00270:2\u0027). Leave blank for all channels"
+      },
+      {
+        "type": "String",
+        "name": "range_frames",
+        "label": "Selected Timepoints",
+        "description": "Timepoints to export (e.g., \u00270:10\u0027). Leave blank for all timepoints"
+      },
+      {
+        "type": "String",
+        "name": "range_slices",
+        "label": "Selected Slices",
+        "description": "Z-slices to export (e.g., \u00270:100\u0027). Leave blank for all slices"
+      },
+      {
+        "type": "boolean",
+        "name": "split_channels",
+        "label": "Split Channels",
+        "description": "When checked, exports each channel as a separate file"
+      },
+      {
+        "type": "boolean",
+        "name": "split_frames",
+        "label": "Split Frames",
+        "description": "When checked, exports each timepoint as a separate file"
+      },
+      {
+        "type": "boolean",
+        "name": "split_slices",
+        "label": "Split Slices",
+        "description": "When checked, exports each Z-slice as a separate file"
+      },
+      {
+        "type": "boolean",
+        "name": "use_interpolation",
+        "label": "Use Interpolation",
+        "description": "When checked, applies interpolation during fusion (slower but smoother)"
+      },
+      {
+        "type": "boolean",
+        "name": "use_lzw_compression",
+        "label": "Use LZW Compression",
+        "description": "When checked, applies LZW compression to reduce file size"
+      },
+      {
+        "type": "double",
+        "name": "x_downsample",
+        "label": "Downsample X",
+        "description": "Downsampling factor in X (1.0 \u003d no downsampling)"
+      },
+      {
+        "type": "File",
+        "name": "xml_bigstitcher_file",
+        "label": "BigStitcher XML File",
+        "description": "The BigStitcher XML dataset file to fuse"
+      },
+      {
+        "type": "double",
+        "name": "y_downsample",
+        "label": "Downsample Y",
+        "description": "Downsampling factor in Y (1.0 \u003d no downsampling)"
+      },
+      {
+        "type": "double",
+        "name": "z_downsample",
+        "label": "Downsample Z",
+        "description": "Downsampling factor in Z (1.0 \u003d no downsampling)"
+      },
+      {
+        "type": "double",
+        "name": "z_ratio",
+        "label": "XY/Z Anisotropy Ratio",
+        "description": "Custom ratio between XY and Z pixel sizes"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.register.warpy.wizard.WarpyRegisterCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.wizard.WarpyRegisterCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy (Wizard)\u003eWarpy - Create Registration",
+    "description": "Interactive wizard for registering QuPath entries with visual landmark editing",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "fixed_sources",
+        "label": "Fixed Source(s)",
+        "description": "Reference source(s) from the QuPath project"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "moving_sources",
+        "label": "Moving Source(s)",
+        "description": "Source(s) to be registered to the fixed reference"
+      },
+      {
+        "type": "boolean",
+        "name": "verbose"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.register.warpy.PairRegistrationOMETIFFExportCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.PairRegistrationOMETIFFExportCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy\u003eRegister Pair - Export To OME-TIFF",
+    "description": "Exports the registered images as a pyramidal OME-TIFF file",
+    "input": [
+      {
+        "type": "String",
+        "name": "channels_fixed_csv",
+        "label": "Fixed Channels",
+        "description": "Channels from fixed image to include (comma separated, empty for none, \u0027*\u0027 for all)"
+      },
+      {
+        "type": "String",
+        "name": "channels_moving_csv",
+        "label": "Moving Channels",
+        "description": "Channels from moving image to include (comma separated, empty for none, \u0027*\u0027 for all)"
+      },
+      {
+        "type": "String",
+        "name": "compression",
+        "label": "Compression",
+        "description": "Compression algorithm for the output file"
+      },
+      {
+        "type": "int",
+        "name": "downscaling",
+        "label": "Downscaling Factor",
+        "description": "Scale factor between consecutive resolution levels"
+      },
+      {
+        "type": "File",
+        "name": "file_path",
+        "label": "Output File",
+        "description": "Path where the OME-TIFF will be saved"
+      },
+      {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "When checked, uses interpolation when resampling the moving image"
+      },
+      {
+        "type": "int",
+        "name": "n_resolution_levels",
+        "label": "Resolution Levels",
+        "description": "Number of pyramid resolution levels to generate"
+      },
+      {
+        "type": "int",
+        "name": "n_threads",
+        "label": "Number of Threads",
+        "description": "Number of parallel threads for export (0 \u003d serial processing)"
+      },
+      {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The registration pair to export"
+      },
+      {
+        "type": "int",
+        "name": "tile_size_x",
+        "label": "Tile Size X",
+        "description": "Width of tiles in pixels (negative for no tiling)"
+      },
+      {
+        "type": "int",
+        "name": "tile_size_y",
+        "label": "Tile Size Y",
+        "description": "Height of tiles in pixels (negative for no tiling)"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.exporter.SourcesToImagePlusExportCommand": {
+    "name": "ch.epfl.biop.command.exporter.SourcesToImagePlusExportCommand",
+    "description": "Exports sources to ImagePlus ignoring their spatial location (stacks sources as channels)",
+    "input": [
+      {
+        "type": "String",
+        "name": "export_mode",
+        "label": "Export Mode",
+        "description": "Normal loads all data; Virtual creates a lazy-loading stack"
+      },
+      {
+        "type": "int",
+        "name": "level",
+        "label": "Resolution Level",
+        "description": "Pyramid level to export (0 \u003d highest resolution)"
+      },
+      {
+        "type": "Boolean",
+        "name": "monitor",
+        "label": "Monitor Progress",
+        "description": "When checked, displays a progress indicator during export"
+      },
+      {
+        "type": "String",
+        "name": "name",
+        "label": "Image Name",
+        "description": "Name for the exported ImagePlus"
+      },
+      {
+        "type": "Boolean",
+        "name": "parallel_c",
+        "label": "Parallel Channels",
+        "description": "When checked, acquires channels in parallel (Normal mode only)"
+      },
+      {
+        "type": "Boolean",
+        "name": "parallel_t",
+        "label": "Parallel Timepoints",
+        "description": "When checked, acquires timepoints in parallel (Normal mode only)"
+      },
+      {
+        "type": "Boolean",
+        "name": "parallel_z",
+        "label": "Parallel Slices",
+        "description": "When checked, acquires Z-slices in parallel (Normal mode only)"
+      },
+      {
+        "type": "String",
+        "name": "range_channels",
+        "label": "Selected Channels",
+        "description": "Channel indices to export (e.g., \u00270:2\u0027 or \u00270,1\u0027). Leave blank for all"
+      },
+      {
+        "type": "String",
+        "name": "range_frames",
+        "label": "Selected Timepoints",
+        "description": "Timepoint indices to export (e.g., \u00270:10\u0027). Leave blank for all"
+      },
+      {
+        "type": "String",
+        "name": "range_slices",
+        "label": "Selected Slices",
+        "description": "Z-slice indices to export (e.g., \u00270:100\u0027). Leave blank for all"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The sources to export as channels in the output image"
+      }
+    ],
+    "output": [
+      {
+        "type": "ImagePlus",
+        "name": "imp_out",
+        "label": "Exported Image",
+        "description": "The exported ImagePlus"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.dataset.DatasetXMLCombineCommand": {
+    "name": "ch.epfl.biop.command.dataset.DatasetXMLCombineCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDataset\u003eDataset - Combine XML Datasets",
+    "description": "Combines multiple BDV XML datasets into a single dataset by concatenating timepoints or channels",
+    "input": [
+      {
+        "type": "CombineMode",
+        "name": "combine_mode",
+        "label": "Combine Mode",
+        "description": "How to combine the datasets: as separate timepoints or as separate channels"
+      },
+      {
+        "type": "String",
+        "name": "datasetname",
+        "label": "Dataset Name",
+        "description": "Name for the resulting BDV dataset."
+      },
+      {
+        "type": "File[]",
+        "name": "input_files",
+        "label": "Input XML Files",
+        "description": "The BDV XML files to combine. Order matters: for timepoints, files are ordered temporally; for channels, files contribute channels in order."
+      },
+      {
+        "type": "String",
+        "name": "setup_filter",
+        "label": "Filter Setup IDs (optional)",
+        "description": "Comma-separated setup IDs or ranges (e.g., \u00270:5,10,15:20\u0027). Leave empty to include all setups."
+      }
+    ],
+    "output": [
+      {
+        "type": "AbstractSpimData",
+        "name": "combinedSpimData",
+        "label": "Output BDV dataset object"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.SourcesSift2DAffineRegisterCommand": {
+    "name": "ch.epfl.biop.command.register.SourcesSift2DAffineRegisterCommand",
+    "description": "Performs an affine registration in 2D between 2 sources. Low level command which\nrequires many parameters. For more user friendly command, use wizards instead.\nOutputs the transform to apply to the moving source.",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "When checked, uses interpolation when resampling images"
+      },
+      {
+        "type": "boolean",
+        "name": "invert_fixed",
+        "label": "Invert Fixed",
+        "description": "When checked, inverts the intensity of the fixed image for matching"
+      },
+      {
+        "type": "boolean",
+        "name": "invert_moving",
+        "label": "Invert Moving",
+        "description": "When checked, inverts the intensity of the moving image for matching"
+      },
+      {
+        "type": "int",
+        "name": "level_fixed_source",
+        "label": "Fixed Resolution Level",
+        "description": "Resolution level of the fixed source (0 \u003d highest resolution)"
+      },
+      {
+        "type": "int",
+        "name": "level_moving_source",
+        "label": "Moving Resolution Level",
+        "description": "Resolution level of the moving source (0 \u003d highest resolution)"
+      },
+      {
+        "type": "double",
+        "name": "px",
+        "label": "ROI Position X",
+        "description": "X coordinate of the registration region top-left corner"
+      },
+      {
+        "type": "double",
+        "name": "px_size_in_current_unit",
+        "label": "Resampling Pixel Size",
+        "description": "Pixel size in world coordinates units used when resampling images for registration"
+      },
+      {
+        "type": "double",
+        "name": "py",
+        "label": "ROI Position Y",
+        "description": "Y coordinate of the registration region top-left corner"
+      },
+      {
+        "type": "double",
+        "name": "pz",
+        "label": "ROI Position Z",
+        "description": "Z coordinate of the registration plane"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_fixed",
+        "label": "Fixed Source(s)",
+        "description": "Reference source(s) that remain stationary during registration"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_moving",
+        "label": "Moving Source(s)",
+        "description": "Source(s) to be aligned to the fixed reference"
+      },
+      {
+        "type": "double",
+        "name": "sx",
+        "label": "ROI Size X",
+        "description": "Width of the registration region"
+      },
+      {
+        "type": "double",
+        "name": "sy",
+        "label": "ROI Size Y",
+        "description": "Height of the registration region"
+      },
+      {
+        "type": "int",
+        "name": "tp_fixed",
+        "label": "Fixed Timepoint",
+        "description": "Timepoint of the fixed source to use for registration"
+      },
+      {
+        "type": "int",
+        "name": "tp_moving",
+        "label": "Moving Timepoint",
+        "description": "Timepoint of the moving source to use for registration"
+      },
+      {
+        "type": "String",
+        "name": "transformation_model",
+        "label": "Transformation model"
+      }
+    ],
+    "output": [
+      {
+        "type": "AffineTransform3D",
+        "name": "at3d",
+        "description": "The computed affine transformation to align moving to fixed"
+      },
+      {
+        "type": "boolean",
+        "name": "success",
+        "description": "Whether the registration completed successfully"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.warpy.PairRegistrationDeleteCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.PairRegistrationDeleteCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy\u003eDelete Registration Pair",
+    "description": "Removes a registration pair from memory and closes associated resources",
+    "input": [
+      {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The registration pair to delete"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.dataset.DatasetXMLToBigStitcherDatasetConvertCommand": {
+    "name": "ch.epfl.biop.command.dataset.DatasetXMLToBigStitcherDatasetConvertCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDataset\u003eDataset - Make BigStitcher Compatible",
+    "description": "Converts a BDV dataset to BigStitcher format by removing incompatible attributes and rescaling",
+    "input": [
+      {
+        "type": "int",
+        "name": "viewsetupreference",
+        "label": "View Setup Reference",
+        "description": "View setup index for rescaling reference (-1 to list all and use first)"
+      },
+      {
+        "type": "File",
+        "name": "xmlin",
+        "label": "Input XML File",
+        "description": "The BDV XML dataset file to convert"
+      },
+      {
+        "type": "File",
+        "name": "xmlout",
+        "label": "Output XML File",
+        "description": "The XML file where the BigStitcher-compatible dataset will be saved"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.register.AffineTransformCreateCommand": {
+    "name": "ch.epfl.biop.command.register.AffineTransformCreateCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eTransform\u003eNew Affine Transform",
+    "description": "Creates an affine transform from a 4x4 matrix for use in other commands",
+    "input": [
+      {
+        "type": "String",
+        "name": "string_matrix",
+        "label": "Transform Matrix",
+        "description": "A 4x3 affine transform matrix with 16 comma-separated values"
+      }
+    ],
+    "output": [
+      {
+        "type": "AffineTransform3D",
+        "name": "at3d",
+        "label": "Affine Transform",
+        "description": "The created 3D affine transform"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.process.deconvolve.SourcesDeconvolveCommand": {
+    "name": "ch.epfl.biop.command.process.deconvolve.SourcesDeconvolveCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eDeconvolve\u003eSource - Deconvolve (Richardson Lucy GPU - Tiled)",
+    "description": "Lazy tiled Richardson Lucy deconvolution of BDV sources that uses the GPU via CLIJ2",
+    "input": [
+      {
+        "type": "int",
+        "name": "block_size_x",
+        "label": "Block Size X",
+        "description": "Tile size in X dimension for GPU processing (pixels)"
+      },
+      {
+        "type": "int",
+        "name": "block_size_y",
+        "label": "Block Size Y",
+        "description": "Tile size in Y dimension for GPU processing (pixels)"
+      },
+      {
+        "type": "int",
+        "name": "block_size_z",
+        "label": "Block Size Z",
+        "description": "Tile size in Z dimension for GPU processing (pixels)"
+      },
+      {
+        "type": "int",
+        "name": "n_threads",
+        "label": "Number of Threads",
+        "description": "Number of parallel threads for tile processing"
+      },
+      {
+        "type": "boolean",
+        "name": "non_circulant",
+        "label": "Non-Circulant",
+        "description": "When checked, uses non-circulant boundary conditions (reduces edge artifacts)"
+      },
+      {
+        "type": "int",
+        "name": "num_iterations",
+        "label": "Iterations",
+        "description": "Number of Richardson-Lucy deconvolution iterations"
+      },
+      {
+        "type": "String",
+        "name": "output_pixel_type",
+        "label": "Output Pixel Type",
+        "description": "Pixel type for the deconvolved output"
+      },
+      {
+        "type": "int",
+        "name": "overlap_size",
+        "label": "Overlap Size",
+        "description": "Overlap between adjacent tiles to avoid edge artifacts (pixels)"
+      },
+      {
+        "type": "SourceAndConverter",
+        "name": "psf",
+        "label": "PSF Source",
+        "description": "Point spread function used for deconvolution (applied to all sources)"
+      },
+      {
+        "type": "float",
+        "name": "regularization_factor",
+        "label": "Regularization Factor",
+        "description": "Regularization strength to prevent noise amplification (0 \u003d no regularization)"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The sources to deconvolve"
+      },
+      {
+        "type": "String",
+        "name": "suffix",
+        "label": "Name Suffix",
+        "description": "Suffix appended to source names for the deconvolved outputs"
+      }
+    ],
+    "output": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_out",
+        "description": "The deconvolved sources"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.dataset.DatasetDeskewCommand": {
+    "name": "ch.epfl.biop.command.dataset.DatasetDeskewCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDataset\u003eTransform Stack\u003eDataset - Add Deskew Transform",
+    "description": "Adds a deskew transform to the transform chain of SpimData backed sources",
+    "input": [
+      {
+        "type": "double",
+        "name": "angle",
+        "label": "Deskew angle (degrees)",
+        "description": "Angle between the scan direction and the image plane (30 degrees for a Zeiss LLS7)"
+      },
+      {
+        "type": "boolean",
+        "name": "around_image_origin",
+        "label": "Deskew around the image origin",
+        "description": "If checked, the deskew is applied around the origin of each image instead of the origin of the physical space"
+      },
+      {
+        "type": "String",
+        "name": "flip_axis",
+        "label": "Flip axis (before deskew)",
+        "description": "Axis flipped before the deskew is applied, if any"
+      },
+      {
+        "type": "boolean",
+        "name": "reorient_along_z",
+        "label": "Put the stack axis along Z",
+        "description": "Rotates the data after the deskew so that the deskewed stack axis points along Z"
+      },
+      {
+        "type": "String",
+        "name": "shear_axis",
+        "label": "Shear direction axis",
+        "description": "In plane axis along which the successive planes are shifted"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select source(s)",
+        "description": "Sources whose SpimData transforms will be modified"
+      },
+      {
+        "type": "String",
+        "name": "stack_axis",
+        "label": "Stack (scan) axis",
+        "description": "Axis of the raw data along which the planes are stacked, i.e. the scan direction"
+      },
+      {
+        "type": "String",
+        "name": "transform_name",
+        "label": "Transform name",
+        "description": "Name given to the transform added in the transform chain"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.workflow.lls7.LLS7DatasetOpenCommand": {
+    "name": "ch.epfl.biop.command.workflow.lls7.LLS7DatasetOpenCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eImport\u003eDataset - Create [CZI LLS7]",
+    "description": "Opens a Zeiss Lattice Light Sheet 7 dataset with live deskewing using Bio-Formats and BigDataViewer",
+    "input": [
+      {
+        "type": "File",
+        "name": "czi_file",
+        "label": "CZI LLS7 File",
+        "description": "The CZI file from a Zeiss LLS7 acquisition to open"
+      },
+      {
+        "type": "boolean",
+        "name": "legacy_xy_mode",
+        "label": "Use Legacy XY Mode",
+        "description": "When checked, uses legacy XY orientation for compatibility with older datasets"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.register.Sources2DRegisterCommand": {
+    "name": "ch.epfl.biop.command.register.Sources2DRegisterCommand",
+    "input": [
+      {
+        "type": "double",
+        "name": "background_offset_value_fixed",
+        "label": "Background offset value for fixed image"
+      },
+      {
+        "type": "double",
+        "name": "background_offset_value_moving",
+        "label": "Background offset value for moving image"
+      },
+      {
+        "type": "double",
+        "name": "bottom_right_x"
+      },
+      {
+        "type": "double",
+        "name": "bottom_right_y"
+      },
+      {
+        "type": "double",
+        "name": "coarse_pixel_size_mm",
+        "label": "Pixel size for coarse registration in mm (default 0.01)"
+      },
+      {
+        "type": "SourceAndConverter",
+        "name": "current_ref_source",
+        "label": "Index of current reference image (moving, DAPI channel of scan i)"
+      },
+      {
+        "type": "SourceAndConverter",
+        "name": "global_ref_source",
+        "label": "Global reference image (fixed, usually, first DAPI channel)"
+      },
+      {
+        "type": "int",
+        "name": "max_iteration_per_scale",
+        "label": "Number of iterations for each scale (default 100)"
+      },
+      {
+        "type": "double",
+        "name": "patch_size_mm",
+        "label": "Patch size for registration in mm (default 0.5)"
+      },
+      {
+        "type": "boolean",
+        "name": "perform_first_coarse_affine_registration",
+        "label": "Make a first affine registration on defined regions"
+      },
+      {
+        "type": "boolean",
+        "name": "perform_second_spline_registration",
+        "label": "Make a second spline registration with landmarks"
+      },
+      {
+        "type": "double",
+        "name": "precise_pixel_size_mm",
+        "label": "Pixel size for precise patch registration in mm (default 0.001)"
+      },
+      {
+        "type": "String",
+        "name": "pt_list_coordinates",
+        "label": "Locations of interest for warping registration"
+      },
+      {
+        "type": "boolean",
+        "name": "show_details"
+      },
+      {
+        "type": "double",
+        "name": "top_left_x"
+      },
+      {
+        "type": "double",
+        "name": "top_left_y"
+      },
+      {
+        "type": "boolean",
+        "name": "verbose"
+      }
+    ],
+    "output": [
+      {
+        "type": "RealTransform",
+        "name": "tst"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.display.bdv.export.BdvViewToSourcesExportCommand": {
+    "name": "ch.epfl.biop.command.display.bdv.export.BdvViewToSourcesExportCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eExport\u003eBDV - Export Current View As Sources",
+    "description": "Resamples sources to an arbitrary oblique slice based on the current BDV view orientation",
+    "input": [
+      {
+        "type": "BdvHandle",
+        "name": "bdv_h",
+        "label": "BDV Window",
+        "description": "The BigDataViewer window whose current view defines the slice orientation"
+      },
+      {
+        "type": "boolean",
+        "name": "cache",
+        "label": "Cache",
+        "description": "When checked, caches computed slices in memory"
+      },
+      {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "When checked, uses interpolation when resampling"
+      },
+      {
+        "type": "boolean",
+        "name": "match_window_size",
+        "label": "Match Window Size",
+        "description": "When checked, sets X and Y sizes to match the BDV window dimensions"
+      },
+      {
+        "type": "boolean",
+        "name": "reuse_mipmaps",
+        "label": "Reuse MipMaps",
+        "description": "When checked, uses existing pyramid levels for efficiency"
+      },
+      {
+        "type": "double",
+        "name": "sampling_xy_in_physical_unit",
+        "label": "XY Sampling",
+        "description": "Pixel size for XY sampling in world coordinates units"
+      },
+      {
+        "type": "double",
+        "name": "sampling_z_in_physical_unit",
+        "label": "Z Sampling",
+        "description": "Pixel size for Z sampling in world coordinates units"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "description": "The sources to slice"
+      },
+      {
+        "type": "double",
+        "name": "x_size",
+        "label": "Size X",
+        "description": "Total width of the slice in world coordinates units"
+      },
+      {
+        "type": "double",
+        "name": "y_size",
+        "label": "Size Y",
+        "description": "Total height of the slice in world coordinates units"
+      },
+      {
+        "type": "double",
+        "name": "z_size",
+        "label": "Half Thickness Z",
+        "description": "Half-depth of the slice (above and below) in world coordinates units"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.display.bdv.SourcesOverviewCommand": {
+    "name": "ch.epfl.biop.command.display.bdv.SourcesOverviewCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eBDV - Show Sources On Grid",
+    "description": "Displays sources arranged on a grid in a new BigDataViewer window",
+    "input": [
+      {
+        "type": "String",
+        "name": "entities_split",
+        "label": "Split by Entities",
+        "description": "Comma-separated entity types to split by (e.g., \u0027channel, fileseries\u0027)"
+      },
+      {
+        "type": "int",
+        "name": "n_columns",
+        "label": "Number of Columns",
+        "description": "Number of columns in the grid layout"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The sources to display on the grid"
+      },
+      {
+        "type": "int",
+        "name": "timepoint_begin",
+        "label": "Start Timepoint",
+        "description": "The timepoint to use for determining source dimensions"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.register.Elastix2DAffineRegisterCommand": {
+    "name": "ch.epfl.biop.command.register.Elastix2DAffineRegisterCommand",
+    "description": "Performs an affine registration in 2D between 2 sources. Low level command which\nrequires many parameters. For more user friendly command, use wizards instead.\nOutputs the transform to apply to the moving source.",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "automatic_transform_initialization",
+        "label": "Auto Center",
+        "description": "When checked, initially aligns images by their centers of gravity"
+      },
+      {
+        "type": "double",
+        "name": "background_offset_value_fixed",
+        "label": "Fixed Background Offset",
+        "description": "Value to add to fixed image background for better matching"
+      },
+      {
+        "type": "double",
+        "name": "background_offset_value_moving",
+        "label": "Moving Background Offset",
+        "description": "Value to add to moving image background for better matching"
+      },
+      {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "When checked, uses interpolation when resampling images"
+      },
+      {
+        "type": "int",
+        "name": "level_fixed_source",
+        "label": "Fixed Resolution Level",
+        "description": "Resolution level of the fixed source (0 \u003d highest resolution)"
+      },
+      {
+        "type": "int",
+        "name": "level_moving_source",
+        "label": "Moving Resolution Level",
+        "description": "Resolution level of the moving source (0 \u003d highest resolution)"
+      },
+      {
+        "type": "int",
+        "name": "max_iteration_per_scale",
+        "label": "Iterations Per Scale",
+        "description": "Maximum number of optimization iterations at each pyramid level"
+      },
+      {
+        "type": "int",
+        "name": "min_image_size_pix",
+        "label": "Minimum Image Size",
+        "description": "Minimum image size in pixels for the coarsest pyramid level"
+      },
+      {
+        "type": "double",
+        "name": "px",
+        "label": "ROI Position X",
+        "description": "X coordinate of the registration region top-left corner"
+      },
+      {
+        "type": "double",
+        "name": "px_size_in_current_unit",
+        "label": "Resampling Pixel Size",
+        "description": "Pixel size in world coordinates units used when resampling images for registration"
+      },
+      {
+        "type": "double",
+        "name": "py",
+        "label": "ROI Position Y",
+        "description": "Y coordinate of the registration region top-left corner"
+      },
+      {
+        "type": "double",
+        "name": "pz",
+        "label": "ROI Position Z",
+        "description": "Z coordinate of the registration plane"
+      },
+      {
+        "type": "boolean",
+        "name": "show_image_registration",
+        "label": "Show Registration",
+        "description": "When checked, displays registration results in ImageJ windows (not compatible with RGB images)"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_fixed",
+        "label": "Fixed Source(s)",
+        "description": "Reference source(s) that remain stationary during registration"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_moving",
+        "label": "Moving Source(s)",
+        "description": "Source(s) to be aligned to the fixed reference"
+      },
+      {
+        "type": "double",
+        "name": "sx",
+        "label": "ROI Size X",
+        "description": "Width of the registration region"
+      },
+      {
+        "type": "double",
+        "name": "sy",
+        "label": "ROI Size Y",
+        "description": "Height of the registration region"
+      },
+      {
+        "type": "int",
+        "name": "tp_fixed",
+        "label": "Fixed Timepoint",
+        "description": "Timepoint of the fixed source to use for registration"
+      },
+      {
+        "type": "int",
+        "name": "tp_moving",
+        "label": "Moving Timepoint",
+        "description": "Timepoint of the moving source to use for registration"
+      },
+      {
+        "type": "boolean",
+        "name": "verbose",
+        "label": "Verbose",
+        "description": "When checked, outputs detailed registration progress information"
+      }
+    ],
+    "output": [
+      {
+        "type": "AffineTransform3D",
+        "name": "at3d",
+        "description": "The computed affine transformation to align moving to fixed"
+      },
+      {
+        "type": "boolean",
+        "name": "success"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.warpy.PairRegistrationElastix2DSplineRegisterCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.PairRegistrationElastix2DSplineRegisterCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy\u003eRegister Pair - Spline Elastix 2D",
+    "description": "Performs automatic 2D B-spline deformable registration using Elastix",
+    "input": [
+      {
+        "type": "String",
+        "name": "bounds",
+        "label": "ROI Mode",
+        "description": "How to define the region of interest: intersection of sources, union of sources, or custom coordinates"
+      },
+      {
+        "type": "String",
+        "name": "channels_fixed_csv",
+        "label": "Fixed Channels",
+        "description": "Channel indices of the fixed image to use for registration (comma separated, e.g., \u00270\u0027 or \u00270,1\u0027)"
+      },
+      {
+        "type": "String",
+        "name": "channels_moving_csv",
+        "label": "Moving Channels",
+        "description": "Channel indices of the moving image to use for registration (comma separated, e.g., \u00270\u0027 or \u00270,1\u0027)"
+      },
+      {
+        "type": "int",
+        "name": "nb_control_points_x",
+        "label": "Control Points X",
+        "description": "Number of B-spline control points along X axis (minimum 2, more \u003d finer deformation)"
+      },
+      {
+        "type": "double",
+        "name": "pixel_size_micrometer",
+        "label": "Pixel Size (um)",
+        "description": "Pixel size in micrometers for resampling during registration (larger \u003d faster but less precise)"
+      },
+      {
+        "type": "double",
+        "name": "px",
+        "label": "ROI Position X",
+        "description": "X coordinate of the ROI origin (only used when ROI Mode is \u0027custom\u0027)"
+      },
+      {
+        "type": "double",
+        "name": "py",
+        "label": "ROI Position Y",
+        "description": "Y coordinate of the ROI origin (only used when ROI Mode is \u0027custom\u0027)"
+      },
+      {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The registration pair to apply the registration to"
+      },
+      {
+        "type": "boolean",
+        "name": "show_imageplus_registration_result",
+        "label": "Show Result",
+        "description": "When checked, displays the registration result as an ImagePlus for verification"
+      },
+      {
+        "type": "double",
+        "name": "sx",
+        "label": "ROI Size X",
+        "description": "Width of the ROI (only used when ROI Mode is \u0027custom\u0027)"
+      },
+      {
+        "type": "double",
+        "name": "sy",
+        "label": "ROI Size Y",
+        "description": "Height of the ROI (only used when ROI Mode is \u0027custom\u0027)"
+      }
+    ],
+    "output": [
+      {
+        "type": "boolean",
+        "name": "success",
+        "label": "Success",
+        "description": "True if the registration completed successfully"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.warpy.PairRegistrationElastix2DAffineRegisterCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.PairRegistrationElastix2DAffineRegisterCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy\u003eRegister Pair - Affine Elastix 2D",
+    "description": "Performs automatic 2D affine registration using Elastix",
+    "input": [
+      {
+        "type": "String",
+        "name": "bounds",
+        "label": "ROI Mode",
+        "description": "How to define the region of interest: intersection of sources, union of sources, or custom coordinates"
+      },
+      {
+        "type": "String",
+        "name": "channels_fixed_csv",
+        "label": "Fixed Channels",
+        "description": "Channel indices of the fixed image to use for registration (comma separated, e.g., \u00270\u0027 or \u00270,1\u0027)"
+      },
+      {
+        "type": "String",
+        "name": "channels_moving_csv",
+        "label": "Moving Channels",
+        "description": "Channel indices of the moving image to use for registration (comma separated, e.g., \u00270\u0027 or \u00270,1\u0027)"
+      },
+      {
+        "type": "double",
+        "name": "pixel_size_micrometer",
+        "label": "Pixel Size (um)",
+        "description": "Pixel size in micrometers for resampling during registration (larger \u003d faster but less precise)"
+      },
+      {
+        "type": "double",
+        "name": "px",
+        "label": "ROI Position X",
+        "description": "X coordinate of the ROI origin (only used when ROI Mode is \u0027custom\u0027)"
+      },
+      {
+        "type": "double",
+        "name": "py",
+        "label": "ROI Position Y",
+        "description": "Y coordinate of the ROI origin (only used when ROI Mode is \u0027custom\u0027)"
+      },
+      {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The registration pair to apply the registration to"
+      },
+      {
+        "type": "boolean",
+        "name": "show_imageplus_registration_result",
+        "label": "Show Result",
+        "description": "When checked, displays the registration result as an ImagePlus for verification"
+      },
+      {
+        "type": "double",
+        "name": "sx",
+        "label": "ROI Size X",
+        "description": "Width of the ROI (only used when ROI Mode is \u0027custom\u0027)"
+      },
+      {
+        "type": "double",
+        "name": "sy",
+        "label": "ROI Size Y",
+        "description": "Height of the ROI (only used when ROI Mode is \u0027custom\u0027)"
+      }
+    ],
+    "output": [
+      {
+        "type": "boolean",
+        "name": "success",
+        "label": "Success",
+        "description": "True if the registration completed successfully"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.process.SourcesPyramidizeCommand": {
+    "name": "ch.epfl.biop.command.process.SourcesPyramidizeCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eSource - Pyramidize",
+    "description": "Creates a new multi-resolution pyramid source by downsampling",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The sources to add pyramid levels to"
+      }
+    ],
+    "output": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_out",
+        "description": "The sources with newly generated pyramid levels"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.warpy.wizard.WarpyRegistrationEditCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.wizard.WarpyRegistrationEditCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy (Wizard)\u003eWarpy - Edit Registration",
+    "description": "Opens BigWarp to manually edit an existing Warpy registration between QuPath entries",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "fixed_sources",
+        "label": "Fixed Source(s)",
+        "description": "Reference source(s) from the QuPath project"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "moving_sources",
+        "label": "Moving Source(s)",
+        "description": "Source(s) that were registered to the fixed reference"
+      },
+      {
+        "type": "boolean",
+        "name": "remove_z_offsets",
+        "label": "Remove Z Offsets",
+        "description": "When checked, removes Z position offsets from sources for 2D editing"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.workspace.FilterNodeNameAddCommand": {
+    "name": "ch.epfl.biop.command.workspace.FilterNodeNameAddCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eWorkspace\u003eTree\u003eTree - Filter By Name",
+    "description": "Adds a node in the tree view which selects the sources based on their name",
+    "input": [
+      {
+        "type": "String",
+        "name": "filter_name",
+        "label": "Filter Name",
+        "description": "Name for this filter node in the source tree view"
+      },
+      {
+        "type": "boolean",
+        "name": "match_case",
+        "label": "Match Case",
+        "description": "When checked, the name matching is case-sensitive"
+      },
+      {
+        "type": "boolean",
+        "name": "show_sources",
+        "label": "Show Sources",
+        "description": "When checked, matching sources are displayed; when unchecked, non-matching sources are shown"
+      },
+      {
+        "type": "String",
+        "name": "string_filter",
+        "label": "Name Contains",
+        "description": "Text pattern that source names must contain to match"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.importer.DatasetFromCZICreateCommand": {
+    "name": "ch.epfl.biop.command.importer.DatasetFromCZICreateCommand",
+    "description": "Creates a BigStitcher-compatible XML dataset from a CZI file",
+    "input": [
+      {
+        "type": "File",
+        "name": "czi_file",
+        "label": "CZI Input File",
+        "description": "The CZI file to convert for BigStitcher"
+      },
+      {
+        "type": "Boolean",
+        "name": "erase_if_file_already_exists",
+        "label": "Overwrite Existing File",
+        "description": "When checked, overwrites the output file if it already exists"
+      },
+      {
+        "type": "File",
+        "name": "xml_out",
+        "label": "Output XML File",
+        "description": "The XML file where the BigStitcher dataset will be saved"
+      }
+    ],
+    "output": [
+      {
+        "type": "File",
+        "name": "xml_out",
+        "label": "Output XML File",
+        "description": "The XML file where the BigStitcher dataset will be saved"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.dataset.DatasetEntitiesRemoveCommand": {
+    "name": "ch.epfl.biop.command.dataset.DatasetEntitiesRemoveCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDataset\u003eDataset - Remove Entities",
+    "description": "Removes specified entity types from a BDV dataset for compatibility with other tools",
+    "input": [
+      {
+        "type": "String",
+        "name": "entitiestoremove",
+        "label": "Entities to Remove",
+        "description": "Comma-separated list of entity types to remove (e.g., \u0027displaysettings, fileindex\u0027)"
+      },
+      {
+        "type": "File",
+        "name": "xmlin",
+        "label": "Input XML File",
+        "description": "The BDV XML dataset file to modify"
+      },
+      {
+        "type": "File",
+        "name": "xmlout",
+        "label": "Output XML File",
+        "description": "The XML file where the modified dataset will be saved"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.process.resample.SourcesSetAlphaCommand": {
+    "name": "ch.epfl.biop.command.process.resample.SourcesSetAlphaCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eFuse \u0026 Resample\u003eSource - Set Linear Blending Mask (L1 Alpha)",
+    "description": "Sets L1 distance-based alpha blending for smooth transitions at source edges",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The sources to apply L1 alpha blending to"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.process.transform.SourcesZOffsetRemoveCommand": {
+    "name": "ch.epfl.biop.command.process.transform.SourcesZOffsetRemoveCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eTransform\u003eSource - Remove Z Offset",
+    "description": "Removes the Z position offset from sources, centering them at Z\u003d0",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "apply_to_all_timepoints",
+        "label": "Apply to all timepoints",
+        "description": "If checked, removes Z offset for all timepoints independently"
+      },
+      {
+        "type": "String",
+        "name": "mode",
+        "label": "Mode",
+        "description": "Mutate modifies existing transform; Append adds a new transform layer"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The sources to remove Z offset from"
+      },
+      {
+        "type": "int",
+        "name": "timepoint",
+        "label": "Timepoint",
+        "description": "Timepoint used to compute the Z offset (ignored if \u0027Apply to all timepoints\u0027 is checked)"
+      }
+    ],
+    "output": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The sources to remove Z offset from"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.importer.DatasetFromOperettaCreateCommand": {
+    "name": "ch.epfl.biop.command.importer.DatasetFromOperettaCreateCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eImport\u003eDataset - Create [Operetta]",
+    "description": "Opens a PerkinElmer Operetta high-content imaging dataset in BigDataViewer",
+    "input": [
+      {
+        "type": "File",
+        "name": "folder",
+        "label": "Operetta Images Folder",
+        "description": "The \u0027Images\u0027 or \u0027flex\u0027 folder containing your Operetta dataset"
+      },
+      {
+        "type": "double",
+        "name": "max_display_value",
+        "label": "Max Display Value",
+        "description": "Maximum intensity value for display adjustment"
+      },
+      {
+        "type": "double",
+        "name": "min_display_value",
+        "label": "Min Display Value",
+        "description": "Minimum intensity value for display adjustment"
+      },
+      {
+        "type": "boolean",
+        "name": "show",
+        "label": "Show in Viewer",
+        "description": "When checked, displays the dataset in a new BigDataViewer window"
+      },
+      {
+        "type": "String",
+        "name": "unit",
+        "label": "World coordinate units",
+        "description": "Unit for the common coordinate system where all datasets will be positioned. Image calibrations will be converted to these units."
+      }
+    ],
+    "output": [
+      {
+        "type": "String",
+        "name": "dataset_name",
+        "label": "Dataset Name",
+        "description": "The name assigned to the opened dataset"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.workflow.elliptic.ExportEllipticProjection": {
+    "name": "ch.epfl.biop.command.workflow.elliptic.ExportEllipticProjection",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eSpecialized Workflows\u003eElliptic Transform\u003eSource - Export Elliptic 3D Transformed Sources",
+    "description": "Exports elliptically-transformed sources to an ImagePlus with spherical coordinate sampling",
+    "input": [
+      {
+        "type": "double",
+        "name": "angle_step"
+      },
+      {
+        "type": "String",
+        "name": "export_mode",
+        "label": "Export mode"
+      },
+      {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate"
+      },
+      {
+        "type": "int",
+        "name": "level",
+        "label": "Resolution Level",
+        "description": "Pyramid level to use (0 \u003d highest resolution)"
+      },
+      {
+        "type": "Boolean",
+        "name": "monitor",
+        "label": "Monitor loaded data"
+      },
+      {
+        "type": "String",
+        "name": "name",
+        "label": "Exported Image Name"
+      },
+      {
+        "type": "double",
+        "name": "phi_max"
+      },
+      {
+        "type": "double",
+        "name": "phi_min"
+      },
+      {
+        "type": "double",
+        "name": "r_max"
+      },
+      {
+        "type": "double",
+        "name": "r_min"
+      },
+      {
+        "type": "double",
+        "name": "radius_step"
+      },
+      {
+        "type": "String",
+        "name": "range_channels",
+        "label": "Selected Channels. Leave blank for all"
+      },
+      {
+        "type": "String",
+        "name": "range_frames",
+        "label": "Selected Timepoints. Leave blank for all"
+      },
+      {
+        "type": "String",
+        "name": "range_slices",
+        "label": "Selected Slices. Leave blank for all"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "Elliptically-transformed sources to export"
+      },
+      {
+        "type": "double",
+        "name": "theta_max"
+      },
+      {
+        "type": "double",
+        "name": "theta_min"
+      },
+      {
+        "type": "String",
+        "name": "unit"
+      }
+    ],
+    "output": [
+      {
+        "type": "ImagePlus",
+        "name": "imp_out"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.display.bdv.BdvGridCreateCommand": {
+    "name": "ch.epfl.biop.command.display.bdv.BdvGridCreateCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eBDV - Create Grid BDV",
+    "description": "Creates a new BigDataViewer window configured for grid display",
+    "input": [],
+    "output": [
+      {
+        "type": "BdvHandle",
+        "name": "bdvh",
+        "label": "Grid BDV Window",
+        "description": "The created BigDataViewer window with grid configuration"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.workflow.elliptic.Elliptic3DTransformerCommand": {
+    "name": "ch.epfl.biop.command.workflow.elliptic.Elliptic3DTransformerCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eSpecialized Workflows\u003eElliptic Transform\u003eSource - Elliptic 3D Transform Sources",
+    "description": "Applies an elliptical 3D transform to sources for spherical/ellipsoidal projection",
+    "input": [
+      {
+        "type": "Elliptical3DTransform",
+        "name": "e3dt",
+        "label": "Elliptical Transform",
+        "description": "The elliptical 3D transform to apply"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_in",
+        "label": "Select Source(s)",
+        "description": "The sources to transform"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.workflow.elliptic.Optimize3DEllipticalTransformCommand": {
+    "name": "ch.epfl.biop.command.workflow.elliptic.Optimize3DEllipticalTransformCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eSpecialized Workflows\u003eElliptic Transform\u003eSource - Elliptic 3D Transform Optimization",
+    "description": "Optimizes elliptical transform parameters to maximize intensity on the ellipsoid surface",
+    "input": [
+      {
+        "type": "double",
+        "name": "d_phi"
+      },
+      {
+        "type": "double",
+        "name": "d_theta"
+      },
+      {
+        "type": "Elliptical3DTransform",
+        "name": "e3dt",
+        "label": "Elliptical Transform",
+        "description": "The elliptical transform to optimize"
+      },
+      {
+        "type": "int",
+        "name": "max_optimisation_step"
+      },
+      {
+        "type": "double",
+        "name": "phi_max"
+      },
+      {
+        "type": "double",
+        "name": "phi_min"
+      },
+      {
+        "type": "boolean",
+        "name": "r1"
+      },
+      {
+        "type": "boolean",
+        "name": "r2"
+      },
+      {
+        "type": "boolean",
+        "name": "r3"
+      },
+      {
+        "type": "boolean",
+        "name": "rx"
+      },
+      {
+        "type": "boolean",
+        "name": "ry"
+      },
+      {
+        "type": "boolean",
+        "name": "rz"
+      },
+      {
+        "type": "SourceAndConverter",
+        "name": "source"
+      },
+      {
+        "type": "int",
+        "name": "source_mip_map_level"
+      },
+      {
+        "type": "int",
+        "name": "source_timepoint"
+      },
+      {
+        "type": "double",
+        "name": "sr1"
+      },
+      {
+        "type": "double",
+        "name": "sr2"
+      },
+      {
+        "type": "double",
+        "name": "sr3"
+      },
+      {
+        "type": "double",
+        "name": "srx"
+      },
+      {
+        "type": "double",
+        "name": "sry"
+      },
+      {
+        "type": "double",
+        "name": "srz"
+      },
+      {
+        "type": "double",
+        "name": "stx"
+      },
+      {
+        "type": "double",
+        "name": "sty"
+      },
+      {
+        "type": "double",
+        "name": "stz"
+      },
+      {
+        "type": "double",
+        "name": "theta_max"
+      },
+      {
+        "type": "double",
+        "name": "theta_min"
+      },
+      {
+        "type": "double",
+        "name": "threshold_intensity",
+        "label": "Intensity Threshold",
+        "description": "Minimum intensity value to include in optimization"
+      },
+      {
+        "type": "int",
+        "name": "timeout_seconds"
+      },
+      {
+        "type": "boolean",
+        "name": "tx"
+      },
+      {
+        "type": "boolean",
+        "name": "ty"
+      },
+      {
+        "type": "boolean",
+        "name": "tz"
+      }
+    ],
+    "output": [
+      {
+        "type": "Elliptical3DTransform",
+        "name": "e3dt",
+        "label": "Elliptical Transform",
+        "description": "The elliptical transform to optimize"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.display.bdv.region.UserPointsGetCommand": {
+    "name": "ch.epfl.biop.command.display.bdv.region.UserPointsGetCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eROI\u003eBDV - Define Points",
+    "description": "Allows the user to interactively select multiple points in a BigDataViewer window",
+    "input": [
+      {
+        "type": "BdvHandle",
+        "name": "bdvh",
+        "label": "Select BDV Window",
+        "description": "The BigDataViewer window where points will be selected"
+      },
+      {
+        "type": "Function",
+        "name": "graphical_handle_supplier",
+        "label": "Graphical Handle Supplier",
+        "description": "Optional function to create custom graphical handles for the points"
+      },
+      {
+        "type": "String",
+        "name": "message_for_user",
+        "label": "Message",
+        "description": "The instruction message displayed to the user"
+      },
+      {
+        "type": "int",
+        "name": "time_out_in_ms",
+        "label": "Timeout (ms)",
+        "description": "Maximum time to wait for selection in milliseconds (-1 for no timeout)"
+      }
+    ],
+    "output": [
+      {
+        "type": "List",
+        "name": "pts",
+        "label": "Selected Points",
+        "description": "The list of 3D points selected by the user"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.warpy.PairRegistrationBigWarp2DSplineRegisterCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.PairRegistrationBigWarp2DSplineRegisterCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy\u003eRegister Pair - Spline BigWarp 2D",
+    "description": "Opens BigWarp for interactive manual landmark-based spline registration",
+    "input": [
+      {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The registration pair to apply the registration to"
+      }
+    ],
+    "output": [
+      {
+        "type": "boolean",
+        "name": "success",
+        "label": "Success",
+        "description": "True if the registration completed successfully"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.workflow.lls7.LLS7CropCommand": {
+    "name": "ch.epfl.biop.command.workflow.lls7.LLS7CropCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eSpecialized Workflows\u003eLLS7\u003eSource - LLS7 - Crop 3D",
+    "description": "Crops a 3D region from LLS7 sources using an interactive bounding box",
+    "input": [
+      {
+        "type": "BdvHandle",
+        "name": "bdvh",
+        "label": "Select BDV Window",
+        "description": "The BigDataViewer window containing the sources to crop"
+      },
+      {
+        "type": "String",
+        "name": "image_name",
+        "label": "Output Name",
+        "description": "The name for the cropped image"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) to crop"
+      }
+    ],
+    "output": [
+      {
+        "type": "RealInterval",
+        "name": "interval",
+        "label": "Cropped Interval",
+        "description": "The selected 3D bounding box interval"
+      },
+      {
+        "type": "Boolean",
+        "name": "result",
+        "label": "Selection Valid",
+        "description": "True if the user confirmed the selection, false if cancelled"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.warpy.PairRegistrationManualAffineCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.PairRegistrationManualAffineCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy\u003eRegister Pair - Manual Affine",
+    "description": "Opens a viewer where the moving sources are manually dragged, rotated and scaled onto the fixed sources",
+    "input": [
+      {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The registration pair to apply the registration to"
+      }
+    ],
+    "output": [
+      {
+        "type": "boolean",
+        "name": "success",
+        "label": "Success",
+        "description": "True if the registration completed successfully"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.process.deconvolve.DistillPSFCommand": {
+    "name": "ch.epfl.biop.command.process.deconvolve.DistillPSFCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eDeconvolve\u003eSource - Distill PSF (Richardson Lucy GPU)",
+    "description": "Distills a PSF from a bead image and a mask of bead centres, using the GPU Richardson-Lucy engine (CLIJ2). Processes the whole volume as a single tile, so it needs a full GPU and a lot of VRAM.",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "auto_crop_xy",
+        "label": "Auto-crop XY to fit GPU memory",
+        "description": "Automatically crop the bead image and mask in XY (centred) to the largest size that fits the GPU, based on the memory fraction below. Z is left at full size by default."
+      },
+      {
+        "type": "boolean",
+        "name": "auto_crop_z",
+        "label": "Also auto-crop Z (not recommended)",
+        "description": "By default only XY is cropped. Enable to also shrink Z (isotropically with XY) if the volume still does not fit - this truncates the PSF along the optical axis."
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "beads",
+        "label": "Bead Image Source(s)",
+        "description": "One or more 3D images containing sub-resolution beads (e.g. the channels of a multi-channel acquisition). Each is distilled sequentially against the same point mask."
+      },
+      {
+        "type": "boolean",
+        "name": "crop_output",
+        "label": "Crop Output Around Centre",
+        "description": "Crop the distilled PSF, which sits at the centre of the volume, to the size below"
+      },
+      {
+        "type": "int",
+        "name": "device_index",
+        "label": "GPU Device Index",
+        "description": "Index of the GPU device the distillation will run on (see list above)"
+      },
+      {
+        "type": "double",
+        "name": "gpu_memory_fraction",
+        "label": "GPU Memory Fraction",
+        "description": "Fraction of the GPU\u0027s total memory the padded-FFT peak is allowed to reach (0.1 - 1.0). Lower is safer. Only used when auto-crop is enabled."
+      },
+      {
+        "type": "String",
+        "name": "name",
+        "label": "Name",
+        "description": "Name of the distilled PSF output source"
+      },
+      {
+        "type": "boolean",
+        "name": "non_circulant",
+        "label": "Non-Circulant",
+        "description": "When checked, uses non-circulant boundary conditions (reduces edge artifacts)"
+      },
+      {
+        "type": "int",
+        "name": "num_iterations",
+        "label": "Iterations",
+        "description": "Number of Richardson-Lucy iterations"
+      },
+      {
+        "type": "SourceAndConverter",
+        "name": "point_mask",
+        "label": "Bead Centres (Point Mask) Source",
+        "description": "A same-sized image with a single non-zero pixel at the centre of each bead"
+      },
+      {
+        "type": "int",
+        "name": "psf_size_x",
+        "label": "PSF Size X",
+        "description": "Cropped PSF width (clamped to the image size)"
+      },
+      {
+        "type": "int",
+        "name": "psf_size_y",
+        "label": "PSF Size Y",
+        "description": "Cropped PSF height (clamped to the image size)"
+      },
+      {
+        "type": "int",
+        "name": "psf_size_z",
+        "label": "PSF Size Z",
+        "description": "Cropped PSF depth (clamped to the image size, never zero-padded)"
+      },
+      {
+        "type": "float",
+        "name": "regularization_factor",
+        "label": "Regularization Factor",
+        "description": "Regularization strength to prevent noise amplification (0 \u003d no regularization)"
+      }
+    ],
+    "output": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "psf_out",
+        "description": "The distilled PSF sources, one per input bead source (same order)"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.display.bdv.region.UserRectangleGetCommand": {
+    "name": "ch.epfl.biop.command.display.bdv.region.UserRectangleGetCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eROI\u003eBDV - Define Rectangle",
+    "description": "Allows the user to interactively select a rectangle in a BigDataViewer window",
+    "input": [
+      {
+        "type": "BdvHandle",
+        "name": "bdvh",
+        "label": "Select BDV Window",
+        "description": "The BigDataViewer window where the rectangle will be selected"
+      },
+      {
+        "type": "String",
+        "name": "message_for_user",
+        "label": "Message",
+        "description": "The instruction message displayed to the user"
+      },
+      {
+        "type": "RealPoint",
+        "name": "p1",
+        "label": "Corner Point 1",
+        "description": "First corner point of the rectangle (can be preset or will be set by user)"
+      },
+      {
+        "type": "RealPoint",
+        "name": "p2",
+        "label": "Corner Point 2",
+        "description": "Opposite corner point of the rectangle (can be preset or will be set by user)"
+      },
+      {
+        "type": "int",
+        "name": "time_out_in_ms",
+        "label": "Timeout (ms)",
+        "description": "Maximum time to wait for selection in milliseconds (-1 for no timeout)"
+      }
+    ],
+    "output": [
+      {
+        "type": "RealPoint",
+        "name": "p1",
+        "label": "Corner Point 1",
+        "description": "First corner point of the rectangle (can be preset or will be set by user)"
+      },
+      {
+        "type": "RealPoint",
+        "name": "p2",
+        "label": "Corner Point 2",
+        "description": "Opposite corner point of the rectangle (can be preset or will be set by user)"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.process.transform.SourcesWarpingEditCommand": {
+    "name": "ch.epfl.biop.command.process.transform.SourcesWarpingEditCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eSource - Edit Sources Warping",
+    "description": "Opens BigWarp to edit the warping transform of already-warped sources",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "fixed_sources",
+        "label": "Fixed Source(s)",
+        "description": "Optional reference sources for visual alignment"
+      },
+      {
+        "type": "boolean",
+        "name": "is2d",
+        "label": "2D Mode",
+        "description": "When checked, constrains editing to 2D"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "moving_sources",
+        "label": "Moving Source(s)",
+        "description": "The warped sources to edit (must be WarpedSource type)"
+      }
+    ],
+    "output": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "moving_sources",
+        "label": "Moving Source(s)",
+        "description": "The warped sources to edit (must be WarpedSource type)"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.warpy.PairRegistrationRotateCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.PairRegistrationRotateCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy\u003eRegister Pair - Rotate",
+    "description": "Applies a rotation transformation to the moving sources around X, Y, or Z axis",
+    "input": [
+      {
+        "type": "String",
+        "name": "angle",
+        "label": "Angle",
+        "description": "Rotation angle in degrees"
+      },
+      {
+        "type": "String",
+        "name": "axis",
+        "label": "Axis",
+        "description": "Axis around which to rotate the moving sources"
+      },
+      {
+        "type": "boolean",
+        "name": "keep_center",
+        "label": "Keep Center",
+        "description": "When checked, maintains the center position of the moving sources unchanged"
+      },
+      {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The registration pair to apply the registration to"
+      }
+    ],
+    "output": [
+      {
+        "type": "boolean",
+        "name": "success",
+        "label": "Success",
+        "description": "True if the registration completed successfully"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.workflow.elliptic.Elliptic3DTransformCreatorCommand": {
+    "name": "ch.epfl.biop.command.workflow.elliptic.Elliptic3DTransformCreatorCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eSpecialized Workflows\u003eElliptic Transform\u003eSource - New Elliptic 3D Transform",
+    "description": "Creates a new elliptical 3D transform with specified radii, rotation, and center",
+    "input": [
+      {
+        "type": "double",
+        "name": "center_x",
+        "label": "Center X",
+        "description": "X coordinate of ellipse center"
+      },
+      {
+        "type": "double",
+        "name": "center_y",
+        "label": "Center Y",
+        "description": "Y coordinate of ellipse center"
+      },
+      {
+        "type": "double",
+        "name": "center_z",
+        "label": "Center Z",
+        "description": "Z coordinate of ellipse center"
+      },
+      {
+        "type": "double",
+        "name": "radius_x",
+        "label": "Radius X",
+        "description": "Radius along the first ellipse axis"
+      },
+      {
+        "type": "double",
+        "name": "radius_y",
+        "label": "Radius Y",
+        "description": "Radius along the second ellipse axis"
+      },
+      {
+        "type": "double",
+        "name": "radius_z",
+        "label": "Radius Z",
+        "description": "Radius along the third ellipse axis"
+      },
+      {
+        "type": "double",
+        "name": "rotation_x",
+        "label": "Rotation X",
+        "description": "Euler rotation angle around X axis (radians)"
+      },
+      {
+        "type": "double",
+        "name": "rotation_y",
+        "label": "Rotation Y",
+        "description": "Euler rotation angle around Y axis (radians)"
+      },
+      {
+        "type": "double",
+        "name": "rotation_z",
+        "label": "Rotation Z",
+        "description": "Euler rotation angle around Z axis (radians)"
+      }
+    ],
+    "output": [
+      {
+        "type": "Elliptical3DTransform",
+        "name": "e3dt",
+        "description": "The created elliptical 3D transform"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.process.SourcesResolutionLevelsCropCommand": {
+    "name": "ch.epfl.biop.command.process.SourcesResolutionLevelsCropCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eSource - Crop Resolution Levels",
+    "description": "Creates a new source with only a subset of resolution levels",
+    "input": [
+      {
+        "type": "int",
+        "name": "maxLevel",
+        "label": "Max Level",
+        "description": "Maximum resolution level to keep (inclusive)"
+      },
+      {
+        "type": "int",
+        "name": "minLevel",
+        "label": "Min Level",
+        "description": "Minimum resolution level to keep (0 \u003d highest resolution)"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Sources",
+        "description": "The sources to crop resolution levels from"
+      },
+      {
+        "type": "String",
+        "name": "suffix",
+        "label": "Name Suffix",
+        "description": "Suffix to append to the source name"
+      }
+    ],
+    "output": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_out",
+        "description": "The resulting sources with cropped resolution levels"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.SourcesRealTransformCommand": {
+    "name": "ch.epfl.biop.command.register.SourcesRealTransformCommand",
+    "description": "Applies a non-linear real transform (e.g., spline) to sources",
+    "input": [
+      {
+        "type": "RealTransform",
+        "name": "rt",
+        "label": "Transform",
+        "description": "The real transform to apply (e.g., thin plate spline)"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_in",
+        "label": "Select Source(s)",
+        "description": "The sources to transform"
+      }
+    ],
+    "output": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_out",
+        "description": "The transformed sources"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.process.transform.SourcesRecenterCommand": {
+    "name": "ch.epfl.biop.command.process.transform.SourcesRecenterCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eTransform\u003eSource - Recenter Sources",
+    "description": "Moves sources so their center is at the specified coordinates",
+    "input": [
+      {
+        "type": "double",
+        "name": "cx",
+        "label": "Center X",
+        "description": "Target X coordinate for the source center"
+      },
+      {
+        "type": "double",
+        "name": "cy",
+        "label": "Center Y",
+        "description": "Target Y coordinate for the source center"
+      },
+      {
+        "type": "double",
+        "name": "cz",
+        "label": "Center Z",
+        "description": "Target Z coordinate for the source center"
+      },
+      {
+        "type": "String",
+        "name": "mode",
+        "label": "Mode",
+        "description": "Mutate modifies existing transform; Append adds a new transform layer"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The sources to recenter"
+      },
+      {
+        "type": "int",
+        "name": "timepoint",
+        "label": "Timepoint",
+        "description": "Timepoint used for computing the recentering transform"
+      }
+    ],
+    "output": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The sources to recenter"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.Elastix2DSparsePointsRegisterCommand": {
+    "name": "ch.epfl.biop.command.register.Elastix2DSparsePointsRegisterCommand",
+    "description": "Register two 2D sources by automatically registering small fields of view \nsurrounding the specified points of interests using elastix. The returned result \nis a thin plate spline transform object that can be applied to other sources then \nedited in BigWarp.",
+    "input": [
+      {
+        "type": "double",
+        "name": "background_offset_value_fixed",
+        "label": "Background offset value for fixed image"
+      },
+      {
+        "type": "double",
+        "name": "background_offset_value_moving",
+        "label": "Background offset value for moving image"
+      },
+      {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "When checked, uses interpolation when resampling images"
+      },
+      {
+        "type": "int",
+        "name": "level_fixed_source",
+        "label": "Fixed Resolution Level",
+        "description": "Resolution level of the fixed source (0 \u003d highest resolution)"
+      },
+      {
+        "type": "int",
+        "name": "level_moving_source",
+        "label": "Moving Resolution Level",
+        "description": "Resolution level of the moving source (0 \u003d highest resolution)"
+      },
+      {
+        "type": "int",
+        "name": "max_iteration_per_scale",
+        "label": "Number of iterations for each scale (default 100)"
+      },
+      {
+        "type": "boolean",
+        "name": "parallel",
+        "label": "Parallel registration of points of interests"
+      },
+      {
+        "type": "String",
+        "name": "pt_list_coordinates",
+        "label": "Location of points of interest (px,py) used for registration"
+      },
+      {
+        "type": "double",
+        "name": "px_size_in_current_unit",
+        "label": "Resampling Pixel Size",
+        "description": "Pixel size in world coordinates units used when resampling images for registration"
+      },
+      {
+        "type": "boolean",
+        "name": "show_points",
+        "label": "Show point of interests registration in ImageJ1 (disables parallelisation)"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_fixed",
+        "label": "Fixed Source(s)",
+        "description": "Reference source(s) that remain stationary during registration"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_moving",
+        "label": "Moving Source(s)",
+        "description": "Source(s) to be aligned to the fixed reference"
+      },
+      {
+        "type": "double",
+        "name": "sx",
+        "label": "Size in physical units of each fov used for the registration of each point"
+      },
+      {
+        "type": "double",
+        "name": "sy",
+        "label": "Size in physical units of each fov used for the registration of each point"
+      },
+      {
+        "type": "Task",
+        "name": "task"
+      },
+      {
+        "type": "int",
+        "name": "tp_fixed",
+        "label": "Fixed Timepoint",
+        "description": "Timepoint of the fixed source to use for registration"
+      },
+      {
+        "type": "int",
+        "name": "tp_moving",
+        "label": "Moving Timepoint",
+        "description": "Timepoint of the moving source to use for registration"
+      },
+      {
+        "type": "boolean",
+        "name": "verbose"
+      },
+      {
+        "type": "double",
+        "name": "z_location",
+        "label": "Location in z (default 0)"
+      }
+    ],
+    "output": [
+      {
+        "type": "RealTransform",
+        "name": "tst"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.process.resample.SourcesGridModelMakeCommand": {
+    "name": "ch.epfl.biop.command.process.resample.SourcesGridModelMakeCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eFuse \u0026 Resample\u003eSource - Define Resampling Grid",
+    "description": "Creates an empty model source that spans the bounding box of multiple sources with custom voxel size",
+    "input": [
+      {
+        "type": "int",
+        "name": "downscale_x",
+        "label": "X Downscale Factor",
+        "description": "Downscaling factor between resolution levels in X"
+      },
+      {
+        "type": "int",
+        "name": "downscale_y",
+        "label": "Y Downscale Factor",
+        "description": "Downscaling factor between resolution levels in Y"
+      },
+      {
+        "type": "int",
+        "name": "downscale_z",
+        "label": "Z Downscale Factor",
+        "description": "Downscaling factor between resolution levels in Z"
+      },
+      {
+        "type": "int",
+        "name": "n_resolution_levels",
+        "label": "Resolution Levels",
+        "description": "Number of pyramid resolution levels to create"
+      },
+      {
+        "type": "int",
+        "name": "n_timepoints",
+        "label": "Number of Timepoints",
+        "description": "Number of timepoints in the model source"
+      },
+      {
+        "type": "String",
+        "name": "name",
+        "label": "Model Name",
+        "description": "Name for the model source"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The sources whose combined bounding box defines the model extent"
+      },
+      {
+        "type": "int",
+        "name": "timepoint",
+        "label": "Model Timepoint",
+        "description": "Reference timepoint used to compute the bounding box"
+      },
+      {
+        "type": "double",
+        "name": "vox_size_x",
+        "label": "Voxel Size X",
+        "description": "Output voxel size in X dimension"
+      },
+      {
+        "type": "double",
+        "name": "vox_size_y",
+        "label": "Voxel Size Y",
+        "description": "Output voxel size in Y dimension"
+      },
+      {
+        "type": "double",
+        "name": "vox_size_z",
+        "label": "Voxel Size Z",
+        "description": "Output voxel size in Z dimension"
+      }
+    ],
+    "output": [
+      {
+        "type": "SourceAndConverter",
+        "name": "source_out",
+        "description": "The resulting model source spanning all input sources"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.exporter.SourcesToMultipleImagePlusExportCommand": {
+    "name": "ch.epfl.biop.command.exporter.SourcesToMultipleImagePlusExportCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eExport\u003eSource - Export To ImagePlus",
+    "description": "Exports sources to multiple ImagePlus files, respecting their spatial locations",
+    "input": [
+      {
+        "type": "String",
+        "name": "entities_split",
+        "label": "Split by Entities",
+        "description": "Comma-separated entity types to split by (e.g., \u0027channel, imagename\u0027)"
+      },
+      {
+        "type": "String",
+        "name": "export_mode",
+        "label": "Export Mode",
+        "description": "Normal loads all data; Virtual creates a lazy-loading stack"
+      },
+      {
+        "type": "int",
+        "name": "level",
+        "label": "Resolution Level",
+        "description": "Pyramid level to export (0 \u003d highest resolution)"
+      },
+      {
+        "type": "Boolean",
+        "name": "monitor",
+        "label": "Monitor Progress",
+        "description": "When checked, displays a progress indicator during export"
+      },
+      {
+        "type": "Boolean",
+        "name": "parallel",
+        "label": "Export in Parallel",
+        "description": "When checked, exports multiple images simultaneously"
+      },
+      {
+        "type": "Boolean",
+        "name": "parallel_c",
+        "label": "Parallel Channels",
+        "description": "When checked, acquires channels in parallel (Normal mode only)"
+      },
+      {
+        "type": "Boolean",
+        "name": "parallel_t",
+        "label": "Parallel Timepoints",
+        "description": "When checked, acquires timepoints in parallel (Normal mode only)"
+      },
+      {
+        "type": "Boolean",
+        "name": "parallel_z",
+        "label": "Parallel Slices",
+        "description": "When checked, acquires Z-slices in parallel (Normal mode only)"
+      },
+      {
+        "type": "String",
+        "name": "range_channels",
+        "label": "Selected Channels",
+        "description": "Channel indices to export (e.g., \u00270:2\u0027 or \u00270,1\u0027). Leave blank for all"
+      },
+      {
+        "type": "String",
+        "name": "range_frames",
+        "label": "Selected Timepoints",
+        "description": "Timepoint indices to export (e.g., \u00270:10\u0027). Leave blank for all"
+      },
+      {
+        "type": "String",
+        "name": "range_slices",
+        "label": "Selected Slices",
+        "description": "Z-slice indices to export (e.g., \u00270:100\u0027). Leave blank for all"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The sources to export"
+      },
+      {
+        "type": "boolean",
+        "name": "verbose"
+      }
+    ],
+    "output": [
+      {
+        "type": "List",
+        "name": "imps_out",
+        "label": "Exported Images",
+        "description": "The exported ImagePlus images"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.SourcesAffineTransformCommand": {
+    "name": "ch.epfl.biop.command.register.SourcesAffineTransformCommand",
+    "description": "Applies an affine transformation to sources over a range of timepoints",
+    "input": [
+      {
+        "type": "AffineTransform3D",
+        "name": "at3d",
+        "label": "Transform",
+        "description": "The affine transformation to apply"
+      },
+      {
+        "type": "String",
+        "name": "mode",
+        "label": "Mode",
+        "description": "Mutate modifies existing transform; Append adds a new transform layer"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_in",
+        "label": "Select Source(s)",
+        "description": "The sources to transform"
+      },
+      {
+        "type": "int",
+        "name": "timepoint_begin",
+        "label": "Start Timepoint",
+        "description": "First timepoint to apply the transform to"
+      },
+      {
+        "type": "int",
+        "name": "timepoint_end",
+        "label": "End Timepoint",
+        "description": "Last timepoint to apply the transform to"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.register.warpy.PairRegistrationFlipCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.PairRegistrationFlipCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy\u003eRegister Pair - Flip",
+    "description": "Applies a flip transformation to the moving sources along X, Y, or Z axis",
+    "input": [
+      {
+        "type": "String",
+        "name": "axis",
+        "label": "Axis",
+        "description": "Axis along which to flip the moving sources"
+      },
+      {
+        "type": "boolean",
+        "name": "keep_center",
+        "label": "Keep Center",
+        "description": "When checked, maintains the center position of the moving sources unchanged"
+      },
+      {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The registration pair to apply the registration to"
+      }
+    ],
+    "output": [
+      {
+        "type": "boolean",
+        "name": "success",
+        "label": "Success",
+        "description": "True if the registration completed successfully"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.warpy.PairRegistrationQuPathExportCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.PairRegistrationQuPathExportCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy\u003eRegister Pair - Export To QuPath",
+    "description": "Exports the registration transforms to a QuPath project for use in Warpy",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "allow_overwrite",
+        "label": "Allow Overwrite",
+        "description": "When checked, overwrites existing registration files in the QuPath project"
+      },
+      {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The registration pair to export"
+      }
+    ],
+    "output": [
+      {
+        "type": "boolean",
+        "name": "success",
+        "label": "Success",
+        "description": "True if the registration export completed successfully"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.warpy.wizard.WarpyRegisteredImageExportCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.wizard.WarpyRegisteredImageExportCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy (Wizard)\u003eWarpy - Export Registered Image",
+    "description": "Exports Warpy-registered sources from a QuPath project to a fused OME-TIFF file",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "fixed_sources",
+        "label": "Fixed Source(s)",
+        "description": "Reference source(s) that define the output geometry"
+      },
+      {
+        "type": "boolean",
+        "name": "include_fixed_sources",
+        "label": "Include Fixed Sources",
+        "description": "When checked, includes fixed sources as channels in the exported image"
+      },
+      {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "When checked, uses interpolation when resampling"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "moving_sources",
+        "label": "Moving Source(s)",
+        "description": "Registered source(s) to export"
+      },
+      {
+        "type": "int",
+        "name": "pre_compute_downsample_xy",
+        "label": "Transform Downsampling",
+        "description": "Downsampling factor for pre-computed deformation field (higher \u003d faster but less precise)"
+      },
+      {
+        "type": "boolean",
+        "name": "pre_compute_transform",
+        "label": "Pre-compute Transform",
+        "description": "When checked, pre-computes the deformation field (faster for \u003e40 landmarks)"
+      },
+      {
+        "type": "boolean",
+        "name": "remove_z_offsets",
+        "label": "Remove Z Offsets",
+        "description": "When checked, removes Z position offsets from sources"
+      },
+      {
+        "type": "double",
+        "name": "upsample",
+        "label": "Scaling Factor",
+        "description": "Factor to up (\u003e1) or downsample (\u003c1) the exported image resolution"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.register.warpy.wizard.Wizard2DWholeScanRegisterCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.wizard.Wizard2DWholeScanRegisterCommand",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "automated_affine_registration",
+        "label": "2 - Auto affine registration"
+      },
+      {
+        "type": "boolean",
+        "name": "automated_spline_registration",
+        "label": "3 - Semi auto spline registration"
+      },
+      {
+        "type": "double",
+        "name": "background_offset_value_fixed",
+        "label": "Background offset value for fixed image"
+      },
+      {
+        "type": "double",
+        "name": "background_offset_value_moving",
+        "label": "Background offset value for moving image"
+      },
+      {
+        "type": "boolean",
+        "name": "center_moving_image",
+        "label": "0 - Center moving image with fixed image"
+      },
+      {
+        "type": "double",
+        "name": "coarse_pixel_size_um",
+        "label": "Pixel size for coarse registration in microns (default 10)"
+      },
+      {
+        "type": "SourceAndConverter",
+        "name": "fixed",
+        "label": "Fixed reference source"
+      },
+      {
+        "type": "boolean",
+        "name": "manual_rigid_registration",
+        "label": "1 - Manual rigid registration"
+      },
+      {
+        "type": "boolean",
+        "name": "manual_spline_registration",
+        "label": "4 - Manual spline registration (BigWarp)"
+      },
+      {
+        "type": "int",
+        "name": "max_iteration_number_per_scale",
+        "label": "Number of iterations for each scale (default 100)"
+      },
+      {
+        "type": "SourceAndConverter",
+        "name": "moving",
+        "label": "Moving source used for registration to the reference"
+      },
+      {
+        "type": "double",
+        "name": "patch_size_um",
+        "label": "Patch size for registration in microns (default 500)"
+      },
+      {
+        "type": "double",
+        "name": "precise_pixel_size_um",
+        "label": "Pixel size for precise patch registration in microns (default 1)"
+      },
+      {
+        "type": "boolean",
+        "name": "remove_z_offset",
+        "label": "Remove images z-offsets"
+      },
+      {
+        "type": "boolean",
+        "name": "show_details",
+        "label": "Show results of automated registrations (breaks parallelization)"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_to_transform",
+        "label": "Sources to transform, including the moving source if needed"
+      },
+      {
+        "type": "boolean",
+        "name": "verbose"
+      }
+    ],
+    "output": [
+      {
+        "type": "RealTransform",
+        "name": "transformation"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "transformed_sources"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.display.bdv.export.BdvViewToImagePlusExportCommand": {
+    "name": "ch.epfl.biop.command.display.bdv.export.BdvViewToImagePlusExportCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eExport\u003eBDV - Export Current View As ImagePlus",
+    "description": "Exports sources as ImagePlus with full control over sampling and region",
+    "input": [
+      {
+        "type": "BdvHandle",
+        "name": "bdv_h",
+        "label": "BDV Window",
+        "description": "The BigDataViewer window to export from"
+      },
+      {
+        "type": "String",
+        "name": "capture_name",
+        "label": "Capture Name",
+        "description": "Name for the exported ImagePlus"
+      },
+      {
+        "type": "String",
+        "name": "export_mode",
+        "label": "Export Mode",
+        "description": "Normal loads all data; Virtual creates a lazy-loading stack"
+      },
+      {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "When checked, uses interpolation when resampling"
+      },
+      {
+        "type": "boolean",
+        "name": "match_window",
+        "label": "Match Window Size",
+        "description": "When checked, uses the BDV window dimensions for X and Y size"
+      },
+      {
+        "type": "Boolean",
+        "name": "parallel_c",
+        "label": "Parallel Channels",
+        "description": "When checked, acquires channels in parallel (Normal mode only)"
+      },
+      {
+        "type": "Boolean",
+        "name": "parallel_t",
+        "label": "Parallel Timepoints",
+        "description": "When checked, acquires timepoints in parallel (Normal mode only)"
+      },
+      {
+        "type": "Boolean",
+        "name": "parallel_z",
+        "label": "Parallel Slices",
+        "description": "When checked, acquires Z-slices in parallel (Normal mode only)"
+      },
+      {
+        "type": "double",
+        "name": "sampling_xy",
+        "label": "XY Pixel Size",
+        "description": "Output pixel size in XY (world coordinates units)"
+      },
+      {
+        "type": "double",
+        "name": "sampling_z",
+        "label": "Z Pixel Size",
+        "description": "Output pixel size in Z (world coordinates units)"
+      },
+      {
+        "type": "String",
+        "name": "selected_timepoints_str",
+        "label": "Selected Timepoints",
+        "description": "Timepoints to export (e.g., \u00270:10\u0027 or \u00270,2,4\u0027). Leave blank for all"
+      },
+      {
+        "type": "double",
+        "name": "size_x",
+        "label": "Size X",
+        "description": "Total width in world coordinates units"
+      },
+      {
+        "type": "double",
+        "name": "size_y",
+        "label": "Size Y",
+        "description": "Total height in world coordinates units"
+      },
+      {
+        "type": "double",
+        "name": "size_z",
+        "label": "Half Thickness Z",
+        "description": "Half-thickness above and below the current plane (0 for single slice)"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The source(s) to export"
+      },
+      {
+        "type": "String",
+        "name": "unit",
+        "label": "Unit",
+        "description": "Physical unit for the output image calibration"
+      }
+    ],
+    "output": [
+      {
+        "type": "List",
+        "name": "images",
+        "label": "Exported Images",
+        "description": "The exported ImagePlus images"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.process.resample.SourcesFuseAndResampleCommand": {
+    "name": "ch.epfl.biop.command.process.resample.SourcesFuseAndResampleCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eFuse \u0026 Resample\u003eSource - Fuse And Resample Sources",
+    "description": "Fuses multiple sources into one, resampled to match a model source\u0027s grid",
+    "input": [
+      {
+        "type": "String",
+        "name": "blending_mode",
+        "label": "Blending Mode",
+        "description": "Method used to combine overlapping sources"
+      },
+      {
+        "type": "boolean",
+        "name": "cache",
+        "label": "Cache",
+        "description": "When checked, caches computed blocks in memory"
+      },
+      {
+        "type": "int",
+        "name": "cache_bounds",
+        "label": "Cache Size Limit",
+        "description": "Maximum number of blocks in cache (-1 \u003d unlimited)"
+      },
+      {
+        "type": "int",
+        "name": "cache_x",
+        "label": "Cache Block X",
+        "description": "Cache block size in X dimension"
+      },
+      {
+        "type": "int",
+        "name": "cache_y",
+        "label": "Cache Block Y",
+        "description": "Cache block size in Y dimension"
+      },
+      {
+        "type": "int",
+        "name": "cache_z",
+        "label": "Cache Block Z",
+        "description": "Cache block size in Z dimension"
+      },
+      {
+        "type": "int",
+        "name": "defaultmipmaplevel",
+        "label": "Default MipMap Level",
+        "description": "Pyramid level to use if not reusing mipmaps (0 \u003d highest resolution)"
+      },
+      {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "When checked, uses interpolation when resampling"
+      },
+      {
+        "type": "SourceAndConverter",
+        "name": "model",
+        "label": "Model Source",
+        "description": "The source whose grid defines the output resolution and dimensions"
+      },
+      {
+        "type": "int",
+        "name": "n_threads",
+        "label": "Number of Threads",
+        "description": "Number of parallel threads for computation"
+      },
+      {
+        "type": "String",
+        "name": "name",
+        "label": "Output Name",
+        "description": "Name for the fused resampled source"
+      },
+      {
+        "type": "boolean",
+        "name": "reusemipmaps",
+        "label": "Re-use MipMaps",
+        "description": "When checked, uses existing pyramid levels for efficiency"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The sources to fuse together"
+      }
+    ],
+    "output": [
+      {
+        "type": "SourceAndConverter",
+        "name": "source_out",
+        "label": "Fused Source",
+        "description": "The resulting fused and resampled source"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.process.SourcesTimeShiftDuplicateCommand": {
+    "name": "ch.epfl.biop.command.process.SourcesTimeShiftDuplicateCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eSource - Shift Timepoints",
+    "description": "Creates a new source with timepoints offset by a fixed amount",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Sources",
+        "description": "The sources to time-shift"
+      },
+      {
+        "type": "String",
+        "name": "suffix",
+        "label": "Output Name",
+        "description": "Suffix for the time-shifted source"
+      },
+      {
+        "type": "int",
+        "name": "timeshift",
+        "label": "Time Shift",
+        "description": "Number of timepoints to shift (positive \u003d forward, negative \u003d backward)"
+      }
+    ],
+    "output": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_out",
+        "description": "The resulting time-shifted source"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.warpy.PairRegistrationCreateAdvancedCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.PairRegistrationCreateAdvancedCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy\u003eCreate Registration Pair (Specify Timepoint)",
+    "description": "Creates a new registration pair from fixed and moving sources for the Warpy workflowq, specifying timepoint",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "fixed_sources",
+        "label": "Fixed Source(s)",
+        "description": "The reference source(s) that will remain stationary during registration"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "moving_sources",
+        "label": "Moving Source(s)",
+        "description": "The source(s) to be registered and aligned to the fixed source(s)"
+      },
+      {
+        "type": "String",
+        "name": "registration_name",
+        "label": "Registration Name",
+        "description": "A unique name to identify this registration pair"
+      },
+      {
+        "type": "Integer",
+        "name": "timepoint_fixed"
+      },
+      {
+        "type": "Integer",
+        "name": "timepoint_moving"
+      }
+    ],
+    "output": [
+      {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The created registration pair object"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.display.bdv.region.UserBoxGetCommand": {
+    "name": "ch.epfl.biop.command.display.bdv.region.UserBoxGetCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eROI\u003eBDV - Define Box",
+    "description": "Allows the user to interactively select a 3D bounding box in a BigDataViewer window",
+    "input": [
+      {
+        "type": "BdvHandle",
+        "name": "bdvh",
+        "label": "Select BDV Window",
+        "description": "The BigDataViewer window where the box will be selected"
+      },
+      {
+        "type": "double",
+        "name": "max_x",
+        "label": "Range Max X",
+        "description": "Maximum allowed X coordinate for the box"
+      },
+      {
+        "type": "double",
+        "name": "max_y",
+        "label": "Range Max Y",
+        "description": "Maximum allowed Y coordinate for the box"
+      },
+      {
+        "type": "double",
+        "name": "max_z",
+        "label": "Range Max Z",
+        "description": "Maximum allowed Z coordinate for the box"
+      },
+      {
+        "type": "String",
+        "name": "message",
+        "label": "Message",
+        "description": "The instruction message displayed to the user"
+      },
+      {
+        "type": "double",
+        "name": "min_x",
+        "label": "Range Min X",
+        "description": "Minimum allowed X coordinate for the box"
+      },
+      {
+        "type": "double",
+        "name": "min_y",
+        "label": "Range Min Y",
+        "description": "Minimum allowed Y coordinate for the box"
+      },
+      {
+        "type": "double",
+        "name": "min_z",
+        "label": "Range Min Z",
+        "description": "Minimum allowed Z coordinate for the box"
+      },
+      {
+        "type": "double",
+        "name": "xmax_ini",
+        "label": "Initial Max X",
+        "description": "Initial X maximum for the box"
+      },
+      {
+        "type": "double",
+        "name": "xmin_ini",
+        "label": "Initial Min X",
+        "description": "Initial X minimum for the box"
+      },
+      {
+        "type": "double",
+        "name": "ymax_ini",
+        "label": "Initial Max Y",
+        "description": "Initial Y maximum for the box"
+      },
+      {
+        "type": "double",
+        "name": "ymin_ini",
+        "label": "Initial Min Y",
+        "description": "Initial Y minimum for the box"
+      },
+      {
+        "type": "double",
+        "name": "zmax_ini",
+        "label": "Initial Max Z",
+        "description": "Initial Z maximum for the box"
+      },
+      {
+        "type": "double",
+        "name": "zmin_ini",
+        "label": "Initial Min Z",
+        "description": "Initial Z minimum for the box"
+      }
+    ],
+    "output": [
+      {
+        "type": "RealInterval",
+        "name": "interval",
+        "label": "Selected Interval",
+        "description": "The 3D bounding box interval selected by the user"
+      },
+      {
+        "type": "Boolean",
+        "name": "result",
+        "label": "Selection Valid",
+        "description": "True if the user confirmed the selection, false if cancelled"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.display.bdv.export.BdvViewToImagePlusBasicExportCommand": {
+    "name": "ch.epfl.biop.command.display.bdv.export.BdvViewToImagePlusBasicExportCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eExport\u003eBDV - Export Current View As ImagePlus (Match Window)",
+    "description": "Exports the current BDV view as ImagePlus with automatic settings",
+    "input": [
+      {
+        "type": "BdvHandle",
+        "name": "bdv_h",
+        "label": "BDV Window",
+        "description": "The BigDataViewer window to export from"
+      },
+      {
+        "type": "String",
+        "name": "capture_name",
+        "label": "Capture Name",
+        "description": "Name for the exported ImagePlus"
+      },
+      {
+        "type": "String",
+        "name": "export_mode",
+        "label": "Export Mode",
+        "description": "Normal loads all data; Virtual creates a lazy-loading stack"
+      },
+      {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "When checked, uses interpolation when resampling"
+      },
+      {
+        "type": "Boolean",
+        "name": "parallel_c",
+        "label": "Parallel Channels",
+        "description": "When checked, acquires channels in parallel (Normal mode only)"
+      },
+      {
+        "type": "Boolean",
+        "name": "parallel_t",
+        "label": "Parallel Timepoints",
+        "description": "When checked, acquires timepoints in parallel (Normal mode only)"
+      },
+      {
+        "type": "Boolean",
+        "name": "parallel_z",
+        "label": "Parallel Slices",
+        "description": "When checked, acquires Z-slices in parallel (Normal mode only)"
+      },
+      {
+        "type": "double",
+        "name": "sampling_xy",
+        "label": "XY Pixel Size",
+        "description": "Output pixel size in XY (world coordinates units)"
+      },
+      {
+        "type": "double",
+        "name": "sampling_z",
+        "label": "Z Pixel Size",
+        "description": "Output pixel size in Z (world coordinates units)"
+      },
+      {
+        "type": "String",
+        "name": "selected_timepoints_str",
+        "label": "Selected Timepoints",
+        "description": "Timepoints to export (e.g., \u00270:10\u0027 or \u00270,2,4\u0027). Leave blank for all"
+      },
+      {
+        "type": "String",
+        "name": "unit",
+        "label": "Unit",
+        "description": "Physical unit for the output image calibration"
+      },
+      {
+        "type": "double",
+        "name": "z_size",
+        "label": "Half Thickness Z",
+        "description": "Half-thickness above and below the current plane (0 for single slice)"
+      }
+    ],
+    "output": [
+      {
+        "type": "List",
+        "name": "images",
+        "label": "Exported Images",
+        "description": "The exported ImagePlus images"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.process.labkit.SourcesLabkitClassifyCommand": {
+    "name": "ch.epfl.biop.command.process.labkit.SourcesLabkitClassifyCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eClassify (Labkit)\u003eSource - Apply Labkit Classifier",
+    "description": "Creates a lazy segmentation source by applying a Labkit classifier to selected sources",
+    "input": [
+      {
+        "type": "File",
+        "name": "classifier_file",
+        "label": "Classifier File",
+        "description": "Path to the Labkit .classifier file"
+      },
+      {
+        "type": "int",
+        "name": "resolution_level",
+        "label": "Resolution Level",
+        "description": "Resolution level to use from input sources (0 \u003d full resolution)"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The sources to classify (each source is treated as a channel)"
+      },
+      {
+        "type": "String",
+        "name": "suffix",
+        "label": "Output Name Suffix",
+        "description": "Suffix appended to the source name for the classified output"
+      },
+      {
+        "type": "boolean",
+        "name": "use_gpu",
+        "label": "Use GPU",
+        "description": "Use GPU acceleration for classification (requires compatible GPU and OpenCL)"
+      }
+    ],
+    "output": [
+      {
+        "type": "SourceAndConverter",
+        "name": "source_out",
+        "description": "The classified source"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.warpy.PairRegistrationLastRegistrationRemoveCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.PairRegistrationLastRegistrationRemoveCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy\u003eRegister Pair - Remove Last Registration",
+    "description": "Removes the last registration step from the registration pair",
+    "input": [
+      {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The registration pair whose last step will be removed"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.register.warpy.PairRegistrationSift2DAffineRegisterCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.PairRegistrationSift2DAffineRegisterCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy\u003eRegister Pair - Affine SIFT 2D",
+    "description": "Performs automatic 2D affine registration using SIFT feature matching",
+    "input": [
+      {
+        "type": "String",
+        "name": "bounds",
+        "label": "ROI Mode",
+        "description": "How to define the region of interest: intersection of sources, union of sources, or custom coordinates"
+      },
+      {
+        "type": "String",
+        "name": "channels_fixed_csv",
+        "label": "Fixed Channels",
+        "description": "Channel indices of the fixed image to use for registration (comma separated, e.g., \u00270\u0027 or \u00270,1\u0027)"
+      },
+      {
+        "type": "String",
+        "name": "channels_moving_csv",
+        "label": "Moving Channels",
+        "description": "Channel indices of the moving image to use for registration (comma separated, e.g., \u00270\u0027 or \u00270,1\u0027)"
+      },
+      {
+        "type": "boolean",
+        "name": "invert_fixed",
+        "label": "Invert Fixed",
+        "description": "When checked, inverts the intensity of the fixed image before matching"
+      },
+      {
+        "type": "boolean",
+        "name": "invert_moving",
+        "label": "Invert Moving",
+        "description": "When checked, inverts the intensity of the moving image before matching"
+      },
+      {
+        "type": "double",
+        "name": "pixel_size_micrometer",
+        "label": "Pixel Size (um)",
+        "description": "Pixel size in micrometers for resampling during registration (larger \u003d faster but less precise)"
+      },
+      {
+        "type": "double",
+        "name": "px",
+        "label": "ROI Position X",
+        "description": "X coordinate of the ROI origin (only used when ROI Mode is \u0027custom\u0027)"
+      },
+      {
+        "type": "double",
+        "name": "py",
+        "label": "ROI Position Y",
+        "description": "Y coordinate of the ROI origin (only used when ROI Mode is \u0027custom\u0027)"
+      },
+      {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The registration pair to apply the registration to"
+      },
+      {
+        "type": "double",
+        "name": "sx",
+        "label": "ROI Size X",
+        "description": "Width of the ROI (only used when ROI Mode is \u0027custom\u0027)"
+      },
+      {
+        "type": "double",
+        "name": "sy",
+        "label": "ROI Size Y",
+        "description": "Height of the ROI (only used when ROI Mode is \u0027custom\u0027)"
+      },
+      {
+        "type": "String",
+        "name": "transformation_model",
+        "label": "Transformation model"
+      }
+    ],
+    "output": [
+      {
+        "type": "boolean",
+        "name": "success",
+        "label": "Success",
+        "description": "True if the registration completed successfully"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.warpy.PairRegistrationCenterCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.PairRegistrationCenterCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy\u003eRegister Pair - Center Moving Sources On Fixed Sources",
+    "description": "Applies a translation to center the moving sources over the fixed sources",
+    "input": [
+      {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The registration pair to apply the registration to"
+      }
+    ],
+    "output": [
+      {
+        "type": "boolean",
+        "name": "success",
+        "label": "Success",
+        "description": "True if the registration completed successfully"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.workflow.elliptic.Elliptic3DTransformExporterCommand": {
+    "name": "ch.epfl.biop.command.workflow.elliptic.Elliptic3DTransformExporterCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eSpecialized Workflows\u003eElliptic Transform\u003eSource - Export Elliptic 3D Transform",
+    "description": "Saves an elliptical 3D transform to a JSON file",
+    "input": [
+      {
+        "type": "Elliptical3DTransform",
+        "name": "e3dt",
+        "label": "Elliptical Transform",
+        "description": "The transform to export"
+      },
+      {
+        "type": "File",
+        "name": "file",
+        "label": "Output File",
+        "description": "Path for the output JSON file"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.register.warpy.PairRegistrationAddGUICommand": {
+    "name": "ch.epfl.biop.command.register.warpy.PairRegistrationAddGUICommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy\u003eRegister Pair - Add GUI",
+    "description": "Opens a BigDataViewer window with  controls for performing registrations",
+    "input": [
+      {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The registration pair to visualize and control"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.register.Elastix2DSplineRegisterCommand": {
+    "name": "ch.epfl.biop.command.register.Elastix2DSplineRegisterCommand",
+    "description": "Performs B-spline deformable registration in 2D between two sources using Elastix",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "automatic_transform_initialization",
+        "label": "Auto Center",
+        "description": "When checked, initially aligns images by their centers of gravity"
+      },
+      {
+        "type": "double",
+        "name": "background_offset_value_fixed",
+        "label": "Fixed Background Offset",
+        "description": "Value to add to fixed image background for better matching"
+      },
+      {
+        "type": "double",
+        "name": "background_offset_value_moving",
+        "label": "Moving Background Offset",
+        "description": "Value to add to moving image background for better matching"
+      },
+      {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "When checked, uses interpolation when resampling images"
+      },
+      {
+        "type": "int",
+        "name": "level_fixed_source",
+        "label": "Fixed Resolution Level",
+        "description": "Resolution level of the fixed source (0 \u003d highest resolution)"
+      },
+      {
+        "type": "int",
+        "name": "level_moving_source",
+        "label": "Moving Resolution Level",
+        "description": "Resolution level of the moving source (0 \u003d highest resolution)"
+      },
+      {
+        "type": "int",
+        "name": "max_iteration_per_scale",
+        "label": "Iterations Per Scale",
+        "description": "Maximum number of optimization iterations at each pyramid level"
+      },
+      {
+        "type": "int",
+        "name": "min_image_size_pix",
+        "label": "Minimum Image Size",
+        "description": "Minimum image size in pixels for the coarsest pyramid level"
+      },
+      {
+        "type": "int",
+        "name": "num_ctrl_points_x",
+        "label": "Control Points X",
+        "description": "Number of B-spline control points along the X axis"
+      },
+      {
+        "type": "double",
+        "name": "px",
+        "label": "ROI Position X",
+        "description": "X coordinate of the registration region top-left corner"
+      },
+      {
+        "type": "double",
+        "name": "px_size_in_current_unit",
+        "label": "Resampling Pixel Size",
+        "description": "Pixel size in world coordinates units used when resampling images for registration"
+      },
+      {
+        "type": "double",
+        "name": "py",
+        "label": "ROI Position Y",
+        "description": "Y coordinate of the registration region top-left corner"
+      },
+      {
+        "type": "double",
+        "name": "pz",
+        "label": "ROI Position Z",
+        "description": "Z coordinate of the registration plane"
+      },
+      {
+        "type": "boolean",
+        "name": "show_image_registration",
+        "label": "Show Registration",
+        "description": "When checked, displays registration results in ImageJ windows (not compatible with RGB images)"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_fixed",
+        "label": "Fixed Source(s)",
+        "description": "Reference source(s) that remain stationary during registration"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_moving",
+        "label": "Moving Source(s)",
+        "description": "Source(s) to be aligned to the fixed reference"
+      },
+      {
+        "type": "double",
+        "name": "sx",
+        "label": "ROI Size X",
+        "description": "Width of the registration region"
+      },
+      {
+        "type": "double",
+        "name": "sy",
+        "label": "ROI Size Y",
+        "description": "Height of the registration region"
+      },
+      {
+        "type": "int",
+        "name": "tp_fixed",
+        "label": "Fixed Timepoint",
+        "description": "Timepoint of the fixed source to use for registration"
+      },
+      {
+        "type": "int",
+        "name": "tp_moving",
+        "label": "Moving Timepoint",
+        "description": "Timepoint of the moving source to use for registration"
+      },
+      {
+        "type": "boolean",
+        "name": "verbose",
+        "label": "Verbose",
+        "description": "When checked, outputs detailed registration progress information"
+      }
+    ],
+    "output": [
+      {
+        "type": "AffineTransform3D",
+        "name": "at3d",
+        "description": "The computed affine transformation to align moving to fixed"
+      },
+      {
+        "type": "RealTransform",
+        "name": "rt",
+        "description": "The forward spline transformation"
+      },
+      {
+        "type": "RealTransform",
+        "name": "rt_inverse",
+        "description": "The inverse spline transformation"
+      },
+      {
+        "type": "boolean",
+        "name": "success",
+        "description": "Whether the registration completed successfully"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.SourcesMultiscaleRegisterCommand": {
+    "name": "ch.epfl.biop.command.register.SourcesMultiscaleRegisterCommand",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "center_moving_image",
+        "label": "Center moving image with fixed image"
+      },
+      {
+        "type": "boolean",
+        "name": "debug"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "fixed",
+        "label": "Fixed reference sources"
+      },
+      {
+        "type": "int",
+        "name": "max_iteration_number_per_scale",
+        "label": "Number of iterations for each registration (default 100)"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "moving",
+        "label": "Moving sources used for registration to the reference"
+      },
+      {
+        "type": "int",
+        "name": "n_scales",
+        "label": "Number of registration scales (# registration x2 per scale)"
+      },
+      {
+        "type": "int",
+        "name": "pixels_per_block",
+        "label": "Number of pixel for each block of image used for the registration (default 128)"
+      },
+      {
+        "type": "boolean",
+        "name": "remove_z_offset",
+        "label": "Remove images z-offsets"
+      },
+      {
+        "type": "boolean",
+        "name": "show_details",
+        "label": "Show results of automated registrations (breaks parallelization)"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_to_transform",
+        "label": "Sources to transform, including the moving source if needed"
+      }
+    ],
+    "output": [
+      {
+        "type": "RealTransform",
+        "name": "transformation"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "transformed_sources"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.warpy.PairRegistrationLastRegistrationEditCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.PairRegistrationLastRegistrationEditCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy\u003eRegister Pair - Edit Last Registration",
+    "description": "Re-opens the last registration step for editing (e.g., adjust landmarks)",
+    "input": [
+      {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The registration pair whose last step will be edited"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.process.labkit.SourcesLabkitOpenCommand": {
+    "name": "ch.epfl.biop.command.process.labkit.SourcesLabkitOpenCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eClassify (Labkit)\u003eSource - Open Labkit",
+    "description": "Opens the Labkit pixel classification GUI for the selected sources",
+    "input": [
+      {
+        "type": "int",
+        "name": "resolution_level",
+        "label": "Resolution Level",
+        "description": "Resolution level to use (0 \u003d full resolution, higher \u003d lower resolution)"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Source(s)",
+        "description": "The sources to open in Labkit (each source is treated as a channel)"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.register.warpy.wizard.WarpyMultiscaleRegisterCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.wizard.WarpyMultiscaleRegisterCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy (Wizard)\u003eWarpy - Create Multiscale Registration",
+    "description": "Performs automated multiscale registration between QuPath entries, saved to the project",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "center_moving_image",
+        "label": "Center Images",
+        "description": "When checked, initially centers the moving image on the fixed image"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "fixed_sources",
+        "label": "Fixed Source(s)",
+        "description": "Reference source(s) from the QuPath project"
+      },
+      {
+        "type": "int",
+        "name": "max_iteration_number_per_scale",
+        "label": "Iterations Per Scale",
+        "description": "Maximum number of iterations for each registration at each scale"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "moving_sources",
+        "label": "Moving Source(s)",
+        "description": "Source(s) to be registered to the fixed reference"
+      },
+      {
+        "type": "int",
+        "name": "n_scales",
+        "label": "Number of Scales",
+        "description": "Number of resolution scales for registration (more scales \u003d more precise but slower)"
+      },
+      {
+        "type": "int",
+        "name": "pixels_per_block",
+        "label": "Block Size",
+        "description": "Size in pixels of each image block used for local registration"
+      },
+      {
+        "type": "boolean",
+        "name": "remove_z_offset",
+        "label": "Remove Z Offsets",
+        "description": "When checked, removes Z position offsets from sources for 2D registration"
+      }
+    ],
+    "output": []
+  },
+  "ch.epfl.biop.command.workflow.lls7.LLS7ZDriftCompensateCommand": {
+    "name": "ch.epfl.biop.command.workflow.lls7.LLS7ZDriftCompensateCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eSpecialized Workflows\u003eLLS7\u003eSource - LLS7 - Compensate Z-Drift",
+    "description": "Compensates Z-drift over time for LLS7 skewed acquisitions by tracking sample position",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "debug",
+        "label": "Debug Mode",
+        "description": "When enabled, displays the XZ planes used for drift detection"
+      },
+      {
+        "type": "String",
+        "name": "mode",
+        "label": "Transform Mode",
+        "description": "Mutate modifies existing transform; Append adds a new transform layer"
+      },
+      {
+        "type": "SourceAndConverter",
+        "name": "model_source",
+        "label": "Model Source",
+        "description": "Source used to detect Z-drift (typically a bright, stable channel)"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_to_correct",
+        "label": "Sources to Correct",
+        "description": "All sources that will receive the Z-drift compensation transform"
+      },
+      {
+        "type": "double",
+        "name": "threshold",
+        "label": "Intensity Threshold",
+        "description": "Intensity value above which the sample is considered present"
+      }
+    ],
+    "output": [
+      {
+        "type": "double[]",
+        "name": "z_drift_values",
+        "description": "The detected Z-drift values for each timepoint (in world coordinates)"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.importer.DatasetFromImarisCreateCommand": {
+    "name": "ch.epfl.biop.command.importer.DatasetFromImarisCreateCommand",
+    "description": "Opens an Imaris .ims file as a BigDataViewer dataset",
+    "input": [
+      {
+        "type": "File",
+        "name": "file",
+        "label": "Imaris File",
+        "description": "Path to the Imaris .ims file to open"
+      }
+    ],
+    "output": [
+      {
+        "type": "AbstractSpimData",
+        "name": "spimdata",
+        "description": "The opened Imaris dataset"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.process.transform.ImagePlusRot3DReSampleCommand": {
+    "name": "ch.epfl.biop.command.process.transform.ImagePlusRot3DReSampleCommand",
+    "menuPath": "Image\u003eStacks\u003eRotation 3D Resample",
+    "description": "Reorients a 3D ImagePlus so that two ROI points become aligned along Z axis",
+    "input": [
+      {
+        "type": "boolean",
+        "name": "align_x",
+        "label": "Align X Axis",
+        "description": "When checked, also aligns the X axis to the original XY projection"
+      },
+      {
+        "type": "ImagePlus",
+        "name": "imp_in",
+        "label": "Input Image",
+        "description": "The 3D image to reorient"
+      },
+      {
+        "type": "boolean",
+        "name": "interpolate",
+        "label": "Interpolate",
+        "description": "When checked, uses interpolation when resampling pixel values"
+      },
+      {
+        "type": "double",
+        "name": "radiusx",
+        "label": "Output Size X",
+        "description": "Width of the output image in world coordinates units"
+      },
+      {
+        "type": "double",
+        "name": "radiusy",
+        "label": "Output Size Y",
+        "description": "Height of the output image in world coordinates units"
+      },
+      {
+        "type": "double",
+        "name": "radiusz",
+        "label": "Output Size Z",
+        "description": "Depth of the output image in world coordinates units"
+      },
+      {
+        "type": "RoiManager",
+        "name": "rm",
+        "label": "ROI Manager",
+        "description": "Must contain exactly two point ROIs defining the alignment axis"
+      },
+      {
+        "type": "double",
+        "name": "voxfx",
+        "label": "Voxel Size X",
+        "description": "Output voxel size in X dimension"
+      },
+      {
+        "type": "double",
+        "name": "voxfy",
+        "label": "Voxel Size Y",
+        "description": "Output voxel size in Y dimension"
+      },
+      {
+        "type": "double",
+        "name": "voxfz",
+        "label": "Voxel Size Z",
+        "description": "Output voxel size in Z dimension"
+      }
+    ],
+    "output": [
+      {
+        "type": "ImagePlus",
+        "name": "imp_out",
+        "description": "The reoriented output image"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.process.SourcesOverTimeDuplicateCommand": {
+    "name": "ch.epfl.biop.command.process.SourcesOverTimeDuplicateCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eProcess\u003eSource - Freeze Timepoint",
+    "description": "Creates a new source showing a fixed timepoint across a time range",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources",
+        "label": "Select Sources",
+        "description": "The sources to copy over time"
+      },
+      {
+        "type": "String",
+        "name": "suffix",
+        "label": "Output Name",
+        "description": "Suffix for the time-shifted source"
+      },
+      {
+        "type": "int",
+        "name": "t_end",
+        "label": "Timepoint end (excluded)",
+        "description": "Timepoint to end"
+      },
+      {
+        "type": "int",
+        "name": "t_start",
+        "label": "Timepoint start",
+        "description": "Timepoint to start"
+      },
+      {
+        "type": "int",
+        "name": "timepoint_to_copy",
+        "label": "Timepoint to copy",
+        "description": "Timepoint to copy"
+      }
+    ],
+    "output": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "sources_out",
+        "description": "The resulting time-shifted source"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.workflow.elliptic.Elliptic3DTransformImporterCommand": {
+    "name": "ch.epfl.biop.command.workflow.elliptic.Elliptic3DTransformImporterCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eSpecialized Workflows\u003eElliptic Transform\u003eSource - Import Elliptic 3D Transform",
+    "description": "Loads an elliptical 3D transform from a JSON file",
+    "input": [
+      {
+        "type": "File",
+        "name": "file",
+        "label": "JSON File",
+        "description": "Path to the JSON file containing the transform"
+      }
+    ],
+    "output": [
+      {
+        "type": "Elliptical3DTransform",
+        "name": "e3dt",
+        "description": "The loaded elliptical 3D transform"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.register.warpy.PairRegistrationLoadAndEditCommand": {
+    "name": "ch.epfl.biop.command.register.warpy.PairRegistrationLoadAndEditCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eRegister\u003eWarpy\u003eRegister Pair - Load And Edit An Existing Registration",
+    "description": "Reconstructs a registration pair sequence from an existing QuPath registration file",
+    "input": [
+      {
+        "type": "SourceAndConverter[]",
+        "name": "fixed_sources",
+        "label": "Fixed Source(s)",
+        "description": "Reference source(s) from the QuPath project"
+      },
+      {
+        "type": "SourceAndConverter[]",
+        "name": "moving_sources",
+        "label": "Moving Source(s)",
+        "description": "Source(s) that were registered to the fixed reference"
+      },
+      {
+        "type": "boolean",
+        "name": "open_gui",
+        "label": "Open GUI",
+        "description": "When checked, automatically opens the registration GUI after loading"
+      },
+      {
+        "type": "String",
+        "name": "registration_name",
+        "label": "Registration Name",
+        "description": "Name for the reconstructed registration pair"
+      },
+      {
+        "type": "boolean",
+        "name": "remove_z_offsets",
+        "label": "Remove Z Offsets",
+        "description": "When checked, removes Z position offsets from sources"
+      }
+    ],
+    "output": [
+      {
+        "type": "RegistrationPair",
+        "name": "registration_pair",
+        "label": "Registration Pair",
+        "description": "The reconstructed registration pair object"
+      }
+    ]
+  },
+  "ch.epfl.biop.command.display.bdv.settings.BdvStyleAlphaSetCommand": {
+    "name": "ch.epfl.biop.command.display.bdv.settings.BdvStyleAlphaSetCommand",
+    "menuPath": "Plugins\u003eBigDataViewer-Playground\u003eDisplay\u003eBDV\u003eSettings\u003eBDV - Set Style (Alpha)",
+    "description": "Set preferences of Bdv Window (Alpha)",
+    "input": [
+      {
+        "type": "String",
+        "name": "frametitle"
+      },
+      {
+        "type": "int",
+        "name": "height"
+      },
+      {
+        "type": "boolean",
+        "name": "interpolate"
+      },
+      {
+        "type": "boolean",
+        "name": "is2d"
+      },
+      {
+        "type": "int",
+        "name": "numrenderingthreads"
+      },
+      {
+        "type": "int",
+        "name": "numsourcegroups"
+      },
+      {
+        "type": "int",
+        "name": "numtimepoints"
+      },
+      {
+        "type": "boolean",
+        "name": "resetToDefault",
+        "label": "Click this checkbox to ignore all parameters and reset the default alpha viewer"
+      },
+      {
+        "type": "String",
+        "name": "screenscales"
+      },
+      {
+        "type": "long",
+        "name": "targetrenderms"
+      },
+      {
+        "type": "boolean",
+        "name": "usealphalayer"
+      },
+      {
+        "type": "boolean",
+        "name": "white_background"
+      },
+      {
+        "type": "int",
+        "name": "width"
+      }
+    ],
+    "output": []
+  }
+}

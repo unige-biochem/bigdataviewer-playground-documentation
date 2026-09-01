@@ -1453,11 +1453,11 @@ cs.run(BdvStyleDefaultSetCommand, True,
 
 :::::
 
-### BDV - Set Style (BIOP)
+### BDV - Set Style (Playground)
 
-*Source: {bdvpg-display-src}`BdvStyleBIOPSetCommand.java <sc/fiji/bdvpg/bdv/supplier/biop/BdvStyleBIOPSetCommand.java>`*
+*Source: {bdvpg-display-src}`BdvStylePlaygroundSetCommand.java <sc/fiji/bdvpg/bdv/supplier/playground/BdvStylePlaygroundSetCommand.java>`*
 
-An alternative default style provided by the BIOP team. Includes additional options like font and font size for the source name overlay. This style also brings by default a Z-Slider and a center cross overlay, a source browser slider, an editor mode.
+An alternative default style, previously named *Set Style (BIOP)*. Includes additional options like font and font size for the source name overlay. This style also brings by default a Z-Slider and a center cross overlay, a source browser slider, an editor mode.
 
 | Parameter | Description |
 |-----------|-------------|
@@ -1471,18 +1471,17 @@ An alternative default style provided by the BIOP team. Includes additional opti
 | Number of rendering threads | Threads used for rendering |
 | Number of source groups | Source groups available in the window |
 | Screen scales | Multi-resolution scale factors |
-| Target render time (ms) | Target time per frame in milliseconds |
 | Reset to default | Ignore all parameters and reset to defaults |
 
 :::::{tab-set}
 
 ::::{tab-item} GUI
-{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Set Style (BIOP)`
+{menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Set Style (Playground)`
 ::::
 
 ::::{tab-item} IJ Macro
 ```ijm
-run("BDV - Set Style (BIOP)");
+run("BDV - Set Style (Playground)");
 ```
 ::::
 
@@ -1490,9 +1489,9 @@ run("BDV - Set Style (BIOP)");
 ```imagej-groovy
 #@CommandService cs
 
-import sc.fiji.bdvpg.bdv.supplier.biop.BdvStyleBIOPSetCommand
+import sc.fiji.bdvpg.bdv.supplier.playground.BdvStylePlaygroundSetCommand
 
-cs.run(BdvStyleBIOPSetCommand, true,
+cs.run(BdvStylePlaygroundSetCommand, true,
     "frametitle", "BigDataViewer",
     "width", 800,
     "height", 600,
@@ -1504,7 +1503,6 @@ cs.run(BdvStyleBIOPSetCommand, true,
     "numrenderingthreads", 3,
     "numsourcegroups", 10,
     "screenscales", "1, 0.5, 0.25",
-    "targetrenderms", 30,
     "resetToDefault", false
 ).get()
 ```
@@ -1514,9 +1512,9 @@ cs.run(BdvStyleBIOPSetCommand, true,
 ```python
 #@CommandService cs
 
-from sc.fiji.bdvpg.bdv.supplier.biop import BdvStyleBIOPSetCommand
+from sc.fiji.bdvpg.bdv.supplier.playground import BdvStylePlaygroundSetCommand
 
-cs.run(BdvStyleBIOPSetCommand, True,
+cs.run(BdvStylePlaygroundSetCommand, True,
     ["frametitle", "BigDataViewer",
      "width", 800,
      "height", 600,
@@ -1528,7 +1526,6 @@ cs.run(BdvStyleBIOPSetCommand, True,
      "numrenderingthreads", 3,
      "numsourcegroups", 10,
      "screenscales", "1, 0.5, 0.25",
-     "targetrenderms", 30,
      "resetToDefault", False]
 ).get()
 ```

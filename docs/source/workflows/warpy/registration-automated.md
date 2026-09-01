@@ -42,7 +42,7 @@ You will get a draft macro that will need to be slightly tweaked to perform regi
 run("Dataset - Create [QuPath]",
     "qupath_project=C:\\Users\\Nicolas\\Documents\\warpy-demo-project.qpproj datasetname=warpy-demo-project split_rgb_channels=false plane_origin_convention=[TOP_LEFT] unit=MILLIMETER");
 
-run("BDV - Set Style (BIOP)",
+run("BDV - Set Style (Playground)",
     "resettodefault=false width=640 height=480 screenscales=[1, 0.5, 0.25, 0.125] numrenderingthreads=3 numtimepoints=10 framerate=10 fontSize=18 font=Courier interpolate=false");
 
 run("BDV - Show Sources",

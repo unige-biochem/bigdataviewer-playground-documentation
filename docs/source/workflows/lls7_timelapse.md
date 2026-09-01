@@ -428,14 +428,14 @@ Export the processed (cropped, deskewed, optionally deconvolved) data for downst
 | Parameter | Description | Recommended |
 |-----------|-------------|-------------|
 | Sources to export | Your cropped/processed sources | |
-| Selected Channels | Leave blank for all | |
-| Selected Slices | Leave blank for all | |
-| Selected Timepoints | Leave blank for all, or specify range | |
+| Channels subset | Leave blank for all | |
+| Slices subset | Leave blank for all | |
+| Timepoints subset | Leave blank for all, or specify range | |
 | Output file | Destination `.ome.tiff` file | |
 | Physical unit | MICROMETER or MILLIMETER | MICROMETER |
 | Number of resolution levels | Pyramid levels | 4 |
 | Scaling factor | Downsampling between levels | 2 |
-| Tile Size X/Y | Tile dimensions | 512 |
+| Tile size X/Y | Tile dimensions | 512 |
 | Number of threads | Parallel processing | 8 |
 | Compression type | LZW, JPEG-2000, etc. | LZW |
 
@@ -453,13 +453,13 @@ run("Source - Export To OME-TIFF");
 
 ::::{tab-item} Groovy
 ```imagej-groovy
-#@SourceAndConverter[] sacs
+#@SourceAndConverter[] sources
 #@CommandService cs
 
 import ch.epfl.biop.kheops.command.KheopsExportSourcesCommand
 
 cs.run(KheopsExportSourcesCommand, true,
-    "sacs", sacs,
+    "sources", sources,
     "file", new java.io.File("/path/to/output.ome.tiff"),
     "n_resolution_levels", 4,
     "downscaling", 2,
@@ -467,7 +467,6 @@ cs.run(KheopsExportSourcesCommand, true,
     "tile_size_y", 512,
     "n_threads", 8,
     "compression", "LZW",
-    "compress_temp_files", false,
     "range_channels", "",
     "range_frames", "",
     "range_slices", "",
@@ -481,14 +480,14 @@ cs.run(KheopsExportSourcesCommand, true,
 
 ::::{tab-item} Python
 ```python
-#@SourceAndConverter[] sacs
+#@SourceAndConverter[] sources
 #@CommandService cs
 
 from ch.epfl.biop.kheops.command import KheopsExportSourcesCommand
 from java.io import File
 
 cs.run(KheopsExportSourcesCommand, True,
-    ["sacs", sacs,
+    ["sources", sources,
      "file", File("/path/to/output.ome.tiff"),
      "n_resolution_levels", 4,
      "downscaling", 2,
@@ -496,7 +495,6 @@ cs.run(KheopsExportSourcesCommand, True,
      "tile_size_y", 512,
      "n_threads", 8,
      "compression", "LZW",
-     "compress_temp_files", False,
      "range_channels", "",
      "range_frames", "",
      "range_slices", "",

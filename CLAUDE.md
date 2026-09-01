@@ -83,7 +83,7 @@ $env:PATH = "$env:JAVA_HOME\bin;$env:LOCALAPPDATA\miniforge3\envs\bdvpg-document
 
 ## Current Version
 
-The documentation currently tracks release: `ch.epfl.biop:bigdataviewer-biop-tools:0.21.0`
+The documentation currently tracks release: `ch.epfl.biop:bigdataviewer-biop-tools:0.23.0`
 
 ## Deployment (ReadTheDocs)
 
@@ -106,10 +106,10 @@ When adding an extension, add the package in the same commit.
 
 ### Versioning / tagging scheme
 
-- Tag format is **PEP 440 4-segment**: `MAJOR.MINOR.PATCH.DOC` (e.g. `0.21.0.0`, `0.21.0.1`).
+- Tag format is **PEP 440 4-segment**: `MAJOR.MINOR.PATCH.DOC` (e.g. `0.23.0.0`, `0.23.0.1`).
   The first three digits mirror the documented `bigdataviewer-biop-tools` release; the 4th is the
-  doc-only revision. (Avoid `0.21.0-doc.N` — sorts as a *pre-release*, before `0.21.0`; avoid
-  `0.21.0+doc.N` — build metadata has undefined ordering. Both break RTD `stable` detection.)
+  doc-only revision. (Avoid `0.23.0-doc.N` — sorts as a *pre-release*, before `0.23.0`; avoid
+  `0.23.0+doc.N` — build metadata has undefined ordering. Both break RTD `stable` detection.)
 - `latest` auto-tracks `main`, so doc fixes publish on every push — a tag is only for a frozen snapshot.
 - New tags must be **activated once** in the RTD admin (Versions tab) before they build/appear.
 - **When upstream bumps**: follow [BUMP_DOC.md](BUMP_DOC.md), the end-to-end runbook for moving
@@ -127,7 +127,7 @@ full subcommand list: `list-commands`, `describe-command`, `source-code`, `snaps
 Run `mvn clean install` there once, then invoke:
 ```bash
 jgo -u --lenient --class-path-only \
-  "ch.unige.biochem:scijava-introspect:0.1.0-SNAPSHOT:ch.unige.biochem.scijava.introspect.CLI+ch.epfl.biop:bigdataviewer-biop-tools:0.21.0" \
+  "ch.unige.biochem:scijava-introspect:0.1.0-SNAPSHOT:ch.unige.biochem.scijava.introspect.CLI+ch.epfl.biop:bigdataviewer-biop-tools:0.23.0" \
   <subcommand> <args..>
 ```
 
@@ -146,7 +146,7 @@ On Windows, neither Java nor jgo is on PATH by default: use Fiji's bundled JDK
 
 ## Versioned CLI Outputs
 
-Save CLI outputs under `cli-outputs/<version>/` (e.g. `cli-outputs/0.21.0/`).
+Save CLI outputs under `cli-outputs/<version>/` (e.g. `cli-outputs/0.23.0/`).
 This enables diffing outputs across versions to guide incremental documentation updates.
 
 Each version directory holds `snapshot-<package>.json` and `tree-<package>.txt` for the two
@@ -259,7 +259,7 @@ as `SimpleIJLaunch.java` and other test utilities in the project.
 2. Create `Generate<PageName>Screenshots.java` in `ijp-imglib2bdvdemo-ij2/src/test/java/ch/epfl/biop/docs/`,
    modelled on `GenerateVisualizingImagesScreenshots.java`.
 3. Look up the exact class names of the commands to invoke from
-   `cli-outputs/0.21.0/snapshot-sc.fiji.bdvpg.json` and `snapshot-ch.epfl.biop.json`.
+   `cli-outputs/0.23.0/snapshot-sc.fiji.bdvpg.json` and `snapshot-ch.epfl.biop.json`.
 4. For each scenario: run the command via `ij.command().run(...)`, set window title, call
    `DemoHelper.shot(OUTPUT_DIR, "prefix", waitMs, "TitleFilter")`, then dispose + wait.
 5. Run the class from the IDE to generate the images.
