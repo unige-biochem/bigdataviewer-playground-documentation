@@ -59,7 +59,7 @@ run("Register Pair - Center Moving Sources On Fixed Sources");
 run("Register Pair - Affine SIFT 2D",
     "bounds=intersection px=1.277347001011156 py=0.5464955005773834 sx=2.0596159999999992 sy=1.5418389999999995 transformation_model=AFFINE channels_fixed_csv=0 channels_moving_csv=0 pixel_size_micrometer=1.0 invert_moving=false invert_fixed=false");
 
-run("Register Pair - Spline Elastic 2D",
+run("Register Pair - Spline Elastix 2D",
     "bounds=intersection px=1.0915305234120407 py=0.595938721809441 sx=2.022231206667339 sy=1.495165183359435 nb_control_points_x=8 channels_fixed_csv=0 channels_moving_csv=0 pixel_size_micrometer=2.0 show_imageplus_registration_result=false");
 
 run("Register Pair - Export To QuPath",
@@ -108,7 +108,7 @@ run("Register Pair - Affine SIFT 2D",
     "invert_moving=false "+
     "invert_fixed=false");
 
-run("Register Pair - Spline Elastic 2D",
+run("Register Pair - Spline Elastix 2D",
     "bounds=intersection "+
     "px=0 py=0 sx=0 sy=0 "+
     "nb_control_points_x=8 "+

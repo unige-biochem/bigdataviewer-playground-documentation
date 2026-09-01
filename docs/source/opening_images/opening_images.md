@@ -30,7 +30,7 @@ This means you can set up a complex multi-image, multi-channel dataset, save it,
 
 {menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Dataset - Save XML Dataset`
 
-{menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Dataset --> Open XML Dataset`
+{menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Dataset - Open XML Dataset`
 
 ---
 

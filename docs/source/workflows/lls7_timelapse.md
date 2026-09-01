@@ -47,12 +47,12 @@ With the **Quick Start CZI Reader** update site enabled, use the standard Bio-Fo
 :::::{tab-set}
 
 ::::{tab-item} GUI
-{menuselection}`Plugins > BigDataViewer-Playground > BDVDataset > Create BDV Dataset [Bio-Formats]`
+{menuselection}`Plugins > BigDataViewer-Playground > Import > Dataset - Create [Bio-Formats]`
 ::::
 
 ::::{tab-item} IJ Macro
 ```ijm
-run("Create BDV Dataset [Bio-Formats]");
+run("Dataset - Create [Bio-Formats]");
 ```
 ::::
 
@@ -141,12 +141,12 @@ The algorithm:
 :::::{tab-set}
 
 ::::{tab-item} GUI
-{menuselection}`Plugins > BigDataViewer-Playground > BDV > LLS7 - Compensate Z-drift`
+{menuselection}`Plugins > BigDataViewer-Playground > Specialized Workflows > LLS7 > Source - LLS7 - Compensate Z-Drift`
 ::::
 
 ::::{tab-item} IJ Macro
 ```ijm
-run("LLS7 - Compensate Z-drift");
+run("Source - LLS7 - Compensate Z-Drift");
 ```
 ::::
 
@@ -224,7 +224,7 @@ Do not use an oversized PSF image. Crop it in all directions until fluorescence 
 Open your PSF image in BigDataViewer Playground using the same Bio-Formats opener:
 
 ```
-Menu: Plugins > BigDataViewer-Playground > BDVDataset > Create BDV Dataset [Bio-Formats]
+Menu: Plugins > BigDataViewer-Playground > Import > Dataset - Create [Bio-Formats]
 ```
 Or simply drag and drop the file into BigDataViewer-Playground's tree view.
 
@@ -262,12 +262,12 @@ Choose at least as many threads as you have defined GPU workers in your pool. If
 :::::{tab-set}
 
 ::::{tab-item} GUI
-{menuselection}`Plugins > BigDataViewer-Playground > Sources > Deconvolve sources (Richardson Lucy GPU - Tiled)`
+{menuselection}`Plugins > BigDataViewer-Playground > Process > Deconvolve > Source - Deconvolve (Richardson Lucy GPU - Tiled)`
 ::::
 
 ::::{tab-item} IJ Macro
 ```ijm
-run("Deconvolve sources (Richardson Lucy GPU - Tiled)");
+run("Source - Deconvolve (Richardson Lucy GPU - Tiled)");
 ```
 ::::
 
@@ -353,12 +353,12 @@ This step combines cropping and deskewing into a single operation. An interactiv
 :::::{tab-set}
 
 ::::{tab-item} GUI
-{menuselection}`Plugins > BigDataViewer-Playground > BDV > LLS7 - Crop 3D`
+{menuselection}`Plugins > BigDataViewer-Playground > Specialized Workflows > LLS7 > Source - LLS7 - Crop 3D`
 ::::
 
 ::::{tab-item} IJ Macro
 ```ijm
-run("LLS7 - Crop 3D");
+run("Source - LLS7 - Crop 3D");
 ```
 ::::
 

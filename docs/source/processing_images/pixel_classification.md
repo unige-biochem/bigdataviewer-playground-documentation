@@ -165,7 +165,7 @@ classified = result.getOutput("source_out")
 
 :::::
 
-The classified source behaves like any other source — you can browse it in BDV side by side with the raw data (synchronised with {menuselection}`Display --> BDV - Synchronize Views`), export it, or feed it into downstream commands. Only the tiles you look at are actually computed.
+The classified source behaves like any other source — you can browse it in BDV side by side with the raw data (synchronised with {menuselection}`Display --> Viewers - Synchronize Views`), export it, or feed it into downstream commands. Only the tiles you look at are actually computed.
 
 ::::{grid} 2
 :::{grid-item}

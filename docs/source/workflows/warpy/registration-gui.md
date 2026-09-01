@@ -132,7 +132,7 @@ After clicking OK, there will be a registration pair object in memory that holds
 
 To have a graphical user interface that allows you to easily find registration types and monitor results:
 
-1. Find and run the command **`Registration Pair - Add GUI`**
+1. Find and run the command **`Register Pair - Add GUI`**
 2. Select the registration pair you created in the list
 3. Run **OK**
 
@@ -230,7 +230,7 @@ After the SIFT registration step you should obtain a decent matching:
 
 So far the two registration steps are concatenated affine transforms (center and then SIFT), but it is possible to go beyond and apply non-linear spline transforms. There is a choice between:
 
-- **`Register Pair - Spline BigWarp Spline`** (fully manual transformation method)
+- **`Register Pair - Spline BigWarp 2D`** (fully manual transformation method)
 - **`Register Pair - Spline Elastix 2D`** (fully automated, output can be loaded in BigWarp for manual adjustment)
 
 Let's try Elastix Spline:
