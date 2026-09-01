@@ -46,6 +46,8 @@ If you have already opened a BDV window and want to add more sources to it, unch
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Show Sources`
 
+![BDV - Show Sources dialog](../command_dialogs/single-bdv-sources-show.png)
+
 ::::
 
 ::::{tab-item} IJ Macro
@@ -237,6 +239,8 @@ Opens three synchronized BDV windows showing XY (front), ZY (right), and XZ (bot
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Create Orthogonal Views`
+
+![BDV - Create Orthogonal Views dialog](../command_dialogs/bdv-ortho-create.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -385,6 +389,8 @@ Arranges selected sources in a grid layout within a new BDV window. Each cell sh
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Show Sources On Grid`
 
+![BDV - Show Sources On Grid dialog](../command_dialogs/sources-overview.png)
+
 ![Both channels of the LLS7 HeLa dataset arranged in a 2-column grid](images/bdv_grid_overview_BigDataViewer_00.png)
 ::::
 
@@ -490,6 +496,8 @@ Changes the display color of one or more sources.
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> Source --> Source - Set Color`
 
+![Source - Set Color dialog](../command_dialogs/source-color-change.png)
+
 ![LLS7 HeLa channels displayed in cyan and magenta](images/source_set_color_BigDataViewer.png)
 ::::
 
@@ -551,6 +559,8 @@ Sets the display range (min and max intensity values) for one or more sources. T
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> Source --> Source - Set Brightness`
+
+![Source - Set Brightness dialog](../command_dialogs/source-brightness-adjust.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -870,6 +880,8 @@ Changes the title of a BDV window.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Set Title`
+
+![BDV - Set Title dialog](../command_dialogs/bdv-title-set.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -980,6 +992,8 @@ Displays the name of each visible source as a text label on the viewer.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Overlay --> BDV - Add Sources Name Overlay`
+
+![BDV - Add Sources Name Overlay dialog](../command_dialogs/bdv-overlay-source-name-add.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -1193,6 +1207,8 @@ Within the editor mode you can draw rectangle and with modifier keys, you can ei
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Add Editor`
+
+![BDV - Add Editor dialog](../command_dialogs/bdv-editor-install.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -1248,6 +1264,8 @@ BDV windows have a fixed number of timepoints. If your data has more timepoints 
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Set Number Of Timepoints`
+
+![BDV - Set Number Of Timepoints dialog](../command_dialogs/bdv-timepoints-set.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -1399,6 +1417,8 @@ These commands configure the default appearance and behavior of **newly created*
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Set Style (Default)`
+
+![BDV - Set Style (Default) dialog](../command_dialogs/bdv-style-default-set.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -1477,6 +1497,8 @@ An alternative default style, previously named *Set Style (BIOP)*. Includes addi
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Set Style (Playground)`
+
+![BDV - Set Style (Playground) dialog](../command_dialogs/bdv-style-playground-set.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -1557,6 +1579,8 @@ A style that supports alpha (transparency) blending and white background. Useful
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Set Style (Alpha)`
+
+![BDV - Set Style (Alpha) dialog](../command_dialogs/bdv-style-alpha-set.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -1635,6 +1659,8 @@ Locks the navigation of multiple BDV and/or BVV windows together. When you pan, 
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> Viewers - Synchronize Views`
+
+![Viewers - Synchronize Views dialog](../command_dialogs/view-synchronize.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -1766,6 +1792,8 @@ Creates an empty BVV window.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BVV --> BVV - Create`
+
+![BVV - Create dialog](../command_dialogs/bvv-create.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -1816,6 +1844,8 @@ Adds sources to an existing BVV window.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BVV --> BVV - Show Sources`
+
+![BVV - Show Sources dialog](../command_dialogs/bvv-sources-show.png)
 
 ![BVV volume rendering of the LLS7 HeLa dataset](images/bvv_show_sources_BigVolumeViewer.png)
 ::::
@@ -1879,6 +1909,8 @@ Creates three synchronized BVV windows with orthogonal orientations, analogous t
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BVV --> BVV - Create Orthogonal Views`
+
+![BVV - Create Orthogonal Views dialog](../command_dialogs/bvv-ortho-create.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -2011,6 +2043,8 @@ Sets the number of timepoints available in BVV windows.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BVV --> Settings --> BVV - Set Number Of Timepoints`
+
+![BVV - Set Number Of Timepoints dialog](../command_dialogs/bvv-timepoints-set.png)
 ::::
 
 ::::{tab-item} IJ Macro

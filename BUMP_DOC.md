@@ -69,7 +69,67 @@ the tab-set, four tabs (GUI / IJ Macro / Groovy / Python), `imagej-groovy` fence
 Class names and parameter names come from `cli-outputs/<NEW>/snapshot-*.json` — look them all
 up in a single pass, per **CLAUDE.md → Looking Up Command Signatures**.
 
-## 4. Update the version references
+## 4. Regenerate the command dialog screenshots
+
+Every GUI tab carries a PNG of the real dialog, in `docs/source/command_dialogs/`. They are
+generated offscreen by the **`scijava-screenshots`** skill — read its `SKILL.md` for the tool
+itself; this is the invocation for these docs.
+
+**Only re-shoot what the diff changed.** A command whose parameters did not move produces the
+same PNG, so the usual bump touches a handful of files, not all 68. A full regeneration is only
+needed when the theme or the tool changes.
+
+Build the classpath from a throwaway Maven project pinned to `<NEW>`, **not** from a local
+`bigdataviewer-biop-tools` checkout — a working tree is normally a `-SNAPSHOT` ahead of the
+release the docs claim to document:
+
+```bash
+# pom.xml with the single dependency ch.epfl.biop:bigdataviewer-biop-tools:<NEW>,
+# plus com.formdev:flatlaf and the scijava.public repository
+mvn -B -q dependency:build-classpath -Dmdep.outputFile=cp.txt
+tr '\\' '/' < cp.txt > cp_fwd.txt
+printf -- '-cp "%s"\n' "$(cat cp_fwd.txt)" > args.txt
+javac -nowarn @args.txt -d shot-classes ~/.claude/skills/scijava-screenshots/ShotCommands.java
+printf -- '-cp "shot-classes;%s"\n' "$(cat cp_fwd.txt)" > runargs.txt
+
+java -Dscijava.log.level=error --add-opens=java.base/java.lang=ALL-UNNAMED @runargs.txt \
+  ShotCommands --out docs/source/command_dialogs --theme dark --scale 2 \
+  --only "<Class>=<slug>,<Class>=<slug>,..."
+```
+
+`-Dscijava.log.level=error` matters: at the default level the SciJava event bus buries the
+tool's own `OK` / `FAIL` lines under thousands of DEBUG lines.
+
+**Naming.** The slug is the tool's own derivation from the class name
+(`SourcesFuseAndResampleCommand` → `sources-fuse-and-resample`). Get the exact pairs from
+`ShotCommands --list`, which prints `slug<TAB>class<TAB>dialog title` — never hand-write them.
+One shared directory rather than the per-section `images/` dirs, so a command documented on two
+pages has one file and a regeneration is a single command.
+
+**Referencing.** In the GUI tab, one blank line under the `{menuselection}` line:
+
+```markdown
+![<dialog title> dialog](../command_dialogs/<slug>.png)
+```
+
+The alt text is the dialog title from `--list`. Every page with GUI tabs is one level below
+`docs/source/`, so `../` is always right.
+
+**Commands with no dialog.** 24 of the documented commands take only `SourceAndConverter[]` or
+`BdvHandle`, which are filled from context and have no widget — their dialog is an empty box
+with OK/Cancel. They get no screenshot and their GUI tab keeps the menu path alone. The tell is
+the image height: a parameter-less dialog comes out exactly 240px tall at `--scale 2`. Do not
+threshold above that — `Source - Set Color` is only 246px and is a real dialog.
+
+To find which classes a page needs, take the first `sc.fiji.bdvpg`/`ch.epfl.biop` `Command`
+import inside each `{tab-set}`. A GUI-only section has no scripting tab; match the last segment
+of its `{menuselection}` path against the dialog title from `--list` instead.
+
+Check the PNGs afterwards. The defect this catches most often is an HTML message parameter with
+no width constraint, which Swing renders with huge blank bands — fix it in the command, not
+here, per the skill's **Reviewing the output**.
+
+## 5. Update the version references
 
 - `docs/source/conf.py`: `version` and `release` to `<NEW>`.
 - `docs/source/conf.py`: the `extlinks` version strings — `_bdvpg_version`,
@@ -89,7 +149,7 @@ up in a single pass, per **CLAUDE.md → Looking Up Command Signatures**.
 - `CLAUDE.md`: the **Current Version** line.
 - Anywhere else `<OLD>` is hardcoded: `grep -rn "<OLD>" --include=*.md --include=*.py .`
 
-## 5. Build, verify, commit
+## 6. Build, verify, commit
 
 ```powershell
 & "$env:LOCALAPPDATA\miniforge3\envs\bdvpg-documentation\python.exe" -m sphinx -b html `
@@ -103,7 +163,7 @@ build is not sufficient proof.
 Commit the CLI outputs and the page updates together, so the snapshot that justifies a
 parameter table lands with it.
 
-## 6. Publish
+## 7. Publish
 
 `latest` on ReadTheDocs tracks `main`, so pushing publishes the update. For a frozen snapshot,
 tag `<NEW>.0` (the 4-segment `MAJOR.MINOR.PATCH.DOC` scheme in **CLAUDE.md → Versioning /

@@ -53,6 +53,8 @@ Choose the voxel size based on your desired output resolution. For example, if y
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Fuse & Resample --> Source - Define Resampling Grid`
+
+![Source - Define Resampling Grid dialog](../command_dialogs/sources-grid-model-make.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -133,6 +135,8 @@ A simpler alternative: creates a model source that occupies the same volume as a
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Fuse & Resample --> Source - Create Resampling Grid From Source`
+
+![Source - Create Resampling Grid From Source dialog](../command_dialogs/source-from-model-create.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -206,6 +210,8 @@ Resamples one or more sources to match the voxel grid of a model source. The mod
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Fuse & Resample --> Source - Resample Source`
+
+![Source - Resample Source dialog](../command_dialogs/source-resample.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -293,6 +299,8 @@ For smooth transitions where tiles overlap, apply **L1 alpha blending masks** to
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Fuse & Resample --> Source - Fuse And Resample Sources`
+
+![Source - Fuse And Resample Sources dialog](../command_dialogs/sources-fuse-and-resample.png)
 ::::
 
 ::::{tab-item} IJ Macro

@@ -33,6 +33,8 @@ Performs 90/180/270-degree rotations or mirror flips along X, Y, or Z axes.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Transform --> Source - Basic Transformation`
+
+![Source - Basic Transformation dialog](../command_dialogs/source-simple-transform.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -104,6 +106,8 @@ During interactive transformation, you are placed in the coordinate frame of the
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Transform --> Source - Interactive Transformation`
+
+![Source - Interactive Transformation dialog](../command_dialogs/source-manual-transform.png)
 ::::
 
 :::::
@@ -122,6 +126,8 @@ Creates an affine transform from a 4x3 matrix (12 comma-separated values in row-
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Transform --> New Affine Transform`
+
+![New Affine Transform dialog](../command_dialogs/affine-transform-create.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -179,6 +185,8 @@ Moves sources so their center is at the specified world coordinates. Useful for 
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Transform --> Source - Recenter Sources`
+
+![Source - Recenter Sources dialog](../command_dialogs/sources-recenter.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -243,6 +251,8 @@ Removes the Z position offset from sources, shifting them to Z=0. Useful when im
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Transform --> Source - Remove Z Offset`
+
+![Source - Remove Z Offset dialog](../command_dialogs/sources-zoffset-remove.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -370,6 +380,8 @@ Appends a new affine transform to the chain at a given position.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Transform Stack --> Dataset - Add Transforms`
+
+![Dataset - Add Transforms dialog](../command_dialogs/dataset-transform-add.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -430,6 +442,8 @@ Removes one or more transforms from the chain by index.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Transform Stack --> Dataset - Remove Transforms`
+
+![Dataset - Remove Transforms dialog](../command_dialogs/dataset-transform-remove.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -488,6 +502,8 @@ Overwrites a transform at a specific position in the chain.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Transform Stack --> Dataset - Set Transforms`
+
+![Dataset - Set Transforms dialog](../command_dialogs/dataset-transform-set.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -568,6 +584,8 @@ it twice; use [Dataset - Remove Transforms](#dataset-transform-stack) to undo.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Transform Stack --> Dataset - Add Deskew Transform`
+
+![Dataset - Add Deskew Transform dialog](../command_dialogs/dataset-deskew.png)
 ::::
 
 ::::{tab-item} IJ Macro

@@ -47,6 +47,8 @@ The output is always recomputed from the highest resolution level of each source
 
 ::::{tab-item} GUI
 {menuselection}`Plugins > BigDataViewer-Playground > Export > Source - Export To OME-TIFF`
+
+![Source - Export To OME-TIFF dialog](../command_dialogs/kheops-export-sources.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -141,6 +143,8 @@ Converts sources back to standard Fiji ImagePlus stacks. Use this when you need 
 
 ::::{tab-item} GUI
 {menuselection}`Plugins > BigDataViewer-Playground > Export > Source - Export To ImagePlus`
+
+![Source - Export To ImagePlus dialog](../command_dialogs/sources-to-multiple-image-plus-export.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -221,6 +225,8 @@ The **entity type** parameter controls how sources are organized in the XML/HDF5
 
 ::::{tab-item} GUI
 {menuselection}`Plugins > BigDataViewer-Playground > Export > Source - Export To XML/HDF5 Dataset`
+
+![Source - Export To XML/HDF5 Dataset dialog](../command_dialogs/source-xmlhdf5-export.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -310,6 +316,8 @@ To prepare a dataset for this command, first convert it with **Dataset - Make Bi
 
 ::::{tab-item} GUI
 {menuselection}`Plugins > BigDataViewer-Playground > Export > Dataset - Fuse BigStitcher Dataset To OME-TIFF`
+
+![Dataset - Fuse BigStitcher Dataset To OME-TIFF dialog](../command_dialogs/big-stitcher-dataset-to-ometifffuse.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -407,6 +415,8 @@ Full-control export: you specify the output pixel size, region extent, and Z thi
 
 ::::{tab-item} GUI
 {menuselection}`Plugins > BigDataViewer-Playground > Display > BDV > Export > BDV - Export Current View As ImagePlus`
+
+![BDV - Export Current View As ImagePlus dialog](../command_dialogs/bdv-view-to-image-plus-export.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -490,6 +500,8 @@ A simplified version that automatically matches the BDV window dimensions for X 
 
 ::::{tab-item} GUI
 {menuselection}`Plugins > BigDataViewer-Playground > Display > BDV > Export > BDV - Export Current View As ImagePlus (Match Window)`
+
+![BDV - Export Current View As ImagePlus (Match Window) dialog](../command_dialogs/bdv-view-to-image-plus-basic-export.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -569,6 +581,8 @@ Instead of producing an ImagePlus, this command creates new BDV sources resample
 
 ::::{tab-item} GUI
 {menuselection}`Plugins > BigDataViewer-Playground > Display > BDV > Export > BDV - Export Current View As Sources`
+
+![BDV - Export Current View As Sources dialog](../command_dialogs/bdv-view-to-sources-export.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -657,6 +671,8 @@ Converts a single file. Each series in the input becomes a separate OME-TIFF.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins > BIOP > Kheops > Kheops - Convert File to Pyramidal OME TIFF`
+
+![Kheops - Convert File to Pyramidal OME TIFF dialog](../command_dialogs/kheops.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -735,6 +751,8 @@ Converts multiple files in parallel. Same parameters as the single-file version,
 
 ::::{tab-item} GUI
 {menuselection}`Plugins > BIOP > Kheops > Kheops - Batch Convert Files to Pyramidal OME TIFF`
+
+![Kheops - Batch Convert Files to Pyramidal OME TIFF dialog](../command_dialogs/kheops-batch.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -805,6 +823,8 @@ Converts an already-open Fiji ImagePlus to pyramidal OME-TIFF. Useful when you h
 
 ::::{tab-item} GUI
 {menuselection}`Plugins > BIOP > Kheops > Kheops - Export ImagePlus To OME-TIFF`
+
+![Kheops - Export ImagePlus To OME-TIFF dialog](../command_dialogs/kheops-export-image-plus.png)
 ::::
 
 ::::{tab-item} IJ Macro

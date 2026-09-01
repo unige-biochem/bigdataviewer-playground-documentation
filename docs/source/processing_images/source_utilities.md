@@ -31,6 +31,8 @@ Creates a new source with only a subset of the original resolution levels. Usefu
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Source - Crop Resolution Levels`
+
+![Source - Crop Resolution Levels dialog](../command_dialogs/sources-resolution-levels-crop.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -102,6 +104,8 @@ Creates a new source that shows a single fixed timepoint across a range of timep
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Source - Freeze Timepoint`
+
+![Source - Freeze Timepoint dialog](../command_dialogs/sources-over-time-duplicate.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -167,6 +171,8 @@ Creates a new source with timepoints offset by a fixed amount. Useful for aligni
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Source - Shift Timepoints`
+
+![Source - Shift Timepoints dialog](../command_dialogs/sources-time-shift-duplicate.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -336,6 +342,8 @@ Attaches a key-value metadata string to selected sources. Metadata is useful for
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Source - Add Metadata`
+
+![Source - Add Metadata dialog](../command_dialogs/source-metadata-add.png)
 ::::
 
 ::::{tab-item} IJ Macro

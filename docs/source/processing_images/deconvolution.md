@@ -48,6 +48,8 @@ The PSF must be loaded as a source in BigDataViewer Playground before running de
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Deconvolve --> Source - Deconvolve (Richardson Lucy GPU - Tiled)`
+
+![Source - Deconvolve (Richardson Lucy GPU - Tiled) dialog](../command_dialogs/sources-deconvolve.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -174,6 +176,8 @@ TrackMate XML. The command reads the spots of frame 0 from that file.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Deconvolve --> Source - Average PSF from Beads (TrackMate spots)`
+
+![Source - Average PSF from Beads (TrackMate spots) dialog](../command_dialogs/average-psffrom-spots.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -279,6 +283,8 @@ point mask exactly the same size as the bead image.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Deconvolve --> Source - Distill PSF (Richardson Lucy GPU)`
+
+![Source - Distill PSF (Richardson Lucy GPU) dialog](../command_dialogs/distill-psf.png)
 ::::
 
 ::::{tab-item} IJ Macro

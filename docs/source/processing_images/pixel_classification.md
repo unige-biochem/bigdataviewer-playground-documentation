@@ -32,6 +32,8 @@ For large datasets, start with a higher resolution level (e.g. 2 or 3) to train 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Classify (Labkit) --> Source - Open Labkit`
 
+![Source - Open Labkit dialog](../command_dialogs/sources-labkit-open.png)
+
 ![Labkit window just opened on the two LLS7 channels](../workflows/images/labkit_step2_Labkit_-_Scene_1-LatticeLightsheet.png)
 ::::
 
@@ -114,6 +116,8 @@ Creates a lazy segmentation source by applying a previously saved Labkit classif
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Classify (Labkit) --> Source - Apply Labkit Classifier`
+
+![Source - Apply Labkit Classifier dialog](../command_dialogs/sources-labkit-classify.png)
 ::::
 
 ::::{tab-item} IJ Macro

@@ -48,6 +48,8 @@ With the **Quick Start CZI Reader** update site enabled, use the standard Bio-Fo
 
 ::::{tab-item} GUI
 {menuselection}`Plugins > BigDataViewer-Playground > Import > Dataset - Create [Bio-Formats]`
+
+![Dataset - Create [Bio-Formats] dialog](../command_dialogs/dataset-from-bio-formats-create.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -142,6 +144,8 @@ The algorithm:
 
 ::::{tab-item} GUI
 {menuselection}`Plugins > BigDataViewer-Playground > Specialized Workflows > LLS7 > Source - LLS7 - Compensate Z-Drift`
+
+![Source - LLS7 - Compensate Z-Drift dialog](../command_dialogs/lls7-zdrift-compensate.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -263,6 +267,8 @@ Choose at least as many threads as you have defined GPU workers in your pool. If
 
 ::::{tab-item} GUI
 {menuselection}`Plugins > BigDataViewer-Playground > Process > Deconvolve > Source - Deconvolve (Richardson Lucy GPU - Tiled)`
+
+![Source - Deconvolve (Richardson Lucy GPU - Tiled) dialog](../command_dialogs/sources-deconvolve.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -354,6 +360,8 @@ This step combines cropping and deskewing into a single operation. An interactiv
 
 ::::{tab-item} GUI
 {menuselection}`Plugins > BigDataViewer-Playground > Specialized Workflows > LLS7 > Source - LLS7 - Crop 3D`
+
+![Source - LLS7 - Crop 3D dialog](../command_dialogs/lls7-crop.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -443,6 +451,8 @@ Export the processed (cropped, deskewed, optionally deconvolved) data for downst
 
 ::::{tab-item} GUI
 {menuselection}`Plugins > BigDataViewer-Playground > Export > Source - Export To OME-TIFF`
+
+![Source - Export To OME-TIFF dialog](../command_dialogs/kheops-export-sources.png)
 ::::
 
 ::::{tab-item} IJ Macro

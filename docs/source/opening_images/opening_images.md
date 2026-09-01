@@ -101,6 +101,8 @@ The general-purpose importer. Supports any file format that Bio-Formats can read
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [Bio-Formats]`
+
+![Dataset - Create [Bio-Formats] dialog](../command_dialogs/dataset-from-bio-formats-create.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -164,6 +166,8 @@ Wraps an image that is already open in Fiji as a dataset, so you can use it with
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [Current ImagePlus]`
+
+![Dataset - Create [Current ImagePlus] dialog](../command_dialogs/dataset-from-image-plus-create.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -219,6 +223,8 @@ Creates a dataset from images stored on an OMERO server. You can connect to the 
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [OMERO]`
+
+![Dataset - Create [OMERO] dialog](../command_dialogs/dataset-from-omerocreate.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -277,6 +283,8 @@ Imports all images from a QuPath project as a single dataset. Note that only Bio
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [QuPath]`
+
+![Dataset - Create [QuPath] dialog](../command_dialogs/dataset-from-qu-path-create.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -338,6 +346,8 @@ Opens PerkinElmer Operetta high-content imaging datasets. Note that Perkin Elmer
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [Operetta]`
+
+![Dataset - Create [Operetta] dialog](../command_dialogs/dataset-from-operetta-create.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -397,6 +407,8 @@ Specialized importer for Zeiss Lattice Light Sheet 7 data. Automatically applies
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Create [CZI LLS7]`
+
+![Dataset - Create [CZI LLS7] dialog](../command_dialogs/lls7-dataset-open.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -451,6 +463,8 @@ Opens a sample dataset for testing and exploration. Downloads and caches (in `/h
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Import --> Dataset - Samples`
+
+![Dataset - Samples dialog](../command_dialogs/open-sample.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -514,6 +528,8 @@ Merges multiple saved XML datasets into one, either as additional timepoints or 
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Dataset - Combine XML Datasets`
+
+![Dataset - Combine XML Datasets dialog](../command_dialogs/dataset-xmlcombine.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -572,6 +588,8 @@ Strips entity types from a dataset XML, useful for compatibility with tools that
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Dataset - Remove Entities`
+
+![Dataset - Remove Entities dialog](../command_dialogs/dataset-entities-remove.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -630,6 +648,8 @@ Converts a BigDataViewer Playground XML dataset to BigStitcher format. Essential
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Dataset - Make BigStitcher Compatible`
+
+![Dataset - Make BigStitcher Compatible dialog](../command_dialogs/dataset-xmlto-big-stitcher-dataset-convert.png)
 ::::
 
 ::::{tab-item} IJ Macro

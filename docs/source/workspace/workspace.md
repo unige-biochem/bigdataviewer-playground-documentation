@@ -51,6 +51,8 @@ Adds a filter node to the tree that shows (or hides) sources matching a text pat
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Workspace --> Tree --> Tree - Filter By Name`
+
+![Tree - Filter By Name dialog](../command_dialogs/filter-node-name-add.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -107,6 +109,8 @@ Adds a filter node that selects sources based on a metadata key-value pair. This
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Workspace --> Tree --> Tree - Filter By Metadata`
+
+![Tree - Filter By Metadata dialog](../command_dialogs/filter-node-metadata-add.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -161,6 +165,8 @@ Creates a named group node containing specific sources. Use this to manually cur
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Workspace --> Tree --> Tree - Make Global Source Group`
+
+![Tree - Make Global Source Group dialog](../command_dialogs/source-group-make.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -269,6 +275,8 @@ You can save the entire workspace state — all sources, their display settings,
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Workspace --> State --> State - Save`
+
+![State - Save dialog](../command_dialogs/state-save.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -317,6 +325,8 @@ cs.run(StateSaveCommand, True,
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Workspace --> State --> State - Load`
+
+![State - Load dialog](../command_dialogs/state-load.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -440,6 +450,8 @@ Cache options take effect only after restarting Fiji.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Workspace --> Set Cache Options (Needs Restart)`
+
+![Set Cache Options (Needs Restart) dialog](../command_dialogs/cache-options-set.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -522,6 +534,8 @@ Memoization is enabled by default. It can be turned off for a single opener thro
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Workspace --> Set Bio-Formats Memo Directory`
+
+![Set Bio-Formats Memo Directory dialog](../command_dialogs/set-bio-formats-memo-directory.png)
 ::::
 
 ::::{tab-item} IJ Macro
