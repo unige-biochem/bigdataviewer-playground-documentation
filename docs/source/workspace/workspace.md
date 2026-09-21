@@ -221,6 +221,8 @@ Adds an inspection node for each selected source, showing details about its prop
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Workspace --> Tree --> Tree - Inspect Sources`
+
+![Tree - Inspect Sources dialog](../command_dialogs/source-inspect.png)
 ::::
 
 ::::{tab-item} IJ Macro

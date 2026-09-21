@@ -393,6 +393,8 @@ Apply this to all overlapping sources **before** calling **Source - Fuse And Res
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Fuse & Resample --> Source - Set Linear Blending Mask (L1 Alpha)`
+
+![Source - Set Linear Blending Mask (L1 Alpha) dialog](../command_dialogs/sources-set-alpha.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -454,6 +456,8 @@ Run **Source - Pyramidize** on fused or resampled sources to get efficient multi
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Source - Pyramidize`
+
+![Source - Pyramidize dialog](../command_dialogs/sources-pyramidize.png)
 ::::
 
 ::::{tab-item} IJ Macro

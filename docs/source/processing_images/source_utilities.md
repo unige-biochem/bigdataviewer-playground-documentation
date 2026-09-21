@@ -236,6 +236,8 @@ Removes selected sources from the workspace.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Source - Delete`
+
+![Source - Delete dialog](../command_dialogs/source-delete.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -287,6 +289,8 @@ Creates a copy of the selected sources. The duplicated sources appear under the 
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Source - Duplicate`
+
+![Source - Duplicate dialog](../command_dialogs/source-duplicate.png)
 ::::
 
 ::::{tab-item} IJ Macro

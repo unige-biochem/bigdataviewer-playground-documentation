@@ -326,6 +326,8 @@ Displays the full transform chain for each selected source as a table.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Dataset --> Transform Stack --> Dataset - View Transforms`
+
+![Dataset - View Transforms dialog](../command_dialogs/dataset-transform-view.png)
 ::::
 
 ::::{tab-item} IJ Macro

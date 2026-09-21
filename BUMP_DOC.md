@@ -76,7 +76,7 @@ generated offscreen by the **`scijava-screenshots`** skill — read its `SKILL.m
 itself; this is the invocation for these docs.
 
 **Only re-shoot what the diff changed.** A command whose parameters did not move produces the
-same PNG, so the usual bump touches a handful of files, not all 68. A full regeneration is only
+same PNG, so the usual bump touches a handful of files, not all 87. A full regeneration is only
 needed when the theme or the tool changes.
 
 Build the classpath from a throwaway Maven project pinned to `<NEW>`, **not** from a local
@@ -115,11 +115,17 @@ pages has one file and a regeneration is a single command.
 The alt text is the dialog title from `--list`. Every page with GUI tabs is one level below
 `docs/source/`, so `../` is always right.
 
-**Commands with no dialog.** 24 of the documented commands take only `SourceAndConverter[]` or
-`BdvHandle`, which are filled from context and have no widget — their dialog is an empty box
-with OK/Cancel. They get no screenshot and their GUI tab keeps the menu path alone. The tell is
-the image height: a parameter-less dialog comes out exactly 240px tall at `--scale 2`. Do not
-threshold above that — `Source - Set Color` is only 246px and is a real dialog.
+**Commands with no dialog.** Five commands declare no input at all (`BDV - Create Empty BDV
+Window`, `BDV - Create Grid`, `BDV - Set Settings`, `State - Clear`) or a single `BdvHandle` a
+preprocessor fills from context (`BDV - Add Debug Overlay`). Their dialog is an empty box with
+OK/Cancel, so they get no screenshot and their GUI tab keeps the menu path alone.
+
+Do **not** infer this from the image height. `SourceAndConverter[]` and `BdvHandle[]` inputs
+render a source-selection tree supplied by BigDataViewer-Playground, and an early version of
+the tool dropped those widgets and produced 24 convincing-looking empty dialogs. If a command
+takes sources and its dialog comes out empty, the widget lookup is broken — see the skill's
+**What the tool handles for you**. The selection tree renders empty here because no data is
+loaded, which is what a fresh Fiji session shows.
 
 To find which classes a page needs, take the first `sc.fiji.bdvpg`/`ch.epfl.biop` `Command`
 import inside each `{tab-set}`. A GUI-only section has no scripting tab; match the last segment

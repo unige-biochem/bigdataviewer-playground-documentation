@@ -147,6 +147,8 @@ Adds sources to several existing BDV windows at once.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Show Sources In Multiple Windows`
+
+![BDV - Show Sources In Multiple Windows dialog](../command_dialogs/bdv-sources-show.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -329,6 +331,8 @@ The labels are also interactive: **clicking the X, Y, or Z letter snaps the view
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Overlay --> BDV - Add Axes Overlay`
+
+![BDV - Add Axes Overlay dialog](../command_dialogs/bdv-overlay-axes-add.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -615,6 +619,8 @@ Toggles sources on so they are drawn in all BDV windows where they are present.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> Source --> Source - Make Visible`
+
+![Source - Make Visible dialog](../command_dialogs/source-visibility-on.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -665,6 +671,8 @@ Hides sources in all BDV windows where they are present.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> Source --> Source - Make Invisible`
+
+![Source - Make Invisible dialog](../command_dialogs/source-visibility-off.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -720,6 +728,8 @@ Reframes the current view to fit the selected sources. Useful when you have lost
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Adjust View On Sources`
+
+![BDV - Adjust View On Sources dialog](../command_dialogs/bdv-view-sources-adjust.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -775,6 +785,8 @@ Removes sources from one or more BDV windows. This only removes them from the vi
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Remove Sources`
+
+![BDV - Remove Sources dialog](../command_dialogs/bdv-sources-remove.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -829,6 +841,8 @@ Closes one or more BDV windows.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> BDV - Close`
+
+![BDV - Close dialog](../command_dialogs/bdv-close.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -940,6 +954,8 @@ Draws a crosshair at the center of the BDV window. Helpful for orthogonal view s
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Overlay --> BDV - Add Center Cross Overlay`
+
+![BDV - Add Center Cross Overlay dialog](../command_dialogs/bdv-overlay-cross-add.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -1104,6 +1120,8 @@ Adds a Z-position slider to the bottom of BDV windows, giving you a familiar way
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Add Z Slider`
+
+![BDV - Add Z Slider dialog](../command_dialogs/bdv-zslider-add.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -1154,6 +1172,8 @@ Adds a slider to step through sources one by one. Useful when you have many sour
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Add Sources Slider`
+
+![BDV - Add Sources Slider dialog](../command_dialogs/bdv-source-navigator-add.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -1314,6 +1334,8 @@ cs.run(BdvTimepointsSetCommand, True,
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BDV --> Settings --> BDV - Adapt Number Of Timepoints To Sources`
+
+![BDV - Adapt Number Of Timepoints To Sources dialog](../command_dialogs/bdv-timepoints-adapt.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -1716,6 +1738,8 @@ Synchronizes which sources are visible across multiple viewer windows. When you 
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> Viewers - Synchronize States`
+
+![Viewers - Synchronize States dialog](../command_dialogs/state-synchronize.png)
 ::::
 
 ::::{tab-item} IJ Macro
@@ -1988,6 +2012,8 @@ Removes sources from BVV windows.
 
 ::::{tab-item} GUI
 {menuselection}`Plugins --> BigDataViewer-Playground --> Display --> BVV --> BVV - Remove Sources`
+
+![BVV - Remove Sources dialog](../command_dialogs/bvv-sources-remove.png)
 ::::
 
 ::::{tab-item} IJ Macro
