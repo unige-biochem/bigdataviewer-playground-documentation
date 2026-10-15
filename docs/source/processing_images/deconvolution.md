@@ -140,6 +140,9 @@ single tile and so needs a lot of VRAM.
 Both commands accept several bead sources at once (e.g. the channels of a multi-channel acquisition)
 and produce one PSF source per input, in the same order.
 
+Once you have a PSF, check it with [Source - PSF Centre and FWHM Report (ALPHA)](#psf-fit-report),
+which measures how well centred it is and how wide it is along each axis.
+
 (psf-average-from-beads)=
 ### Source - Average PSF from Beads (TrackMate spots)
 
@@ -349,6 +352,115 @@ result = cs.run(DistillPSFCommand, True,
 ).get()
 
 psf = result.getOutput("psf_out")
+```
+::::
+
+:::::
+
+(psf-fit-report)=
+### Source - PSF Centre and FWHM Report (ALPHA)
+
+*Source: {biop-src}`PSFFitReportCommand.java <ch/epfl/biop/command/process/deconvolve/PSFFitReportCommand.java>`*
+
+Measures a PSF rather than producing one. Through the brightest point of each PSF source it fits a
+Gaussian with a constant background along x, y and z, then reports two things per channel:
+
+- **the shift** of the PSF peak from the centre of its box, with sub-voxel precision. A PSF that is
+  off-centre shifts the deconvolved image by the same amount, and channels whose PSFs are off-centre
+  by different amounts end up misaligned;
+- **the FWHM** (full width at half maximum) along each axis — the usual measure of resolution, to
+  compare against what the objective should achieve.
+
+Both are given in the calibrated unit of the sources (typically µm). The report is a small Markdown
+table, written to the Log window, so you can paste it into a lab notebook or a microscope log. It runs
+on the CPU and is fast.
+
+| Parameter | Description |
+|-----------|-------------|
+| PSF Source(s) | One 3D PSF per channel, in the order the channels should be reported. Each is fitted independently |
+| Reference Channel (-1 = none) | Position, in the list above, of the channel the others are compared to: the report then adds each channel's shift relative to it. `0` is the first source; `-1` reports only the shift against the box centre |
+| Fit Window (x FWHM) | Half-width of the fitted profile, as a multiple of the measured half-maximum width. A PSF is Gaussian only near its peak, so a smaller window gives a truer FWHM, but too small leaves too few points to fit. 1.5 is a reasonable compromise |
+| Resolution Level | Pyramid level to measure. Leave at 0 (full resolution) |
+| Timepoint | Timepoint to measure |
+| Microscope / Objective | Free text, copied into the report header |
+| NA (0 = unknown) | Numerical aperture of the objective, copied into the report header |
+| Immersion | Immersion medium (`air`, `water`, `oil`, `glycerol` or `silicone`), copied into the report header |
+| Date | Acquisition date, free text. Pre-filled with today's date |
+| Channel Names (comma separated) | One name per source, in the same order, e.g. `488, 561, 640`. Left empty — or with the wrong number of names — the source names are used |
+
+:::{warning}
+This command is an **ALPHA** feature: it reports numbers only, with no plot of the fitted profiles yet,
+and its output may change in future releases.
+:::
+
+:::{tip}
+Run it on every PSF you measure, before using it for deconvolution. The table also lists the R² of each
+fit: a value well below 1 on an axis means that profile is not Gaussian-like — typically a PSF cropped
+too tightly, or a peak sitting on the edge of its box, which the report flags as a note.
+:::
+
+:::::{tab-set}
+
+::::{tab-item} GUI
+{menuselection}`Plugins --> BigDataViewer-Playground --> Process --> Deconvolve --> Source - PSF Centre and FWHM Report (ALPHA)`
+
+![Source - PSF Centre and FWHM Report (ALPHA) dialog](../command_dialogs/psffit-report.png)
+::::
+
+::::{tab-item} IJ Macro
+```ijm
+// The PSF sources are selected interactively from the dialog.
+run("Source - PSF Centre and FWHM Report (ALPHA)");
+```
+::::
+
+::::{tab-item} Groovy
+```imagej-groovy
+#@SourceAndConverter[] psf_sources
+#@CommandService cs
+
+import ch.epfl.biop.command.process.deconvolve.PSFFitReportCommand
+
+// "date" is not passed: the command fills it with today's date.
+def result = cs.run(PSFFitReportCommand, true,
+    "psf_sources", psf_sources,
+    "reference_channel", 0,
+    "fit_window", 1.5,
+    "level", 0,
+    "timepoint", 0,
+    "microscope", "LLS7",
+    "objective", "",
+    "numerical_aperture", 0.0,
+    "immersion", "water",
+    "channel_names", "488, 561"
+).get()
+
+def report = result.getOutput("psf_report")
+```
+::::
+
+::::{tab-item} Python
+```python
+#@SourceAndConverter[] psf_sources
+#@CommandService cs
+
+from ch.epfl.biop.command.process.deconvolve import PSFFitReportCommand
+
+# "date" is not passed: the command fills it with today's date.
+result = cs.run(PSFFitReportCommand, True,
+    ["psf_sources", psf_sources,
+     "reference_channel", 0,
+     "fit_window", 1.5,
+     "level", 0,
+     "timepoint", 0,
+     "microscope", "LLS7",
+     "objective", "",
+     "numerical_aperture", 0.0,
+     "immersion", "water",
+     "channel_names", "488, 561"]
+).get()
+
+report = result.getOutput("psf_report")
 ```
 ::::
 

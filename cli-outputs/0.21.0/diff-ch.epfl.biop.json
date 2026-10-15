@@ -4,12 +4,12 @@
   ],
   "removed": [],
   "modified": [
+    "ch.epfl.biop.bdv.img.bioformats.command.DatasetFromBioFormatsCreateCommand",
     "ch.epfl.biop.command.register.warpy.PairRegistrationQuPathExportCommand"
   ],
   "unchanged": [
     "ch.epfl.biop.bdv.img.FixFilePathsCommand",
     "ch.epfl.biop.bdv.img.bioformats.command.BdvShowFileBioFormatsCommand",
-    "ch.epfl.biop.bdv.img.bioformats.command.DatasetFromBioFormatsCreateCommand",
     "ch.epfl.biop.bdv.img.bioformats.command.OpenSampleCommand",
     "ch.epfl.biop.bdv.img.imageplus.command.DatasetFromImagePlusCreateCommand",
     "ch.epfl.biop.bdv.img.omero.command.DatasetFromOMEROCreateCommand",

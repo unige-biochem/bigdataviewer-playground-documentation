@@ -93,7 +93,7 @@ Example raw bead stacks are available at: [https://zenodo.org/records/11396388](
 
 ## PSF Analysis
 
-Computing the PSF from bead images involves three steps:
+Computing the PSF from bead images involves three steps, plus a final check:
 
 ### Step 1: Crop the Stack
 
@@ -139,6 +139,12 @@ full — parameters, tips and scripting snippets — on the deconvolution page:
 
 Start with averaging unless you have a good GPU and need the faint tails of the PSF.
 
+### Step 4: Check the PSF
+
+Run [Source - PSF Centre and FWHM Report (ALPHA)](#psf-fit-report) on the result. It logs, per channel,
+how far the PSF peak sits from the centre of its box and the FWHM along x, y and z — a quick check that
+the PSF is well centred and has the width you expect before you deconvolve with it.
+
 :::{note}
 Earlier versions of this workflow used two standalone scripts, **DetectBeads** and **ComputePSF**. The
 `ComputePSF` step is now a shipped command; the [ComputePSF gist](https://gist.github.com/NicoKiaru/7769f139c988dbdabc3f5dc5f0120daa)
@@ -162,6 +168,7 @@ Once you have computed your PSF, load it into BigDataViewer Playground:
 | 3 | Crop stack (256×256×128) | Manageable data size |
 | 4 | Detect beads (TrackMate XML, or DetectBeads script for a point mask) | Bead positions |
 | 5 | Run **Average PSF from Beads** or **Distill PSF** | Final PSF |
+| 6 | Run **PSF Centre and FWHM Report** | Centring and FWHM per channel |
 
 ---
 

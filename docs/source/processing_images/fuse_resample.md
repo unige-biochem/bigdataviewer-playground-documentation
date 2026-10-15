@@ -282,7 +282,7 @@ Fuses multiple sources into a single source, resampled to match a model source's
 | Select Source(s) | The sources to fuse together |
 | Model Source | The source whose grid defines the output resolution and dimensions |
 | Output Name | Name for the fused source |
-| Blending Mode | Method used to combine overlapping sources |
+| Blending Mode | Method used to combine overlapping sources: `SUM`, `AVERAGE`, `SMOOTH AVERAGE`, `MAX` or `MEDIAN` |
 | Interpolate | Use interpolation when resampling |
 | Re-use MipMaps | Use existing pyramid levels for efficiency |
 | Default MipMap Level | Pyramid level to use if not reusing mipmaps (0 = highest resolution) |

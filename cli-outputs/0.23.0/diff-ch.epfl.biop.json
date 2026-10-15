@@ -11,6 +11,7 @@
     "ch.epfl.biop.kheops.command.deprecated.KheopsSimpleCommand"
   ],
   "modified": [
+    "ch.epfl.biop.command.process.resample.SourcesFuseAndResampleCommand",
     "ch.epfl.biop.command.register.warpy.PairRegistrationOMETIFFExportCommand",
     "ch.epfl.biop.kheops.command.KheopsBatchCommand",
     "ch.epfl.biop.kheops.command.KheopsCommand",
@@ -54,7 +55,6 @@
     "ch.epfl.biop.command.process.deconvolve.SourcesDeconvolveCommand",
     "ch.epfl.biop.command.process.labkit.SourcesLabkitClassifyCommand",
     "ch.epfl.biop.command.process.labkit.SourcesLabkitOpenCommand",
-    "ch.epfl.biop.command.process.resample.SourcesFuseAndResampleCommand",
     "ch.epfl.biop.command.process.resample.SourcesGridModelMakeCommand",
     "ch.epfl.biop.command.process.resample.SourcesSetAlphaCommand",
     "ch.epfl.biop.command.process.transform.ImagePlusRot3DReSampleCommand",

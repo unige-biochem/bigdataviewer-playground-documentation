@@ -83,7 +83,7 @@ $env:PATH = "$env:JAVA_HOME\bin;$env:LOCALAPPDATA\miniforge3\envs\bdvpg-document
 
 ## Current Version
 
-The documentation currently tracks release: `ch.epfl.biop:bigdataviewer-biop-tools:0.23.0`
+The documentation currently tracks release: `ch.epfl.biop:bigdataviewer-biop-tools:0.24.2`
 
 ## Deployment (ReadTheDocs)
 
@@ -124,10 +124,11 @@ published as `github.com/unige-biochem/scijava-introspect`). It replaces the old
 which was never deployed to any Maven repository and no longer resolves. Read that repo's README for the
 full subcommand list: `list-commands`, `describe-command`, `source-code`, `snapshot`, `diff`, `tree`.
 
-Run `mvn clean install` there once, then invoke:
+Releases are published on `maven.scijava.org`, so jgo resolves a pinned release with no local
+build (`mvn clean install` there is only needed to try a `-SNAPSHOT`). Invoke:
 ```bash
 jgo -u --lenient --class-path-only \
-  "ch.unige.biochem:scijava-introspect:0.1.0-SNAPSHOT:ch.unige.biochem.scijava.introspect.CLI+ch.epfl.biop:bigdataviewer-biop-tools:0.23.0" \
+  "ch.unige.biochem:scijava-introspect:0.2.0:ch.unige.biochem.scijava.introspect.CLI+ch.epfl.biop:bigdataviewer-biop-tools:0.24.2" \
   <subcommand> <args..>
 ```
 
@@ -259,7 +260,7 @@ as `SimpleIJLaunch.java` and other test utilities in the project.
 2. Create `Generate<PageName>Screenshots.java` in `ijp-imglib2bdvdemo-ij2/src/test/java/ch/epfl/biop/docs/`,
    modelled on `GenerateVisualizingImagesScreenshots.java`.
 3. Look up the exact class names of the commands to invoke from
-   `cli-outputs/0.23.0/snapshot-sc.fiji.bdvpg.json` and `snapshot-ch.epfl.biop.json`.
+   `cli-outputs/0.24.2/snapshot-sc.fiji.bdvpg.json` and `snapshot-ch.epfl.biop.json`.
 4. For each scenario: run the command via `ij.command().run(...)`, set window title, call
    `DemoHelper.shot(OUTPUT_DIR, "prefix", waitMs, "TitleFilter")`, then dispose + wait.
 5. Run the class from the IDE to generate the images.
